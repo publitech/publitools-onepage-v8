@@ -1,0 +1,3665 @@
+---
+import HeroGsapVisibilityStory from './HeroGsapVisibilityStory.astro';
+
+const destinations = [
+  { label: 'Facebook', src: '/social/facebook-official.svg' },
+  { label: 'Instagram', src: '/social/instagram-official.svg' },
+  { label: 'LinkedIn', src: '/social/linkedin-official.svg' },
+  { label: 'Google Business', src: '/social/google-official.svg' },
+  { label: 'TikTok', src: '/social/tiktok-official.svg' },
+  { label: 'YouTube', src: '/social/youtube-official.svg' },
+];
+
+const networkLogo = {
+  facebook: '/social/facebook-official.svg',
+  instagram: '/social/instagram-official.svg',
+  linkedin: '/social/linkedin-official.svg',
+  google: '/social/google-official.svg',
+  tiktok: '/social/tiktok-official.svg',
+  youtube: '/social/youtube-official.svg',
+};
+
+const mockupPhoto = [
+  { id: 'facebook', label: 'Facebook', img: '/assets/homepage-v31/facebook-reference.webp' },
+  { id: 'instagram', label: 'Instagram', img: '/assets/homepage-v31/instagram-reference.webp' },
+  { id: 'linkedin', label: 'LinkedIn', img: '/assets/homepage-v31/linkedin-reference.webp' },
+  { id: 'google', label: 'Google', img: '/assets/homepage-v31/google-reference.webp' },
+  { id: 'tiktok', label: 'TikTok', img: '/assets/homepage-v31/tiktok-reference.webp' },
+  { id: 'youtube', label: 'YouTube', img: '/assets/homepage-v31/youtube-reference.webp' },
+];
+
+const mockupVideo = [
+  { id: 'facebook', label: 'Facebook', img: '/assets/homepage-v31/facebook-reference.webp' },
+  { id: 'instagram', label: 'Instagram', img: '/assets/homepage-v31/instagram-reference.webp' },
+  { id: 'linkedin', label: 'LinkedIn', img: '/assets/homepage-v31/linkedin-reference.webp' },
+  { id: 'tiktok', label: 'TikTok', img: '/assets/homepage-v31/tiktok-reference.webp' },
+  { id: 'google', label: 'Google', img: '/assets/homepage-v31/google-reference.webp' },
+  { id: 'youtube', label: 'YouTube', img: '/assets/homepage-v31/youtube-reference.webp' },
+];
+
+const socialPosts = [
+  { label: 'Facebook', logo: '/social/facebook-official.svg', image: '/assets/homepage-v31/SOC-02-facebook-post-output.webp' },
+  { label: 'Instagram', logo: '/social/instagram-official.svg', image: '/assets/homepage-v31/SOC-03-instagram-output.webp' },
+  { label: 'LinkedIn', logo: '/social/linkedin-official.svg', image: '/assets/homepage-v31/SOC-04-linkedin-post-output.webp' },
+  { label: 'Google Business', logo: '/social/google-official.svg', image: '/assets/homepage-v31/SOC-05-google-business-output.webp' },
+  { label: 'TikTok', logo: '/social/tiktok-official.svg', image: '/assets/homepage-v31/SOC-06-tiktok-vertical-output.webp' },
+  { label: 'YouTube', logo: '/social/youtube-official.svg', image: '/assets/homepage-v31/SOC-07-youtube-short-output.webp' },
+];
+
+const socialShowcaseRows = [
+  {
+    direction: 'right',
+    speed: '72s',
+    items: [
+      { network: 'facebook', label: 'Facebook', format: 'album chantier', image: '/assets/homepage-v31/social-showcase/03-facebook-electricite-collage.webp', alt: 'Mockup Facebook avec album chantier électricité' },
+      { network: 'tiktok', label: 'TikTok', format: 'vidéo verticale', image: '/assets/homepage-v31/social-showcase/20-tiktok-renovation-complete-nantes.webp', alt: 'Mockup TikTok rénovation complète à Nantes' },
+      { network: 'google', label: 'Google Business', format: 'fiche locale', image: '/assets/homepage-v31/social-showcase/07-google-cuisine-nantes.webp', alt: 'Mockup Google Business cuisine rénovée à Nantes' },
+      { network: 'youtube', label: 'YouTube Shorts', format: 'short chantier', image: '/assets/homepage-v31/social-showcase/01-shorts-salle-de-bain-bordeaux.webp', alt: 'Mockup YouTube Shorts salle de bain à Bordeaux' },
+      { network: 'instagram', label: 'Instagram', format: 'post carré', image: '/assets/homepage-v31/social-showcase/12-instagram-electricite-nantes.webp', alt: 'Mockup Instagram rénovation électrique' },
+      { network: 'linkedin', label: 'LinkedIn', format: 'post pro', image: '/assets/homepage-v31/SOC-05-linkedin-feed.webp', alt: 'Mockup LinkedIn avec publication chantier professionnelle' },
+      { network: 'google', label: 'Google Business', format: 'photos récentes', image: '/assets/homepage-v31/social-showcase/08-google-electricite-nantes.webp', alt: 'Mockup Google Business électricité à Nantes' },
+      { network: 'facebook', label: 'Facebook', format: 'album avant/après', image: '/assets/homepage-v31/social-showcase/04-facebook-renovation-chambre.webp', alt: 'Mockup Facebook rénovation chambre' },
+      { network: 'youtube', label: 'YouTube Shorts', format: 'rénovation', image: '/assets/homepage-v31/social-showcase/14-shorts-renovation-complete-nantes.webp', alt: 'Mockup YouTube Shorts rénovation complète à Nantes' },
+      { network: 'tiktok', label: 'TikTok', format: 'toiture', image: '/assets/homepage-v31/social-showcase/21-tiktok-renovation-toiture-france.webp', alt: 'Mockup TikTok rénovation toiture en France' },
+      { network: 'linkedin', label: 'LinkedIn', format: 'vidéo pro', image: '/assets/homepage-v31/SOC-13-linkedin-video.webp', alt: 'Mockup LinkedIn avec vidéo de chantier' },
+      { network: 'instagram', label: 'Instagram', format: 'reel chantier', image: '/assets/homepage-v31/SOC-09-instagram-reel.webp', alt: 'Mockup Instagram Reel chantier' },
+    ],
+  },
+  {
+    direction: 'left',
+    speed: '78s',
+    items: [
+      { network: 'instagram', label: 'Instagram', format: 'feed chantier', image: '/assets/homepage-v31/SOC-04-instagram-feed.webp', alt: 'Mockup Instagram feed chantier' },
+      { network: 'linkedin', label: 'LinkedIn', format: 'document pro', image: '/assets/homepage-v31/SOC-09-linkedin-document.png', alt: 'Mockup LinkedIn avec document chantier professionnel' },
+      { network: 'youtube', label: 'YouTube Shorts', format: 'plomberie', image: '/assets/homepage-v31/social-showcase/16-shorts-plomberie-nantes.webp', alt: 'Mockup YouTube Shorts plomberie à Nantes' },
+      { network: 'google', label: 'Google Business', format: 'post local', image: '/assets/homepage-v31/social-showcase/09-google-escalier-renove.webp', alt: 'Mockup Google Business escalier rénové' },
+      { network: 'tiktok', label: 'TikTok', format: 'électricité', image: '/assets/homepage-v31/social-showcase/23-tiktok-electrique-lyon.webp', alt: 'Mockup TikTok mise aux normes électrique à Lyon' },
+      { network: 'facebook', label: 'Facebook', format: 'publication photo', image: '/assets/homepage-v31/social-showcase/06-facebook-cuisine-renovee.webp', alt: 'Mockup Facebook cuisine rénovée' },
+      { network: 'linkedin', label: 'LinkedIn', format: 'post pro', image: '/assets/homepage-v31/SOC-05-linkedin-feed.webp', alt: 'Mockup LinkedIn avec publication chantier professionnelle' },
+      { network: 'instagram', label: 'Instagram', format: 'post carré', image: '/assets/homepage-v31/social-showcase/12-instagram-electricite-nantes.webp', alt: 'Mockup Instagram rénovation électrique' },
+      { network: 'google', label: 'Google Business', format: 'galerie locale', image: '/assets/homepage-v31/social-showcase/10-google-toiture-canal.webp', alt: 'Mockup Google Business toiture avec canal' },
+      { network: 'youtube', label: 'YouTube Shorts', format: 'électricité', image: '/assets/homepage-v31/social-showcase/02-shorts-electrique-nantes.webp', alt: 'Mockup YouTube Shorts mise aux normes électrique à Nantes' },
+      { network: 'facebook', label: 'Facebook', format: 'preuve chantier', image: '/assets/homepage-v31/social-showcase/05-facebook-salle-de-bain-collage.webp', alt: 'Mockup Facebook salle de bain rénovée' },
+      { network: 'tiktok', label: 'TikTok', format: 'toiture', image: '/assets/homepage-v31/social-showcase/24-tiktok-toiture-nantes.webp', alt: 'Mockup TikTok rénovation de toiture à Nantes' },
+    ],
+  },
+  {
+    direction: 'right',
+    speed: '84s',
+    items: [
+      { network: 'youtube', label: 'YouTube Shorts', format: 'short travaux', image: '/assets/homepage-v31/social-showcase/17-shorts-salle-de-bain-bordeaux-2.webp', alt: 'Mockup YouTube Shorts salle de bain à Bordeaux' },
+      { network: 'facebook', label: 'Facebook', format: 'post toiture', image: '/assets/homepage-v31/social-showcase/18-facebook-toiture-nantes.webp', alt: 'Mockup Facebook rénovation toiture à Nantes' },
+      { network: 'tiktok', label: 'TikTok', format: 'vidéo verticale', image: '/assets/homepage-v31/SOC-10-tiktok-video.webp', alt: 'Mockup TikTok vidéo de chantier' },
+      { network: 'linkedin', label: 'LinkedIn', format: 'vidéo pro', image: '/assets/homepage-v31/SOC-13-linkedin-video.webp', alt: 'Mockup LinkedIn avec vidéo de chantier' },
+      { network: 'google', label: 'Google Business', format: 'photos toiture', image: '/assets/homepage-v31/social-showcase/11-google-toiture-charpente.webp', alt: 'Mockup Google Business toiture et charpente' },
+      { network: 'instagram', label: 'Instagram', format: 'reel chantier', image: '/assets/homepage-v31/SOC-09-instagram-reel.webp', alt: 'Mockup Instagram Reel chantier' },
+      { network: 'facebook', label: 'Facebook', format: 'terrasse', image: '/assets/homepage-v31/social-showcase/13-facebook-terrasse-renovee.webp', alt: 'Mockup Facebook terrasse rénovée' },
+      { network: 'youtube', label: 'YouTube Shorts', format: 'short plomberie', image: '/assets/homepage-v31/social-showcase/26-shorts-plomberie-nantes-2.webp', alt: 'Mockup YouTube Shorts plomberie à Nantes' },
+      { network: 'instagram', label: 'Instagram', format: 'feed chantier', image: '/assets/homepage-v31/SOC-04-instagram-feed.webp', alt: 'Mockup Instagram feed chantier' },
+      { network: 'google', label: 'Google Business', format: 'photos récentes', image: '/assets/homepage-v31/social-showcase/08-google-electricite-nantes.webp', alt: 'Mockup Google Business électricité à Nantes' },
+      { network: 'tiktok', label: 'TikTok', format: 'toiture', image: '/assets/homepage-v31/social-showcase/21-tiktok-renovation-toiture-france.webp', alt: 'Mockup TikTok rénovation toiture en France' },
+      { network: 'linkedin', label: 'LinkedIn', format: 'document pro', image: '/assets/homepage-v31/SOC-09-linkedin-document.png', alt: 'Mockup LinkedIn avec document chantier professionnel' },
+    ],
+  },
+];
+
+const stats = [
+  { eyebrow: 'VISIBILITÉ', value: 600, suffix: '%', prefix: '+', label: 'de vues sur les posts chantier', icon: '<svg viewBox="0 0 28 28" fill="none" aria-hidden="true"><path d="M5 21h18" stroke="#E8EEF6" stroke-width="2.4" stroke-linecap="round"/><path d="M6 18.5l4.7-4.8 4.1 3.6 6.7-8" stroke="#4285F4" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"/><path d="M15 17.2l6.5-7.9" stroke="#34A853" stroke-width="2.8" stroke-linecap="round"/><path d="M18.1 8.7h3.8v3.8" stroke="#FBBC05" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"/><circle cx="10.7" cy="13.7" r="1.8" fill="#EA4335"/><circle cx="14.8" cy="17.3" r="1.8" fill="#FF7A1A"/></svg>' },
+  { eyebrow: 'GOOGLE LOCAL', value: 12, suffix: '', prefix: '+', label: 'places gagnées en moyenne', icon: '<img src="/social/google-official.svg" alt="" loading="lazy" />' },
+  { eyebrow: 'DEMANDES', value: 40, suffix: '%', prefix: '+', label: 'de demandes de devis', icon: '<svg viewBox="0 0 28 28" fill="none" aria-hidden="true"><path d="M4.5 8.2c0-1.1.9-2 2-2h15c1.1 0 2 .9 2 2v11.6c0 1.1-.9 2-2 2h-15c-1.1 0-2-.9-2-2V8.2z" fill="#fff"/><path d="M5.7 7.7l8.3 6.4 8.3-6.4" stroke="#EA4335" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"/><path d="M5.8 20.2V8.4" stroke="#4285F4" stroke-width="2.3" stroke-linecap="round"/><path d="M22.2 20.2V8.4" stroke="#34A853" stroke-width="2.3" stroke-linecap="round"/><path d="M6.7 21.1h14.6" stroke="#FBBC05" stroke-width="2.3" stroke-linecap="round"/></svg>' },
+  { eyebrow: 'AVIS', value: 35, suffix: '%', prefix: '+', label: 'avis Google collectés', icon: '<svg viewBox="0 0 28 28" fill="none" aria-hidden="true"><path d="M7 6.5h14a3 3 0 013 3v7.2a3 3 0 01-3 3h-7.3L8 23v-3.3H7a3 3 0 01-3-3V9.5a3 3 0 013-3z" fill="#FFFFFF" stroke="#4285F4" stroke-width="2.1" stroke-linejoin="round"/><path d="M8.3 18.5h4.2" stroke="#34A853" stroke-width="2.2" stroke-linecap="round"/><path d="M19.7 9.1l.66 1.35 1.48.21-1.07 1.04.25 1.47-1.32-.7-1.32.7.25-1.47-1.07-1.04 1.48-.21.66-1.35z" fill="#FBBC05" stroke="#FBBC05" stroke-width="1.2" stroke-linejoin="round"/><path d="M9.2 10.7h6.2" stroke="#EA4335" stroke-width="2.2" stroke-linecap="round"/><path d="M9.2 14.4h9.4" stroke="#FF7A1A" stroke-width="2.2" stroke-linecap="round"/></svg>' },
+];
+
+---
+
+<main id="top" class="homepage-v31">
+  <section class="hero-v31" aria-labelledby="hero-title">
+    <div class="container hero-grid">
+      <div class="hero-copy">
+        <div class="hero-badges">
+          <span class="eyebrow pill">Pour les Artisans, TPE et PME du Bâtiment</span>
+          <span class="ia-badge">⚡ Powered by IA</span>
+        </div>
+        <h1 id="hero-title">L’IA qui transforme vos chantiers en publicité sur internet</h1>
+        <p class="lead">Réseaux sociaux, avis clients, Google Business en moins de 2 min/jour.</p>
+        <div class="actions">
+          <a class="button primary" href="https://app.publichantier.fr/?signup=yes">Essayer PubliTools 14 jours</a>
+          <a class="button ghost" href="#tarifs">Voir le tarif</a>
+        </div>
+        <div class="hero-visibility">
+          <span>Publiez vos chantiers sur</span>
+          <div class="visibility-logos">{destinations.map((item) => <span title={item.label}><img src={item.src} alt={item.label} /></span>)}</div>
+        </div>
+      </div>
+
+      <div class="hero-demo" aria-label="Démonstration animée PubliTools : photo chantier vers visibilité internet">
+        <HeroGsapVisibilityStory />
+      </div>
+    </div>
+  </section>
+
+  <section class="section proof-section" id="preuves" aria-labelledby="proof-title">
+    <div class="container">
+      <div class="section-head">
+        <span class="eyebrow pill">Preuves observées</span>
+        <h2 id="proof-title" class="proof-h2">50+ artisans. 3 mois. Des résultats concrets</h2>
+        <p class="proof-intro">Un outil IA qui a fait ses preuves en apportant des résultats concrets.</p>
+      </div>
+      <div class="proof-stage" aria-label="Résultats observés PubliTools">
+        <div class="proof-stage-line" aria-hidden="true"></div>
+        <div class="stats-grid proof-stats">{stats.map((stat) => <article class="stat-card"><div class="stat-icon">{/* @ts-ignore */}<Fragment set:html={stat.icon} /></div><span class="stat-label">{stat.eyebrow}</span><strong class="stat-value" data-target={String(stat.value)} data-prefix={stat.prefix} data-suffix={stat.suffix}>{stat.prefix}{stat.value}{stat.suffix}</strong><p>{stat.label}</p></article>)}</div>
+      </div>
+      <p class="caution caution-centered"><em>Résultats observés chez des artisans utilisateurs après 3 mois. Les résultats varient selon l’activité, la zone et la régularité.</em></p>
+    </div>
+  </section>
+
+  <section class="section networks-section" id="reseaux" aria-labelledby="reseaux-title">
+    <div class="container">
+      <div class="section-head">
+        <span class="eyebrow pill">Réseaux sociaux</span>
+        <h2 id="reseaux-title">Publiez sur 6 réseaux en 2 min, sans y passer vos soirées</h2>
+        <p>Une photo, une vidéo ou un vocal suffit. PubliTools prépare le contenu, vous validez, puis vous publiez.</p>
+      </div>
+      <!-- NIVEAU 1 : sources produit réelles -->
+      <div class="sources-level">
+        <div class="sources-combo" aria-label="Photo ou vidéo plus vocal dans PubliTools">
+          <article class="source-screen-card source-screen-card-media">
+            <span class="source-label">Photo / Vidéo</span>
+            <img src="/assets/homepage-v31/user-sources/photo-video-upload-sage-20260612.webp" alt="Écran PubliTools pour ajouter des photos ou vidéos de chantier" loading="eager" />
+          </article>
+          <div class="source-plus" aria-hidden="true">+</div>
+          <article class="source-screen-card source-screen-card-vocal">
+            <span class="source-label">Vocal</span>
+            <img src="/assets/homepage-v31/user-sources/vocal-description-sage-20260612.webp" alt="Écran PubliTools pour décrire son chantier en vocal" loading="eager" />
+          </article>
+        </div>
+      </div>
+      <!-- Flèche N1→N2 -->
+      <div class="flow-connector flow-connector-in" aria-hidden="true">
+        <svg viewBox="0 0 160 138" fill="none">
+          <path class="flow-path flow-path-left" d="M28 8 C28 54 80 58 80 118" />
+          <path class="flow-path flow-path-right" d="M132 8 C132 54 80 58 80 118" />
+          <path class="flow-arrow" d="M70 108 L80 122 L90 108" />
+        </svg>
+      </div>
+      <!-- NIVEAU 2 : Moteur PubliTools -->
+      <div class="engine-level">
+        <div class="engine-box">
+          <div class="engine-card">
+            <div class="engine-orbit" aria-hidden="true"><i></i><i></i><i></i></div>
+            <div class="engine-logo-row">
+              <img class="engine-brand-logo" src="/brand/publitools-logo.jpg" alt="PubliTools" loading="lazy" />
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Flèche N2→N3 -->
+      <div class="flow-connector flow-connector-out" aria-hidden="true">
+        <svg viewBox="0 0 220 148" fill="none">
+          <path class="flow-path flow-path-center" d="M110 8 C110 48 110 74 110 126" />
+          <path class="flow-path flow-path-left" d="M110 70 C74 82 50 98 32 126" />
+          <path class="flow-path flow-path-right" d="M110 70 C146 82 170 98 188 126" />
+          <path class="flow-arrow" d="M100 116 L110 132 L120 116" />
+          <path class="flow-arrow side" d="M24 112 L31 130 L45 117" />
+          <path class="flow-arrow side" d="M196 112 L189 130 L175 117" />
+        </svg>
+      </div>
+                  <!-- NIVEAU 3 : carrousels avec mockups fournis -->
+                  <div class="carousels-level" aria-label="Exemples de publications générées sur les réseaux">
+                    {socialShowcaseRows.map((row) => (
+                      <div class={`carousel-row ${row.direction}`} style={`--row-speed:${row.speed}`}>
+                        <div class="carousel-track">
+                          {row.items.concat(row.items).map((item) => (
+                            <article class={`carousel-card showcase-card network-${item.network}`}>
+                              <div class="card-label net-label showcase-label">
+                                <img src={networkLogo[item.network]} alt="" class="net-logo" loading="lazy" />
+                                <span>{item.label}</span>
+                                <small>{item.format}</small>
+                              </div>
+                              <div class="showcase-frame">
+                                <img class="showcase-image" src={item.image} alt={item.alt} loading="eager" />
+                              </div>
+                            </article>
+                          ))}
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                    </div>
+                  </div>
+    </div>
+  </section>
+
+  <section class="section reviews-section" id="avis" aria-labelledby="avis-title">
+    <div class="container">
+      <div class="section-head">
+        <span class="eyebrow pill">Avis clients</span>
+        <h2 id="avis-title">Demandez des avis au bon moment, sans courir après le lien Google</h2>
+        <p>PubliTools prépare le SMS, vous l’envoyez, l’avis reçu peut devenir une publication prête.</p>
+      </div>
+      <div class="three-steps reviews-steps">
+        <article>
+          <strong>SMS d’avis préparé avec votre lien Google</strong>
+          <img src="/assets/homepage-v31/reviews/review-sms-request.webp" alt="SMS automatisé PubliTools pour demander un avis Google" loading="eager" />
+          <div class="review-feature-icons" aria-label="IA, automatisation et rédaction">
+            <span title="Cerveau" aria-label="Cerveau"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 4.5A3.5 3.5 0 0 0 5.7 9 3.5 3.5 0 0 0 7 15.7V18a2.5 2.5 0 0 0 5 0V6.5A2.5 2.5 0 0 0 9 4.5Z"/><path d="M15 4.5A3.5 3.5 0 0 1 18.3 9 3.5 3.5 0 0 1 17 15.7V18a2.5 2.5 0 0 1-5 0V6.5a2.5 2.5 0 0 1 3-2Z"/><path d="M8.2 10.2h3.8M12 13.8H8.4M15.8 10.2H12M12 13.8h3.6"/></svg></span>
+            <span title="Robot" aria-label="Robot"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4v3"/><path d="M8 7h8a4 4 0 0 1 4 4v5a4 4 0 0 1-4 4H8a4 4 0 0 1-4-4v-5a4 4 0 0 1 4-4Z"/><path d="M9 13h.01M15 13h.01"/><path d="M9 17h6"/><path d="M5 12H3M21 12h-2"/></svg></span>
+            <span title="Stylo" aria-label="Stylo"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4 12.5-12.5Z"/></svg></span>
+          </div>
+        </article>
+        <article>
+          <strong>Avis reçu, prêt à être réutilisé proprement</strong>
+          <img src="/assets/homepage-v31/reviews/review-google-received-user.webp" alt="Avis Google cinq étoiles reçu depuis un client de chantier" loading="eager" />
+          <div class="review-feature-icons" aria-label="Notification, IA et réponse">
+            <span title="Notification" aria-label="Notification"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18 8a6 6 0 0 0-12 0c0 7-3 7-3 9h18c0-2-3-2-3-9Z"/><path d="M10 21h4"/></svg></span>
+            <span title="Cerveau" aria-label="Cerveau"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 4.5A3.5 3.5 0 0 0 5.7 9 3.5 3.5 0 0 0 7 15.7V18a2.5 2.5 0 0 0 5 0V6.5A2.5 2.5 0 0 0 9 4.5Z"/><path d="M15 4.5A3.5 3.5 0 0 1 18.3 9 3.5 3.5 0 0 1 17 15.7V18a2.5 2.5 0 0 1-5 0V6.5a2.5 2.5 0 0 1 3-2Z"/><path d="M8.2 10.2h3.8M12 13.8H8.4M15.8 10.2H12M12 13.8h3.6"/></svg></span>
+            <span title="Réponse" aria-label="Réponse"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 14 4 9l5-5"/><path d="M4 9h9a7 7 0 0 1 7 7v4"/></svg></span>
+          </div>
+        </article>
+        <article>
+          <strong>Publication prête à valider à partir d’un avis réel</strong>
+          <img src="/assets/homepage-v31/reviews/review-social-post.webp" alt="Publication générée automatiquement à partir d’un avis client" loading="eager" />
+          <div class="review-destinations" aria-label="Réseaux disponibles pour publier l’avis">
+            {destinations.map((item) => <span title={item.label}><img src={item.src} alt={item.label} loading="lazy" /></span>)}
+          </div>
+        </article>
+      </div>
+      <div class="mobile-section-cta">
+        <a class="button primary" href="https://app.publichantier.fr/?signup=yes">Essayer PubliTools 14 jours</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section gmb-section soft" id="google-business" aria-labelledby="gmb-title">
+    <div class="container">
+      <div class="section-head">
+        <span class="eyebrow pill">Google Business</span>
+        <h2 id="gmb-title">Alimentez votre fiche Google avec vos vrais chantiers</h2>
+        <p>Publiez photos, posts et avis sur votre fiche Google Business depuis PubliTools.</p>
+      </div>
+      <div class="gmb-grid">
+        <article><img src="/assets/homepage-v31/gmb/gmb-02-photos-to-google-business.webp" alt="Photos de chantiers envoyées vers Google Business et Google Maps" /><strong>Photos chantier prêtes pour Google Business</strong></article>
+        <article><img src="/assets/homepage-v31/gmb/gmb-01-google-post-cuisine-lyon.webp" alt="Google Post généré pour une cuisine rénovée à Lyon" /><strong>Posts Google Business prêts à valider</strong></article>
+        <article><img src="/assets/homepage-v31/gmb/gmb-03-appels-2026-line-chart.webp" alt="Graphique d’appels téléphoniques en hausse" /><strong>Votre fiche montre une activité plus récente</strong></article>
+      </div>
+      <div class="mobile-section-cta">
+        <a class="button primary" href="https://app.publichantier.fr/?signup=yes">Essayer PubliTools 14 jours</a>
+      </div>
+      <p class="caution dark"><em>PubliTools ne promet aucune position Google précise. La valeur vient de la régularité et de l’activité visible sur la fiche.</em></p>
+    </div>
+  </section>
+
+  <section class="section pricing-section" id="tarifs" aria-labelledby="tarifs-title">
+    <div class="container">
+      <div class="section-head">
+        <span class="eyebrow pill">Tarifs</span>
+        <h2 id="tarifs-title">Deux plans simples pour publier vos chantiers régulièrement</h2>
+        <p>Choisissez le rythme : Starter pour publier régulièrement, Pro pour automatiser sans limite.</p>
+      </div>
+      <div class="pricing-grid">
+        <article class="price-card starter">
+          <span class="plan">Starter</span>
+          <h3>Pour publier chaque mois sans repartir de zéro.</h3>
+          <p class="plan-note">Le bon plan pour installer une présence régulière sur vos réseaux principaux.</p>
+          <div class="pricing-logos" aria-label="Réseaux disponibles sur Starter">{destinations.map((item) => <span title={item.label}><img src={item.src} alt={item.label} loading="lazy" /></span>)}</div>
+          <div class="value-stack" aria-label="Valeur incluse dans Starter">
+            <span>6 réseaux</span>
+            <span>Rédaction IA</span>
+            <span>Avis SMS illimités</span>
+          </div>
+          <div class="price">19,90 € <small>HT/mois</small></div>
+          <a class="button ghost dark" href="https://app.publichantier.fr/?signup=yes&plan=starter">Essayer PubliTools 14 jours</a>
+          <ul>
+            <li>Publication en 1 clic jusqu’à 3 réseaux par post</li>
+            <li>Retouche photo / vidéo classique incluse</li>
+            <li>Rédaction IA</li>
+            <li>8 publications / mois</li>
+            <li>Demandes d’avis SMS illimitées</li>
+            <li>Accès Pro complet pendant les 14 jours d’essai</li>
+          </ul>
+        </article>
+        <article class="price-card pro">
+          <span class="recommended">Recommandé</span>
+          <span class="plan">Pro</span>
+          <h3>Pour publier sans limite et gagner du temps chaque semaine.</h3>
+          <p class="plan-note">Le plan cœur pour faire tourner vos réseaux, vos avis et vos visuels sans bricoler.</p>
+          <div class="pricing-logos" aria-label="Réseaux disponibles sur Pro">{destinations.map((item) => <span title={item.label}><img src={item.src} alt={item.label} loading="lazy" /></span>)}</div>
+          <div class="value-stack" aria-label="Valeur incluse dans Pro">
+            <span>Tout Starter</span>
+            <span>Illimité</span>
+            <span>Programmation</span>
+          </div>
+          <div class="price">39,90 € <small>HT/mois</small></div>
+          <a class="button primary" href="https://app.publichantier.fr/?signup=yes&plan=pro">Essayer PubliTools 14 jours</a>
+          <ul>
+            <li>Tout Starter inclus</li>
+            <li>Publications illimitées</li>
+            <li>Retouches IA illimitées</li>
+            <li>Designs IA illimités</li>
+            <li>Avis reçus transformés en publications</li>
+            <li>Programmation des publications</li>
+          </ul>
+        </article>
+      </div>
+      <div class="pricing-trial-note">
+        <strong>14 jours d’essai avec accès Pro complet.</strong>
+        <span>Vous testez toutes les fonctions Pro, puis vous gardez le plan qui vous convient. Prix HT.</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="section faq" id="faq" aria-labelledby="faq-title">
+    <div class="container narrow">
+      <div class="section-head"><span class="eyebrow pill">FAQ</span><h2 id="faq-title">Des questions sur l’application ?</h2><p>Réseaux, avis, Google Business, essai 14 jours : les réponses simples avant de tester.</p></div>
+      <details open><summary>Quels réseaux sont disponibles ?</summary><p>Facebook, Instagram, LinkedIn, Google Business, TikTok et YouTube sont les destinations confirmées au lancement.</p></details>
+      <details><summary>Est-ce que je valide avant publication ?</summary><p>Oui. PubliTools prépare le contenu, puis vous pouvez le relire, le modifier et le valider avant publication.</p></details>
+      <details><summary>Comment fonctionnent les avis ?</summary><p>PubliTools prépare un SMS avec le lien Google. L’app SMS du téléphone s’ouvre, puis vous envoyez le message.</p></details>
+      <details><summary>Est-ce que les résultats sont automatiques ?</summary><p>Non. Les chiffres affichés sont des résultats observés sur une cohorte ; ils dépendent de l’activité, de la zone et de la régularité.</p></details>
+    </div>
+  </section>
+
+  <section class="final-cta" aria-labelledby="final-title">
+    <div class="container center narrow"><h2 id="final-title">Vos prochains chantiers peuvent déjà nourrir votre publicité</h2><p>Ajoutez une photo, dictez le contexte, voyez ce que PubliTools prépare.</p><a class="button primary" href="https://app.publichantier.fr/?signup=yes">Essayer PubliTools 14 jours</a></div>
+  </section>
+</main>
+
+<style>
+/* ============================================
+   HomepageV31 — Navigation-First Design System
+   Tokens canon dérivés du header (spec Léa)
+   ============================================ */
+
+/* --- Resets --- */
+:global(html) {
+  scroll-behavior: smooth;
+}
+.sr-only {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  padding: 0 !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  clip: rect(0, 0, 0, 0) !important;
+  white-space: nowrap !important;
+  border: 0 !important;
+}
+
+/* --- Base container --- */
+.homepage-v31 {
+  --navy: #0B1F3A;
+  --ink: #0B1F3A;
+  --muted: #596273;
+  --body-text: #40506A;
+  --orange: #FF7A1A;
+  --orange-hover: #E86A0A;
+  --orange-shadow: rgba(255, 122, 26, 0.25);
+  --soft: #F6F7F9;
+  --line: #E3E8EF;
+  --shadow-card: 0px 20px 54px rgba(11, 31, 58, 0.075);
+  --shadow-card-navy: 0px 18px 42px rgba(0, 0, 0, 0.16);
+  --shadow-image: 0px 12px 24px rgba(11, 31, 58, 0.12);
+  --shadow-hover: 0px 24px 60px rgba(11, 31, 58, 0.12);
+  background: #FFFFFF;
+  color: var(--ink);
+  font-family: Inter, system-ui, sans-serif;
+  overflow-x: hidden;
+}
+
+.container {
+  width: min(1180px, calc(100% - 32px));
+  margin: 0 auto;
+}
+.narrow {
+  width: min(860px, calc(100% - 32px));
+}
+.center {
+  text-align: center;
+}
+
+/* --- Sections vertical rhythm --- */
+.section {
+  padding: 110px 0;
+}
+
+/* --- H2 uniform — weight 700, same as H1 --- */
+h2 {
+  font-family: Montserrat, Inter, sans-serif;
+  color: var(--navy);
+  font-size: clamp(36px, 4.2vw, 54px);
+  line-height: 1.08;
+  letter-spacing: -0.035em;
+  font-weight: 700;
+  margin: 0;
+}
+
+/* --- Eyebrow labels — premium badges --- */
+.eyebrow {
+  display: inline-flex;
+  margin-bottom: 20px;
+  color: #5B6678;
+  font-family: Montserrat, Inter, sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+.eyebrow.pill {
+  border: 1px solid rgba(11, 31, 58, 0.10);
+  background: #FFFFFF;
+  border-radius: 999px;
+  padding: 7px 14px;
+  box-shadow: 0 2px 8px rgba(11, 31, 58, 0.04);
+}
+.eyebrow.light {
+  color: #FFB36F;
+}
+
+/* --- Buttons — aligned with header tokens (spec Léa §1.6) --- */
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 52px;
+  border-radius: 8px;
+  padding: 0 22px;
+  text-decoration: none;
+  font-weight: 700;
+  font-family: Montserrat, Inter, sans-serif;
+  font-size: 16px;
+  transition: all 250ms ease;
+}
+.primary {
+  background: var(--orange);
+  color: #fff;
+  box-shadow: 0px 18px 34px var(--orange-shadow);
+}
+.primary:hover {
+  background: var(--orange-hover);
+  box-shadow: 0px 22px 40px rgba(255, 122, 26, 0.35);
+  transform: translateY(-1px);
+}
+.ghost {
+  background: #fff;
+  color: var(--navy);
+  border: 1px solid var(--line);
+}
+.ghost:hover {
+  border-color: var(--navy);
+  color: var(--navy);
+}
+.ghost.dark {
+  color: var(--navy);
+}
+.mobile-section-cta {
+  display: none;
+}
+
+/* ============================
+   HERO SECTION
+   ============================ */
+.hero-v31 {
+  padding: 44px 0 104px;
+  background: #F4F6F8;
+}
+.hero-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.16fr) minmax(320px, 0.84fr);
+  gap: 58px;
+  align-items: start;
+}
+.hero-copy h1 {
+  margin: 0;
+  padding-bottom: 20px;
+  font-family: Montserrat, Inter, sans-serif;
+  color: var(--navy);
+  font-weight: 700;
+  letter-spacing: -0.035em;
+  line-height: 1.08;
+  font-size: clamp(36px, 4.2vw, 54px);
+}
+.lead {
+  font-size: clamp(18px, 1.8vw, 22px);
+  line-height: 1.45;
+  color: var(--body-text);
+  margin: 24px 0 0;
+  max-width: 650px;
+}
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 22px;
+}
+/* --- Hero badges row --- */
+.hero-badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  align-items: center;
+  margin-bottom: 24px;
+}
+.hero-badges .eyebrow {
+  margin-bottom: 0;
+}
+.ia-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  background: #0B1F3A;
+  color: #fff;
+  font-family: Montserrat, Inter, sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  border-radius: 999px;
+  padding: 7px 14px;
+  box-shadow: 0 2px 12px rgba(11, 31, 58, 0.18);
+}
+
+/* --- Hero visibility row --- */
+.hero-visibility {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-top: 28px;
+  flex-wrap: wrap;
+}
+.hero-visibility > span {
+  font-family: Montserrat, Inter, sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--muted);
+  white-space: nowrap;
+}
+.visibility-logos {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+.visibility-logos span {
+  width: 38px;
+  height: 38px;
+  border-radius: 12px;
+  background: #fff;
+  border: 1px solid var(--line);
+  display: grid;
+  place-items: center;
+  box-shadow: 0 4px 12px rgba(11, 31, 58, 0.06);
+  transition: transform 250ms ease, box-shadow 250ms ease;
+}
+.visibility-logos span:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(11, 31, 58, 0.12);
+}
+.visibility-logos img {
+  width: 24px;
+  height: 24px;
+  object-fit: contain;
+  opacity: 1;
+  filter: none;
+}
+
+/* Hero demo phone card */
+.hero-demo {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  align-self: start;
+}
+.phone-card {
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 22px;
+  padding: 13px;
+  box-shadow: 0 24px 64px rgba(11, 31, 58, 0.13);
+  width: min(100%, 258px);
+  max-height: 430px;
+  overflow: hidden;
+}
+.status {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 11px;
+  font-weight: 700;
+}
+.status i {
+  width: 46px;
+  height: 10px;
+  border-radius: 999px;
+  background: linear-gradient(90deg, #0B1F3A 30%, transparent 30% 42%, #0B1F3A 42% 58%, transparent 58% 70%, #0B1F3A 70%);
+}
+.phone-head {
+  text-align: center;
+  margin: 7px 0 9px;
+}
+.phone-head b {
+  display: block;
+  font-size: 13px;
+}
+.phone-head small {
+  color: #718096;
+  display: block;
+  font-size: 11px;
+  line-height: 1.3;
+}
+.app-photo {
+  width: 100%;
+  border-radius: 12px;
+  box-shadow: var(--shadow-image);
+  object-fit: cover;
+  max-height: 122px;
+}
+.wave-card,
+.caption-card {
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 11px;
+  padding: 8px 10px;
+  margin-top: 8px;
+  box-shadow: 0 8px 20px rgba(11, 31, 58, 0.06);
+}
+.wave-card {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.play {
+  color: var(--navy);
+  font-weight: 700;
+}
+.wave-bars {
+  display: flex;
+  gap: 2px;
+  align-items: center;
+  flex: 1;
+}
+.wave-bars i {
+  width: 3px;
+  max-height: 24px;
+  border-radius: 999px;
+  background: var(--orange);
+}
+.caption-card strong {
+  font-size: 11px;
+  color: var(--orange);
+}
+.caption-card p {
+  font-size: 10.5px;
+  line-height: 1.24;
+  color: var(--navy);
+  margin: 0.25rem 0;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+.caption-card span {
+  display: block;
+  text-align: right;
+  font-weight: 700;
+  font-size: 11px;
+}
+.publish-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 34px;
+  border-radius: 8px;
+  background: var(--orange);
+  color: #fff;
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 12px;
+  margin-top: 8px;
+  pointer-events: none;
+}
+.logo-dots,
+.pricing-logos {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-top: 16px;
+}
+.logo-dots span,
+.pricing-logos span {
+  width: 36px;
+  height: 36px;
+  border-radius: 999px;
+  background: #fff;
+  border: 1px solid var(--line);
+  display: grid;
+  place-items: center;
+  box-shadow: 0 8px 18px rgba(11, 31, 58, 0.08);
+}
+.logo-dots img,
+.pricing-logos img {
+  width: 23px;
+  height: 23px;
+  object-fit: contain;
+  opacity: 1;
+  filter: none;
+}
+
+/* ============================
+   SECTION PREUVES (Stats)
+   ============================ */
+.proof-section {
+  position: relative;
+  overflow: hidden;
+  background: #FFFFFF;
+}
+.proof-section::before {
+  content: none;
+}
+.proof-section .container {
+  position: relative;
+  z-index: 1;
+}
+.proof-section .section-head {
+  max-width: 820px;
+  margin-bottom: 30px;
+}
+.proof-h2 {
+  font-family: Montserrat, Inter, sans-serif;
+  color: var(--navy);
+  font-size: clamp(36px, 4.2vw, 54px);
+  line-height: 1.08;
+  letter-spacing: -0.035em;
+  font-weight: 700;
+  margin: 0 auto;
+  text-align: center;
+  text-wrap: balance;
+}
+.proof-copy > p,
+.section-head p {
+  font-size: 18px;
+  color: var(--muted);
+  line-height: 1.55;
+  margin: 18px 0 0;
+}
+.proof-intro {
+  text-align: center;
+  max-width: 650px;
+  margin-left: auto;
+  margin-right: auto;
+  text-wrap: balance;
+}
+.proof-stage {
+  position: relative;
+  max-width: 1080px;
+  margin: 0 auto;
+  padding: 30px clamp(16px, 3vw, 34px) 34px;
+  border: 0;
+  border-radius: 34px;
+  background: transparent;
+  box-shadow: none;
+}
+.proof-stage::after {
+  content: none;
+}
+.proof-stage-line {
+  display: none;
+}
+.proof-meta {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 22px;
+  color: #475569;
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: 0.055em;
+  text-transform: uppercase;
+}
+.proof-meta span {
+  display: inline-flex;
+  align-items: center;
+  min-height: 30px;
+  padding: 0 12px;
+  border-radius: 999px;
+  background: #F8FAFC;
+  border: 1px solid rgba(11, 31, 58, 0.07);
+}
+.proof-meta i {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: #94A3B8;
+  box-shadow: none;
+}
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 18px;
+  margin-top: 34px;
+}
+.proof-stats {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 16px;
+  margin-top: 0;
+}
+.stats-grid article,
+.stat-card {
+  position: relative;
+  overflow: hidden;
+  background: #fff;
+  border: 1px solid rgba(11, 31, 58, 0.08);
+  border-radius: 24px;
+  padding: 28px;
+  box-shadow: 0 18px 48px rgba(11, 31, 58, 0.08);
+  transition: box-shadow 300ms ease, transform 300ms ease, border-color 300ms ease;
+}
+.stat-card {
+  display: grid;
+  grid-template-rows: 48px 18px 64px minmax(44px, auto);
+  align-items: start;
+}
+.stat-card::before {
+  content: none;
+}
+@media (min-width: 561px) {
+  .proof-stats .stat-card:first-child > * {
+    transform: translateY(3px);
+  }
+}
+.stats-grid article:hover,
+.stat-card:hover {
+  border-color: rgba(11, 31, 58, 0.14);
+  box-shadow: var(--shadow-hover);
+  transform: translateY(-3px);
+}
+.stat-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: 16px;
+  background: #F8FAFC;
+  border: 1px solid rgba(11, 31, 58, 0.08);
+  display: grid;
+  place-items: center;
+  color: var(--orange);
+  margin-bottom: 0;
+  box-shadow: 0 10px 22px rgba(11, 31, 58, 0.06);
+}
+.stat-icon svg,
+.stat-icon img {
+  width: 26px;
+  height: 26px;
+  object-fit: contain;
+}
+.stat-label {
+  display: block;
+  align-self: end;
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  color: #64748B;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+.stat-value {
+  display: flex;
+  align-items: center;
+  color: var(--orange);
+  font-family: Montserrat, Inter, sans-serif;
+  font-size: clamp(40px, 4vw, 54px);
+  line-height: 1;
+  margin: 0;
+  white-space: nowrap;
+  font-variant-numeric: tabular-nums;
+}
+.stats-grid p {
+  margin: 0;
+  color: var(--navy);
+  line-height: 1.35;
+}
+.caution {
+  font-size: 13px;
+  color: #667085;
+  line-height: 1.45;
+}
+.caution-centered {
+  text-align: center;
+  max-width: 760px;
+  margin: 24px auto 0;
+}
+
+/* ============================
+   SECTION RÉSEAUX SOCIAUX (redesign cartes blanches)
+   ============================ */
+.section-head {
+  text-align: center;
+  max-width: 840px;
+  margin: 0 auto 48px;
+}
+
+.networks-section {
+  position: relative;
+  overflow: hidden;
+  background: #F6F8FB;
+  color: #0B1F3A;
+}
+
+.networks-section::before {
+  content: none;
+}
+
+.networks-section .container {
+  position: relative;
+  z-index: 1;
+}
+
+.networks-section .section-head h2 {
+  color: #0B1F3A;
+}
+
+.networks-section .section-head p {
+  color: #475569;
+}
+
+.networks-section .networks-footer {
+  color: #475569;
+}
+
+/* --- Niveau 1 : inputs produit réels --- */
+.sources-level {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.sources-combo {
+  display: grid;
+  grid-template-columns: minmax(240px, 340px) auto minmax(240px, 340px);
+  align-items: center;
+  justify-content: center;
+  gap: clamp(18px, 3vw, 34px);
+  width: 100%;
+}
+
+.source-screen-card {
+  background: #FFFFFF;
+  border: 1px solid #E2E8F0;
+  border-radius: 28px;
+  padding: 18px;
+  box-shadow: 0 18px 48px rgba(11, 31, 58, 0.12);
+  transition: transform 300ms ease, box-shadow 300ms ease;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+}
+
+.source-screen-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 24px 58px rgba(11, 31, 58, 0.16);
+}
+
+.source-label {
+  font-family: Montserrat, Inter, sans-serif;
+  font-weight: 800;
+  font-size: clamp(18px, 2vw, 22px);
+  color: #0B1F3A;
+  text-align: center;
+}
+
+.source-screen-card img {
+  width: 100%;
+  max-height: 454px;
+  aspect-ratio: 2 / 1;
+  object-fit: contain;
+  border-radius: 24px;
+  display: block;
+  background: #F8FAFC;
+}
+
+.source-plus {
+  display: grid;
+  place-items: center;
+  color: #101820;
+  font-family: Montserrat, Inter, sans-serif;
+  font-size: clamp(58px, 6vw, 78px);
+  font-weight: 850;
+  line-height: 0.9;
+}
+
+/* --- Connecteurs de flux premium --- */
+.flow-connector {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  pointer-events: none;
+  position: relative;
+  z-index: 2;
+}
+
+.flow-connector-in {
+  margin: -2px auto -4px;
+  height: clamp(96px, 10vw, 136px);
+}
+
+.flow-connector-out {
+  margin: -6px auto -2px;
+  height: clamp(112px, 11vw, 152px);
+}
+
+.flow-connector svg {
+  width: min(320px, 48vw);
+  height: 100%;
+  overflow: visible;
+}
+.flow-connector-out svg {
+  width: min(460px, 58vw);
+}
+
+.flow-path,
+.flow-arrow {
+  stroke: #FF7A1A;
+  stroke-width: 3.4;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  fill: none;
+  filter: none;
+}
+.flow-path {
+  opacity: 0.78;
+  stroke-dasharray: 10 13;
+  animation: flowDash 1.55s linear infinite;
+}
+.flow-path-left,
+.flow-path-right {
+  opacity: 0.58;
+}
+.flow-arrow {
+  stroke-width: 4.2;
+  opacity: 0.95;
+}
+.flow-arrow.side {
+  opacity: 0.62;
+  stroke-width: 3.2;
+}
+
+@keyframes flowDash {
+  to { stroke-dashoffset: -46; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .flow-path,
+  .engine-orbit i {
+    animation: none !important;
+  }
+}
+
+/* --- Niveau 2 : moteur PubliTools magique --- */
+.engine-level {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.engine-box {
+  flex: 0 1 560px;
+  width: min(560px, 100%);
+  position: relative;
+}
+
+.engine-box::before {
+  content: none;
+}
+
+.engine-card {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  background: transparent;
+  border: 0;
+  border-radius: 34px;
+  padding: 0;
+  box-shadow: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0;
+  transition: box-shadow 300ms ease, transform 300ms ease;
+}
+
+.engine-card:hover {
+  box-shadow: none;
+  transform: translateY(-3px);
+}
+
+.engine-card::before {
+  content: none;
+}
+
+.engine-orbit {
+  display: none;
+}
+.engine-orbit i {
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  border-radius: 999px;
+  background: #FF9A4A;
+  box-shadow: 0 0 28px rgba(255, 122, 26, 0.82);
+  opacity: 0.72;
+}
+.engine-orbit i:nth-child(1) { top: 18%; left: 12%; animation: sparkleFloat 4.4s ease-in-out infinite; }
+.engine-orbit i:nth-child(2) { top: 28%; right: 14%; animation: sparkleFloat 5s ease-in-out 0.7s infinite; }
+.engine-orbit i:nth-child(3) { bottom: 18%; left: 48%; animation: sparkleFloat 4.7s ease-in-out 1.2s infinite; }
+
+.engine-logo-row {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  width: 100%;
+  gap: 0;
+}
+
+.engine-brand-logo {
+  display: block;
+  width: min(560px, 86vw);
+  height: auto;
+  object-fit: contain;
+  border-radius: 34px;
+  background: transparent;
+  padding: 0;
+  box-shadow: 0 30px 80px rgba(11,31,58,0.18);
+}
+
+@keyframes sparkleFloat {
+  0%, 100% { transform: translateY(0) scale(1); opacity: 0.48; }
+  50% { transform: translateY(-12px) scale(1.35); opacity: 0.95; }
+}
+
+
+/* --- Carousels wrapper --- */
+.carousels-level {
+  --card-w: clamp(196px, 19.2vw, 276px);
+  margin-top: -4px;
+  display: grid;
+  gap: 34px;
+  padding: 22px 0 12px;
+  width: 100vw;
+  margin-left: 50%;
+  transform: translateX(-50%);
+  overflow: hidden;
+  mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+}
+
+/* --- Carousel rows --- */
+.carousel-row {
+  overflow: hidden;
+  width: 100%;
+}
+.carousel-track {
+  display: flex;
+  gap: clamp(44px, 4.2vw, 70px);
+  width: max-content;
+  padding: 3px 0;
+  will-change: transform;
+}
+.carousel-row.right .carousel-track {
+  animation: scrollRight var(--row-speed, 62s) linear infinite;
+}
+.carousel-row.left .carousel-track {
+  animation: scrollLeft var(--row-speed, 62s) linear infinite;
+}
+.carousel-row:hover .carousel-track {
+  animation-play-state: paused;
+}
+/* --- Mockup card container --- */
+.carousel-card {
+  position: relative;
+  flex-shrink: 0;
+  width: var(--card-w);
+  aspect-ratio: 241 / 320;
+  background: #fff;
+  border: 1px solid rgba(11, 31, 58, 0.08);
+  border-radius: 24px;
+  overflow: hidden;
+  box-shadow: 0 18px 48px rgba(11, 31, 58, 0.13);
+  transition: transform 300ms ease, box-shadow 300ms ease;
+}
+.carousel-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 24px 60px rgba(11, 31, 58, 0.2);
+}
+.showcase-card.network-facebook { --network-strip: #1877F2; }
+.showcase-card.network-instagram { --network-strip: #E4405F; }
+.showcase-card.network-linkedin { --network-strip: #0A66C2; }
+.showcase-card.network-google { --network-strip: #4285F4; }
+.showcase-card.network-tiktok { --network-strip: #000000; }
+.showcase-card.network-youtube { --network-strip: #FF0000; }
+.showcase-card {
+  background: #fff;
+}
+.showcase-frame,
+.showcase-image {
+  width: 100%;
+  height: 100%;
+}
+.showcase-frame {
+  position: absolute;
+  inset: 42px 0 24px;
+  background: #fff;
+}
+.showcase-image {
+  display: block;
+  object-fit: contain;
+}
+.showcase-card::after {
+  content: "";
+  position: absolute;
+  inset: auto 0 0;
+  height: 24px;
+  background: var(--network-strip, #0B1F3A);
+  pointer-events: none;
+  z-index: 2;
+}
+.showcase-label {
+  top: 0;
+  bottom: auto;
+  left: 0;
+  right: 0;
+  min-height: 42px;
+  justify-content: flex-start;
+  gap: 9px;
+  padding: 9px 14px;
+  background: #fff;
+  border: 0;
+  border-bottom: 1px solid rgba(0,0,0,0.06);
+  border-radius: 0;
+  box-shadow: none;
+  z-index: 3;
+}
+.showcase-label .net-logo {
+  width: 22px;
+  height: 22px;
+}
+.showcase-label span {
+  font-size: 14px;
+  line-height: 1;
+  color: #07172B;
+}
+.showcase-label small {
+  display: none;
+}
+
+/* === MOCKUP FACEBOOK === */
+.m-facebook {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 11px;
+  background: #F0F2F5;
+  color: #050505;
+}
+.fb-bar { background: #1877F2; color: #fff; display: flex; align-items: center; gap: 6px; padding: 5px 10px; font-weight: 600; font-size: 12px; }
+.fb-f { background: #fff; color: #1877F2; width: 18px; height: 18px; border-radius: 4px; display: grid; place-items: center; font-weight: 800; font-size: 13px; }
+.fb-head { display: flex; align-items: center; gap: 8px; padding: 8px 10px; background: #fff; }
+.fb-av { background: #1877F2; color: #fff; width: 26px; height: 26px; border-radius: 50%; display: grid; place-items: center; font-weight: 700; font-size: 12px; }
+.fb-info { display: flex; flex-direction: column; line-height: 1.3; }
+.fb-info strong { font-size: 12px; }
+.fb-info span { color: #65676B; font-size: 10px; }
+.m-facebook img { flex: 1; width: 100%; object-fit: cover; min-height: 0; }
+.fb-actions { display: flex; justify-content: space-around; padding: 6px 4px; background: #fff; border-top: 1px solid #e4e6eb; color: #65676B; font-weight: 600; font-size: 12px; }
+.fb-stats { padding: 3px 10px; background: #fff; color: #65676B; font-size: 12px; display: flex; align-items: center; gap: 4px; }
+.fb-like-on { color: #1877F2; }
+.fb-cmt { padding: 4px 10px 6px; background: #fff; color: #65676B; font-size: 11px; }
+.fb-cmt strong { color: #050505; }
+
+/* === MOCKUP INSTAGRAM (pixel-perfect) === */
+.m-instagram {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  background: #fff;
+  color: #262626;
+  font-size: 11px;
+}
+.ig-head {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 10px;
+}
+.ig-logo {
+  width: 24px;
+  height: 24px;
+  object-fit: contain;
+  flex-shrink: 0;
+  opacity: 1;
+  filter: none;
+}
+.ig-avatar {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  border: 1px solid #dbdbdb;
+  overflow: hidden;
+  flex-shrink: 0;
+  background: #e8e8e8;
+}
+.ig-avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.ig-user {
+  font-weight: 600;
+  font-size: 12px;
+  color: #262626;
+}
+.ig-dots {
+  margin-left: auto;
+  font-size: 14px;
+  color: #262626;
+}
+.m-instagram > img {
+  flex: 1;
+  width: 100%;
+  object-fit: cover;
+  display: block;
+  min-height: 0;
+}
+.m-instagram > .ig-logo {
+  flex: 0 0 24px !important;
+  width: 24px !important;
+  height: 24px !important;
+  min-height: 24px;
+  object-fit: contain;
+}
+.ig-head > .ig-logo {
+  flex: 0 0 24px !important;
+  width: 24px !important;
+  height: 24px !important;
+  min-height: 24px;
+  object-fit: contain;
+}
+.ig-actions {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 4px 10px;
+  font-size: 16px;
+  color: #262626;
+}
+.ig-actions .ig-count {
+  font-size: 11px;
+  font-weight: 400;
+  color: #262626;
+  margin-right: 4px;
+}
+.ig-actions .ig-save {
+  margin-left: auto;
+}
+.ig-likes {
+  font-weight: 600;
+  font-size: 11px;
+  color: #262626;
+  padding: 0 10px 2px;
+}
+.ig-caption {
+  font-size: 11px;
+  color: #262626;
+  line-height: 1.3;
+  padding: 0 10px 2px;
+}
+.ig-caption strong {
+  font-weight: 600;
+}
+.ig-comments {
+  color: #8e8e8e;
+  font-size: 10px;
+  padding: 0 10px 4px;
+}
+
+/* === MOCKUP LINKEDIN === */
+.m-linkedin {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  font-family: -apple-system, system-ui, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-size: 11px;
+  background: #fff;
+  color: #000000DE;
+}
+.li-head { display: flex; align-items: center; gap: 8px; padding: 8px 12px; border-bottom: 1px solid #e0e0e0; }
+.li-logo { width: 24px; height: 24px; object-fit: contain; flex: 0 0 24px; min-height: 24px; opacity: 1; filter: none; }
+.li-av { font-size: 20px; }
+.li-head div:last-child { display: flex; flex-direction: column; line-height: 1.3; }
+.li-head div:last-child strong { font-size: 12px; }
+.li-head div:last-child span { color: #666; font-size: 10px; }
+.m-linkedin img { flex: 1; width: 100%; object-fit: cover; min-height: 0; }
+.m-linkedin .li-logo { width: 24px; height: 24px; flex: 0 0 24px; min-height: 24px; object-fit: contain; }
+.li-actions { display: flex; justify-content: space-around; padding: 6px 4px; border-top: 1px solid #e0e0e0; color: #666; font-size: 14px; }
+.li-foot { padding: 4px 12px 6px; color: #666; font-size: 11px; }
+
+/* === MOCKUP GOOGLE BUSINESS === */
+.m-google {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  font-family: 'Google Sans', Arial, Helvetica, sans-serif;
+  font-size: 11px;
+  background: #fff;
+}
+.gmb-name { color: #1A73E8; font-weight: 600; font-size: 14px; padding: 8px 12px 2px; }
+.gmb-stars { padding: 0 12px 6px; font-size: 14px; }
+.gmb-stars span { color: #5F6368; font-size: 11px; margin-left: 4px; }
+.m-google img { flex: 1; width: 100%; object-fit: cover; min-height: 0; }
+.gmb-btns { display: flex; justify-content: space-around; padding: 8px 10px; gap: 6px; }
+.gmb-btn { display: flex; align-items: center; gap: 4px; padding: 6px 12px; border: 1px solid #DADCE0; border-radius: 20px; font-size: 11px; color: #1A73E8; font-weight: 500; white-space: nowrap; }
+
+/* === MOCKUP TIKTOK === */
+.m-tiktok {
+  position: relative;
+  height: 100%;
+  background: #000;
+  color: #fff;
+  font-family: 'Proxima Nova', -apple-system, sans-serif;
+}
+.m-tiktok img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.tt-side { position: absolute; right: 6px; bottom: 60px; display: flex; flex-direction: column; align-items: center; gap: 12px; font-size: 16px; }
+.tt-side span { display: flex; flex-direction: column; align-items: center; gap: 0; font-size: 18px; }
+.tt-side small { font-size: 10px; font-weight: 600; }
+.tt-user { position: absolute; bottom: 30px; left: 10px; font-weight: 600; font-size: 12px; }
+.tt-sound { position: absolute; bottom: 10px; left: 10px; font-size: 11px; color: #ccc; }
+
+/* === MOCKUP YOUTUBE === */
+.m-youtube {
+  position: relative;
+  height: 100%;
+  font-family: 'Roboto', Arial, sans-serif;
+}
+.m-youtube img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.yt-over { position: absolute; inset: 0; background: rgba(0,0,0,0.2); }
+.yt-play { position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%); width: 36px; height: 36px; border-radius: 50%; background: rgba(255,255,255,0.9); display: grid; place-items: center; color: #000; font-size: 16px; }
+.yt-title { position: absolute; top: 10px; left: 8px; color: #fff; font-weight: 700; font-size: 13px; text-shadow: 0 1px 4px rgba(0,0,0,0.7); }
+.yt-info { position: absolute; bottom: 22px; left: 8px; color: #fff; font-size: 10px; text-shadow: 0 1px 3px rgba(0,0,0,0.7); }
+.yt-bar { position: absolute; bottom: 0; left: 0; right: 0; height: 3px; background: rgba(255,255,255,0.3); }
+.yt-fill { height: 100%; background: #FF0000; }
+
+/* === MOCKUPS VIDÉO === */
+.m-video {
+  position: relative;
+  height: 100%;
+  color: #fff;
+  font-family: -apple-system, sans-serif;
+}
+.m-video img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.mv-over { position: absolute; inset: 0; background: rgba(0,0,0,0.15); display: grid; place-items: center; }
+.mv-play { width: 36px; height: 36px; border-radius: 50%; background: rgba(255,255,255,0.85); display: grid; place-items: center; color: #000; font-size: 16px; }
+.mv-reel { position: absolute; top: 8px; left: 8px; font-size: 10px; font-weight: 600; background: rgba(0,0,0,0.4); padding: 2px 8px; border-radius: 4px; }
+.mv-side { position: absolute; right: 5px; bottom: 40px; display: flex; flex-direction: column; align-items: center; gap: 10px; font-size: 14px; }
+.mv-side span { display: flex; flex-direction: column; align-items: center; gap: 0; color: #fff; }
+.mv-side small { font-size: 9px; color: #fff; }
+.mv-bar { position: absolute; bottom: 0; left: 0; right: 0; height: 3px; background: rgba(255,255,255,0.3); }
+.mv-fill { height: 100%; background: rgba(255,255,255,0.7); }
+.mv-fill.yt-red { background: #FF0000; }
+
+/* --- Card label (network logo + name) --- */
+.net-label {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 7px 10px;
+  background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(6px);
+  border-top: 1px solid rgba(0,0,0,0.06);
+  z-index: 2;
+}
+.net-label .net-logo {
+  width: 20px;
+  height: 20px;
+  object-fit: contain;
+  flex-shrink: 0;
+  opacity: 1;
+  filter: none;
+}
+.net-label span {
+  font-size: 11px;
+  font-weight: 700;
+  color: #0B1F3A;
+}
+
+.showcase-card .showcase-label {
+  top: 0;
+  bottom: auto;
+  left: 0;
+  right: 0;
+  min-height: 42px;
+  gap: 9px;
+  padding: 9px 14px;
+  background: #fff;
+  border: 0;
+  border-bottom: 1px solid rgba(0,0,0,0.06);
+  border-radius: 0;
+  box-shadow: none;
+  z-index: 3;
+}
+.showcase-card .showcase-label .net-logo {
+  width: 22px;
+  height: 22px;
+}
+.showcase-card .showcase-label span {
+  font-size: 14px;
+  line-height: 1;
+}
+
+.mockup-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+.mockup-video .mockup-inner {
+  min-height: 100%;
+}
+
+.mockup-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  flex: 1;
+}
+
+.mockup-label {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 8px 12px;
+  background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(6px);
+  border-top: 1px solid rgba(0, 0, 0, 0.06);
+  z-index: 10;
+}
+.mockup-label span {
+  font-size: 12px;
+  font-weight: 700;
+  color: #0B1F3A;
+}
+
+/* ============================
+   FACEBOOK POST MOCKUP — Pixel-perfect
+   Specs: barre #1877F2, fond #F0F2F5, texte #050505 / #65676B
+   ============================ */
+.mockup-facebook-post {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  background: #F0F2F5;
+  font-family: Arial, Helvetica, sans-serif;
+}
+.fb-topbar {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 0 10px;
+  height: 32px;
+  background: #1877F2;
+  color: #fff;
+  font-size: 12px;
+  font-weight: 600;
+}
+.fb-topbar .fb-logo {
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 1;
+  flex-shrink: 0;
+  width: 20px;
+  text-align: center;
+}
+.fb-post-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 10px 6px;
+  background: #fff;
+}
+.fb-avatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: #1877F2;
+  flex-shrink: 0;
+  display: grid;
+  place-items: center;
+  color: #fff;
+  font-weight: 700;
+  font-size: 14px;
+}
+.fb-user {
+  display: flex;
+  flex-direction: column;
+}
+.fb-user strong {
+  font-size: 12px;
+  color: #050505;
+  font-weight: 600;
+  line-height: 1.2;
+}
+.fb-user .fb-meta {
+  font-size: 11px;
+  color: #65676B;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  line-height: 1.3;
+}
+.mockup-facebook-post .mockup-image {
+  flex: 1;
+  min-height: 0;
+  width: 100%;
+  object-fit: cover;
+}
+.fb-actions {
+  display: flex;
+  padding: 6px 4px;
+  font-size: 11px;
+  color: #65676B;
+  border-top: 1px solid #CED0D4;
+  background: #fff;
+}
+.fb-actions span {
+  flex: 1;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  font-weight: 600;
+  cursor: default;
+}
+.fb-likes {
+  padding: 4px 10px 2px;
+  font-size: 11px;
+  color: #65676B;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  background: #fff;
+}
+.fb-likes .fb-like-icon { color: #1877F2; }
+.fb-comment {
+  padding: 2px 10px 8px;
+  font-size: 11px;
+  color: #65676B;
+  background: #fff;
+  line-height: 1.3;
+}
+
+/* ============================
+   INSTAGRAM POST MOCKUP — Pixel-perfect
+   Fond blanc, logo dégradé, #262626 texte
+   ============================ */
+.mockup-instagram-post {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  background: #fff;
+  font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+}
+.ig-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 10px;
+  font-size: 12px;
+  font-weight: 600;
+  color: #262626;
+}
+.ig-header .ig-logo {
+  flex-shrink: 0;
+  font-size: 16px;
+  line-height: 1;
+}
+.ig-header .ig-logo-degrade {
+  background: linear-gradient(135deg, #F58529, #DD2A7B, #8134AF, #515BD4);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  font-weight: 700;
+}
+.ig-dots {
+  margin-left: auto;
+  font-size: 16px;
+  letter-spacing: 1px;
+  color: #262626;
+}
+.mockup-instagram-post .mockup-image {
+  flex: 1;
+  min-height: 0;
+  width: 100%;
+  object-fit: cover;
+}
+.ig-actions {
+  display: flex;
+  gap: 12px;
+  padding: 4px 10px 2px;
+  font-size: 14px;
+  color: #262626;
+}
+.ig-actions .ig-bookmark {
+  margin-left: auto;
+}
+.ig-likes {
+  padding: 0 10px;
+  font-size: 12px;
+  font-weight: 600;
+  color: #262626;
+}
+.ig-caption {
+  padding: 2px 10px 8px;
+  font-size: 11px;
+  color: #262626;
+  line-height: 1.3;
+}
+.ig-caption strong { font-weight: 700; }
+.ig-location {
+  font-size: 10px;
+  color: #8e8e8e;
+  padding: 0 10px 4px;
+}
+
+/* ============================
+   LINKEDIN POST MOCKUP — Pixel-perfect
+   Fond #F4F2EE, logo #0A66C2, texte #000 / rgba(0,0,0,0.6)
+   ============================ */
+.mockup-linkedin-post {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  background: #F4F2EE;
+  font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+}
+.li-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 12px;
+  font-size: 13px;
+  border-bottom: 1px solid #E0DED7;
+  background: #fff;
+}
+.li-header .li-logo {
+  flex-shrink: 0;
+  width: 24px;
+  height: 24px;
+  border-radius: 4px;
+  background: #0A66C2;
+  display: grid;
+  place-items: center;
+  color: #fff;
+  font-weight: 700;
+  font-size: 13px;
+}
+.li-header .li-avatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  font-size: 16px;
+  display: grid;
+  place-items: center;
+}
+.li-user {
+  display: flex;
+  flex-direction: column;
+}
+.li-user strong {
+  font-weight: 600;
+  font-size: 13px;
+  color: #000;
+  line-height: 1.2;
+}
+.li-user span {
+  font-size: 11px;
+  color: rgba(0,0,0,0.6);
+  line-height: 1.2;
+}
+.mockup-linkedin-post .mockup-image {
+  flex: 1;
+  min-height: 0;
+  width: 100%;
+  object-fit: cover;
+}
+.li-actions {
+  display: flex;
+  gap: 16px;
+  padding: 8px 12px;
+  font-size: 13px;
+  color: #000;
+  border-top: 1px solid #E0DED7;
+  background: #fff;
+}
+.li-actions .li-like-icon { color: #0A66C2; }
+.li-footer {
+  padding: 4px 12px 10px;
+  font-size: 11px;
+  color: rgba(0,0,0,0.6);
+  background: #fff;
+}
+
+/* ============================
+   GOOGLE BUSINESS MOCKUP — Pixel-perfect
+   Titre #1A73E8, étoiles #FBBC04, boutons ronds #DADCE0
+   ============================ */
+.mockup-google-post {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  background: #fff;
+  font-family: Arial, Helvetica, sans-serif;
+}
+.gmb-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 12px;
+  font-size: 14px;
+  font-weight: 500;
+  color: #1A73E8;
+}
+.gmb-header .gmb-logo {
+  flex-shrink: 0;
+  font-size: 16px;
+}
+.gmb-stars-row {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  margin-left: auto;
+  gap: 1px;
+}
+.gmb-stars {
+  font-size: 9px;
+  color: #FBBC04;
+  letter-spacing: 1px;
+  line-height: 1;
+}
+.gmb-rating {
+  font-size: 9px;
+  color: #5F6368;
+  line-height: 1;
+}
+.mockup-google-post .mockup-image {
+  flex: 1;
+  min-height: 0;
+  width: 100%;
+  object-fit: cover;
+}
+.gmb-buttons {
+  display: flex;
+  justify-content: space-around;
+  padding: 8px 12px;
+  gap: 6px;
+  background: #fff;
+}
+.gmb-btn {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  border: 1px solid #DADCE0;
+  background: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: 8px;
+  color: #1A73E8;
+  font-weight: 600;
+  gap: 2px;
+  cursor: default;
+}
+.gmb-btn .gmb-btn-icon {
+  font-size: 16px;
+  line-height: 1;
+}
+
+/* ============================
+   TIKTOK PHOTO MOCKUP — Pixel-perfect
+   Fond #000, ❤️ #ff3040, texte blanc
+   ============================ */
+.mockup-tiktok-photo {
+  position: relative;
+  height: 100%;
+  background: #000;
+  font-family: Arial, sans-serif;
+}
+.mockup-tiktok-photo .mockup-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.tt-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.15);
+}
+.tt-sidebar {
+  position: absolute;
+  right: 6px;
+  bottom: 60px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  font-size: 10px;
+  color: #fff;
+  text-align: center;
+  z-index: 2;
+  align-items: center;
+}
+.tt-sidebar span {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  text-shadow: 0 1px 4px rgba(0,0,0,0.6);
+}
+.tt-sidebar .tt-heart-icon {
+  color: #ff3040;
+  font-size: 18px;
+}
+.tt-sidebar .tt-action-icon {
+  font-size: 16px;
+}
+.tt-avatar-thumb {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  border: 2px solid #fff;
+  flex-shrink: 0;
+  font-size: 14px;
+  display: grid;
+  place-items: center;
+  margin-top: 8px;
+}
+.tt-username {
+  position: absolute;
+  bottom: 40px;
+  left: 10px;
+  color: #fff;
+  font-size: 12px;
+  font-weight: 600;
+  z-index: 2;
+  text-shadow: 0 1px 4px rgba(0,0,0,0.6);
+}
+.tt-sound {
+  position: absolute;
+  bottom: 14px;
+  left: 10px;
+  color: rgba(255,255,255,0.7);
+  font-size: 10px;
+  z-index: 2;
+  text-shadow: 0 1px 4px rgba(0,0,0,0.6);
+}
+
+/* ============================
+   YOUTUBE THUMBNAIL MOCKUP — Pixel-perfect
+   Overlay rgba(0,0,0,0.3), play cercle blanc, text-shadow contour noir
+   ============================ */
+.mockup-youtube-thumb {
+  position: relative;
+  height: 100%;
+  background: #000;
+}
+.mockup-youtube-thumb .mockup-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.yt-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.3);
+}
+.yt-play-btn {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: #fff;
+  display: grid;
+  place-items: center;
+  color: #000;
+  font-size: 18px;
+  padding-left: 3px;
+  z-index: 2;
+  cursor: default;
+}
+.yt-label {
+  position: absolute;
+  bottom: 36px;
+  left: 8px;
+  right: 8px;
+  color: #fff;
+  font-size: 11px;
+  font-weight: 700;
+  text-shadow:
+    0 0 4px rgba(0,0,0,0.9),
+    -1px -1px 0 #000,
+    1px -1px 0 #000,
+    -1px 1px 0 #000,
+    1px 1px 0 #000;
+  z-index: 2;
+  line-height: 1.2;
+}
+.yt-brand {
+  position: absolute;
+  bottom: 6px;
+  right: 8px;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+.yt-channel {
+  position: absolute;
+  bottom: 8px;
+  left: 8px;
+  color: #fff;
+  font-size: 9px;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  text-shadow: 0 1px 4px rgba(0,0,0,0.8);
+}
+.yt-progress-bar {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: rgba(255,255,255,0.3);
+  z-index: 2;
+}
+.yt-progress-fill {
+  height: 100%;
+  width: 60%;
+  background: #FF0000;
+}
+
+/* ============================
+   INSTAGRAM REEL MOCKUP — Pixel-perfect 9:16
+   Fond #000, "Vidéos pour vous" en haut, play central
+   ============================ */
+.mockup-reel {
+  position: relative;
+  height: 100%;
+  background: #000;
+}
+.mockup-reel .mockup-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.reel-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(0,0,0,0.4) 0%, transparent 30%, transparent 60%, rgba(0,0,0,0.5) 100%);
+}
+.reel-play {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: #fff;
+  display: grid;
+  place-items: center;
+  color: #000;
+  font-size: 16px;
+  padding-left: 3px;
+  z-index: 2;
+}
+.reel-label {
+  position: absolute;
+  top: 12px;
+  left: 50%;
+  transform: translateX(-50%);
+  color: #fff;
+  font-size: 10px;
+  font-weight: 600;
+  z-index: 2;
+  background: rgba(0,0,0,0.4);
+  padding: 3px 12px;
+  border-radius: 999px;
+  white-space: nowrap;
+}
+.reel-sidebar {
+  position: absolute;
+  right: 8px;
+  bottom: 70px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  color: #fff;
+  font-size: 16px;
+  z-index: 2;
+  align-items: center;
+}
+.reel-sidebar span {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  text-shadow: 0 1px 4px rgba(0,0,0,0.5);
+}
+.reel-sidebar .reel-count {
+  font-size: 8px;
+}
+.reel-sound {
+  position: absolute;
+  bottom: 14px;
+  left: 10px;
+  color: rgba(255,255,255,0.7);
+  font-size: 10px;
+  z-index: 2;
+  text-shadow: 0 1px 4px rgba(0,0,0,0.5);
+}
+.reel-user {
+  position: absolute;
+  bottom: 14px;
+  left: 10px;
+  color: #fff;
+  font-size: 11px;
+  font-weight: 600;
+  z-index: 2;
+  text-shadow: 0 1px 4px rgba(0,0,0,0.5);
+}
+
+/* ============================
+   TIKTOK VIDEO MOCKUP — Pixel-perfect 9:16
+   Fond #000, interface sombre, barre progression verticale
+   ============================ */
+.mockup-tt-video {
+  position: relative;
+  height: 100%;
+  background: #000;
+}
+.mockup-tt-video .mockup-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.tt-vid-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(0,0,0,0.3) 0%, transparent 40%, transparent 60%, rgba(0,0,0,0.6) 100%);
+}
+.tt-vid-play {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: #fff;
+  display: grid;
+  place-items: center;
+  color: #000;
+  font-size: 16px;
+  padding-left: 3px;
+  z-index: 2;
+}
+.tt-vid-sidebar {
+  position: absolute;
+  right: 8px;
+  bottom: 80px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  color: #fff;
+  font-size: 18px;
+  z-index: 2;
+  align-items: center;
+}
+.tt-vid-sidebar span {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  text-shadow: 0 1px 4px rgba(0,0,0,0.5);
+}
+.tt-vid-sidebar .tt-vid-count {
+  font-size: 8px;
+}
+.tt-vid-avatar {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  border: 2px solid #fff;
+  display: grid;
+  place-items: center;
+  font-size: 14px;
+}
+.tt-vid-bar {
+  position: absolute;
+  right: 4px;
+  top: 60px;
+  bottom: 90px;
+  width: 3px;
+  background: rgba(255,255,255,0.15);
+  border-radius: 999px;
+  z-index: 2;
+}
+.tt-vid-bar-fill {
+  position: absolute;
+  right: 4px;
+  top: 60px;
+  height: 30%;
+  width: 3px;
+  background: rgba(255,255,255,0.6);
+  border-radius: 999px;
+  z-index: 3;
+}
+.tt-vid-username {
+  position: absolute;
+  bottom: 40px;
+  left: 10px;
+  color: #fff;
+  font-size: 13px;
+  font-weight: 600;
+  z-index: 2;
+  text-shadow: 0 1px 4px rgba(0,0,0,0.6);
+}
+.tt-vid-sound {
+  position: absolute;
+  bottom: 14px;
+  left: 10px;
+  color: rgba(255,255,255,0.6);
+  font-size: 10px;
+  z-index: 2;
+  text-shadow: 0 1px 4px rgba(0,0,0,0.6);
+}
+
+/* ============================
+   YOUTUBE SHORT MOCKUP — Pixel-perfect 9:16
+   👍👎💬 à droite, barre verticale, logo YouTube rouge en haut
+   ============================ */
+.mockup-yt-short {
+  position: relative;
+  height: 100%;
+  background: #000;
+}
+.mockup-yt-short .mockup-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.short-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(0,0,0,0.4) 0%, transparent 30%, transparent 60%, rgba(0,0,0,0.6) 100%);
+}
+.short-play {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: #fff;
+  display: grid;
+  place-items: center;
+  color: #000;
+  font-size: 14px;
+  padding-left: 3px;
+  z-index: 2;
+}
+.short-sidebar {
+  position: absolute;
+  right: 6px;
+  bottom: 60px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  color: #fff;
+  font-size: 14px;
+  z-index: 2;
+  align-items: center;
+}
+.short-sidebar span {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  text-shadow: 0 1px 4px rgba(0,0,0,0.5);
+}
+.short-sidebar .short-count {
+  font-size: 8px;
+}
+.short-bar {
+  position: absolute;
+  right: 3px;
+  top: 60px;
+  bottom: 80px;
+  width: 3px;
+  background: rgba(255,255,255,0.2);
+  border-radius: 999px;
+  z-index: 2;
+}
+.short-bar-fill {
+  position: absolute;
+  right: 3px;
+  top: 60px;
+  height: 30%;
+  width: 3px;
+  background: #fff;
+  border-radius: 999px;
+  z-index: 3;
+}
+.short-views {
+  position: absolute;
+  bottom: 14px;
+  left: 50%;
+  transform: translateX(-50%);
+  color: #fff;
+  font-size: 9px;
+  z-index: 2;
+  background: rgba(0,0,0,0.5);
+  padding: 2px 10px;
+  border-radius: 999px;
+  white-space: nowrap;
+}
+.short-yt-logo {
+  position: absolute;
+  top: 10px;
+  right: 8px;
+  color: #FF0000;
+  font-size: 14px;
+  font-weight: 700;
+  z-index: 2;
+  text-shadow: 0 1px 4px rgba(0,0,0,0.5);
+}
+
+/* ============================
+   FACEBOOK REEL MOCKUP — Pixel-perfect 9:16
+   Fond #000, ❤️ 💬 à droite, play central
+   ============================ */
+.mockup-fb-reel {
+  position: relative;
+  height: 100%;
+  background: #000;
+}
+.mockup-fb-reel .mockup-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.fb-reel-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(0,0,0,0.3) 0%, transparent 40%, rgba(0,0,0,0.5) 100%);
+}
+.fb-reel-play {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: #fff;
+  display: grid;
+  place-items: center;
+  color: #000;
+  font-size: 16px;
+  padding-left: 3px;
+  z-index: 2;
+}
+.fb-reel-sidebar {
+  position: absolute;
+  right: 8px;
+  bottom: 60px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  color: #fff;
+  font-size: 16px;
+  z-index: 2;
+  align-items: center;
+}
+.fb-reel-sidebar span {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  text-shadow: 0 1px 4px rgba(0,0,0,0.5);
+}
+.fb-reel-sidebar .fb-reel-count {
+  font-size: 8px;
+}
+.fb-reel-footer {
+  position: absolute;
+  bottom: 12px;
+  left: 10px;
+  color: #fff;
+  font-size: 12px;
+  font-weight: 600;
+  z-index: 2;
+  text-shadow: 0 1px 4px rgba(0,0,0,0.6);
+}
+
+/* ============================
+   LINKEDIN VIDEO MOCKUP — Pixel-perfect 9:16
+   Fond #000, 👍 💬 à droite, footer centré
+   ============================ */
+.mockup-li-video {
+  position: relative;
+  height: 100%;
+  background: #000;
+}
+.mockup-li-video .mockup-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.li-vid-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(0deg, rgba(0,0,0,0.6) 0%, transparent 50%);
+}
+.li-vid-play {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: #fff;
+  display: grid;
+  place-items: center;
+  color: #000;
+  font-size: 16px;
+  padding-left: 3px;
+  z-index: 2;
+}
+.li-vid-actions {
+  position: absolute;
+  right: 8px;
+  bottom: 50px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  color: #fff;
+  font-size: 14px;
+  z-index: 2;
+  align-items: center;
+}
+.li-vid-actions span {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  text-shadow: 0 1px 4px rgba(0,0,0,0.5);
+}
+.li-vid-actions .li-vid-count {
+  font-size: 8px;
+}
+.li-vid-footer {
+  position: absolute;
+  bottom: 12px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 6px;
+  color: #fff;
+  font-size: 10px;
+  z-index: 2;
+  align-items: center;
+}
+.li-vid-footer strong { font-weight: 700; }
+.li-vid-footer span { color: rgba(255,255,255,0.7); }
+
+/* ============================
+   YOUTUBE VIDEO MOCKUP — Pixel-perfect 9:16
+   Fond #000, ▶ play blanc cercle, titre blanc, barre progression rouge
+   ============================ */
+.mockup-yt-video {
+  position: relative;
+  height: 100%;
+  background: #000;
+}
+.mockup-yt-video .mockup-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.yt-vid-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(0deg, rgba(0,0,0,0.65) 0%, transparent 40%);
+}
+.yt-vid-play {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: #fff;
+  display: grid;
+  place-items: center;
+  color: #000;
+  font-size: 18px;
+  padding-left: 3px;
+  z-index: 2;
+}
+.yt-vid-title {
+  position: absolute;
+  bottom: 28px;
+  left: 8px;
+  right: 8px;
+  color: #fff;
+  font-size: 11px;
+  font-weight: 700;
+  text-shadow: 0 1px 4px rgba(0,0,0,0.7);
+  z-index: 2;
+  line-height: 1.2;
+}
+.yt-vid-bar {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: rgba(255,255,255,0.2);
+  z-index: 2;
+}
+.yt-vid-progress {
+  height: 100%;
+  width: 30%;
+  background: #FF0000;
+}
+
+@keyframes scrollRight {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+@keyframes scrollLeft {
+  0% { transform: translateX(-50%); }
+  100% { transform: translateX(0); }
+}
+
+/* ============================
+   SECTION AVIS CLIENTS
+   ============================ */
+.three-steps {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+.three-steps article {
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  padding: 28px;
+  box-shadow: var(--shadow-card);
+  transition: box-shadow 300ms ease, transform 300ms ease;
+}
+.three-steps article:hover {
+  box-shadow: var(--shadow-hover);
+  transform: translateY(-2px);
+}
+.three-steps b {
+  display: grid;
+  place-items: center;
+  width: 34px;
+  height: 34px;
+  border-radius: 12px;
+  background: var(--orange);
+  color: #fff;
+}
+.three-steps article > img {
+  width: 100%;
+  margin: 0 0 18px;
+  aspect-ratio: 3 / 4;
+  object-fit: contain;
+  object-position: center;
+  display: block;
+  border-radius: 16px;
+  box-shadow: var(--shadow-image);
+  background: #fff;
+}
+.reviews-steps article {
+  display: flex;
+  flex-direction: column;
+  padding: 0;
+  overflow: hidden;
+}
+.reviews-steps article > strong {
+  min-height: 96px;
+  display: flex;
+  align-items: flex-start;
+  padding: 24px 24px 16px;
+}
+.reviews-steps article > img {
+  margin: 0;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  object-position: center;
+  border-radius: 0;
+  box-shadow: none;
+  background: #F4F6F8;
+}
+.reviews-steps .review-copy {
+  color: var(--muted);
+  margin: 8px 0 0;
+  line-height: 1.45;
+}
+.three-steps strong {
+  display: block;
+  color: var(--navy);
+  font-size: 20px;
+  font-weight: 900;
+}
+.three-steps span {
+  display: block;
+  color: var(--muted);
+  margin-top: 8px;
+  line-height: 1.4;
+}
+.review-destinations,
+.review-feature-icons {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: auto;
+  padding: 16px 24px 24px;
+}
+.review-destinations span,
+.review-feature-icons span {
+  width: 34px;
+  height: 34px;
+  margin: 0;
+  border-radius: 10px;
+  background: #fff;
+  border: 1px solid rgba(11, 31, 58, 0.10);
+  box-shadow: 0 6px 16px rgba(11, 31, 58, 0.07);
+  display: grid;
+  place-items: center;
+}
+.review-feature-icons span {
+  color: #0B1F3A;
+  font-size: 19px;
+  line-height: 1;
+}
+.review-feature-icons svg {
+  width: 21px;
+  height: 21px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.review-destinations img {
+  width: 21px;
+  height: 21px;
+  object-fit: contain;
+  margin: 0;
+  border-radius: 0;
+  box-shadow: none;
+}
+
+/* ============================
+   SECTION GOOGLE BUSINESS
+   ============================ */
+.soft {
+  background: var(--soft);
+}
+.gmb-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+.gmb-grid article {
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  padding: 28px;
+  box-shadow: var(--shadow-card);
+  overflow: hidden;
+  transition: box-shadow 300ms ease, transform 300ms ease;
+}
+.gmb-grid article:hover {
+  box-shadow: var(--shadow-hover);
+  transform: translateY(-2px);
+}
+.gmb-grid img {
+  width: 100%;
+  aspect-ratio: 3/2;
+  object-fit: cover;
+  border-radius: 12px;
+  box-shadow: var(--shadow-image);
+  margin-bottom: 14px;
+}
+.gmb-grid strong {
+  display: block;
+  color: var(--navy);
+  font-size: 20px;
+  font-weight: 900;
+}
+.dark {
+  text-align: center;
+  color: var(--muted);
+  margin-top: 20px;
+}
+
+/* ============================
+   SECTION TARIFS (Pricing)
+   ============================ */
+.pricing-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.08fr);
+  gap: 32px;
+  align-items: stretch;
+}
+.price-card {
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 28px;
+  padding: 34px;
+  box-shadow: var(--shadow-card);
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  transition: box-shadow 300ms ease, transform 300ms ease;
+}
+.price-card:hover {
+  box-shadow: var(--shadow-hover);
+}
+.price-card.pro {
+  border: 2px solid var(--orange);
+  box-shadow: 0px 28px 70px rgba(11, 31, 58, 0.11);
+  transform: translateY(-8px);
+}
+.price-card.pro:hover {
+  box-shadow: 0px 32px 82px rgba(11, 31, 58, 0.14);
+}
+.recommended {
+  position: absolute;
+  top: -16px;
+  right: 28px;
+  background: var(--orange);
+  color: #fff;
+  border-radius: 999px;
+  padding: 9px 14px;
+  font-size: 12px;
+  font-weight: 900;
+  box-shadow: 0 12px 24px rgba(255, 122, 26, 0.24);
+}
+.plan {
+  display: inline-flex;
+  width: fit-content;
+  background: #FFF6EF;
+  color: #B44B00;
+  border: 1px solid rgba(255, 122, 26, 0.25);
+  border-radius: 999px;
+  padding: 8px 14px;
+  font-weight: 900;
+}
+.price-card h3 {
+  font-family: Montserrat, Inter, sans-serif;
+  font-size: clamp(22px, 2.2vw, 28px);
+  font-weight: 750;
+  color: var(--navy);
+  line-height: 1.14;
+  letter-spacing: -0.025em;
+  margin: 20px 0 0;
+}
+.price {
+  font-family: Montserrat, Inter, sans-serif;
+  font-size: clamp(34px, 3.35vw, 42px);
+  color: var(--navy);
+  font-weight: 900;
+  margin: 18px 0 16px;
+  line-height: 1;
+}
+.price small {
+  font-size: 12px;
+}
+.plan-note {
+  color: var(--body-text);
+  font-size: 15px;
+  line-height: 1.55;
+  margin: 12px 0 16px;
+}
+.pricing-logos {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 0 0 16px;
+}
+.value-stack {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 0 0 2px;
+}
+.value-stack span {
+  display: inline-flex;
+  align-items: center;
+  border: 1px solid rgba(11, 31, 58, 0.08);
+  border-radius: 999px;
+  background: #F7F9FC;
+  color: var(--navy);
+  padding: 8px 11px;
+  font-size: 13px;
+  font-weight: 850;
+}
+.pricing-logos span {
+  width: 34px;
+  height: 34px;
+  border: 1px solid rgba(11, 31, 58, 0.08);
+  border-radius: 12px;
+  display: grid;
+  place-items: center;
+  background: #fff;
+  box-shadow: 0 8px 18px rgba(11,31,58,0.06);
+}
+.pricing-logos img {
+  width: 22px;
+  height: 22px;
+  object-fit: contain;
+}
+.price-card ul {
+  display: grid;
+  gap: 12px;
+  list-style: none;
+  padding: 22px 0 0;
+  margin: 22px 0 0;
+  border-top: 1px solid rgba(11, 31, 58, 0.08);
+  color: var(--body-text);
+  flex: 1;
+}
+.price-card li {
+  display: grid;
+  grid-template-columns: 22px 1fr;
+  gap: 8px;
+  align-items: start;
+  line-height: 1.45;
+}
+.price-card li:before {
+  content: '✓';
+  width: 22px;
+  height: 22px;
+  display: grid;
+  place-items: center;
+  border-radius: 999px;
+  background: rgba(255, 122, 26, 0.12);
+  color: var(--orange);
+  font-weight: 900;
+  margin-top: 1px;
+}
+.price-card .button {
+  width: 100%;
+  margin-top: 0;
+}
+.pricing-trial-note {
+  margin: 24px auto 0;
+  width: min(780px, 100%);
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 8px 12px;
+  padding: 16px 20px;
+  border: 1px solid rgba(255, 122, 26, 0.22);
+  border-radius: 18px;
+  background: #FFF8F2;
+  color: #40506A;
+  text-align: center;
+  box-shadow: 0 12px 32px rgba(11,31,58,0.06);
+}
+.pricing-trial-note strong {
+  color: var(--navy);
+  font-weight: 900;
+}
+
+/* ============================
+   SECTION FAQ
+   ============================ */
+.faq details {
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  padding: 20px 22px;
+  margin-bottom: 12px;
+  background: #fff;
+  transition: box-shadow 300ms ease;
+}
+.faq details:hover {
+  box-shadow: 0 8px 24px rgba(11, 31, 58, 0.06);
+}
+.faq summary {
+  cursor: pointer;
+  color: var(--navy);
+  font-weight: 900;
+}
+.faq p {
+  color: var(--muted);
+  line-height: 1.6;
+}
+
+/* ============================
+   FINAL CTA
+   ============================ */
+.final-cta {
+  padding: 90px 0 100px;
+  background: linear-gradient(180deg, #fff, #F8FAFC);
+}
+.final-cta p {
+  color: var(--muted);
+  font-size: 18px;
+}
+.final-cta .button {
+  margin-top: 12px;
+}
+
+/* ============================
+   RESPONSIVE — Tablet (max-width: 980px)
+   ============================ */
+@media (max-width: 980px) {
+  .hero-grid,
+  .proof-grid,
+  .pricing-grid {
+    grid-template-columns: 1fr;
+  }
+  .price-card.pro {
+    transform: none;
+  }
+  .hero-grid {
+    gap: 44px;
+  }
+  .hero-copy h1 {
+    font-size: clamp(32px, 5vw, 40px);
+  }
+  h2 {
+    font-size: clamp(26px, 3.8vw, 34px);
+  }
+  .lead {
+    font-size: clamp(17px, 2vw, 20px);
+  }
+  .sources-combo {
+    grid-template-columns: minmax(220px, 300px) auto minmax(220px, 300px);
+    gap: 18px;
+  }
+  .source-screen-card {
+    padding: 14px;
+    border-radius: 24px;
+  }
+  .source-screen-card img {
+    border-radius: 20px;
+    max-height: 400px;
+  }
+  .sources-level {
+    flex-direction: column;
+    gap: 16px;
+  }
+  .engine-level {
+    flex-direction: column;
+    gap: 16px;
+  }
+  .engine-side-badge {
+    display: none;
+  }
+  .engine-box {
+    flex: 0 0 auto;
+    width: 100%;
+    max-width: 420px;
+  }
+  .mockup-card {
+    width: 160px;
+  }
+  .three-steps,
+  .gmb-grid,
+  .stats-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+  .phone-card {
+    padding: 13px;
+  }
+  .section {
+    padding: 70px 0;
+  }
+}
+
+/* ============================
+   RESPONSIVE — Mobile (max-width: 560px)
+   ============================ */
+@media (max-width: 560px) {
+  .container,
+  .narrow {
+    width: min(100% - 24px, 1180px);
+  }
+  .hero-v31 {
+    padding: 42px 0 58px;
+  }
+  .hero-copy {
+    text-align: center;
+  }
+  .hero-badges,
+  .hero-visibility,
+  .visibility-logos {
+    justify-content: center;
+  }
+  .hero-visibility {
+    gap: 10px;
+    margin-top: 22px;
+  }
+  .hero-visibility > span {
+    width: 100%;
+    white-space: normal;
+  }
+  .hero-copy,
+  .proof-copy,
+  .section-head {
+    min-width: 0;
+    max-width: 100%;
+  }
+  .hero-copy h1 {
+    font-size: clamp(31px, 8.4vw, 36px);
+    line-height: 1.08;
+    letter-spacing: -0.035em;
+  }
+  .lead {
+    font-size: 17px;
+    margin: 16px auto 0;
+  }
+  .eyebrow.pill {
+    white-space: normal;
+    line-height: 1.2;
+    max-width: 100%;
+    text-align: center;
+  }
+  .actions {
+    display: grid;
+    max-width: 100%;
+    overflow: hidden;
+  }
+  .button {
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+    min-height: 50px;
+    padding: 0 16px;
+    white-space: normal;
+    text-align: center;
+  }
+  .mobile-section-cta {
+    display: block;
+    margin: 26px auto 0;
+    width: min(100%, 340px);
+  }
+  .phone-card {
+    border-radius: 22px;
+    padding: 13px;
+    max-width: 258px;
+  }
+  .app-photo {
+    max-height: 122px;
+  }
+  .output-grid,
+  .three-steps,
+  .gmb-grid,
+  .stats-grid {
+    grid-template-columns: 1fr;
+  }
+  .proof-stage {
+    padding: 22px 0 18px;
+    border-radius: 0;
+    box-shadow: none;
+  }
+  .proof-stage::after {
+    border-radius: 23px;
+  }
+  .proof-meta {
+    gap: 8px;
+    margin-bottom: 16px;
+    font-size: 10px;
+    letter-spacing: 0.04em;
+  }
+  .proof-meta i {
+    display: none;
+  }
+  .proof-meta span {
+    min-height: 28px;
+    padding: 0 9px;
+  }
+  .stat-card {
+    padding: 20px;
+    border-radius: 20px;
+    text-align: center;
+  }
+  .stat-icon {
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .stat-value {
+    font-size: 38px;
+  }
+  .stats-grid p {
+    text-align: center;
+  }
+  .caution-centered {
+    max-width: 320px;
+    margin-top: 18px;
+  }
+  .section {
+    padding: 78px 0;
+  }
+  .section-head {
+    text-align: center;
+    margin: 0 auto 34px;
+    max-width: 100%;
+  }
+  h2,
+  .proof-h2,
+  .final-cta h2 {
+    font-size: clamp(32px, 8.8vw, 38px);
+    line-height: 1.06;
+    letter-spacing: -0.038em;
+    text-align: center;
+    text-wrap: balance;
+  }
+  .section-head p,
+  .proof-intro,
+  .final-cta p {
+    max-width: 340px;
+    margin: 14px auto 0;
+    font-size: 16px;
+    line-height: 1.5;
+    text-align: center;
+  }
+  .eyebrow {
+    margin-bottom: 16px;
+  }
+  .eyebrow.pill {
+    justify-content: center;
+    margin-left: auto;
+    margin-right: auto;
+    font-size: 11px;
+    padding: 7px 12px;
+  }
+  .reviews-section .section-head,
+  .gmb-section .section-head,
+  .pricing-section .section-head,
+  .faq .section-head,
+  .networks-section .section-head,
+  .proof-section .section-head {
+    text-align: center;
+  }
+  .pricing-grid {
+    gap: 18px;
+  }
+
+  /* 3-level layout mobile */
+  .sources-level {
+    flex-direction: column;
+    gap: 16px;
+  }
+  .sources-combo {
+    grid-template-columns: 1fr;
+    gap: 14px;
+    max-width: 360px;
+    margin: 0 auto;
+  }
+  .source-screen-card {
+    padding: 12px;
+    border-radius: 22px;
+  }
+  .source-screen-card img {
+    max-height: none;
+    border-radius: 18px;
+  }
+  .source-plus {
+    font-size: 56px;
+    justify-self: center;
+  }
+  .engine-level {
+    flex-direction: column;
+    gap: 16px;
+  }
+  .engine-side-badge {
+    display: none;
+  }
+  .engine-box {
+    flex: 0 0 auto;
+    width: 100%;
+    max-width: 360px;
+  }
+  .carousels-level {
+    --card-w: 164px;
+    gap: 14px;
+    padding-top: 4px;
+    mask-image: linear-gradient(90deg, transparent, #000 5%, #000 95%, transparent);
+    -webkit-mask-image: linear-gradient(90deg, transparent, #000 5%, #000 95%, transparent);
+  }
+  .showcase-label {
+    gap: 8px;
+    padding: 8px 9px;
+  }
+  .showcase-label .net-logo {
+    width: 28px;
+    height: 28px;
+  }
+  .showcase-label span {
+    font-size: 12px;
+  }
+  .showcase-label small {
+    display: none;
+  }
+
+  /* Mobile polish — alignement perceptuel des cartes et blocs bas de page */
+  .reviews-steps article,
+  .gmb-grid article,
+  .price-card,
+  .pricing-trial-note,
+  .final-cta,
+  .final-cta .container {
+    text-align: center;
+  }
+  .reviews-steps strong,
+  .gmb-grid strong,
+  .price-card h3,
+  .price,
+  .plan-note {
+    text-align: center;
+  }
+  .review-copy,
+  .gmb-grid article p,
+  .pricing-trial-note span {
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .plan,
+  .pricing-logos {
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .pricing-logos {
+    justify-content: center;
+  }
+  .price-card ul {
+    text-align: left;
+  }
+  .final-cta .button {
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+/* ============================
+   SWISS GRID PROTOTYPE — Müller-Brockmann pass
+   Load-bearing grid layer for validation preview.
+   ============================ */
+.homepage-v31 {
+  --grid-max: 1184px;
+  --grid-cols: 12;
+  --grid-gutter: 24px;
+  --grid-margin: 32px;
+  --bl: 8px;
+  --lh: 24px;
+}
+
+.homepage-v31 .container {
+  width: min(var(--grid-max), calc(100% - (var(--grid-margin) * 2)));
+  display: grid;
+  grid-template-columns: repeat(var(--grid-cols), minmax(0, 1fr));
+  column-gap: var(--grid-gutter);
+  align-items: start;
+}
+
+.homepage-v31 .container > * {
+  grid-column: 1 / -1;
+  min-width: 0;
+}
+
+.homepage-v31 .section {
+  padding-block: calc(var(--bl) * 14);
+}
+
+.homepage-v31 .hero-v31 {
+  padding-block: calc(var(--bl) * 8) calc(var(--bl) * 13);
+}
+
+.homepage-v31 .section-head,
+.homepage-v31 .proof-section .section-head,
+.homepage-v31 .networks-section .section-head,
+.homepage-v31 .reviews-section .section-head,
+.homepage-v31 .gmb-section .section-head,
+.homepage-v31 .pricing-section .section-head,
+.homepage-v31 .faq .section-head {
+  grid-column: 3 / 11;
+  width: 100%;
+  max-width: none;
+  margin-inline: 0;
+  margin-bottom: calc(var(--bl) * 6);
+}
+
+.homepage-v31 .hero-grid {
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  gap: 0 var(--grid-gutter);
+}
+
+.homepage-v31 .container.hero-grid .hero-copy {
+  grid-column: 1 / 8 !important;
+}
+
+.homepage-v31 .container.hero-grid .hero-demo {
+  grid-column: 9 / 13 !important;
+  justify-content: stretch;
+}
+
+.homepage-v31 .hero-copy h1,
+.homepage-v31 h2 {
+  line-height: 56px;
+}
+
+.homepage-v31 .lead,
+.homepage-v31 .section-head p,
+.homepage-v31 .proof-intro,
+.homepage-v31 .caution,
+.homepage-v31 .final-cta p {
+  line-height: var(--lh);
+}
+
+.homepage-v31 .hero-badges {
+  margin-bottom: calc(var(--bl) * 3);
+}
+
+.homepage-v31 .hero-copy h1 {
+  padding-bottom: calc(var(--bl) * 2);
+}
+
+.homepage-v31 .lead {
+  margin-top: calc(var(--bl) * 3);
+}
+
+.homepage-v31 .actions {
+  margin-top: calc(var(--bl) * 3);
+  gap: calc(var(--bl) * 2);
+}
+
+.homepage-v31 .hero-visibility {
+  margin-top: calc(var(--bl) * 4);
+}
+
+.homepage-v31 .proof-stage,
+.homepage-v31 .caution-centered {
+  grid-column: 2 / 12;
+}
+
+.homepage-v31 .stats-grid {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: var(--grid-gutter);
+}
+
+.homepage-v31 .stat-card {
+  min-height: calc(var(--lh) * 10);
+  display: grid;
+  grid-template-rows: 40px 24px 64px minmax(48px, auto);
+  align-items: start;
+  padding: calc(var(--bl) * 4) calc(var(--bl) * 3);
+}
+
+.homepage-v31 .sources-level,
+.homepage-v31 .flow-connector,
+.homepage-v31 .engine-level {
+  grid-column: 2 / 12;
+}
+
+.homepage-v31 .sources-combo {
+  width: 100%;
+  max-width: none;
+  grid-template-columns: minmax(0, 5fr) minmax(48px, 1fr) minmax(0, 5fr);
+  column-gap: var(--grid-gutter);
+  align-items: center;
+}
+
+.homepage-v31 .source-plus {
+  justify-self: center;
+}
+
+.homepage-v31 .carousels-level {
+  grid-column: 1 / -1;
+  margin-top: calc(var(--bl) * 4);
+}
+
+.homepage-v31 .reviews-steps,
+.homepage-v31 .gmb-grid,
+.homepage-v31 .pricing-grid {
+  grid-column: 1 / -1;
+  gap: var(--grid-gutter);
+}
+
+.homepage-v31 .reviews-steps,
+.homepage-v31 .gmb-grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.homepage-v31 .pricing-grid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.homepage-v31 .price-card {
+  padding: calc(var(--bl) * 5);
+}
+
+.homepage-v31 .faq-list,
+.homepage-v31 .final-cta .container > * {
+  grid-column: 3 / 11;
+}
+
+.homepage-v31 .final-cta {
+  padding-block: calc(var(--bl) * 11);
+}
+
+@media (max-width: 980px) {
+  .homepage-v31 {
+    --grid-cols: 8;
+    --grid-gutter: 20px;
+    --grid-margin: 24px;
+  }
+
+  .homepage-v31 .hero-grid,
+  .homepage-v31 .pricing-grid,
+  .homepage-v31 .reviews-steps,
+  .homepage-v31 .gmb-grid,
+  .homepage-v31 .stats-grid {
+    grid-template-columns: repeat(var(--grid-cols), minmax(0, 1fr));
+  }
+
+  .homepage-v31 .hero-copy,
+  .homepage-v31 .hero-demo,
+  .homepage-v31 .section-head,
+  .homepage-v31 .proof-section .section-head,
+  .homepage-v31 .networks-section .section-head,
+  .homepage-v31 .reviews-section .section-head,
+  .homepage-v31 .gmb-section .section-head,
+  .homepage-v31 .pricing-section .section-head,
+  .homepage-v31 .faq .section-head,
+  .homepage-v31 .proof-stage,
+  .homepage-v31 .caution-centered,
+  .homepage-v31 .sources-level,
+  .homepage-v31 .flow-connector,
+  .homepage-v31 .engine-level,
+  .homepage-v31 .faq-list,
+  .homepage-v31 .final-cta .container > * {
+    grid-column: 1 / -1;
+  }
+
+  .homepage-v31 .hero-demo {
+    margin-top: calc(var(--bl) * 5);
+  }
+
+  .homepage-v31 .stats-grid article,
+  .homepage-v31 .reviews-steps article,
+  .homepage-v31 .gmb-grid article {
+    grid-column: span 4;
+  }
+
+  .homepage-v31 .price-card {
+    grid-column: span 4;
+  }
+}
+
+@media (max-width: 560px) {
+  .homepage-v31 {
+    --grid-cols: 4;
+    --grid-gutter: 16px;
+    --grid-margin: 16px;
+  }
+
+  .homepage-v31 .container,
+  .homepage-v31 .narrow {
+    width: min(100% - (var(--grid-margin) * 2), var(--grid-max));
+  }
+
+  .homepage-v31 .section {
+    padding-block: calc(var(--bl) * 9);
+  }
+
+  .homepage-v31 .hero-v31 {
+    padding-block: calc(var(--bl) * 5) calc(var(--bl) * 8);
+  }
+
+  .homepage-v31 .hero-copy h1,
+  .homepage-v31 h2 {
+    line-height: 40px;
+  }
+
+  .homepage-v31 .stats-grid article,
+  .homepage-v31 .reviews-steps article,
+  .homepage-v31 .gmb-grid article,
+  .homepage-v31 .price-card {
+    grid-column: 1 / -1;
+  }
+
+  .homepage-v31 .sources-combo {
+    grid-template-columns: 1fr;
+    row-gap: calc(var(--bl) * 2);
+  }
+
+  .homepage-v31 .source-plus {
+    line-height: 40px;
+  }
+
+  .homepage-v31 .price-card {
+    padding: calc(var(--bl) * 3);
+  }
+}
+
+/* Final cascade lock: hero must stay split on desktop despite generic container rules. */
+@media (min-width: 981px) {
+  .homepage-v31 .hero-grid > .hero-copy {
+    grid-column: 1 / 7;
+  }
+
+  .homepage-v31 .hero-grid > .hero-demo {
+    grid-column: 8 / 13;
+  }
+}
+</style>
+
+<script>
+import { gsap } from 'gsap';
+
+const DURATION = 1.45;
+const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+function animateCounter(el: Element) {
+  const target = parseInt((el as HTMLElement).dataset.target || '0', 10);
+  const prefix = (el as HTMLElement).dataset.prefix || '+';
+  const suffix = (el as HTMLElement).dataset.suffix || '';
+  const state = { value: 0 };
+
+  gsap.to(state, {
+    value: target,
+    duration: prefersReducedMotion ? 0.01 : DURATION,
+    ease: 'power3.out',
+    onUpdate: () => {
+      el.textContent = `${prefix}${Math.round(state.value)}${suffix}`;
+    },
+    onComplete: () => {
+      el.textContent = `${prefix}${target}${suffix}`;
+    }
+  });
+}
+
+const proofStage = document.querySelector('.proof-stage');
+const proofCards = gsap.utils.toArray<HTMLElement>('.proof-section .stat-card');
+const proofMeta = gsap.utils.toArray<HTMLElement>('.proof-meta span');
+
+if (!prefersReducedMotion && proofStage) {
+  gsap.set([proofStage, ...proofCards, ...proofMeta].filter(Boolean), { autoAlpha: 1 });
+  gsap.from(proofStage, {
+    y: 28,
+    scale: 0.985,
+    duration: 0.85,
+    ease: 'power3.out',
+    scrollTrigger: undefined
+  });
+}
+
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (!entry.isIntersecting) return;
+
+    const values = entry.target.querySelectorAll?.('.stat-value[data-target]') || [];
+    values.forEach(animateCounter);
+
+    if (!prefersReducedMotion) {
+      if (proofMeta.length > 0) {
+        gsap.from(proofMeta,
+          { y: 10, duration: 0.55, stagger: 0.07, ease: 'power2.out' }
+        );
+      }
+      if (proofCards.length > 0) {
+        gsap.from(proofCards,
+          { y: 24, scale: 0.97, duration: 0.72, stagger: 0.08, ease: 'power3.out', delay: 0.08 }
+        );
+      }
+    }
+
+    observer.unobserve(entry.target);
+  });
+}, { threshold: 0.24 });
+
+if (proofStage) observer.observe(proofStage);
+</script>

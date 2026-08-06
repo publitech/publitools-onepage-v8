@@ -1,0 +1,34 @@
+---
+type Props = {
+  id?: string;
+  eyebrow?: string;
+  title?: string;
+  subtitle?: string;
+  tone?: 'light' | 'soft' | 'navy';
+  align?: 'left' | 'center';
+};
+
+const { id, eyebrow, title, subtitle, tone = 'light', align = 'center' } = Astro.props;
+
+const toneClass = {
+  light: 'bg-[#FAFAF7] text-[#0B1B33]',
+  soft: 'bg-[#F4F6F8] text-[#0B1B33]',
+  navy: 'bg-[#0B1F3A] text-white',
+}[tone];
+
+const alignClass = align === 'center' ? 'mx-auto text-center' : '';
+const subtitleClass = tone === 'navy' ? 'text-white/72' : 'text-[#536174]';
+---
+
+<section id={id} class:list={['section-pad', toneClass]} data-v11-section={id}>
+  <div class="container">
+    {(eyebrow || title || subtitle) && (
+      <header class:list={['max-w-3xl', alignClass]}>
+        {eyebrow && <p class="text-sm font-bold uppercase tracking-[0.18em] text-[#FF7A1A]">{eyebrow}</p>}
+        {title && <h2 class="mt-4 text-4xl font-bold tracking-[-0.03em] md:text-5xl">{title}</h2>}
+        {subtitle && <p class:list={['mt-5 text-lg leading-8', subtitleClass]}>{subtitle}</p>}
+      </header>
+    )}
+    <slot />
+  </div>
+</section>

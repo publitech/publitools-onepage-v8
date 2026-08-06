@@ -1,0 +1,160 @@
+---
+const { content } = Astro.props;
+---
+
+<main class="homepage-v15">
+  <section class="v15-hero" id="top">
+    <div class="v15-container v15-hero__grid">
+      <div class="v15-hero__copy">
+        <p class="v15-kicker">{content.hero.eyebrow}</p>
+        <h1>{content.hero.h1}</h1>
+        <p class="v15-lead">{content.hero.subheadline}</p>
+        <div class="v15-actions">
+          <a class="v15-btn v15-btn--primary" href={content.hero.primaryCta.href}>{content.hero.primaryCta.label}</a>
+          <a class="v15-btn v15-btn--secondary" href={content.hero.secondaryCta.href}>{content.hero.secondaryCta.label}</a>
+        </div>
+        <div class="v15-chips" aria-label="Points clés">
+          {content.hero.bullets.map((item: string) => <span>{item}</span>)}
+        </div>
+      </div>
+      <div class="v15-hero-card" role="img" aria-label={content.hero.placeholder}>
+        <div class="v15-card-top"><span></span><span></span><span></span></div>
+        <div class="v15-visual-photo"><small>Photo chantier</small><strong>Ravalement terminé</strong></div>
+        <div class="v15-visual-caption"><small>Caption IA</small><p>Chantier terminé : façade rénovée, finitions propres, publication prête à valider.</p></div>
+        <div class="v15-visual-publish"><span>Google Business</span><span>Instagram</span><span>Facebook</span><span>LinkedIn</span><span>TikTok</span><span>YouTube</span><button>Valider</button></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="v15-proof" id={content.proof.id}>
+    <div class="v15-container">
+      <p class="v15-proof__title">{content.proof.headline}</p>
+      <div class="v15-proof__grid">
+        {content.proof.metrics.map((metric: any) => <article><strong>{metric.value}</strong><span>{metric.label}</span></article>)}
+      </div>
+      <p class="v15-note">{content.proof.note}</p>
+    </div>
+  </section>
+
+  <section class="v15-section" id={content.growth.id}>
+    <div class="v15-container">
+      <header class="v15-head">
+        <p class="v15-kicker">Le mécanisme</p>
+        <h2>{content.growth.title}</h2>
+        <p>{content.growth.subtitle}</p>
+      </header>
+      <p class="v15-intro">{content.growth.text}</p>
+      <div class="v15-triad">
+        {content.growth.cards.map((card: any, index: number) => <article><span>0{index + 1}</span><h3>{card.title}</h3><p>{card.text}</p></article>)}
+      </div>
+    </div>
+  </section>
+
+  <section class="v15-section v15-section--warm" id={content.transforms.id}>
+    <div class="v15-container">
+      <header class="v15-head">
+        <p class="v15-kicker">Ce que PubliTools transforme</p>
+        <h2>{content.transforms.title}</h2>
+        <p>{content.transforms.subtitle}</p>
+      </header>
+      <div class="v15-transform">
+        {content.transforms.items.map((item: any) => <article><span>{item.input}</span><strong>{item.output}</strong></article>)}
+      </div>
+    </div>
+  </section>
+
+  <section class="v15-section" id={content.workflow.id}>
+    <div class="v15-container">
+      <header class="v15-head">
+        <p class="v15-kicker">Workflow</p>
+        <h2>{content.workflow.title}</h2>
+        <p>{content.workflow.subtitle}</p>
+      </header>
+      <div class="v15-workflow">
+        <div class="v15-workflow__mock" role="img" aria-label="Workflow PubliTools en trois étapes">
+          <div class="v15-flow one">Ajoutez <strong>photo + vocal</strong></div>
+          <div class="v15-flow two">PubliTools prépare <strong>caption + visuel</strong></div>
+          <div class="v15-flow three">Vous validez <strong>publication</strong></div>
+        </div>
+        <div class="v15-steps">
+          {content.workflow.steps.map((step: any) => <article><span>{step.label}</span><div><h3>{step.title}</h3><p>{step.text}</p></div></article>)}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="v15-section v15-section--dark" id={content.googleReviews.id}>
+    <div class="v15-container">
+      <header class="v15-head v15-head--dark">
+        <p class="v15-kicker">Google Business + avis</p>
+        <h2>{content.googleReviews.title}</h2>
+        <p>{content.googleReviews.subtitle}</p>
+      </header>
+      <div class="v15-google">
+        <div class="v15-google__mock" role="img" aria-label="Mockup Google Business et avis client"><div></div><article><strong>4,8 ★★★★★</strong><span>Nouvel avis reçu</span><p>“Travail propre, délais respectés.”</p></article></div>
+        <div class="v15-dark-list">{content.googleReviews.items.map((item: string) => <span>{item}</span>)}</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="v15-section" id={content.destinations.id}>
+    <div class="v15-container">
+      <header class="v15-head">
+        <p class="v15-kicker">Distribution</p>
+        <h2>{content.destinations.title}</h2>
+        <p>{content.destinations.subtitle}</p>
+      </header>
+      <div class="v15-destinations">{content.destinations.items.map((item: string) => <span>{item}</span>)}</div>
+    </div>
+  </section>
+
+  <section class="v15-section v15-section--warm" id={content.comparison.id}>
+    <div class="v15-container">
+      <header class="v15-head">
+        <p class="v15-kicker">Avant / avec PubliTools</p>
+        <h2>{content.comparison.title}</h2>
+        <p>{content.comparison.subtitle}</p>
+      </header>
+      <div class="v15-compare">{content.comparison.rows.map((row: any) => <article><span>{row.before}</span><strong>{row.after}</strong></article>)}</div>
+    </div>
+  </section>
+
+  <section class="v15-section" id={content.pricing.id}>
+    <div class="v15-container">
+      <header class="v15-head">
+        <p class="v15-kicker">{content.pricing.eyebrow}</p>
+        <h2>{content.pricing.title}</h2>
+        <p>{content.pricing.description}</p>
+      </header>
+      <div class="v15-pricing">
+        {content.pricing.plans.map((plan: any) => <article class:list={['v15-price', plan.featured && 'is-featured']}>{plan.featured && <b>{plan.featuredLabel}</b>}<h3>{plan.name}</h3><p>{plan.subtitle}</p><strong>{plan.price}</strong><ul>{plan.features.map((feature: string) => <li>{feature}</li>)}</ul><a class="v15-btn v15-btn--primary" href={plan.href}>{plan.ctaLabel}</a></article>)}
+      </div>
+      <p class="v15-note">{content.pricing.note}</p>
+    </div>
+  </section>
+
+  <section class="v15-section v15-section--faq" id={content.faq.id}>
+    <div class="v15-container">
+      <header class="v15-head">
+        <p class="v15-kicker">FAQ</p>
+        <h2>{content.faq.title}</h2>
+        <p>{content.faq.reassurance}</p>
+      </header>
+      <div class="v15-faq">{content.faq.items.map((item: any) => <details><summary>{item.question}</summary><p>{item.answer}</p></details>)}</div>
+      <div class="v15-center"><a class="v15-btn v15-btn--primary" href={content.faq.cta.href}>{content.faq.cta.label}</a></div>
+    </div>
+  </section>
+
+  <section class="v15-final" id={content.finalCta.id}>
+    <div class="v15-container">
+      <h2>{content.finalCta.title}</h2>
+      <p>{content.finalCta.subtitle}</p>
+      <div class="v15-actions v15-actions--center"><a class="v15-btn v15-btn--primary" href={content.finalCta.primaryCta.href}>{content.finalCta.primaryCta.label}</a><a class="v15-btn v15-btn--ghost" href={content.finalCta.secondaryCta.href}>{content.finalCta.secondaryCta.label}</a></div>
+      <span>{content.finalCta.proof}</span>
+    </div>
+  </section>
+</main>
+
+<style is:global>
+.homepage-v15{--ink:#262832;--muted:#565b67;--soft:#f3f3f3;--line:#e8e9ea;--orange:#f4862d;--orange-dark:#e27924;--navy:#252832;--warm:#f7f3ec;background:var(--soft);color:var(--ink);font-family:Montserrat,system-ui,sans-serif;overflow:hidden}.homepage-v15 h1,.homepage-v15 h2,.homepage-v15 h3,.homepage-v15 a,.homepage-v15 button{font-family:Montserrat,Inter,system-ui,sans-serif}.v15-container{width:min(100% - 1.5rem,1200px);margin-inline:auto}.v15-hero{padding:clamp(44px,7vw,96px) 0 42px;background:linear-gradient(180deg,#fff 0%,var(--soft) 100%)}.v15-hero__grid{display:grid;grid-template-columns:minmax(0,.94fr) minmax(360px,1.06fr);gap:clamp(34px,5vw,70px);align-items:center}.v15-kicker{margin:0 0 14px;color:var(--orange);font-size:.76rem;font-weight:600;letter-spacing:.13em;text-transform:uppercase}.homepage-v15 h1{margin:0;max-width:780px;color:var(--ink);font-size:clamp(2.35rem,5.5vw,4.85rem);font-weight:750;line-height:.98;letter-spacing:-.058em}.v15-lead{max-width:720px;margin:20px 0 0;color:#484d58;font-size:clamp(1.05rem,1.55vw,1.22rem);line-height:1.58}.v15-actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:26px}.v15-actions--center{justify-content:center}.v15-btn{display:inline-flex;min-height:44px;align-items:center;justify-content:center;border-radius:10px;padding:.88rem 1.18rem;text-decoration:none;font-size:.9rem;font-weight:650;transition:transform .16s ease,box-shadow .16s ease,background .16s ease}.v15-btn:hover{transform:translateY(-1px)}.v15-btn--primary{background:var(--orange);color:#fff;box-shadow:0 14px 34px rgba(244,134,45,.22)}.v15-btn--primary:hover{background:var(--orange-dark)}.v15-btn--secondary{border:1px solid #d8dade;background:#fff;color:var(--ink)}.v15-btn--ghost{border:1px solid rgba(255,255,255,.25);background:rgba(255,255,255,.08);color:#fff}.v15-chips{display:flex;flex-wrap:wrap;gap:9px;margin-top:18px}.v15-chips span{border:1px solid var(--line);border-radius:12px;background:#fff;padding:.62rem .78rem;color:#3f4351;font-size:.82rem;font-weight:650}.v15-hero-card{position:relative;min-height:535px;border:1px solid #dcdee3;border-radius:28px;background:linear-gradient(135deg,#f7f7f7,#e9ebef 52%,#fff);box-shadow:0 24px 70px rgba(38,40,50,.12);overflow:hidden}.v15-hero-card:before{content:"";position:absolute;inset:0;background-image:linear-gradient(rgba(38,40,50,.055) 1px,transparent 1px),linear-gradient(90deg,rgba(38,40,50,.055) 1px,transparent 1px);background-size:30px 30px;mask-image:radial-gradient(circle at 54% 44%,#000 0%,transparent 78%)}.v15-card-top{position:absolute;top:20px;left:22px;display:flex;gap:7px}.v15-card-top span{width:10px;height:10px;border-radius:99px;background:rgba(38,40,50,.18)}.v15-visual-photo,.v15-visual-caption,.v15-visual-publish{position:absolute;border:1px solid rgba(38,40,50,.1);border-radius:20px;background:rgba(255,255,255,.82);backdrop-filter:blur(14px);box-shadow:0 18px 46px rgba(38,40,50,.11)}.v15-visual-photo{left:34px;top:70px;width:55%;height:205px;padding:20px;background:linear-gradient(145deg,rgba(255,255,255,.88),rgba(246,247,249,.82))}.v15-visual-photo small,.v15-visual-caption small{display:block;color:#777d88;font-size:.72rem;font-weight:650;letter-spacing:.08em;text-transform:uppercase}.v15-visual-photo strong{display:block;margin-top:105px;color:var(--ink);font-size:1.1rem}.v15-visual-caption{right:34px;top:205px;width:53%;padding:18px}.v15-visual-caption p{margin:8px 0 0;color:#555d6b;line-height:1.45}.v15-visual-publish{left:42px;right:42px;bottom:34px;display:grid;grid-template-columns:repeat(3,1fr);gap:8px;padding:16px}.v15-visual-publish span{border-radius:10px;background:#f4f4f4;padding:.62rem .42rem;text-align:center;font-size:.78rem;font-weight:650}.v15-visual-publish button{grid-column:1/-1;border:0;border-radius:10px;background:var(--orange);color:#fff;padding:.82rem;font-weight:650}.v15-proof{padding:36px 0 54px;background:#fff}.v15-proof__title{text-align:center;color:#3f4351;font-weight:650}.v15-proof__grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}.v15-proof article{border:1px solid var(--line);border-radius:18px;background:#fff;padding:22px 14px;text-align:center;box-shadow:0 12px 34px rgba(38,40,50,.055)}.v15-proof strong{display:block;color:var(--orange);font-size:clamp(1.8rem,3vw,2.45rem);font-weight:750}.v15-proof span{display:block;margin-top:8px;color:var(--ink);font-weight:650;font-size:.88rem}.v15-note{margin:15px auto 0;max-width:760px;text-align:center;color:#777d88;font-size:.86rem;font-weight:550}.v15-section{padding:clamp(70px,8vw,116px) 0;background:#fff}.v15-section--warm{background:var(--warm)}.v15-section--dark{background:#262832;color:#fff}.v15-section--faq{background:linear-gradient(180deg,#fff,var(--soft))}.v15-head{max-width:860px;margin:0 auto 34px;text-align:center}.homepage-v15 h2{margin:0;color:var(--ink);font-size:clamp(2rem,4.4vw,3.9rem);font-weight:700;line-height:1.03;letter-spacing:-.052em;text-align:center}.v15-head>p:not(.v15-kicker){max-width:700px;margin:14px auto 0;color:var(--muted);font-size:clamp(1rem,1.5vw,1.13rem);line-height:1.55}.v15-head--dark h2{color:#fff}.v15-head--dark>p:not(.v15-kicker){color:rgba(255,255,255,.76)}.v15-intro{max-width:760px;margin:0 auto clamp(24px,4vw,40px);text-align:center;color:#555d6b;font-size:1.02rem;line-height:1.58}.v15-triad{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}.v15-triad article,.v15-transform article,.v15-steps article,.v15-compare article,.v15-price{border:1px solid var(--line);border-radius:20px;background:#fff;box-shadow:0 14px 40px rgba(38,40,50,.06)}.v15-triad article{padding:24px;text-align:center}.v15-triad span{color:var(--orange);font-weight:700;letter-spacing:.12em}.v15-triad h3,.v15-steps h3{margin:9px 0 0;color:var(--ink);font-size:1.25rem;font-weight:700}.v15-triad p,.v15-steps p{margin:8px 0 0;color:var(--muted);line-height:1.5}.v15-transform{display:grid;grid-template-columns:repeat(5,1fr);gap:12px}.v15-transform article{min-height:150px;padding:20px}.v15-transform span{display:inline-flex;border-radius:10px;background:#fff1e7;color:#9c4c13;padding:.45rem .62rem;font-size:.78rem;font-weight:650}.v15-transform strong{display:block;margin-top:18px;color:var(--ink);font-size:1rem;line-height:1.3}.v15-workflow{display:grid;grid-template-columns:minmax(360px,1fr) minmax(0,1fr);gap:32px;align-items:center}.v15-workflow__mock{position:relative;min-height:390px;border:1px solid #dcdee3;border-radius:28px;background:linear-gradient(135deg,#f7f7f7,#e8ebef);box-shadow:0 22px 62px rgba(38,40,50,.1);padding:34px;display:grid;gap:14px;align-content:center;overflow:hidden}.v15-workflow__mock:before{content:"";position:absolute;inset:0;background-image:linear-gradient(rgba(38,40,50,.055) 1px,transparent 1px),linear-gradient(90deg,rgba(38,40,50,.055) 1px,transparent 1px);background-size:30px 30px}.v15-flow{position:relative;z-index:1;border-radius:18px;background:rgba(255,255,255,.84);padding:18px;color:#68707d;font-weight:650;box-shadow:0 14px 38px rgba(38,40,50,.08)}.v15-flow strong{display:block;margin-top:4px;color:var(--ink);font-size:1.12rem}.v15-flow.two{margin-left:46px}.v15-flow.three{margin-left:92px}.v15-steps{display:grid;gap:12px}.v15-steps article{display:flex;gap:14px;padding:18px}.v15-steps article>span{flex:0 0 44px;color:var(--orange);font-family:Montserrat,Inter,sans-serif;font-weight:700}.v15-google{display:grid;grid-template-columns:minmax(360px,1fr) minmax(0,1fr);gap:28px;align-items:center}.v15-google__mock{border:1px solid rgba(255,255,255,.16);border-radius:28px;background:rgba(255,255,255,.08);padding:22px}.v15-google__mock>div{height:160px;border-radius:20px;background:linear-gradient(135deg,#e5e8ed,#fafafa);background-image:linear-gradient(rgba(38,40,50,.08) 1px,transparent 1px),linear-gradient(90deg,rgba(38,40,50,.08) 1px,transparent 1px);background-size:24px 24px}.v15-google__mock article{margin-top:14px;border-radius:18px;background:#fff;padding:18px;color:var(--ink)}.v15-google__mock strong{font-size:1.35rem}.v15-google__mock p{color:#555d6b}.v15-dark-list{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}.v15-dark-list span{border:1px solid rgba(255,255,255,.16);border-radius:14px;background:rgba(255,255,255,.08);padding:16px;color:#fff;font-weight:650}.v15-destinations{display:grid;grid-template-columns:repeat(6,1fr);gap:12px}.v15-destinations span{border:1px solid var(--line);border-radius:18px;background:#fff;padding:24px 10px;text-align:center;color:var(--ink);font-family:Montserrat,Inter,sans-serif;font-weight:650;box-shadow:0 12px 34px rgba(38,40,50,.055)}.v15-compare{display:grid;grid-template-columns:repeat(5,1fr);gap:10px}.v15-compare article{padding:16px}.v15-compare span{display:block;color:#7c5135;font-weight:650}.v15-compare strong{display:block;margin-top:8px;color:#176f56}.v15-pricing{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px;max-width:920px;margin:0 auto}.v15-price{position:relative;padding:30px}.v15-price.is-featured{border:2px solid var(--orange);box-shadow:0 24px 66px rgba(244,134,45,.14)}.v15-price b{position:absolute;right:24px;top:-14px;border-radius:10px;background:var(--orange);color:#fff;padding:.5rem .7rem;font-size:.72rem;text-transform:uppercase;letter-spacing:.09em}.v15-price h3{margin:0;color:var(--ink);font-size:1.55rem}.v15-price>p{color:var(--muted);font-weight:550}.v15-price>strong{display:block;margin:16px 0;color:var(--ink);font-size:2rem}.v15-price ul{display:grid;gap:9px;margin:0 0 22px;padding:0;list-style:none}.v15-price li{display:flex;gap:8px;color:#3f4351;font-weight:600}.v15-price li:before{content:"✓";color:var(--orange);font-weight:800}.v15-faq{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;max-width:980px;margin:0 auto}.v15-faq details{border:1px solid var(--line);border-radius:16px;background:#fff;box-shadow:0 10px 30px rgba(38,40,50,.045)}.v15-faq summary{cursor:pointer;padding:18px;font-family:Montserrat,Inter,sans-serif;font-weight:650;color:var(--ink)}.v15-faq p{margin:0;padding:0 18px 18px;color:var(--muted);line-height:1.55}.v15-center{text-align:center;margin-top:28px}.v15-final{padding:clamp(72px,8vw,112px) 0;background:#262832;color:#fff;text-align:center}.v15-final h2{color:#fff}.v15-final p{max-width:660px;margin:16px auto 0;color:rgba(255,255,255,.78);font-size:1.1rem;line-height:1.55}.v15-final span{display:block;margin-top:18px;color:rgba(255,255,255,.64);font-weight:600}@media(max-width:980px){.v15-hero__grid,.v15-workflow,.v15-google{grid-template-columns:1fr}.v15-hero__copy{text-align:center}.v15-actions,.v15-chips{justify-content:center}.v15-triad,.v15-transform,.v15-compare{grid-template-columns:1fr 1fr}.v15-proof__grid,.v15-dark-list{grid-template-columns:repeat(2,1fr)}.v15-destinations{grid-template-columns:repeat(3,1fr)}}@media(max-width:640px){.homepage-v15 h1{font-size:clamp(2.2rem,12vw,3.3rem)}.homepage-v15 h2{font-size:clamp(1.9rem,10vw,2.75rem)}.v15-hero-card{min-height:500px}.v15-visual-photo{left:18px;width:66%}.v15-visual-caption{right:18px;width:66%}.v15-visual-publish{left:18px;right:18px}.v15-triad,.v15-transform,.v15-compare,.v15-proof__grid,.v15-pricing,.v15-faq,.v15-destinations{grid-template-columns:1fr}.v15-flow.two,.v15-flow.three{margin-left:0}}
+</style>

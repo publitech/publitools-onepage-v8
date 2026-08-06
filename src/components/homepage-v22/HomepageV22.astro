@@ -1,0 +1,197 @@
+---
+const { content } = Astro.props;
+
+const ctaHref = content.signupUrl || content.hero.primaryCta.href;
+const logoByName: Record<string, string> = {
+  'Google Business': '/social/google-official.svg',
+  Google: '/social/google-official.svg',
+  Instagram: '/social/instagram-official.svg',
+  Facebook: '/social/facebook-official.svg',
+  LinkedIn: '/social/linkedin-official.svg',
+  TikTok: '/social/tiktok-official.svg',
+  YouTube: '/social/youtube-official.svg',
+};
+---
+
+<main class="homepage-v22">
+  <section class="v22-hero" id="top">
+    <div class="v22-container v22-hero__grid">
+      <div class="v22-hero__copy v22-reveal">
+        <p class="v22-eyebrow">{content.hero.eyebrow}</p>
+        <h1>{content.hero.h1}</h1>
+        <p class="v22-lead">{content.hero.subheadline}</p>
+        <ul class="v22-trust-list" aria-label="Résumé du fonctionnement PubliTools">
+          {content.hero.bullets.map((item: string) => <li>{item}</li>)}
+        </ul>
+        <div class="v22-actions">
+          <a class="v22-btn v22-btn--primary" href={content.hero.primaryCta.href}>{content.hero.primaryCta.label}</a>
+          <a class="v22-btn v22-btn--secondary" href={content.hero.secondaryCta.href}>{content.hero.secondaryCta.label}</a>
+        </div>
+        <p class="v22-proof-note">{content.hero.socialProof}</p>
+      </div>
+
+      <figure class="v22-hero-card v22-reveal" aria-label={content.hero.placeholder}>
+        <img src="/homepage/fr/v22/optimized/hero.webp" alt="Artisan et interface PubliTools pour valider une publication chantier" width="1400" height="1182" loading="eager" fetchpriority="high" decoding="async" />
+        <figcaption>
+          <span>Chantier réel</span>
+          <strong>Contenu prêt à valider</strong>
+        </figcaption>
+        <div class="v22-hero-card__logos" aria-label="Destinations compatibles">
+          {content.destinations.items.map((name: string) => <span title={name}><img src={logoByName[name]} alt={name} width="22" height="22" loading="eager" /></span>)}
+        </div>
+      </figure>
+    </div>
+  </section>
+
+  <section class="v22-section v22-section--soft" id={content.demo.id}>
+    <div class="v22-container v22-demo">
+      <div class="v22-section-head v22-reveal">
+        <p class="v22-eyebrow">{content.demo.eyebrow}</p>
+        <h2>{content.demo.title}</h2>
+        <p>{content.demo.description}</p>
+      </div>
+      <div class="v22-demo__grid">
+        <div class="v22-demo__visual v22-reveal">
+          <img src={content.demo.image} alt="Flux PubliTools : matière chantier, préparation IA, validation, publication" width="1400" height="600" loading="lazy" decoding="async" />
+        </div>
+        <div class="v22-demo__steps">
+          {content.demo.steps.map((step: any, index: number) => (
+            <article class="v22-flow-card v22-reveal" style={`--delay:${index * 0.06}s`}>
+              <span>{String(index + 1).padStart(2, '0')}</span>
+              <small>{step.label}</small>
+              <h3>{step.title}</h3>
+              <p>{step.text}</p>
+            </article>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="v22-section" id={content.process.id}>
+    <div class="v22-container">
+      <div class="v22-section-head v22-reveal">
+        <p class="v22-eyebrow">{content.process.eyebrow}</p>
+        <h2>{content.process.h2}</h2>
+        <p>{content.process.sub}</p>
+      </div>
+      <div class="v22-process-grid">
+        {content.process.steps.map((step: any) => (
+          <article class="v22-process-card v22-reveal">
+            <span>{step.number}</span>
+            <h3>{step.title}</h3>
+            <p>{step.body}</p>
+          </article>
+        ))}
+      </div>
+      <div class="v22-center v22-reveal"><a class="v22-btn v22-btn--primary" href={content.process.cta.href}>{content.process.cta.label}</a></div>
+    </div>
+  </section>
+
+  <section class="v22-section v22-usecases" id={content.useCases.id}>
+    <div class="v22-container">
+      <div class="v22-section-head v22-reveal">
+        <p class="v22-eyebrow">{content.useCases.eyebrow}</p>
+        <h2>{content.useCases.title}</h2>
+        <p>{content.useCases.description}</p>
+      </div>
+      <div class="v22-use-grid">
+        {content.useCases.cards.map((card: any) => (
+          <article class="v22-use-card v22-reveal">
+            <img src={card.image} alt={card.title} width="1400" height="933" loading="lazy" decoding="async" />
+            <div>
+              <h3>{card.title}</h3>
+              <p>{card.body}</p>
+              <ul>{card.list.map((item: string) => <li>{item}</li>)}</ul>
+            </div>
+          </article>
+        ))}
+      </div>
+      <div class="v22-center v22-reveal"><a class="v22-btn v22-btn--primary" href={content.useCases.cta.href}>{content.useCases.cta.label}</a></div>
+    </div>
+  </section>
+
+  <section class="v22-destinations" id={content.destinations.id}>
+    <div class="v22-container v22-destinations__inner v22-reveal">
+      <div>
+        <h2>{content.destinations.title}</h2>
+        <p>{content.destinations.description}</p>
+      </div>
+      <div class="v22-logo-strip" aria-label="Destinations compatibles PubliTools">
+        {content.destinations.items.map((name: string) => (
+          <span><img src={logoByName[name]} alt={name} width="24" height="24" loading="lazy" /> <b>{name}</b></span>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="v22-proof" id={content.proof.id}>
+    <div class="v22-container v22-proof__grid">
+      <div class="v22-reveal">
+        <h2>{content.proof.h2}</h2>
+        <p>{content.proof.sub}</p>
+      </div>
+      <div class="v22-stats">
+        {content.proof.stats.map((stat: any) => <article class="v22-reveal"><strong>{stat.value}</strong><span>{stat.label}</span></article>)}
+      </div>
+    </div>
+  </section>
+
+  <section class="v22-section" id={content.pricing.id}>
+    <div class="v22-container">
+      <div class="v22-section-head v22-reveal">
+        <p class="v22-eyebrow">{content.pricing.eyebrow}</p>
+        <h2>{content.pricing.title}</h2>
+        <p>{content.pricing.description}</p>
+      </div>
+      <div class="v22-pricing-grid">
+        {content.pricing.plans.map((plan: any) => (
+          <article class:list={['v22-plan', plan.featured && 'is-featured', 'v22-reveal']}>
+            {plan.featuredLabel && <span class="v22-plan-badge">{plan.featuredLabel}</span>}
+            <h3>{plan.name}</h3>
+            <p>{plan.subtitle}</p>
+            <strong class="v22-price">{plan.price}</strong>
+            <ul>{plan.features.map((feature: string) => <li>{feature}</li>)}</ul>
+            <a class:list={['v22-btn', plan.featured ? 'v22-btn--primary' : 'v22-btn--secondary']} href={plan.href}>{plan.ctaLabel}</a>
+          </article>
+        ))}
+      </div>
+      <p class="v22-pricing-note">{content.pricing.note}</p>
+    </div>
+  </section>
+
+  <section class="v22-section v22-section--soft" id={content.faq.id}>
+    <div class="v22-container v22-container--narrow">
+      <div class="v22-section-head v22-reveal">
+        <h2>{content.faq.title}</h2>
+        <p>{content.faq.reassurance}</p>
+      </div>
+      <div class="v22-faq">
+        {content.faq.items.map((item: any) => (
+          <details class="v22-reveal">
+            <summary>{item.question}</summary>
+            <p>{item.answer}</p>
+          </details>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="v22-final">
+    <div class="v22-container v22-final__grid">
+      <div class="v22-reveal">
+        <h2>{content.final_cta.heading}</h2>
+        <p>{content.final_cta.sub}</p>
+        <a class="v22-btn v22-btn--primary" href={content.final_cta.cta_primary.href || ctaHref}>{content.final_cta.cta_primary.label}</a>
+      </div>
+      <img class="v22-final__image v22-reveal" src={content.final_cta.image} alt="Validation PubliTools avant publication" width="1400" height="1182" loading="lazy" decoding="async" />
+    </div>
+  </section>
+</main>
+
+<style is:global>
+.homepage-v22{--navy:#0b1f3a;--ink:#101820;--orange:#ff7a1a;--orange-dark:#e7650b;--soft:#f4f6f8;--line:#e4e8ee;--muted:#5f6b7a;--white:#fff;background:#fff;color:var(--ink);font-family:Montserrat,system-ui,sans-serif;overflow-x:hidden}.homepage-v22 *{box-sizing:border-box}.homepage-v22 h1,.homepage-v22 h2,.homepage-v22 h3,.homepage-v22 a,.homepage-v22 summary{font-family:Montserrat,system-ui,sans-serif}.homepage-v22 p,.homepage-v22 li,.homepage-v22 span{font-family:Inter,Montserrat,system-ui,sans-serif}.v22-container{width:min(100% - 32px,1180px);margin-inline:auto}.v22-container--narrow{width:min(100% - 32px,820px)}.v22-section{padding:clamp(54px,7vw,94px) 0}.v22-section--soft{background:linear-gradient(180deg,#f8fafc,#fff)}.v22-eyebrow{display:inline-flex;margin:0 0 12px;padding:6px 12px;border:1px solid rgba(255,122,26,.18);border-radius:999px;background:rgba(255,122,26,.09);color:#a74908;font-size:12px;font-weight:800;letter-spacing:.01em}.v22-section-head{max-width:780px;margin:0 auto 30px;text-align:center}.v22-section-head h2,.v22-proof h2,.v22-final h2,.v22-destinations h2{margin:0;color:var(--navy);font-size:clamp(29px,3.3vw,46px);font-weight:760;line-height:1.08;letter-spacing:-.035em}.v22-section-head p,.v22-proof p,.v22-final p,.v22-destinations p{margin:12px auto 0;max-width:700px;color:var(--muted);font-size:clamp(15px,1.35vw,17px);line-height:1.58}.v22-btn{display:inline-flex;align-items:center;justify-content:center;min-height:46px;padding:13px 20px;border-radius:12px;font-size:15px;font-weight:780;text-decoration:none;transition:transform .16s ease,background .16s ease,box-shadow .16s ease,border-color .16s ease}.v22-btn:hover{transform:translateY(-1px)}.v22-btn--primary{background:var(--orange);color:#fff;box-shadow:0 16px 30px rgba(255,122,26,.22)}.v22-btn--primary:hover{background:var(--orange-dark)}.v22-btn--secondary{border:1px solid var(--line);background:#fff;color:var(--navy);box-shadow:0 12px 26px rgba(11,31,58,.06)}.v22-center{display:flex;justify-content:center;margin-top:28px}.v22-hero{padding:clamp(28px,4.2vw,54px) 0 clamp(42px,5vw,68px);background:radial-gradient(circle at 10% 0,rgba(255,122,26,.12),transparent 28%),linear-gradient(180deg,#fff,#f8fafc)}.v22-hero__grid{display:grid;grid-template-columns:minmax(0,.93fr) minmax(400px,1.07fr);gap:clamp(26px,4vw,56px);align-items:center}.v22-hero h1{max-width:690px;margin:0;color:var(--navy);font-size:clamp(34px,4vw,49px);font-weight:650;line-height:1.1;letter-spacing:-.04em}.v22-lead{max-width:620px;margin:17px 0 0;color:#435063;font-size:clamp(16px,1.4vw,19px);line-height:1.55;font-weight:520}.v22-trust-list{display:flex;flex-wrap:wrap;gap:9px;margin:18px 0 0;padding:0;list-style:none}.v22-trust-list li{display:inline-flex;align-items:center;gap:7px;padding:8px 11px;border:1px solid var(--line);border-radius:999px;background:#fff;color:var(--navy);font-size:13px;font-weight:760;box-shadow:0 10px 24px rgba(11,31,58,.05)}.v22-trust-list li::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--orange)}.v22-actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:24px}.v22-proof-note{margin:15px 0 0;color:var(--muted);font-size:13px;font-weight:650}.v22-hero-card{position:relative;margin:0;overflow:hidden;border:1px solid rgba(11,31,58,.1);border-radius:34px;background:#fff;box-shadow:0 38px 90px -52px rgba(11,31,58,.62),0 18px 48px -34px rgba(255,122,26,.45);aspect-ratio:1.18/1}.v22-hero-card>img{display:block;width:100%;height:100%;object-fit:cover}.v22-hero-card figcaption{position:absolute;left:18px;bottom:18px;display:grid;gap:2px;padding:12px 14px;border:1px solid rgba(255,255,255,.72);border-radius:18px;background:rgba(255,255,255,.86);box-shadow:0 16px 46px rgba(11,31,58,.16);backdrop-filter:blur(14px)}.v22-hero-card figcaption span{color:var(--muted);font-size:12px;font-weight:760}.v22-hero-card figcaption strong{color:var(--navy);font-size:14px;font-weight:860}.v22-hero-card__logos{position:absolute;right:16px;bottom:16px;display:flex;gap:7px;padding:9px;border:1px solid rgba(255,255,255,.72);border-radius:18px;background:rgba(255,255,255,.88);box-shadow:0 16px 46px rgba(11,31,58,.14);backdrop-filter:blur(14px)}.v22-hero-card__logos span,.v22-logo-strip span{display:inline-flex;align-items:center;justify-content:center}.v22-hero-card__logos span{width:34px;height:34px;border-radius:11px;background:#fff;box-shadow:0 7px 17px rgba(11,31,58,.09)}.v22-hero-card__logos img,.v22-logo-strip img{object-fit:contain}.v22-demo__grid{display:grid;grid-template-columns:1.05fr .95fr;gap:20px;align-items:stretch}.v22-demo__visual{overflow:hidden;border:1px solid rgba(11,31,58,.08);border-radius:30px;background:#fff;box-shadow:0 30px 76px -52px rgba(11,31,58,.55)}.v22-demo__visual img{display:block;width:100%;height:100%;min-height:380px;object-fit:cover}.v22-demo__steps{display:grid;grid-template-columns:1fr 1fr;gap:14px}.v22-flow-card,.v22-process-card,.v22-use-card,.v22-plan,.v22-faq details,.v22-stats article{border:1px solid var(--line);background:#fff;box-shadow:0 18px 42px rgba(11,31,58,.06)}.v22-flow-card{padding:18px;border-radius:22px}.v22-flow-card span{display:inline-flex;color:var(--orange);font-size:12px;font-weight:900;letter-spacing:.08em}.v22-flow-card small{display:block;margin-top:8px;color:var(--muted);font-size:12px;font-weight:850;text-transform:uppercase;letter-spacing:.04em}.v22-flow-card h3,.v22-process-card h3,.v22-use-card h3,.v22-plan h3{margin:8px 0 0;color:var(--navy);font-size:clamp(20px,2vw,25px);font-weight:820;line-height:1.12;letter-spacing:-.025em}.v22-flow-card p,.v22-process-card p,.v22-use-card p,.v22-plan p{margin:9px 0 0;color:var(--muted);font-size:14px;line-height:1.48}.v22-process-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}.v22-process-card{position:relative;padding:24px;border-radius:26px;overflow:hidden}.v22-process-card span{display:flex;align-items:center;justify-content:center;width:42px;height:42px;border-radius:14px;background:rgba(255,122,26,.11);color:var(--orange);font-weight:900}.v22-use-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}.v22-use-card{overflow:hidden;border-radius:28px}.v22-use-card img{display:block;width:100%;aspect-ratio:3/2;object-fit:cover;background:var(--soft)}.v22-use-card>div{padding:20px}.v22-use-card ul{display:flex;flex-wrap:wrap;gap:8px;margin:16px 0 0;padding:0;list-style:none}.v22-use-card li{padding:6px 9px;border-radius:999px;background:var(--soft);color:#455064;font-size:12px;font-weight:750}.v22-destinations{padding:34px 0;background:var(--navy);color:#fff}.v22-destinations__inner{display:grid;grid-template-columns:.9fr 1.1fr;gap:28px;align-items:center}.v22-destinations h2{color:#fff;font-size:clamp(25px,2.5vw,36px)}.v22-destinations p{color:rgba(255,255,255,.78);margin-left:0}.v22-logo-strip{display:flex;flex-wrap:wrap;justify-content:flex-end;gap:10px}.v22-logo-strip span{gap:8px;min-height:42px;padding:9px 12px;border-radius:14px;background:#fff;color:var(--navy);font-size:13px;font-weight:850}.v22-proof{padding:42px 0;background:#fff}.v22-proof__grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:28px;align-items:center}.v22-proof h2{font-size:clamp(26px,2.7vw,38px)}.v22-proof p{margin-left:0}.v22-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}.v22-stats article{padding:18px 14px;border-radius:20px;text-align:center}.v22-stats strong{display:block;color:var(--orange);font-size:clamp(23px,2.6vw,34px);font-weight:900;letter-spacing:-.03em}.v22-stats span{display:block;margin-top:6px;color:var(--muted);font-size:12px;font-weight:720;line-height:1.3}.v22-pricing-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px;max-width:920px;margin:0 auto}.v22-plan{position:relative;display:flex;flex-direction:column;padding:26px;border-radius:30px}.v22-plan.is-featured{border-color:rgba(255,122,26,.42);box-shadow:0 28px 74px -50px rgba(255,122,26,.6),0 20px 52px rgba(11,31,58,.08)}.v22-plan-badge{align-self:flex-start;margin-bottom:10px;padding:7px 11px;border-radius:999px;background:rgba(255,122,26,.1);color:#a74908;font-size:12px;font-weight:900}.v22-price{display:block;margin-top:16px;color:var(--navy);font-size:clamp(26px,3vw,34px);font-weight:900;letter-spacing:-.035em}.v22-plan ul{display:grid;gap:10px;margin:20px 0 22px;padding:0;list-style:none}.v22-plan li{position:relative;padding-left:24px;color:#344154;font-size:14px;line-height:1.4}.v22-plan li::before{content:"";position:absolute;left:0;top:.35em;width:14px;height:14px;border-radius:50%;background:var(--orange);box-shadow:inset 0 0 0 4px #fff}.v22-plan .v22-btn{margin-top:auto}.v22-pricing-note{margin:16px auto 0;max-width:760px;text-align:center;color:var(--muted);font-size:13px;font-weight:650}.v22-faq{display:grid;gap:10px}.v22-faq details{border-radius:18px;padding:0;overflow:hidden}.v22-faq summary{cursor:pointer;padding:18px 20px;color:var(--navy);font-size:16px;font-weight:820;list-style:none}.v22-faq summary::-webkit-details-marker{display:none}.v22-faq summary::after{content:"+";float:right;color:var(--orange);font-weight:900}.v22-faq details[open] summary::after{content:"–"}.v22-faq details p{margin:0;padding:0 20px 18px;color:var(--muted);font-size:14px;line-height:1.55}.v22-final{padding:clamp(54px,7vw,84px) 0;background:linear-gradient(135deg,#101820,#0b1f3a);color:#fff}.v22-final__grid{display:grid;grid-template-columns:.9fr minmax(340px,1fr);gap:32px;align-items:center}.v22-final h2{color:#fff}.v22-final p{margin-left:0;color:rgba(255,255,255,.82)}.v22-final .v22-btn{margin-top:24px}.v22-final__image{display:block;width:100%;border-radius:30px;border:1px solid rgba(255,255,255,.12);box-shadow:0 28px 80px rgba(0,0,0,.28);aspect-ratio:1.18/1;object-fit:cover}
+@media (max-width:980px){.v22-hero__grid,.v22-demo__grid,.v22-destinations__inner,.v22-proof__grid,.v22-final__grid{grid-template-columns:1fr}.v22-demo__steps,.v22-process-grid,.v22-use-grid{grid-template-columns:1fr}.v22-logo-strip{justify-content:flex-start}.v22-stats{grid-template-columns:repeat(2,1fr)}.v22-pricing-grid{grid-template-columns:1fr}.v22-hero-card{max-width:640px;margin-inline:auto}.v22-demo__visual img{min-height:auto}.v22-final__image{max-width:640px;margin-inline:auto}}
+@media (max-width:540px){.v22-container,.v22-container--narrow{width:min(100% - 24px,1180px)}.v22-section{padding:38px 0}.v22-hero{padding:24px 0 34px}.v22-hero h1{font-size:34px;line-height:1.08}.v22-lead{font-size:16px;line-height:1.5;margin-top:14px}.v22-actions{display:grid;grid-template-columns:1fr;gap:10px;margin-top:20px}.v22-btn{width:100%;min-height:46px}.v22-trust-list{gap:7px}.v22-trust-list li{font-size:12px;padding:7px 9px}.v22-hero-card{border-radius:24px;aspect-ratio:1/1.02}.v22-hero-card figcaption{left:10px;right:10px;bottom:66px;padding:10px 12px}.v22-hero-card__logos{left:10px;right:10px;bottom:10px;justify-content:center;gap:6px}.v22-hero-card__logos span{width:31px;height:31px}.v22-section-head{text-align:left;margin-bottom:18px}.v22-section-head h2,.v22-proof h2,.v22-final h2,.v22-destinations h2{font-size:28px;line-height:1.1}.v22-section-head p,.v22-proof p,.v22-final p,.v22-destinations p{font-size:15px}.v22-demo__grid{gap:14px}.v22-demo__visual{border-radius:22px}.v22-demo__visual img{aspect-ratio:16/9;object-fit:cover}.v22-demo__steps{grid-template-columns:1fr 1fr;gap:10px}.v22-flow-card{padding:13px;border-radius:18px}.v22-flow-card small{font-size:10px;margin-top:6px}.v22-flow-card h3{font-size:16px;line-height:1.12}.v22-flow-card p{font-size:12px;line-height:1.35}.v22-process-card,.v22-plan{padding:20px}.v22-process-card,.v22-use-card,.v22-plan{border-radius:22px}.v22-use-grid{gap:12px}.v22-use-card{display:grid;grid-template-columns:112px 1fr;align-items:stretch}.v22-use-card img{height:100%;min-height:178px;aspect-ratio:auto}.v22-use-card>div{padding:14px}.v22-use-card h3{font-size:18px}.v22-use-card p{font-size:12.5px;line-height:1.36}.v22-use-card ul{gap:6px;margin-top:10px}.v22-use-card li{font-size:10.5px;padding:5px 7px}.v22-logo-strip{display:grid;grid-template-columns:1fr 1fr;gap:8px}.v22-logo-strip span{justify-content:flex-start;min-height:39px;font-size:12px}.v22-proof{padding:34px 0}.v22-stats{grid-template-columns:1fr 1fr;gap:8px}.v22-stats article{padding:15px 10px}.v22-stats strong{font-size:26px}.v22-stats span{font-size:11.5px}.v22-price{font-size:28px}.v22-faq summary{padding:16px;font-size:15px;line-height:1.3}.v22-faq details p{padding:0 16px 16px}.v22-final__grid{gap:24px}.v22-final__image{border-radius:22px}}
+@media (prefers-reduced-motion:reduce){.v22-btn{transition:none}.v22-btn:hover{transform:none}}
+</style>

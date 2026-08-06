@@ -1,0 +1,37 @@
+---
+import { Image } from 'astro:assets';
+import chantierFini from '../../assets/onepage/backgrounds/personalize-chantier-v1.png';
+import identityVisuelle from '../../assets/onepage/personalize/identity-visuelle.png';
+import styleTexte from '../../assets/onepage/personalize/style-texte.png';
+---
+
+<section class="op-personalize" aria-labelledby="op-personalize-title">
+  <div class="op-grid op-container op-personalize__grid">
+    <div class="op-personalize__copy">
+      <p class="op-kicker">01 — Personnaliser</p>
+      <h2 id="op-personalize-title">Personnalisez votre IA aux couleurs de votre entreprise</h2>
+      <p>Ajoutez votre logo, vos couleurs, le ton que vous souhaitez utiliser et plein d'autres personnalisations, simple à mettre en place.</p>
+    </div>
+
+    <div class="op-personalize__visual">
+      <figure class="op-personalize__chantier">
+        <Image src={chantierFini} alt="Salle de bain rénovée finalisée, exemple de chantier terminé" loading="lazy" decoding="async" />
+      </figure>
+      <img
+        class="op-personalize__structor"
+        src="/brand/structor-icon.svg"
+        alt="Structor"
+        width="64"
+        height="64"
+        loading="lazy"
+        decoding="async"
+      />
+      <figure class="op-personalize__card op-personalize__card--identity">
+        <Image src={identityVisuelle} alt="Écran réel : identité visuelle (logo et couleur principale)" loading="lazy" decoding="async" />
+      </figure>
+      <figure class="op-personalize__card op-personalize__card--style">
+        <Image src={styleTexte} alt="Écran réel : style de texte (ton de rédaction)" loading="lazy" decoding="async" />
+      </figure>
+    </div>
+  </div>
+</section>

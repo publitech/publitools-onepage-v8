@@ -1,0 +1,15 @@
+---
+const { section, images } = Astro.props;
+const imageFor: Record<string, any> = { photos: images.transformationPhotos, videos: images.transformationVideos, vocaux: images.transformationVocaux, avis: images.transformationAvis };
+---
+<section class="v12-section v12-section--white" id={section.id}>
+  <div class="v12-container">
+    <div class="v12-section-head"><h2>{section.title}</h2><p>{section.subtitle}</p></div>
+    <div class="v12-transform-grid">
+      {section.tiles.map((tile: any) => {
+        const image = imageFor[tile.key];
+        return <article class="v12-transform-card" data-v12-reveal><img src={image.src} width={image.width} height={image.height} alt={image.alt} loading="eager" decoding="async" /><span>{tile.label}</span></article>;
+      })}
+    </div>
+  </div>
+</section>

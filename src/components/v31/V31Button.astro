@@ -1,0 +1,93 @@
+---
+type Variant = 'primary' | 'secondary' | 'ghost' | 'dark';
+
+interface Props {
+  href: string;
+  label: string;
+  variant?: Variant;
+  fullWidthMobile?: boolean;
+  ariaLabel?: string;
+  class?: string;
+}
+
+const {
+  href,
+  label,
+  variant = 'primary',
+  fullWidthMobile = true,
+  ariaLabel,
+} = Astro.props;
+const className = Astro.props.class;
+---
+
+<a
+  class:list={['v31-button', `is-${variant}`, fullWidthMobile && 'is-full-mobile', className]}
+  href={href}
+  aria-label={ariaLabel}
+>
+  {label}
+</a>
+
+<style>
+  .v31-button {
+    display: inline-flex;
+    min-height: 52px;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid transparent;
+    border-radius: var(--v31-radius-sm);
+    padding: 0 22px;
+    font-family: var(--v31-font-display);
+    font-size: 15px;
+    font-weight: 800;
+    line-height: 20px;
+    text-align: center;
+    text-decoration: none;
+    transition: transform 180ms ease, border-color 180ms ease, background 180ms ease, box-shadow 180ms ease, color 180ms ease;
+  }
+
+  .v31-button:hover {
+    transform: translateY(-1px);
+  }
+
+  .is-primary {
+    border-color: var(--v31-orange);
+    background: var(--v31-orange);
+    color: #ffffff;
+    box-shadow: 0 18px 34px rgba(255, 122, 26, 0.25);
+  }
+
+  .is-primary:hover {
+    background: var(--v31-orange-hover);
+    box-shadow: 0 22px 40px rgba(255, 122, 26, 0.32);
+  }
+
+  .is-secondary {
+    border-color: var(--v31-border);
+    background: #ffffff;
+    color: var(--v31-navy);
+  }
+
+  .is-secondary:hover {
+    border-color: rgba(11, 31, 58, 0.18);
+    box-shadow: 0 16px 34px rgba(11, 31, 58, 0.08);
+  }
+
+  .is-ghost {
+    border-color: rgba(11, 31, 58, 0.12);
+    background: transparent;
+    color: var(--v31-navy);
+  }
+
+  .is-dark {
+    border-color: var(--v31-navy);
+    background: var(--v31-navy);
+    color: #ffffff;
+  }
+
+  @media (max-width: 680px) {
+    .is-full-mobile {
+      width: 100%;
+    }
+  }
+</style>

@@ -1,0 +1,17 @@
+---
+import PlaceholderBlock from './PlaceholderBlock.astro';
+
+const { section, ctaClass } = Astro.props;
+---
+
+<section class="v13-final" id={section.id}>
+  <div class="v13-container v13-final__grid">
+    <div>
+      <h2>{section.title}</h2>
+      <p>{section.subtitle}</p>
+      <a class={ctaClass} href={section.primaryCta.href}>{section.primaryCta.label}</a>
+      <span>{section.proof}</span>
+    </div>
+    <PlaceholderBlock label={section.placeholder} size="wide" />
+  </div>
+</section>

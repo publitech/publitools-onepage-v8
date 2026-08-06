@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" fill="none">
+  <!-- Hexagon container -->
+  <path d="M24 8 L34 14 L34 26 L24 32 L14 26 L14 14 Z" fill="currentColor" opacity="0.1" stroke="currentColor" stroke-width="2"/>
+  
+  <!-- Professional silhouette simplified -->
+  <circle cx="24" cy="19" r="3" fill="currentColor" opacity="0.6"/>
+  <path d="M18 28 L18 24 C18 22 20 21 24 21 C28 21 30 22 30 24 L30 28" stroke="currentColor" stroke-width="2.5" fill="none" opacity="0.6"/>
+  
+  <!-- Network connection nodes - orange -->
+  <circle cx="16" cy="18" r="2" fill="#FF7A1A" opacity="0.7"/>
+  <circle cx="32" cy="18" r="2" fill="#FF7A1A" opacity="0.7"/>
+  <line x1="18" y1="18" x2="21" y2="19" stroke="#FF7A1A" stroke-width="1.5" opacity="0.5"/>
+  <line x1="30" y1="18" x2="27" y2="19" stroke="#FF7A1A" stroke-width="1.5" opacity="0.5"/>
+  
+  <!-- Orange accent base -->
+  <rect x="20" y="30" width="8" height="2" rx="1" fill="#FF7A1A" opacity="0.6"/>
+</svg>

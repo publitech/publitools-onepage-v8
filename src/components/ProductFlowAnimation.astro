@@ -1,0 +1,549 @@
+---
+const kitchenBefore = '/homepage/fr/hero-kitchen-gpt-image2.webp';
+const kitchenAfter = '/homepage/fr/hero-kitchen-retouched.webp';
+const networks = [
+  { key: 'facebook', label: 'Facebook', icon: '/social/facebook-official.svg' },
+  { key: 'instagram', label: 'Instagram', icon: '/social/instagram-official.svg' },
+  { key: 'linkedin', label: 'LinkedIn', icon: '/social/linkedin-official.svg' },
+  { key: 'google-business', label: 'Google Business', icon: '/social/google-official.svg' },
+  { key: 'tiktok', label: 'TikTok', icon: '/social/tiktok-official.svg' },
+  { key: 'youtube', label: 'YouTube', icon: '/social/youtube-official.svg' },
+] as const;
+const confirmIcons = networks;
+---
+
+<div class="hero-product-demo" data-hero-product-demo aria-label="Démonstration animée PubliTools : photo chantier, retouche IA, texte automatique et publication multiréseaux">
+  <div class="demo-stage" data-demo-stage>
+    <div class="demo-bg" aria-hidden="true">
+      <picture>
+        <source srcset={kitchenBefore} type="image/webp" />
+        <img src="/homepage/fr/hero-kitchen-gpt-image2.png" width="1024" height="1792" alt="" loading="eager" decoding="async" />
+      </picture>
+      <div class="demo-focus-ring" data-focus-ring></div>
+    </div>
+
+    <div class="demo-phone demo-phone--landscape" data-phone-landscape aria-hidden="true">
+      <div class="phone-shell">
+        <span class="phone-camera"></span>
+        <div class="camera-ui">
+          <img src={kitchenBefore} alt="" loading="eager" decoding="async" />
+          <div class="camera-frame" data-camera-frame></div>
+          <div class="capture-flash" data-capture-flash></div>
+          <span class="camera-dot"></span>
+        </div>
+      </div>
+    </div>
+
+    <div class="demo-phone demo-phone--portrait" data-phone-portrait>
+      <div class="phone-shell">
+        <span class="phone-notch"></span>
+        <div class="app-screen">
+          <header class="app-header">
+            <strong>PubliTools</strong>
+            <span>Nouvelle publication</span>
+          </header>
+
+          <section class="photo-card" data-photo-card>
+            <div class="photo-stack">
+              <img class="photo-before" src={kitchenBefore} alt="Photo smartphone d'une cuisine française rénovée avant retouche PubliTools" loading="eager" decoding="async" />
+              <img class="photo-after" src={kitchenAfter} alt="Photo de cuisine rénovée retouchée par PubliTools" loading="eager" decoding="async" />
+              <span class="retouch-scan" data-retouch-scan></span>
+              <span class="photo-badge" data-photo-badge>Photo ajoutée</span>
+            </div>
+          </section>
+
+          <button class="demo-button demo-button--retouch" type="button" data-retouch-button>Retoucher</button>
+
+          <section class="caption-card" data-caption-card>
+            <span>Légende générée</span>
+            <p data-caption-text></p>
+          </section>
+
+          <section class="channel-grid" data-channel-grid aria-label="Canaux de publication sélectionnés">
+            <strong>Publier sur :</strong>
+            <div>
+              {networks.map((network) => (
+                <span class="channel-pill" data-channel-pill aria-label={`Canal sélectionné : ${network.label}`}>
+                  <img src={network.icon} alt={`Logo ${network.label}`} loading="eager" decoding="async" />
+                  <small>{network.label}</small>
+                  <b aria-hidden="true">✓</b>
+                </span>
+              ))}
+            </div>
+          </section>
+
+          <button class="demo-button demo-button--publish" type="button" data-publish-button>Valider et publier</button>
+
+          <section class="platform-card" data-platform-card>
+            <div class="platform-head">
+              <img data-platform-icon src="/social/instagram-official.svg" alt="" loading="eager" decoding="async" />
+              <div>
+                <strong data-platform-title>Instagram</strong>
+                <span data-platform-subtitle>Aperçu carré</span>
+              </div>
+            </div>
+            <div class="platform-preview" data-platform-preview>
+              <img src={kitchenAfter} alt="" loading="eager" decoding="async" />
+              <div class="platform-copy">
+                <b data-platform-copy-title>Cuisine rénovée</b>
+                <span data-platform-copy-line></span>
+              </div>
+            </div>
+            <div class="platform-actions" data-platform-actions>
+              <span></span><span></span><span></span>
+            </div>
+          </section>
+
+          <section class="confirm-card" data-confirm-card>
+            <strong>Publié sur 6 destinations</strong>
+            <p>Il y a quelques secondes</p>
+            <div class="confirm-icons">
+              {confirmIcons.map((network) => (
+                <span title={network.label} aria-label={`Publié sur ${network.label}`}><img src={network.icon} alt={`Logo ${network.label}`} loading="eager" decoding="async" /></span>
+              ))}
+            </div>
+            <button class="done-button" type="button" disabled>Terminé</button>
+          </section>
+        </div>
+      </div>
+    </div>
+
+    <div class="touch-cursor" data-cursor aria-hidden="true">
+      <svg viewBox="0 0 40 44" focusable="false"><path d="M7 3l25 23-13 1 7 12-6 3-7-12-8 9z" fill="#0B1F3A"/><path d="M7 3l25 23-13 1 7 12-6 3-7-12-8 9z" fill="none" stroke="white" stroke-width="2"/></svg>
+    </div>
+    <span class="click-ring" data-click-ring aria-hidden="true"></span>
+  </div>
+</div>
+
+<style>
+  .hero-product-demo {
+    --orange: #ff7a1a;
+    --navy: #0b1f3a;
+    position: relative;
+    width: min(100%, 560px);
+    margin-inline: auto;
+    overflow: hidden;
+    border-radius: 34px;
+    background: #eef1f4;
+    box-shadow: 0 30px 90px rgba(11, 31, 58, .18);
+  }
+
+  .demo-stage {
+    position: relative;
+    aspect-ratio: 16 / 13;
+    min-height: 0;
+    max-height: 480px;
+    overflow: hidden;
+    isolation: isolate;
+  }
+
+  .demo-bg, .demo-bg picture, .demo-bg img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+  }
+
+  .demo-bg img {
+    object-fit: cover;
+    filter: saturate(.9) contrast(.94) blur(.25px);
+    transform: scale(1.02);
+  }
+
+  .demo-bg::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, rgba(244,246,248,.18), rgba(244,246,248,.58));
+  }
+
+  .demo-focus-ring {
+    position: absolute;
+    left: 28%;
+    top: 43%;
+    z-index: 2;
+    width: 40%;
+    aspect-ratio: 16 / 10;
+    border: 2px solid rgba(255,255,255,.86);
+    border-radius: 18px;
+    box-shadow: 0 0 0 999px rgba(11, 31, 58, .12), 0 0 0 2px rgba(255,122,26,.45) inset;
+    opacity: 0;
+  }
+
+  .demo-phone {
+    position: absolute;
+    z-index: 5;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    will-change: transform, opacity;
+  }
+
+  .phone-shell {
+    position: relative;
+    border: 10px solid #101820;
+    background: #101820;
+    box-shadow: 0 28px 75px rgba(11, 31, 58, .34), inset 0 0 0 1px rgba(255,255,255,.2);
+    overflow: hidden;
+  }
+
+  .demo-phone--landscape .phone-shell {
+    width: min(82vw, 405px);
+    aspect-ratio: 16 / 9;
+    border-radius: 34px;
+  }
+
+  .demo-phone--portrait .phone-shell {
+    width: min(68vw, 286px);
+    aspect-ratio: 9 / 16.8;
+    border-radius: 42px;
+  }
+
+  .phone-camera, .phone-notch {
+    position: absolute;
+    z-index: 9;
+    background: #101820;
+  }
+
+  .phone-camera {
+    left: 12px;
+    top: 50%;
+    width: 20px;
+    height: 76px;
+    border-radius: 0 14px 14px 0;
+    transform: translateY(-50%);
+  }
+
+  .phone-notch {
+    left: 50%;
+    top: 8px;
+    width: 92px;
+    height: 24px;
+    border-radius: 0 0 18px 18px;
+    transform: translateX(-50%);
+  }
+
+  .camera-ui, .app-screen {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+    border-radius: 24px;
+    background: #f5f6f8;
+  }
+
+  .demo-phone--portrait .app-screen { border-radius: 31px; padding: 28px 14px 14px; }
+  .camera-ui img { width: 100%; height: 100%; object-fit: cover; }
+
+  .camera-frame {
+    position: absolute;
+    left: 31%;
+    top: 39%;
+    width: 40%;
+    aspect-ratio: 16 / 10;
+    border: 2px solid rgba(255,255,255,.95);
+    border-radius: 12px;
+    box-shadow: 0 0 0 999px rgba(0,0,0,.12);
+  }
+
+  .capture-flash {
+    position: absolute;
+    inset: 0;
+    background: white;
+    opacity: 0;
+  }
+
+  .camera-dot {
+    position: absolute;
+    right: 16px;
+    bottom: 50%;
+    width: 42px;
+    height: 42px;
+    border-radius: 999px;
+    border: 4px solid rgba(255,255,255,.9);
+    background: rgba(255,255,255,.2);
+    transform: translateY(50%);
+  }
+
+  .app-header { display: flex; align-items: center; justify-content: space-between; gap: 10px; }
+  .app-header strong { color: var(--navy); font: 900 17px/1 Montserrat, sans-serif; }
+  .app-header span { border-radius: 999px; background: #fff1e6; padding: 6px 9px; color: var(--orange); font: 800 9px/1 Montserrat, sans-serif; text-transform: uppercase; letter-spacing: .04em; }
+
+  .photo-card, .caption-card, .channel-grid, .platform-card, .confirm-card {
+    border-radius: 20px;
+    background: white;
+    box-shadow: 0 12px 28px rgba(11,31,58,.10);
+    border: 1px solid rgba(229,231,235,.9);
+  }
+
+  .photo-card { margin-top: 14px; padding: 8px; }
+  .photo-stack { position: relative; overflow: hidden; border-radius: 16px; aspect-ratio: 4 / 3; background: #ddd; }
+  .photo-stack img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+  .photo-before { filter: saturate(.86) contrast(.93) brightness(.96) blur(.35px); }
+  .photo-after { clip-path: inset(0 100% 0 0); }
+  .retouch-scan { position: absolute; top: 0; bottom: 0; left: -8%; width: 4px; background: linear-gradient(180deg, transparent, #fff, var(--orange), #fff, transparent); box-shadow: 0 0 22px rgba(255,122,26,.65); opacity: 0; }
+  .photo-badge { position: absolute; left: 9px; bottom: 9px; border-radius: 999px; background: rgba(11,31,58,.82); padding: 6px 9px; color: white; font: 800 10px/1 Montserrat, sans-serif; }
+
+  .demo-button {
+    width: 100%;
+    min-height: 38px;
+    margin-top: 10px;
+    border: 0;
+    border-radius: 13px;
+    background: #64748b;
+    color: white;
+    font: 900 13px/1 Montserrat, sans-serif;
+    box-shadow: 0 10px 22px rgba(15, 23, 42, .18);
+  }
+
+  .caption-card { margin-top: 10px; padding: 11px 12px; min-height: 86px; opacity: 0; }
+  .caption-card span { display: block; margin-bottom: 7px; color: #64748b; font: 800 9px/1 Montserrat, sans-serif; text-transform: uppercase; letter-spacing: .08em; }
+  .caption-card p { margin: 0; color: var(--navy); font: 650 12px/1.45 Inter, sans-serif; }
+
+  .channel-grid { margin-top: 10px; padding: 10px; opacity: 0; transform: translateY(8px); }
+  .channel-grid strong { display: block; margin-bottom: 8px; color: var(--navy); font: 900 11px/1 Montserrat, sans-serif; }
+  .channel-grid > div { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 7px; }
+  .channel-pill { position: relative; display: flex; min-width: 0; align-items: center; gap: 6px; border-radius: 12px; border: 1.5px solid rgba(255,122,26,.58); background: #fff8f2; padding: 8px 7px; color: var(--navy); font: 800 9px/1 Montserrat, sans-serif; }
+  .channel-pill img { width: 17px; height: 17px; flex: 0 0 auto; object-fit: contain; }
+  .channel-pill small { min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font: inherit; }
+  .channel-pill b { margin-left: auto; display: grid; width: 16px; height: 16px; place-items: center; border-radius: 999px; background: var(--orange); color: white; font: 900 10px/1 Montserrat, sans-serif; }
+  .demo-button--publish { opacity: 0; transform: translateY(8px); }
+
+  .platform-card { position: absolute; left: 14px; right: 14px; top: 86px; padding: 12px; opacity: 0; transform-origin: center; }
+  .platform-head { display: flex; align-items: center; gap: 9px; }
+  .platform-head img { width: 24px; height: 24px; object-fit: contain; }
+  .platform-head strong { display: block; color: var(--navy); font: 900 13px/1.1 Montserrat, sans-serif; }
+  .platform-head span { color: #64748b; font: 700 10px/1.2 Inter, sans-serif; }
+  .platform-preview { margin-top: 11px; overflow: hidden; border-radius: 15px; background: #f3f4f6; border: 1px solid #e5e7eb; }
+  .platform-preview img { display: block; width: 100%; height: 128px; object-fit: cover; }
+  .platform-copy { padding: 9px; }
+  .platform-copy b { display: block; color: var(--navy); font: 900 12px/1.2 Montserrat, sans-serif; }
+  .platform-copy span { display: block; margin-top: 5px; width: 78%; height: 7px; border-radius: 999px; background: #cbd5e1; }
+  .platform-actions { display: flex; gap: 7px; margin-top: 10px; }
+  .platform-actions span { width: 38px; height: 8px; border-radius: 999px; background: #e5e7eb; }
+
+  .confirm-card { position: absolute; left: 14px; right: 14px; top: 42%; padding: 18px 14px; text-align: center; opacity: 0; }
+  .confirm-card strong { display: block; color: var(--navy); font: 950 18px/1.1 Montserrat, sans-serif; }
+  .confirm-card p { margin: 7px 0 0; color: #64748b; font: 750 10px/1.2 Inter, sans-serif; }
+  .confirm-icons { display: flex; justify-content: center; gap: 8px; margin-top: 14px; }
+  .confirm-icons span { display: grid; place-items: center; width: 34px; height: 34px; border-radius: 12px; background: #f8fafc; border: 1px solid #e5e7eb; }
+  .confirm-icons img { width: 22px; height: 22px; object-fit: contain; }
+  .done-button { width: 100%; min-height: 38px; margin-top: 14px; border: 0; border-radius: 13px; background: var(--orange); color: white; font: 900 13px/1 Montserrat, sans-serif; box-shadow: 0 10px 22px rgba(255,122,26,.28); }
+
+  .touch-cursor { position: absolute; z-index: 20; left: 50%; top: 50%; width: 36px; height: 40px; opacity: 0; filter: drop-shadow(0 10px 12px rgba(11,31,58,.24)); will-change: transform, opacity; }
+  .click-ring { position: absolute; z-index: 19; width: 54px; height: 54px; border-radius: 999px; border: 3px solid var(--orange); opacity: 0; pointer-events: none; transform: translate(-50%, -50%) scale(.4); }
+
+  @media (max-width: 767px) {
+    .hero-product-demo { width: min(100%, 360px); border-radius: 26px; }
+    .demo-stage { max-height: 300px; aspect-ratio: 6 / 5; }
+    .demo-phone--landscape .phone-shell { width: min(88vw, 330px); border-width: 8px; border-radius: 28px; }
+    .demo-phone--portrait .phone-shell { width: min(70vw, 235px); border-width: 8px; border-radius: 34px; }
+    .demo-phone--portrait .app-screen { padding: 25px 11px 11px; border-radius: 26px; }
+    .caption-card { min-height: 76px; }
+    .caption-card p { font-size: 10.5px; }
+    .channel-grid { padding: 9px; }
+    .channel-pill { padding: 7px 6px; font-size: 8px; }
+    .channel-pill img { width: 15px; height: 15px; }
+    .channel-pill b { width: 14px; height: 14px; font-size: 9px; }
+    .platform-preview img { height: 104px; }
+    .confirm-card strong { font-size: 15px; }
+    .confirm-icons span { width: 29px; height: 29px; }
+    .confirm-icons img { width: 19px; height: 19px; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .demo-phone--landscape, .touch-cursor, .click-ring, .demo-focus-ring { display: none !important; }
+    .demo-phone--portrait { opacity: 1 !important; transform: translate(-50%, -50%) !important; }
+    .photo-after { clip-path: inset(0 0 0 0) !important; }
+    .confirm-card { opacity: 1 !important; }
+  }
+</style>
+
+<script>
+  import { gsap } from 'gsap';
+  import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
+  gsap.registerPlugin(ScrollTrigger);
+
+  const caption = 'Cuisine entièrement rénovée, finitions propres, espace modernisé et prêt à vivre. Un projet terminé avec soin.';
+  const platformStates = [
+    { title: 'Instagram', subtitle: 'Aperçu post 1:1', icon: '/social/instagram-official.svg', ratio: '1 / 1', height: 142, copy: 'Finitions propres et lumière naturelle.' },
+    { title: 'Facebook', subtitle: 'Publication locale', icon: '/social/facebook-official.svg', ratio: '16 / 10', height: 116, copy: 'Projet terminé avec soin.' },
+    { title: 'LinkedIn', subtitle: 'Format pro sobre', icon: '/social/linkedin-official.svg', ratio: '16 / 9', height: 108, copy: 'Rénovation livrée, résultat clair.' },
+    { title: 'Google Business', subtitle: 'Fiche établissement', icon: '/social/google-official.svg', ratio: '4 / 3', height: 112, copy: 'Photo et post prêts pour la fiche.' },
+    { title: 'TikTok', subtitle: 'Vidéo courte chantier', icon: '/social/tiktok-official.svg', ratio: '9 / 16', height: 156, copy: 'Vidéo compatible quand la matière s’y prête.' },
+    { title: 'YouTube', subtitle: 'Vidéo / Shorts', icon: '/social/youtube-official.svg', ratio: '16 / 9', height: 108, copy: 'Publication vidéo préparée.' },
+  ];
+
+  const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  document.querySelectorAll('[data-hero-product-demo]').forEach((root) => {
+    const q = (selector) => root.querySelector(selector);
+    const stage = q('[data-demo-stage]');
+    const bg = q('.demo-bg img');
+    const focusRing = q('[data-focus-ring]');
+    const phoneLandscape = q('[data-phone-landscape]');
+    const phonePortrait = q('[data-phone-portrait]');
+    const flash = q('[data-capture-flash]');
+    const cameraFrame = q('[data-camera-frame]');
+    const retouchButton = q('[data-retouch-button]');
+    const publishButton = q('[data-publish-button]');
+    const cursor = q('[data-cursor]');
+    const clickRing = q('[data-click-ring]');
+    const photoAfter = q('.photo-after');
+    const retouchScan = q('[data-retouch-scan]');
+    const photoBadge = q('[data-photo-badge]');
+    const captionCard = q('[data-caption-card]');
+    const captionText = q('[data-caption-text]');
+    const channelGrid = q('[data-channel-grid]');
+    const channelPills = root.querySelectorAll('[data-channel-pill]');
+    const platformCard = q('[data-platform-card]');
+    const platformIcon = q('[data-platform-icon]');
+    const platformTitle = q('[data-platform-title]');
+    const platformSubtitle = q('[data-platform-subtitle]');
+    const platformPreview = q('[data-platform-preview]');
+    const platformImg = q('[data-platform-preview] img');
+    const platformLine = q('[data-platform-copy-line]');
+    const confirmCard = q('[data-confirm-card]');
+    const doneButton = q('.done-button');
+
+    if (!stage || !phoneLandscape || !phonePortrait || !retouchButton || !publishButton || !cursor) return;
+
+    const cursorTip = { x: 5, y: 4 };
+    const centerOf = (el) => {
+      const sr = stage.getBoundingClientRect();
+      const r = el.getBoundingClientRect();
+      return { x: r.left - sr.left + r.width * 0.5, y: r.top - sr.top + r.height * 0.5 };
+    };
+    const moveCursorTo = (el, duration = 0.65) => {
+      const p = centerOf(el);
+      return gsap.to(cursor, { x: p.x - cursorTip.x, y: p.y - cursorTip.y, autoAlpha: 1, duration, ease: 'power3.inOut' });
+    };
+    const clickAt = (el) => {
+      const p = centerOf(el);
+      const br = el.getBoundingClientRect();
+      const sr = stage.getBoundingClientRect();
+      const tip = { x: sr.left + p.x, y: sr.top + p.y };
+      (window as any).__publitoolsHeroCursorChecks = (window as any).__publitoolsHeroCursorChecks || [];
+      (window as any).__publitoolsHeroCursorChecks.push({
+        label: el.textContent?.trim() || 'demo-button',
+        ok: tip.x >= br.left && tip.x <= br.right && tip.y >= br.top && tip.y <= br.bottom,
+        tip,
+        bounds: { left: br.left, right: br.right, top: br.top, bottom: br.bottom },
+      });
+      gsap.set(clickRing, { x: p.x, y: p.y, autoAlpha: 1, scale: .35 });
+      return gsap.timeline()
+        .to(cursor, { scale: .84, duration: .08, ease: 'power1.out' })
+        .to(cursor, { scale: 1, duration: .13, ease: 'power1.out' })
+        .to(clickRing, { scale: 1.25, autoAlpha: 0, duration: .42, ease: 'power2.out' }, '<');
+    };
+
+    const setPlatform = (state) => {
+      platformIcon.src = state.icon;
+      platformIcon.alt = `Logo ${state.title}`;
+      platformTitle.textContent = state.title;
+      platformSubtitle.textContent = state.subtitle;
+      platformPreview.style.aspectRatio = state.ratio;
+      platformImg.style.height = state.height + 'px';
+      platformLine.style.width = state.title === 'LinkedIn' ? '92%' : '76%';
+      platformLine.setAttribute('aria-label', state.copy);
+    };
+
+    if (prefersReduced) {
+      captionText.textContent = caption;
+      return;
+    }
+
+    gsap.set(phoneLandscape, { autoAlpha: 0, xPercent: -50, yPercent: -50, y: 34, scale: .92 });
+    gsap.set(phonePortrait, { autoAlpha: 0, xPercent: -50, yPercent: -50, rotation: -90, scale: .94 });
+    gsap.set(cursor, { autoAlpha: 0, x: 30, y: 30, scale: 1 });
+    gsap.set([captionCard, channelGrid, publishButton, platformCard, confirmCard], { autoAlpha: 0 });
+    gsap.set(channelPills, { y: 8, autoAlpha: 0, scale: .96 });
+    gsap.set(photoAfter, { clipPath: 'inset(0 100% 0 0)' });
+    gsap.set(retouchScan, { autoAlpha: 0, xPercent: -100 });
+    captionText.textContent = '';
+    setPlatform(platformStates[0]);
+
+    const typeState = { n: 0 };
+    const typeCaption = () => {
+      typeState.n = 0;
+      captionText.textContent = '';
+      return gsap.to(typeState, {
+        n: caption.length,
+        duration: 1.55,
+        ease: 'none',
+        onUpdate: () => {
+          captionText.textContent = caption.slice(0, Math.round(typeState.n));
+        },
+      });
+    };
+
+    const tl = gsap.timeline({ repeat: -1, repeatDelay: .9, paused: true, defaults: { ease: 'power2.out' } });
+
+    tl
+      .to(bg, { scale: 1.08, duration: 1.1, ease: 'sine.inOut' })
+      .to(phoneLandscape, { autoAlpha: 1, y: 0, scale: 1, duration: .75, ease: 'power3.out' }, '<.1')
+      .to(focusRing, { autoAlpha: 1, duration: .25 }, '<.35')
+      .to([bg, cameraFrame], { scale: 1.12, duration: .85, ease: 'power2.inOut' })
+      .to(flash, { autoAlpha: .92, duration: .07 })
+      .to(flash, { autoAlpha: 0, duration: .22 })
+      .to(phoneLandscape, { rotation: 90, scale: .72, autoAlpha: 0, duration: .48, ease: 'power3.in' })
+      .to(phonePortrait, { autoAlpha: 1, rotation: 0, scale: 1, duration: .72, ease: 'back.out(1.15)' }, '<.18')
+      .to([focusRing], { autoAlpha: 0, duration: .25 }, '<')
+      .add(moveCursorTo(retouchButton, .62), 'retouchClick')
+      .add(clickAt(retouchButton), 'retouchClick+=.6')
+      .to(retouchButton, { scale: .97, duration: .08 }, 'retouchClick+=.6')
+      .to(retouchButton, { scale: 1, duration: .16 })
+      .to(retouchScan, { autoAlpha: 1, left: '102%', duration: .85, ease: 'power2.inOut' }, '<.08')
+      .to(photoAfter, { clipPath: 'inset(0 0% 0 0)', duration: .85, ease: 'power2.inOut' }, '<')
+      .to(photoBadge, { textContent: 'Photo retouchée', backgroundColor: '#ff7a1a', duration: .2 }, '<.45')
+      .to(retouchScan, { autoAlpha: 0, duration: .2 })
+      .to(captionCard, { autoAlpha: 1, y: -2, duration: .38 }, '<')
+      .add(typeCaption())
+      .to(channelGrid, { autoAlpha: 1, y: 0, duration: .35, ease: 'power3.out' })
+      .to(channelPills, { autoAlpha: 1, y: 0, scale: 1, duration: .26, stagger: .08, ease: 'back.out(1.4)' }, '<.08')
+      .to(publishButton, { autoAlpha: 1, y: 0, duration: .3, ease: 'power3.out' }, '<.34')
+      .to({}, { duration: .55 })
+      .add(moveCursorTo(publishButton, .55), 'publishClick')
+      .add(clickAt(publishButton), 'publishClick+=.52')
+      .to(publishButton, { scale: .97, duration: .08 }, 'publishClick+=.52')
+      .to(publishButton, { scale: 1, duration: .16 })
+      .set(publishButton, { textContent: 'Publication en cours...' })
+      .to(channelPills, { y: -56, autoAlpha: 0, scale: .9, duration: .55, stagger: .07, ease: 'power2.in' })
+      .to([captionCard, channelGrid, publishButton, retouchButton], { autoAlpha: 0, y: 8, duration: .34 }, '<.18')
+      .to(platformCard, { autoAlpha: 1, y: 0, scale: 1, duration: .38, ease: 'back.out(1.2)' })
+      .to({}, { duration: .62 })
+      .call(() => setPlatform(platformStates[1]))
+      .fromTo(platformCard, { x: 18, scale: .96 }, { x: 0, scale: 1, duration: .34 })
+      .to({}, { duration: .54 })
+      .call(() => setPlatform(platformStates[2]))
+      .fromTo(platformCard, { x: 18, scale: .96 }, { x: 0, scale: 1, duration: .34 })
+      .to({}, { duration: .54 })
+      .call(() => setPlatform(platformStates[3]))
+      .fromTo(platformCard, { x: 18, scale: .96 }, { x: 0, scale: 1, duration: .34 })
+      .to({}, { duration: .72 })
+      .to(platformCard, { autoAlpha: 0, scale: .94, duration: .28 })
+      .to(confirmCard, { autoAlpha: 1, y: -6, scale: 1, duration: .42, ease: 'back.out(1.2)' })
+      .to(confirmCard.querySelectorAll('.confirm-icons span'), { scale: 1.12, yoyo: true, repeat: 1, stagger: .07, duration: .16 }, '<.12')
+      .to(doneButton, { scale: 1.04, yoyo: true, repeat: 1, duration: .18 }, '<.35')
+      .to({}, { duration: 1.8 })
+      .to([confirmCard, phonePortrait, cursor], { autoAlpha: 0, duration: .38 })
+      .set([captionCard, channelGrid, publishButton, platformCard, confirmCard], { clearProps: 'all' })
+      .set(channelPills, { clearProps: 'all' })
+      .set(publishButton, { textContent: 'Valider et publier' })
+      .set(captionText, { textContent: '' })
+      .set(photoAfter, { clipPath: 'inset(0 100% 0 0)' })
+      .set(photoBadge, { textContent: 'Photo ajoutée', backgroundColor: 'rgba(11,31,58,.82)' })
+      .set(phoneLandscape, { rotation: 0, scale: .92, y: 34 })
+      .set(phonePortrait, { rotation: -90, scale: .94 });
+
+    ScrollTrigger.create({
+      trigger: root,
+      start: 'top 92%',
+      end: 'bottom 8%',
+      onEnter: () => tl.play(),
+      onEnterBack: () => tl.play(),
+      onLeave: () => tl.pause(),
+      onLeaveBack: () => tl.pause(),
+    });
+  });
+</script>

@@ -1,0 +1,635 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Prototype V23 — PubliTools France</title>
+  <meta name="description" content="Prototype HTML haute fidélité V23 de la homepage PubliTools France — direction créative avant intégration Astro." />
+  <style>
+    :root {
+      --orange: #ff7a1a;
+      --orange-dark: #df6410;
+      --navy: #0b1f3a;
+      --ink: #101820;
+      --muted: #64748b;
+      --line: #e5eaf0;
+      --soft: #f4f6f8;
+      --white: #ffffff;
+      --blue: #1f6feb;
+      --green: #19a974;
+      --shadow: 0 24px 70px rgba(11, 31, 58, .13);
+      --shadow-soft: 0 14px 42px rgba(11, 31, 58, .08);
+      --radius-xl: 34px;
+      --radius-lg: 24px;
+      --radius-md: 16px;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color: var(--ink);
+      background: #fff;
+      scroll-behavior: smooth;
+    }
+
+    * { box-sizing: border-box; }
+    html, body { margin: 0; min-height: 100%; background: linear-gradient(180deg, #fff 0%, #f7f9fb 100%); }
+    body { overflow-x: hidden; }
+    img { max-width: 100%; display: block; }
+    a { color: inherit; }
+
+    .page {
+      position: relative;
+      isolation: isolate;
+      background:
+        radial-gradient(circle at top left, rgba(255, 122, 26, .12), transparent 32rem),
+        radial-gradient(circle at top right, rgba(31, 111, 235, .08), transparent 30rem),
+        linear-gradient(180deg, #fff 0%, #f6f8fb 45%, #fff 100%);
+    }
+
+    .container { width: min(1160px, calc(100% - 32px)); margin-inline: auto; }
+    .section { padding: 82px 0; }
+    .section-tight { padding: 56px 0; }
+
+    .prototype-ribbon {
+      min-height: 36px;
+      display: grid;
+      place-items: center;
+      background: var(--navy);
+      color: #fff;
+      font-size: 12px;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      font-weight: 800;
+    }
+
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      border-bottom: 1px solid rgba(226, 232, 240, .8);
+      background: rgba(255, 255, 255, .86);
+      backdrop-filter: blur(18px);
+    }
+    .header-inner {
+      min-height: 78px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 22px;
+    }
+    .logo { width: min(232px, 54vw); height: auto; border-radius: 10px; }
+    .nav { display: flex; gap: 28px; align-items: center; color: #3f4351; font-size: 14px; font-weight: 650; }
+    .header-actions { display: flex; gap: 10px; align-items: center; }
+    .button, .button-secondary {
+      display: inline-flex; align-items: center; justify-content: center; gap: 9px;
+      min-height: 46px; padding: 0 18px; border-radius: 12px;
+      text-decoration: none; font-weight: 800; font-size: 14px; border: 1px solid transparent;
+      transition: transform .18s ease, box-shadow .18s ease, background .18s ease;
+      white-space: nowrap;
+    }
+    .button { color: #fff; background: var(--orange); box-shadow: 0 14px 28px rgba(255, 122, 26, .22); }
+    .button:hover { background: var(--orange-dark); transform: translateY(-1px); }
+    .button-secondary { color: var(--navy); border-color: #d8dade; background: #fff; }
+    .button-secondary:hover { transform: translateY(-1px); box-shadow: var(--shadow-soft); }
+    .button-dark { background: var(--navy); box-shadow: 0 14px 30px rgba(11, 31, 58, .18); }
+
+    .eyebrow {
+      display: inline-flex; align-items: center; gap: 8px; width: fit-content;
+      min-height: 34px; padding: 0 13px; border: 1px solid rgba(255, 122, 26, .28);
+      border-radius: 999px; background: rgba(255, 122, 26, .08); color: #9a4308;
+      font-size: 12px; font-weight: 850; letter-spacing: .08em; text-transform: uppercase;
+    }
+    .eyebrow.dark { background: rgba(255, 255, 255, .1); border-color: rgba(255, 255, 255, .18); color: #fff; }
+    .h1, h1, h2, h3 { font-family: Montserrat, Inter, ui-sans-serif, system-ui, sans-serif; margin: 0; color: var(--navy); letter-spacing: -.045em; }
+    h1 { font-size: clamp(40px, 5vw, 58px); line-height: 1; font-weight: 750; max-width: 820px; }
+    h2 { font-size: clamp(32px, 4vw, 52px); line-height: 1.02; font-weight: 760; }
+    h3 { font-size: 21px; line-height: 1.12; font-weight: 780; }
+    p { margin: 0; color: #475569; line-height: 1.55; font-size: 17px; }
+    .lead { font-size: clamp(18px, 2vw, 22px); line-height: 1.48; color: #334155; max-width: 760px; }
+    .section-head { display: grid; gap: 18px; justify-items: center; text-align: center; max-width: 850px; margin: 0 auto 38px; }
+    .section-head p { max-width: 680px; }
+
+    .hero { padding: 54px 0 70px; }
+    .hero-grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(450px, .95fr); gap: 38px; align-items: center; }
+    .hero-copy { display: grid; gap: 22px; align-content: center; }
+    .hero-actions { display: flex; gap: 12px; align-items: center; flex-wrap: wrap; margin-top: 4px; }
+    .hero-note { font-size: 13px; color: #667085; font-weight: 650; }
+    .proof-row { display: flex; flex-wrap: wrap; gap: 10px; margin: 4px 0 2px; }
+    .proof-pill { display: inline-flex; align-items: center; gap: 7px; padding: 10px 12px; border-radius: 999px; background: #fff; border: 1px solid #e7ebf0; box-shadow: 0 8px 20px rgba(11, 31, 58, .05); font-size: 13px; font-weight: 800; color: #243044; }
+    .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--orange); box-shadow: 0 0 0 5px rgba(255, 122, 26, .12); }
+
+    .hero-visual { position: relative; min-height: 610px; }
+    .visibility-board {
+      position: relative; border-radius: 42px; padding: 20px; min-height: 590px;
+      background: linear-gradient(145deg, #ffffff, #f7fafc 58%, #eef4fb);
+      border: 1px solid rgba(226, 232, 240, .9); box-shadow: var(--shadow);
+      overflow: hidden;
+    }
+    .visibility-board:before {
+      content: ""; position: absolute; inset: -120px -100px auto auto; width: 300px; height: 300px;
+      background: radial-gradient(circle, rgba(255, 122, 26, .19), transparent 66%); border-radius: 50%;
+    }
+    .board-top { position: relative; display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px; }
+    .board-title { font-family: Montserrat, Inter, sans-serif; font-weight: 850; color: var(--navy); font-size: 15px; }
+    .board-status { display: inline-flex; align-items: center; gap: 7px; border-radius: 999px; background: #ecfdf5; color: #067647; padding: 8px 11px; font-size: 12px; font-weight: 850; }
+    .hero-machine { display: grid; grid-template-columns: 1fr 42px 1fr; gap: 12px; align-items: stretch; }
+    .phone-shell {
+      position: relative; border-radius: 31px; background: #101820; padding: 10px; box-shadow: 0 18px 52px rgba(16, 24, 32, .2); min-height: 435px;
+    }
+    .phone-screen { height: 100%; min-height: 415px; border-radius: 24px; background: #fff; overflow: hidden; border: 1px solid rgba(255,255,255,.1); display: grid; grid-template-rows: auto 1fr auto; }
+    .phone-bar { padding: 14px 15px; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #eef2f6; font-size: 12px; font-weight: 850; color: var(--navy); }
+    .job-photo, .photo-card, .post-visual, .gmb-cover, .gmb-thumb {
+      position: relative; overflow: hidden;
+      background:
+        linear-gradient(180deg, rgba(255,255,255,.22), transparent 38%),
+        linear-gradient(135deg, #d8c7ad 0%, #a3acb3 42%, #24364c 100%);
+    }
+    .job-photo { margin: 14px; border-radius: 22px; min-height: 175px; }
+    .job-photo:before, .photo-card:before, .post-visual:before, .gmb-cover:before, .gmb-thumb:before {
+      content:""; position:absolute; left:-6%; right:-6%; bottom:-2%; height:58%;
+      background: linear-gradient(12deg, #644936, #b57643 45%, #d8a96b 76%, #f2d6a8);
+      clip-path: polygon(0 70%, 18% 52%, 34% 62%, 51% 36%, 70% 54%, 84% 30%, 100% 49%, 100% 100%, 0 100%);
+    }
+    .job-photo:after, .photo-card:after, .post-visual:after, .gmb-cover:after, .gmb-thumb:after {
+      content:""; position:absolute; right:10%; bottom:24%; width:31%; height:24%; border-radius: 9px 9px 4px 4px;
+      background: linear-gradient(180deg, #fff, #dce5ec); box-shadow: -22px 14px 0 #c5d0dc, -74px -10px 0 -20px #ff7a1a;
+      transform: rotate(-3deg);
+    }
+    .site-sky { position:absolute; inset:0 0 auto; height:44%; background: linear-gradient(135deg, #eaf2f7, #cfdce6 55%, #9faebc); }
+    .site-frame { position:absolute; right:12%; top:18%; width:30%; height:40%; border:3px solid rgba(11,31,58,.35); border-bottom:0; opacity:.9; }
+    .site-frame:before, .site-frame:after { content:""; position:absolute; inset:22% 0 auto; border-top:3px solid rgba(11,31,58,.35); transform:rotate(-24deg); transform-origin:center; }
+    .site-frame:after { transform:rotate(24deg); }
+    .site-worker { position:absolute; left:16%; bottom:18%; width:15px; height:47px; border-radius:10px 10px 5px 5px; background:#0b1f3a; box-shadow: 0 -14px 0 -3px #ffb066, 0 -22px 0 -6px #ff7a1a; }
+    .site-worker:before { content:""; position:absolute; left:-18px; top:16px; width:48px; height:4px; border-radius:99px; background:#0b1f3a; transform:rotate(-18deg); }
+    .site-worker:after { content:""; position:absolute; left:3px; bottom:-19px; width:6px; height:24px; background:#0b1f3a; box-shadow: 10px 0 0 #0b1f3a; border-radius:4px; }
+    .site-tag { position:absolute; left:12px; top:12px; padding:7px 9px; border-radius:999px; background:rgba(255,255,255,.94); color:var(--navy); font-size:10px; font-weight:950; box-shadow:0 8px 18px rgba(11,31,58,.08); }
+    .voice-card { margin: 0 14px 14px; padding: 13px; border: 1px solid #edf1f5; border-radius: 19px; background: #fbfcfe; display: grid; gap: 10px; }
+    .wave { display: flex; gap: 4px; align-items: center; height: 26px; }
+    .wave i { display: block; width: 5px; border-radius: 99px; background: var(--orange); opacity: .9; }
+    .wave i:nth-child(1){height:10px}.wave i:nth-child(2){height:20px}.wave i:nth-child(3){height:15px}.wave i:nth-child(4){height:25px}.wave i:nth-child(5){height:12px}.wave i:nth-child(6){height:21px}.wave i:nth-child(7){height:11px}.wave i:nth-child(8){height:19px}
+    .small-label { color: #667085; font-size: 12px; font-weight: 750; }
+    .arrow-stack { display:grid; place-items:center; color: var(--orange); font-weight: 900; font-size: 30px; }
+    .output-card { border-radius: 28px; background: #fff; border: 1px solid #e8edf3; box-shadow: var(--shadow-soft); padding: 16px; min-height: 435px; display: grid; gap: 14px; }
+    .caption-box { border-radius: 20px; border: 1px solid #e9eef4; padding: 15px; background: linear-gradient(180deg, #fff, #f8fafc); display: grid; gap: 10px; }
+    .caption-line { height: 10px; background: #dfe6ee; border-radius: 999px; }
+    .caption-line.w80 { width: 80%; } .caption-line.w65 { width: 65%; } .caption-line.orange { background: rgba(255,122,26,.3); width: 46%; }
+    .retouch-card { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+    .mini-image { border-radius: 17px; min-height: 100px; position: relative; overflow:hidden; background: linear-gradient(135deg, #9aa5ad, #56636d 54%, #253142); }
+    .mini-image.after { background: linear-gradient(135deg, #f5d2a6, #8cb5c9 45%, #1d344d); filter:saturate(1.08) contrast(1.04); }
+    .mini-image:before { content:""; position:absolute; inset:auto -8px -2px; height:54%; background:linear-gradient(14deg,#6d513b,#b77543 54%,#e4bd85); clip-path:polygon(0 66%,32% 44%,52% 64%,76% 35%,100% 58%,100% 100%,0 100%); }
+    .mini-image:after { content:""; position:absolute; right:14px; bottom:24px; width:43px; height:27px; border-radius:7px 7px 3px 3px; background:#f8fafc; box-shadow:-20px 10px 0 #cbd5e1; transform:rotate(-3deg); }
+    .mini-image span { position:absolute; left:8px; bottom:8px; z-index:2; background: rgba(255,255,255,.92); border-radius: 999px; padding: 5px 8px; font-size: 10px; font-weight: 900; color: var(--navy); }
+    .hero-stage-labels { display:grid; grid-template-columns: 1fr 1fr 1fr; gap:7px; }
+    .hero-stage { border:1px solid #e9eef4; border-radius:14px; padding:8px; background:#fbfdff; color:var(--navy); font-size:11px; font-weight:900; text-align:center; }
+    .hero-stage.active { color:#fff; background:var(--navy); border-color:var(--navy); }
+    .destination-logos { display: grid; grid-template-columns: repeat(6, 1fr); gap: 7px; align-items: center; }
+    .logo-chip { height: 38px; border-radius: 13px; border: 1px solid #ebeff4; display: grid; place-items: center; background:#fff; }
+    .logo-chip img { width: 20px; height: 20px; object-fit: contain; }
+    .publish-bar { display:flex; gap:8px; align-items:center; justify-content:space-between; padding: 11px 12px; border-radius: 17px; background: var(--navy); color:#fff; font-size:12px; font-weight:850; }
+    .publish-bar strong { background: var(--orange); border-radius: 999px; padding: 8px 10px; }
+    .prep-strip { display:grid; grid-template-columns: repeat(3, 1fr); gap:7px; }
+    .prep-chip { border-radius:13px; background:#fff7ed; color:#9a4308; border:1px solid rgba(255,122,26,.22); padding:8px 6px; text-align:center; font-size:10px; font-weight:950; }
+    .floating-card { position: absolute; z-index: 3; border-radius: 18px; padding: 12px 14px; background: rgba(255,255,255,.93); border: 1px solid rgba(226,232,240,.92); box-shadow: 0 18px 42px rgba(11,31,58,.14); backdrop-filter: blur(12px); font-size: 12px; font-weight: 850; color: var(--navy); }
+    .float-1 { left: -18px; top: 128px; } .float-2 { right: -18px; bottom: 94px; }
+
+    .machine-panel {
+      border-radius: var(--radius-xl); background: var(--navy); color: #fff; padding: clamp(20px, 3vw, 34px);
+      box-shadow: var(--shadow); overflow: hidden; position: relative;
+    }
+    .machine-panel h2, .machine-panel p { color: #fff; }
+    .machine-panel:before { content:""; position:absolute; width:520px; height:520px; right:-180px; top:-260px; background: radial-gradient(circle, rgba(255,122,26,.24), transparent 66%); }
+    .machine-flow { position:relative; display:grid; grid-template-columns: repeat(4, 1fr); gap: 14px; margin-top: 30px; }
+    .machine-step { position:relative; min-height: 228px; border-radius: 26px; background: rgba(255,255,255,.08); border: 1px solid rgba(255,255,255,.16); padding: 17px; display: grid; align-content: space-between; overflow:hidden; }
+    .step-number { width: 38px; height: 38px; border-radius: 14px; display:grid; place-items:center; background: #fff; color: var(--navy); font-weight: 950; }
+    .machine-step h3 { color: #fff; font-size: 20px; letter-spacing:-.03em; }
+    .machine-step p { color: rgba(255,255,255,.76); font-size: 14px; }
+    .step-ui { min-height: 82px; border-radius: 20px; background: rgba(255,255,255,.11); border: 1px solid rgba(255,255,255,.12); display: grid; place-items: center; padding: 12px; }
+    .step-ui .mini-dots { display:flex; gap:7px; } .mini-dots i { width: 33px; height: 33px; border-radius: 12px; background: #fff; opacity:.9; } .mini-dots i:nth-child(2){background:var(--orange)} .mini-dots i:nth-child(3){background:#9ec5ff}
+    .processing { width: 92%; display:grid; gap:8px; } .processing span { height: 9px; border-radius:999px; background: rgba(255,255,255,.78); } .processing span:nth-child(2){width:70%; background:rgba(255,122,26,.9)} .processing span:nth-child(3){width:88%; opacity:.5}
+    .toggles { display:grid; gap:7px; width:100%; } .toggle { display:flex; align-items:center; justify-content:space-between; gap:8px; color:#fff; font-size:11px; font-weight:800; } .switch { width:34px; height:18px; background:rgba(255,255,255,.25); border-radius:99px; position:relative; } .switch:after { content:""; position:absolute; width:14px; height:14px; right:2px; top:2px; border-radius:50%; background:var(--orange); }
+    .published { color:#fff; font-weight:950; font-size:18px; text-align:center; }
+
+    .visual-moment { display:grid; grid-template-columns: .92fr 1.08fr; gap: 34px; align-items:center; padding: 34px; border-radius: 42px; background:#fff; border:1px solid #e8eef4; box-shadow: var(--shadow-soft); margin: 28px 0; overflow:hidden; }
+    .visual-moment.reverse { grid-template-columns: 1.08fr .92fr; }
+    .moment-copy { display:grid; gap: 17px; }
+    .moment-copy ul { list-style:none; padding:0; margin:0; display:grid; gap:10px; }
+    .moment-copy li { display:flex; gap:10px; align-items:flex-start; font-weight:750; color:#26364d; }
+    .check { width:21px; height:21px; border-radius:50%; display:grid; place-items:center; flex:0 0 auto; color:#fff; background:var(--orange); font-size:13px; font-weight:900; margin-top:1px; }
+
+    .social-scene { position:relative; min-height: 430px; border-radius: 32px; background: linear-gradient(145deg, #eef3f8, #fff); border:1px solid #e6edf4; padding: 22px; overflow:hidden; }
+    .before-after { display:grid; grid-template-columns: 1fr 1fr; gap:12px; }
+    .photo-card { min-height: 190px; border-radius: 24px; box-shadow: 0 14px 35px rgba(11,31,58,.11); }
+    .photo-card.after { filter:saturate(1.12) contrast(1.04); background: linear-gradient(135deg, #f6d1a5, #8fb5c8 46%, #143251); }
+    .photo-card.after:before { filter:saturate(1.2) brightness(1.08); }
+    .photo-card b { position:absolute; z-index:2; left:12px; top:12px; padding: 7px 10px; border-radius:999px; background:rgba(255,255,255,.92); color:var(--navy); font-size:11px; }
+    .social-previews { position:absolute; left: 44px; right: 22px; bottom: 24px; display:grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
+    .social-post { min-height: 145px; border-radius: 21px; background:#fff; box-shadow: 0 18px 42px rgba(11,31,58,.13); border:1px solid #edf1f5; padding: 11px; display:grid; gap:8px; }
+    .social-post .top { display:flex; align-items:center; gap:7px; font-size:11px; font-weight:850; color:var(--navy); }
+    .social-post img { width:18px; height:18px; }
+    .post-visual { border-radius:14px; min-height:56px; }
+    .post-visual:after { right:12%; bottom:18%; width:30%; height:25%; }
+    .post-lines { display:grid; gap:5px; } .post-lines i { display:block; height:6px; border-radius:999px; background:#d8e1ea; } .post-lines i:nth-child(2){width:70%;}
+
+    .gmb-scene { min-height: 430px; border-radius: 32px; background: linear-gradient(145deg, #f7fafc, #fff); border:1px solid #e6edf4; padding: 20px; position:relative; overflow:hidden; }
+    .gmb-card { border-radius: 28px; background:#fff; border:1px solid #e8eef4; box-shadow: var(--shadow-soft); overflow:hidden; }
+    .gmb-cover { min-height:130px; }
+    .gmb-cover:after { right:20px; bottom:22px; width:105px; height:64px; }
+    .gmb-body { padding:18px; display:grid; gap:12px; }
+    .gmb-title { display:flex; align-items:center; justify-content:space-between; gap:10px; color:var(--navy); font-weight:900; }
+    .gmb-title img { width:27px; height:27px; }
+    .stars { color:#f6a500; letter-spacing:1px; font-size:14px; }
+    .gmb-post-card { margin-left: 44px; margin-top: -10px; border-radius: 22px; background:#fff; border:1px solid #e8eef4; box-shadow: 0 18px 40px rgba(11,31,58,.13); padding:14px; display:grid; grid-template-columns:80px 1fr; gap:13px; align-items:center; max-width: 360px; }
+    .gmb-thumb { height:74px; border-radius:16px; }
+    .gmb-thumb:after { right:10px; bottom:18px; width:34px; height:22px; }
+    .gmb-lines { display:grid; gap:7px; } .gmb-lines i { height:8px; border-radius:99px; background:#d9e1ea; } .gmb-lines i:nth-child(1){width:92%;}.gmb-lines i:nth-child(2){width:62%; background:rgba(255,122,26,.42)}
+
+    .review-scene { min-height: 445px; border-radius: 32px; background: linear-gradient(145deg, #0b1f3a, #132f52); padding: 22px; position:relative; overflow:hidden; }
+    .sms-phone { width: 236px; min-height: 370px; border-radius: 34px; background:#101820; padding:10px; box-shadow: 0 18px 44px rgba(0,0,0,.28); }
+    .sms-screen { height: 350px; border-radius:26px; background:#f8fafc; padding:15px; display:grid; align-content:start; gap:13px; }
+    .sms-header { font-size:12px; font-weight:900; color:var(--navy); display:flex; align-items:center; justify-content:space-between; }
+    .bubble { border-radius: 18px 18px 18px 6px; padding: 12px; background:#fff; border:1px solid #e6edf4; color:#26364d; font-size:12px; line-height:1.42; box-shadow:0 8px 22px rgba(11,31,58,.07); }
+    .sms-send { margin-top:8px; border-radius:16px; background:#ff7a1a; color:#fff; padding:11px; text-align:center; font-weight:900; font-size:12px; }
+    .review-card { position:absolute; right:24px; bottom:32px; width:min(280px, 58%); border-radius:26px; background:#fff; padding:18px; box-shadow:0 22px 52px rgba(0,0,0,.24); display:grid; gap:11px; }
+    .fake-badge { width:fit-content; border-radius:999px; padding:6px 9px; background:#eef2ff; color:#1d4ed8; font-size:10px; font-weight:950; text-transform:uppercase; letter-spacing:.06em; }
+    .review-card strong { color:var(--navy); font-family:Montserrat, Inter, sans-serif; font-size:20px; }
+    .review-card p { font-size:13px; }
+
+    .control-panel { display:grid; grid-template-columns: 1fr 1fr; gap:24px; align-items:center; background: linear-gradient(145deg, #fff, #f6f9fc); border:1px solid #e7edf4; border-radius:42px; padding:32px; box-shadow:var(--shadow-soft); }
+    .validation-ui { border-radius:30px; background:#fff; box-shadow:var(--shadow); border:1px solid #e8eef4; padding:18px; display:grid; gap:14px; }
+    .editable { border:1px solid #dbe4ee; border-radius:20px; padding:16px; background:#fbfdff; }
+    .editable label { display:block; color:#667085; font-size:11px; font-weight:900; text-transform:uppercase; letter-spacing:.08em; margin-bottom:9px; }
+    .editable p { color:var(--navy); font-size:14px; }
+    .network-list { display:grid; gap:9px; }
+    .network-row { display:flex; align-items:center; justify-content:space-between; padding:10px 12px; border:1px solid #edf1f5; border-radius:16px; color:var(--navy); font-weight:800; font-size:13px; }
+    .network-row span { display:flex; align-items:center; gap:8px; } .network-row img { width:18px; height:18px; }
+
+    .stats-grid { display:grid; grid-template-columns: repeat(4, 1fr); gap:14px; margin-top:30px; }
+    .stat-card { border-radius: 26px; background:#fff; border:1px solid #e7edf4; padding:22px; box-shadow:var(--shadow-soft); }
+    .stat-card strong { display:block; color:var(--navy); font-family:Montserrat, Inter, sans-serif; font-size: clamp(30px, 4vw, 46px); letter-spacing:-.06em; margin-bottom:9px; }
+    .stat-card p { font-size:14px; }
+    .caution { margin-top:16px; color:#697586; font-size:13px; text-align:center; }
+
+    .pricing { display:grid; grid-template-columns: 1fr 1fr; gap:18px; align-items:stretch; margin-top:30px; }
+    .price-card { position:relative; border-radius: 30px; background:#fff; border:1px solid #e7edf4; padding:26px; box-shadow: var(--shadow-soft); display:grid; gap:18px; }
+    .price-card.pro { border-color: rgba(255,122,26,.45); box-shadow: 0 24px 60px rgba(255,122,26,.13); }
+    .plan-badge { width:fit-content; border-radius:999px; padding:8px 11px; background:#f1f5f9; color:var(--navy); font-size:12px; font-weight:900; text-transform:uppercase; letter-spacing:.06em; }
+    .price-card.pro .plan-badge { background:rgba(255,122,26,.12); color:#a24607; }
+    .price { font-family: Montserrat, Inter, sans-serif; color:var(--navy); font-size:42px; font-weight:850; letter-spacing:-.06em; } .price small { font-size:15px; letter-spacing:0; color:#64748b; font-weight:800; }
+    .features { list-style:none; margin:0; padding:0; display:grid; gap:10px; } .features li { display:flex; align-items:flex-start; gap:9px; color:#334155; font-weight:720; }
+
+    .faq-grid { display:grid; grid-template-columns: 1fr 1fr; gap:14px; }
+    .faq-card { border:1px solid #e7edf4; border-radius:20px; background:#fff; padding:18px; box-shadow:0 10px 24px rgba(11,31,58,.05); display:grid; gap:9px; }
+    .faq-card h3 { font-size:16px; letter-spacing:-.025em; color:var(--navy); }
+    .faq-card p { font-size:14px; color:#516176; }
+
+    .final-cta { position:relative; overflow:hidden; border-radius:44px; background: var(--navy); color:#fff; padding:48px 28px; text-align:center; box-shadow:var(--shadow); }
+    .final-cta:before { content:""; position:absolute; inset:auto auto -190px 50%; transform:translateX(-50%); width:580px; height:300px; border-radius:50%; background:rgba(255,122,26,.22); filter:blur(4px); }
+    .final-cta > * { position:relative; z-index:1; }
+    .final-cta h2 { color:#fff; margin-bottom:14px; } .final-cta p { color:rgba(255,255,255,.78); max-width:610px; margin:0 auto 22px; }
+    .final-cta .button { margin:0 auto; }
+
+    .mobile-only { display:none; }
+
+    @media (max-width: 980px) {
+      .nav, .header-actions .button-secondary { display:none; }
+      .hero-grid, .visual-moment, .visual-moment.reverse, .control-panel { grid-template-columns: 1fr; }
+      .hero { padding-top: 38px; }
+      .hero-visual { min-height: auto; }
+      .visibility-board { min-height: auto; }
+      .machine-flow { grid-template-columns: 1fr 1fr; }
+      .stats-grid { grid-template-columns: 1fr 1fr; }
+      .faq-grid { grid-template-columns: 1fr; }
+    }
+
+    @media (max-width: 640px) {
+      .container { width: min(100% - 24px, 440px); }
+      .prototype-ribbon { font-size:10px; text-align:center; padding:0 10px; }
+      .header-inner { min-height:70px; }
+      .logo { width: 176px; }
+      .header-actions .button { min-height:40px; padding:0 12px; font-size:12px; }
+      .section { padding: 56px 0; } .section-tight { padding:42px 0; }
+      h1 { font-size: clamp(34px, 10.2vw, 42px); line-height: 1.02; letter-spacing:-.052em; }
+      h2 { font-size: clamp(29px, 8.4vw, 38px); }
+      p, .lead { font-size:15px; }
+      .hero-copy { gap:14px; }
+      .proof-row { gap:7px; }
+      .proof-pill { font-size:12px; padding:8px 10px; }
+      .hero-actions { flex-direction:column; align-items:stretch; } .hero-actions .button, .hero-actions .button-secondary { width:100%; }
+      .visibility-board { padding:12px; border-radius:30px; }
+      .hero-machine { grid-template-columns:1fr; }
+      .arrow-stack { transform: rotate(90deg); min-height: 26px; }
+      .phone-shell, .output-card { min-height:auto; }
+      .phone-screen { min-height: 345px; } .job-photo { min-height:140px; } .retouch-card { grid-template-columns:1fr 1fr; }
+      .float-1, .float-2 { display:none; }
+      .machine-panel { border-radius:30px; padding:20px; }
+      .machine-flow { grid-template-columns:1fr; gap:11px; }
+      .machine-step { min-height:185px; }
+      .visual-moment { padding:19px; border-radius:30px; gap:22px; }
+      .social-scene, .gmb-scene, .review-scene { min-height:390px; border-radius:26px; padding:14px; }
+      .before-after { gap:8px; } .photo-card { min-height:145px; }
+      .social-previews { left:14px; right:14px; bottom:14px; grid-template-columns:1fr; }
+      .social-post { min-height:auto; grid-template-columns: auto 54px 1fr; align-items:center; }
+      .social-post .post-visual { width:54px; min-height:54px; } .social-post:nth-child(3){ display:none; }
+      .hero-stage-labels { grid-template-columns:1fr; }
+      .gmb-post-card { margin-left:0; max-width:none; grid-template-columns:70px 1fr; }
+      .sms-phone { width:214px; min-height:330px; } .sms-screen { height:310px; }
+      .review-card { right:10px; bottom:12px; width: 210px; padding:14px; border-radius:21px; }
+      .review-card strong { font-size:17px; }
+      .control-panel { padding:19px; border-radius:30px; }
+      .stats-grid, .pricing { grid-template-columns:1fr; }
+      .price-card.pro { order:-1; }
+      .destination-logos { grid-template-columns: repeat(3, 1fr); }
+      .section-head { margin-bottom:26px; }
+      .desktop-only { display:none; } .mobile-only { display:block; }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <div class="prototype-ribbon">Prototype HTML V23 — direction créative, pas production</div>
+    <header class="site-header">
+      <div class="container header-inner">
+        <a href="#top" aria-label="Accueil prototype PubliTools"><img class="logo" src="/brand/publitools-logo.jpg" alt="PubliTools.ai" /></a>
+        <nav class="nav" aria-label="Navigation prototype">
+          <a href="#demo">Démo</a><a href="#moments">Visuels</a><a href="#offre">Offre</a><a href="#faq">FAQ</a>
+        </nav>
+        <div class="header-actions">
+          <a class="button-secondary" href="#demo">Voir la démo</a>
+          <a class="button" href="#offre">Commencer</a>
+        </div>
+      </div>
+    </header>
+
+    <main id="top">
+      <section class="hero">
+        <div class="container hero-grid">
+          <div class="hero-copy">
+            <span class="eyebrow">Pour artisans, TPE et PME du bâtiment</span>
+            <h1>L’IA qui transforme vos chantiers en publicité prête à publier</h1>
+            <p class="lead">Ajoutez une photo, une vidéo, un vocal ou un avis. PubliTools prépare le contenu. Vous validez, puis vous publiez sur Google Business et vos réseaux connectés.</p>
+            <div class="proof-row" aria-label="Points clés PubliTools">
+              <span class="proof-pill"><i class="dot"></i>1 photo + 1 vocal peuvent suffire</span>
+              <span class="proof-pill"><i class="dot"></i>Validation avant publication</span>
+              <span class="proof-pill"><i class="dot"></i>Google + réseaux connectés</span>
+            </div>
+            <div class="hero-actions">
+              <a class="button" href="#offre">Commencer l’essai gratuit</a>
+              <a class="button-secondary" href="#demo">Voir la démo</a>
+            </div>
+            <p class="hero-note">14 jours d’accès Pro complet. Prix affichés en HT.</p>
+          </div>
+
+          <div class="hero-visual" aria-label="Mockup produit PubliTools">
+            <div class="floating-card float-1">Photo chantier + vocal</div>
+            <div class="floating-card float-2">Publication après validation</div>
+            <div class="visibility-board">
+              <div class="board-top">
+                <div class="board-title">Machine à rendre visible</div>
+                <div class="board-status"><span class="dot"></span>Prêt à valider</div>
+              </div>
+              <div class="hero-machine">
+                <div class="phone-shell">
+                  <div class="phone-screen">
+                    <div class="phone-bar"><span>Nouvelle publication</span><span>09:41</span></div>
+                    <div class="job-photo" role="img" aria-label="Chantier stylisé crédible avec artisan, matériaux et échafaudage"><span class="site-sky"></span><span class="site-frame"></span><span class="site-worker"></span><span class="site-tag">Photo chantier</span></div>
+                    <div class="voice-card">
+                      <div class="small-label">Vocal chantier — 32 sec</div>
+                      <div class="wave" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+                    </div>
+                  </div>
+                </div>
+                <div class="arrow-stack" aria-hidden="true">→</div>
+                <div class="output-card">
+                  <div class="caption-box">
+                    <div class="small-label">Caption préparée</div>
+                    <span class="caption-line"></span><span class="caption-line w80"></span><span class="caption-line w65"></span><span class="caption-line orange"></span>
+                  </div>
+                  <div class="retouch-card">
+                    <div class="mini-image"><span>Avant</span></div>
+                    <div class="mini-image after"><span>Après</span></div>
+                  </div>
+                  <div class="prep-strip" aria-label="Préparation PubliTools"><span class="prep-chip">Caption</span><span class="prep-chip">Retouche</span><span class="prep-chip">Format</span></div>
+                  <div class="destination-logos" aria-label="Destinations disponibles">
+                    <span class="logo-chip"><img src="/social/google-official.svg" alt="Google Business" /></span>
+                    <span class="logo-chip"><img src="/social/instagram-official.svg" alt="Instagram" /></span>
+                    <span class="logo-chip"><img src="/social/facebook-official.svg" alt="Facebook" /></span>
+                    <span class="logo-chip"><img src="/social/linkedin-official.svg" alt="LinkedIn" /></span>
+                    <span class="logo-chip"><img src="/social/tiktok-official.svg" alt="TikTok" /></span>
+                    <span class="logo-chip"><img src="/social/youtube-official.svg" alt="YouTube" /></span>
+                  </div>
+                  <div class="hero-stage-labels" aria-label="Hiérarchie produit"><span class="hero-stage">Input</span><span class="hero-stage">Préparation</span><span class="hero-stage active">Validation</span></div>
+                  <div class="publish-bar"><span>Relire • Modifier • Choisir</span><strong>Publier</strong></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section-tight" id="demo">
+        <div class="container machine-panel">
+          <div class="section-head" style="margin-bottom:0">
+            <span class="eyebrow dark">La logique PubliTools</span>
+            <h2>Vous envoyez la matière. PubliTools prépare. Vous gardez la main.</h2>
+            <p>Le contenu est prêt plus vite, mais rien ne part sans votre validation.</p>
+          </div>
+          <div class="machine-flow" aria-label="Démo centrale PubliTools">
+            <article class="machine-step">
+              <span class="step-number">1</span>
+              <div class="step-ui"><div class="mini-dots"><i></i><i></i><i></i></div></div>
+              <div><h3>Vous ajoutez</h3><p>Photo, vidéo, texte, vocal ou avis réel.</p></div>
+            </article>
+            <article class="machine-step">
+              <span class="step-number">2</span>
+              <div class="step-ui"><div class="processing"><span></span><span></span><span></span></div></div>
+              <div><h3>PubliTools prépare</h3><p>Caption, retouche, design, hashtags, format réseau.</p></div>
+            </article>
+            <article class="machine-step">
+              <span class="step-number">3</span>
+              <div class="step-ui"><div class="toggles"><div class="toggle">Instagram <i class="switch"></i></div><div class="toggle">Google <i class="switch"></i></div><div class="toggle">LinkedIn <i class="switch"></i></div></div></div>
+              <div><h3>Vous validez</h3><p>Vous relisez, corrigez et choisissez les destinations.</p></div>
+            </article>
+            <article class="machine-step">
+              <span class="step-number">4</span>
+              <div class="step-ui"><div class="published">Publié maintenant<br><span style="color:#ffb37a">ou programmé avec Pro</span></div></div>
+              <div><h3>Vous publiez</h3><p>Maintenant, ou plus tard avec Pro.</p></div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="moments">
+        <div class="container">
+          <div class="section-head">
+            <span class="eyebrow">3 sorties concrètes</span>
+            <h2>Vos chantiers, votre fiche Google et vos avis deviennent visibles.</h2>
+            <p>Chaque bloc montre une action client : transformer un chantier, activer la fiche Google ou demander un avis, toujours avec validation humaine.</p>
+          </div>
+
+          <article class="visual-moment">
+            <div class="moment-copy">
+              <span class="eyebrow">Réseaux sociaux</span>
+              <h2>Un chantier peut devenir un post propre sur vos réseaux.</h2>
+              <p>PubliTools rédige la caption, améliore la photo, prépare le visuel et adapte le format au réseau. Vous validez avant publication.</p>
+              <ul>
+                <li><span class="check">✓</span>Captions à partir d’un vocal ou d’un texte</li>
+                <li><span class="check">✓</span>Retouche photo chantier</li>
+                <li><span class="check">✓</span>Carrousels, avant/après, visuels brandés</li>
+                <li><span class="check">✓</span>Publication après validation</li>
+              </ul>
+            </div>
+            <div class="social-scene" aria-label="Avant après chantier et previews réseaux sociaux">
+              <div class="before-after"><div class="photo-card"><span class="site-sky"></span><span class="site-frame"></span><span class="site-worker"></span><b>Avant</b></div><div class="photo-card after"><span class="site-sky"></span><span class="site-frame"></span><span class="site-worker"></span><b>Après</b></div></div>
+              <div class="social-previews">
+                <div class="social-post"><div class="top"><img src="/social/instagram-official.svg" alt="Instagram" />Instagram</div><div class="post-visual"><span class="site-sky"></span></div><div class="post-lines"><i></i><i></i></div></div>
+                <div class="social-post"><div class="top"><img src="/social/facebook-official.svg" alt="Facebook" />Facebook</div><div class="post-visual"><span class="site-sky"></span></div><div class="post-lines"><i></i><i></i></div></div>
+                <div class="social-post"><div class="top"><img src="/social/linkedin-official.svg" alt="LinkedIn" />LinkedIn</div><div class="post-visual"><span class="site-sky"></span></div><div class="post-lines"><i></i><i></i></div></div>
+              </div>
+            </div>
+          </article>
+
+          <article class="visual-moment reverse">
+            <div class="gmb-scene" aria-label="Mockup fiche Google Business avec post récent">
+              <div class="gmb-card">
+                <div class="gmb-cover"><span class="site-sky"></span><span class="site-frame"></span><span class="site-worker"></span><span class="site-tag">Photo récente</span></div>
+                <div class="gmb-body">
+                  <div class="gmb-title"><span>Entreprise active cette semaine</span><img src="/social/google-official.svg" alt="Google Business" /></div>
+                  <div class="stars">★★★★★ <span style="color:#64748b;font-size:12px">Avis Google</span></div>
+                  <div class="gmb-lines"><i></i><i></i></div>
+                </div>
+              </div>
+              <div class="gmb-post-card"><div class="gmb-thumb"><span class="site-sky"></span></div><div class="gmb-lines"><i></i><i></i><i></i></div></div>
+            </div>
+            <div class="moment-copy">
+              <span class="eyebrow">Google Business</span>
+              <h2>Votre fiche peut montrer une entreprise active.</h2>
+              <p>PubliTools peut préparer des posts et ajouter des photos sur Google Business. Vos chantiers récents deviennent plus faciles à montrer.</p>
+              <ul>
+                <li><span class="check">✓</span>Posts Google Business</li>
+                <li><span class="check">✓</span>Photos de chantiers</li>
+                <li><span class="check">✓</span>Preuve d’activité récente</li>
+                <li><span class="check">✓</span>Aucun classement Google garanti</li>
+              </ul>
+            </div>
+          </article>
+
+          <article class="visual-moment">
+            <div class="moment-copy">
+              <span class="eyebrow">Avis Google</span>
+              <h2>Demander un avis devient plus simple.</h2>
+              <p>PubliTools prépare un SMS avec le lien Google. L’app SMS de votre téléphone s’ouvre. Vous relisez, puis vous envoyez.</p>
+              <p>Avec Pro, un avis réel peut aussi devenir un visuel ou un post publiable.</p>
+              <ul>
+                <li><span class="check">✓</span>SMS prérédigé</li>
+                <li><span class="check">✓</span>Lien Google Business</li>
+                <li><span class="check">✓</span>Envoi gardé par l’utilisateur</li>
+                <li><span class="check">✓</span>Avis réel → contenu publiable en Pro</li>
+              </ul>
+            </div>
+            <div class="review-scene" aria-label="Téléphone SMS et avis exemple clairement factice">
+              <div class="sms-phone"><div class="sms-screen"><div class="sms-header"><span>SMS avis</span><span>À relire</span></div><div class="bubble">Bonjour, merci pour votre confiance. Pouvez-vous laisser un avis Google sur notre intervention ? Voici le lien : g.page/avis</div><div class="sms-send">Ouvrir l’app SMS</div></div></div>
+              <div class="review-card"><span class="fake-badge">Exemple fictif</span><strong>Avis prêt à valoriser</strong><div class="stars">★★★★★</div><p>Un avis réel peut devenir un visuel ou une publication avec Pro.</p></div>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section class="section-tight">
+        <div class="container control-panel">
+          <div class="moment-copy">
+            <span class="eyebrow">Contrôle</span>
+            <h2>PubliTools prépare. Vous décidez.</h2>
+            <p>Avant chaque publication, vous voyez le texte, le visuel et les destinations. Vous pouvez corriger, décocher un réseau, publier maintenant ou programmer plus tard selon votre plan.</p>
+            <div class="proof-row"><span class="proof-pill">Relire le texte</span><span class="proof-pill">Ajuster le visuel</span><span class="proof-pill">Choisir les réseaux</span><span class="proof-pill">Publier ou programmer</span></div>
+          </div>
+          <div class="validation-ui" aria-label="Interface de validation avant publication">
+            <div class="editable"><label>Caption éditable</label><p>Rénovation terminée cette semaine : reprise propre, finitions nettes et chantier laissé prêt à vivre.</p></div>
+            <div class="network-list">
+              <div class="network-row"><span><img src="/social/google-official.svg" alt="Google" />Google Business</span><i class="switch"></i></div>
+              <div class="network-row"><span><img src="/social/instagram-official.svg" alt="Instagram" />Instagram</span><i class="switch"></i></div>
+              <div class="network-row"><span><img src="/social/facebook-official.svg" alt="Facebook" />Facebook</span><i class="switch"></i></div>
+              <div class="network-row"><span><img src="/social/linkedin-official.svg" alt="LinkedIn" />LinkedIn</span><i class="switch"></i></div>
+            </div>
+            <a class="button" href="#offre">Valider la publication</a>
+          </div>
+        </div>
+      </section>
+
+      <section class="section-tight">
+        <div class="container">
+          <div class="section-head">
+            <span class="eyebrow">Résultats observés</span>
+            <h2>La régularité rend votre travail plus visible.</h2>
+            <p>Résultats observés sur plus de 50 artisans après 3 mois. Pas une garantie individuelle.</p>
+          </div>
+          <div class="stats-grid">
+            <div class="stat-card"><strong>+40 %</strong><p>de demandes de devis observées.</p></div>
+            <div class="stat-card"><strong>+600 %</strong><p>de vues sur les posts chantier.</p></div>
+            <div class="stat-card"><strong>+12</strong><p>places gagnées en visibilité locale moyenne.</p></div>
+            <div class="stat-card"><strong>+35 %</strong><p>d’avis Google collectés.</p></div>
+          </div>
+          <p class="caution">Ces chiffres ne sont pas une garantie individuelle. Ils dépendent de la régularité, de la zone et de la présence existante.</p>
+        </div>
+      </section>
+
+      <section class="section" id="offre">
+        <div class="container">
+          <div class="section-head">
+            <span class="eyebrow">Offre</span>
+            <h2>14 jours pour essayer Pro. Ensuite, gardez le plan choisi.</h2>
+            <p>Prix HT. L’essai donne accès au Pro complet pendant 14 jours.</p>
+          </div>
+          <div class="pricing">
+            <article class="price-card">
+              <span class="plan-badge">Starter</span>
+              <div><h3>Pour garder une présence régulière.</h3><div class="price">19,90 € <small>HT/mois</small></div></div>
+              <ul class="features">
+                <li><span class="check">✓</span>8 publications/mois</li>
+                <li><span class="check">✓</span>3 réseaux maximum par publication</li>
+                <li><span class="check">✓</span>Captions IA à partir d’un vocal</li>
+                <li><span class="check">✓</span>Retouches photo Standard + Intense</li>
+                <li><span class="check">✓</span>Posts Google Business</li>
+                <li><span class="check">✓</span>Demandes d’avis SMS illimitées</li>
+              </ul>
+              <a class="button-secondary" href="#top">Commencer en Starter</a>
+            </article>
+            <article class="price-card pro">
+              <span class="plan-badge">Pro — plan cœur</span>
+              <div><h3>Pour publier sans limite et programmer.</h3><div class="price">39,90 € <small>HT/mois</small></div></div>
+              <ul class="features">
+                <li><span class="check">✓</span>Publications illimitées</li>
+                <li><span class="check">✓</span>Réseaux connectés sans la limite Starter</li>
+                <li><span class="check">✓</span>Programmation</li>
+                <li><span class="check">✓</span>SmartAI illimité</li>
+                <li><span class="check">✓</span>Designs IA exploitables illimités</li>
+                <li><span class="check">✓</span>Avis reçus → contenus publiables</li>
+              </ul>
+              <a class="button" href="#top">Commencer en Pro</a>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section-tight" id="faq">
+        <div class="container">
+          <div class="section-head"><h2>Questions fréquentes</h2></div>
+          <div class="faq-grid">
+            <article class="faq-card"><h3>Est-ce que PubliTools publie automatiquement à ma place ?</h3><p>Non. PubliTools prépare. Vous relisez, corrigez si besoin et validez avant publication.</p></article>
+            <article class="faq-card"><h3>Quels réseaux sont compatibles ?</h3><p>Google Business, Instagram, Facebook, LinkedIn, TikTok et YouTube sont confirmés au lancement.</p></article>
+            <article class="faq-card"><h3>Est-ce que PubliTools envoie les SMS d’avis ?</h3><p>Non. PubliTools prépare le SMS et ouvre l’app SMS. Vous envoyez vous-même.</p></article>
+            <article class="faq-card"><h3>Comment fonctionne l’essai de 14 jours ?</h3><p>Vous testez le plan Pro complet. Ensuite, vous gardez le plan choisi.</p></article>
+            <article class="faq-card"><h3>Est-ce que PubliTools gère toute ma fiche Google Business ?</h3><p>Non. Le périmètre est posts, photos, demandes d’avis SMS et réutilisation d’avis.</p></article>
+            <article class="faq-card"><h3>Est-ce que les résultats sont garantis ?</h3><p>Non. Les chiffres sont des observations. Les résultats varient selon l’activité, la zone et la régularité.</p></article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="container final-cta">
+          <h2>Commencez avec un chantier réel.</h2>
+          <p>Ajoutez une photo, une vidéo, un vocal ou un avis. PubliTools prépare. Vous validez avant publication.</p>
+          <a class="button" href="#top">Créer ma première publication</a>
+          <p class="hero-note" style="margin-top:14px;color:rgba(255,255,255,.7)">Essai 14 jours. Accès Pro complet pendant l’essai. Prix HT.</p>
+        </div>
+      </section>
+    </main>
+  </div>
+</body>
+</html>

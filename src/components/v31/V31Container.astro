@@ -1,0 +1,16 @@
+---
+interface Props {
+  grid?: boolean;
+  narrow?: boolean;
+  as?: 'div' | 'header' | 'section';
+  class?: string;
+}
+
+const { grid = false, narrow = false, as = 'div' } = Astro.props;
+const Tag = as;
+const className = Astro.props.class;
+---
+
+<Tag class:list={['v31-wrap', grid && 'v31-grid', narrow && 'is-narrow', className]} data-narrow={narrow ? 'true' : undefined}>
+  <slot />
+</Tag>

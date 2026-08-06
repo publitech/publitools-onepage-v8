@@ -1,0 +1,14 @@
+---
+interface Props {
+  label?: string;
+  status?: string;
+}
+
+const { label = 'Preview interne', status = 'noindex,nofollow' } = Astro.props;
+---
+
+<div class="inline-flex flex-wrap items-center gap-2 rounded-full border border-[#ff7a1a]/30 bg-white/85 px-3 py-2 text-xs font-bold uppercase tracking-[0.18em] text-[#0b1f3a] shadow-soft">
+  <span class="h-2 w-2 rounded-full bg-[#ff7a1a]" aria-hidden="true"></span>
+  <span>{label}</span>
+  <span class="text-[#6b7280]">{status}</span>
+</div>

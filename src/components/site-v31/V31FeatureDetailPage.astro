@@ -1,0 +1,81 @@
+---
+import V31PageShell from './V31PageShell.astro';
+import V31HeroInternal from './V31HeroInternal.astro';
+import V31Section from './V31Section.astro';
+import V31FaqAccordion from './V31FaqAccordion.astro';
+import { commonCtas, socialLogos } from '../../data/siteV31Features';
+import type { DetailPage } from '../../data/siteV31Features';
+
+interface Props { page: DetailPage }
+const { page } = Astro.props;
+---
+
+<V31PageShell title={page.title} description={page.description} canonical={page.canonical}>
+  <V31HeroInternal
+    eyebrow={page.eyebrow}
+    title={page.h1}
+    lead={page.lead}
+    ctas={commonCtas}
+    visualSrc={page.visualSrc}
+    visualAlt={page.visualAlt}
+    visualLabel={page.visualLabel}
+  />
+
+  <V31Section tone="white" eyebrow="Ce qu’il y a dedans" title={page.capabilityTitle} lead="Les capacités utiles, les limites à connaître, puis les questions fréquentes.">
+    <a class="back-link" href={page.parentHref}>← Retour à {page.parentTitle}</a>
+    {page.slug === 'publication-multi-reseaux' && (
+      <div class="social-logo-strip" aria-label="Réseaux sociaux confirmés">
+        {socialLogos.map((network) => (
+          <div>
+            <img src={network.icon} alt="" width="28" height="28" loading="eager" decoding="async" />
+            <span>{network.label}</span>
+          </div>
+        ))}
+      </div>
+    )}
+    <div class="capability-grid">
+      {page.capabilities.map((capability, index) => (
+        <article>
+          <span>{String(index + 1).padStart(2, '0')}</span>
+          <strong>{capability}</strong>
+        </article>
+      ))}
+      {(page.limitTitle || page.limitText) && (
+        <article class="limit-item">
+          <span>!</span>
+          <strong>{page.limitTitle || 'Limite à connaître'}</strong>
+          {page.limitText && <p>{page.limitText}</p>}
+        </article>
+      )}
+    </div>
+  </V31Section>
+
+  <V31Section tone="soft" eyebrow="FAQ" title="Questions courtes" lead="Les réponses gardent le périmètre produit réel, sans promesse magique.">
+    <V31FaqAccordion items={page.faq} />
+  </V31Section>
+
+  <V31Section narrow eyebrow="Essai" title="Essayez cette fonction dans PubliTools" lead="14 jours pour tester les fonctions Pro avec vos vrais contenus chantier.">
+    <div class="v31-cta-row cta-center">
+      <a class="v31-btn v31-btn-primary" href="https://app.publichantier.fr/?signup=yes">Essayer PubliTools 14 jours</a>
+      <a class="v31-btn v31-btn-secondary" href="/fr/fonctionnalites/">Toutes les fonctionnalités</a>
+    </div>
+  </V31Section>
+</V31PageShell>
+
+<style>
+  .back-link { display: inline-flex; margin-bottom: 24px; color: #ff7a1a; font-size: 14px; font-weight: 900; text-decoration: none; }
+  .social-logo-strip { display: flex; flex-wrap: wrap; gap: 10px; margin: 0 0 24px; }
+  .social-logo-strip div { display: inline-flex; align-items: center; gap: 9px; border: 1px solid #e8edf3; border-radius: 999px; background: #fff; padding: 9px 13px; box-shadow: 0 10px 24px rgba(11,31,58,.06); }
+  .social-logo-strip img { width: 28px; height: 28px; object-fit: contain; }
+  .social-logo-strip span { color: #0b1f3a; font-size: 13px; font-weight: 900; }
+  .capability-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; }
+  .capability-grid article { min-height: 144px; border: 1px solid #e8edf3; border-radius: 26px; background: #fff; padding: 22px; box-shadow: 0 14px 40px rgba(11,31,58,.07); }
+  .capability-grid span { color: #ff7a1a; font: 900 28px/1 Montserrat, sans-serif; letter-spacing: -.04em; }
+  .capability-grid strong { display: block; margin-top: 18px; color: #0b1f3a; font: 900 20px/1.16 Montserrat, sans-serif; letter-spacing: -.03em; }
+  .capability-grid p { margin: 12px 0 0; color: #536174; font-size: 14px; font-weight: 750; line-height: 1.5; }
+  .limit-item { background: #fff7ef !important; border-color: rgba(255,122,26,.24) !important; }
+  .limit-item span { display: inline-grid; place-items: center; width: 32px; height: 32px; border-radius: 999px; background: #ff7a1a; color: #fff; font-size: 20px; }
+  .cta-center { justify-content: center; }
+  @media (max-width: 980px) { .capability-grid { grid-template-columns: repeat(2, minmax(0,1fr)); } }
+  @media (max-width: 640px) { .capability-grid { grid-template-columns: 1fr; } }
+</style>

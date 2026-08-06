@@ -1,0 +1,26 @@
+---
+const { pricing, ctaClass } = Astro.props;
+---
+
+<section class="v13-section v13-section--white" id={pricing.id}>
+  <div class="v13-container">
+    <div class="v13-section-head">
+      <p class="v13-eyebrow">{pricing.eyebrow}</p>
+      <h2>{pricing.title}</h2>
+      <p>{pricing.description}</p>
+    </div>
+    <div class="v13-pricing-grid">
+      {pricing.plans.map((plan: any) => (
+        <article class:list={['v13-price-card', plan.featured && 'is-featured']}>
+          {plan.featured && <span class="v13-plan-tag">{plan.featuredLabel}</span>}
+          <h3>{plan.name}</h3>
+          <p>{plan.subtitle}</p>
+          <strong>{plan.price}</strong>
+          <ul>{plan.features.map((feature: string) => <li>{feature}</li>)}</ul>
+          <a class={ctaClass} href={plan.href}>{plan.ctaLabel}</a>
+        </article>
+      ))}
+    </div>
+    <p class="v13-pricing-note">{pricing.note}</p>
+  </div>
+</section>

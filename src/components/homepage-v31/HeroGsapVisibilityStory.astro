@@ -1,0 +1,584 @@
+---
+const channels = [
+  { id: 'facebook', label: 'Facebook', src: '/social/facebook-official.svg', pos: 'top-left' },
+  { id: 'instagram', label: 'Instagram', src: '/social/instagram-official.svg', pos: 'top' },
+  { id: 'linkedin', label: 'LinkedIn', src: '/social/linkedin-official.svg', pos: 'top-right' },
+  { id: 'google', label: 'Google Business', src: '/social/google-official.svg', pos: 'right' },
+  { id: 'tiktok', label: 'TikTok', src: '/social/tiktok-official.svg', pos: 'bottom-right' },
+  { id: 'youtube', label: 'YouTube', src: '/social/youtube-official.svg', pos: 'bottom-left' },
+];
+
+const signals = [
+  { label: '+128 likes', icon: '👍', class: 'like' },
+  { label: 'Nouvel avis Google', icon: '★★★★★', class: 'review' },
+  { label: 'Demande de devis Gmail', icon: '✉', class: 'mail' },
+];
+---
+
+<div class="v31-gsap-story" data-v31-gsap-story aria-label="Animation PubliTools : un artisan prend une photo de chantier, puis PubliTools diffuse vers les réseaux, les avis et les demandes de devis">
+  <div class="story-bg" aria-hidden="true"></div>
+  <svg class="orbit-lines" viewBox="0 0 420 454" aria-hidden="true">
+    <path d="M209 225 C128 128 98 128 58 98" />
+    <path d="M209 225 C198 112 204 76 210 54" />
+    <path d="M209 225 C286 130 324 116 360 92" />
+    <path d="M209 225 C338 210 356 224 382 228" />
+    <path d="M209 225 C302 306 312 334 336 366" />
+    <path d="M209 225 C126 300 108 330 78 362" />
+  </svg>
+
+  <div class="artisan" data-artisan aria-hidden="true">
+    <div class="artisan-helmet"></div>
+    <div class="artisan-head"></div>
+    <div class="artisan-body"><span></span></div>
+    <div class="artisan-arm" data-artisan-arm></div>
+  </div>
+
+  <div class="story-phone" data-phone>
+    <div class="phone-bar"></div>
+    <div class="phone-screen">
+      <img src="/assets/homepage-v31/SOC-01-source-photo.webp" alt="Photo de chantier prise avec PubliTools" loading="eager" />
+      <span class="capture-label">Photo chantier</span>
+      <span class="focus-frame" aria-hidden="true"></span>
+    </div>
+    <div class="phone-shutter" aria-hidden="true"></div>
+  </div>
+
+  <div class="camera-flash" data-flash aria-hidden="true"></div>
+
+  <div class="publish-card" data-publish-card>
+    <span class="pub-badge">Publication prête</span>
+    <div class="pub-thumb"></div>
+    <div class="pub-lines"><i></i><i></i><i></i></div>
+    <span class="pub-button">Publier</span>
+  </div>
+
+  <div class="brand-burst" aria-label="Diffusion sur les réseaux sociaux">
+    {channels.map((channel) => (
+      <span class={`burst-logo burst-${channel.id} ${channel.pos}`} data-burst-logo>
+        <img src={channel.src} alt={channel.label} loading="lazy" />
+      </span>
+    ))}
+  </div>
+
+  <div class="signal-layer" aria-hidden="true">
+    {signals.map((signal) => (
+      <span class={`signal ${signal.class}`} data-signal>
+        <b>{signal.icon}</b>
+        <small>{signal.label}</small>
+      </span>
+    ))}
+  </div>
+</div>
+
+<style>
+  .v31-gsap-story {
+    --story-navy: #0B1F3A;
+    --story-orange: #FF7A1A;
+    position: relative;
+    width: min(100%, 430px);
+    aspect-ratio: 1 / 1.08;
+    margin-inline: auto;
+    overflow: hidden;
+    border-radius: 34px;
+    background:
+      radial-gradient(circle at 54% 36%, rgba(255, 122, 26, 0.18), transparent 34%),
+      radial-gradient(circle at 18% 82%, rgba(11, 31, 58, 0.08), transparent 30%),
+      linear-gradient(180deg, #FFFFFF 0%, #F4F6F8 100%);
+    border: 1px solid rgba(11, 31, 58, 0.08);
+    box-shadow: 0 24px 64px rgba(11, 31, 58, 0.13);
+    isolation: isolate;
+  }
+
+  .story-bg {
+    position: absolute;
+    inset: 14%;
+    border-radius: 999px;
+    background: rgba(255, 122, 26, 0.08);
+    filter: blur(10px);
+  }
+
+  .orbit-lines {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    opacity: 0.58;
+  }
+
+  .orbit-lines path {
+    fill: none;
+    stroke: rgba(255, 122, 26, 0.42);
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-dasharray: 6 12;
+  }
+
+  .artisan {
+    position: absolute;
+    left: 9%;
+    bottom: 12%;
+    width: 114px;
+    height: 198px;
+    transform-origin: 50% 100%;
+    z-index: 3;
+    will-change: transform, opacity;
+  }
+
+  .artisan-head {
+    width: 54px;
+    height: 54px;
+    margin: 20px auto 0;
+    border-radius: 50%;
+    background: #F1B58D;
+    box-shadow: inset 0 -8px 0 rgba(11, 31, 58, 0.08);
+  }
+
+  .artisan-helmet {
+    position: absolute;
+    left: 50%;
+    top: 4px;
+    width: 66px;
+    height: 32px;
+    transform: translateX(-50%);
+    border-radius: 36px 36px 8px 8px;
+    background: var(--story-orange);
+    box-shadow: inset 0 -5px 0 rgba(11, 31, 58, 0.08);
+  }
+
+  .artisan-helmet::after {
+    content: "";
+    position: absolute;
+    left: 9px;
+    right: 9px;
+    bottom: -5px;
+    height: 8px;
+    border-radius: 999px;
+    background: #FBA35C;
+  }
+
+  .artisan-body {
+    position: relative;
+    width: 86px;
+    height: 108px;
+    margin: 7px auto 0;
+    border-radius: 28px 28px 16px 16px;
+    background: var(--story-navy);
+    overflow: hidden;
+  }
+
+  .artisan-body span {
+    position: absolute;
+    inset: 0 auto 0 50%;
+    width: 18px;
+    background: var(--story-orange);
+    transform: translateX(-50%);
+  }
+
+  .artisan-arm {
+    position: absolute;
+    right: -4px;
+    top: 88px;
+    width: 82px;
+    height: 20px;
+    border-radius: 999px;
+    background: #F1B58D;
+    transform-origin: 10% 50%;
+    box-shadow: 0 10px 18px rgba(11, 31, 58, 0.08);
+    will-change: transform;
+  }
+
+  .story-phone {
+    position: absolute;
+    right: 12%;
+    bottom: 17%;
+    width: 142px;
+    padding: 9px;
+    border-radius: 25px;
+    background: var(--story-navy);
+    box-shadow: 0 22px 38px rgba(11, 31, 58, 0.28);
+    z-index: 5;
+    will-change: transform, opacity;
+  }
+
+  .phone-bar {
+    width: 42px;
+    height: 5px;
+    margin: 0 auto 7px;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.32);
+  }
+
+  .phone-screen {
+    position: relative;
+    overflow: hidden;
+    border-radius: 17px;
+    background: #fff;
+  }
+
+  .phone-screen img {
+    display: block;
+    width: 100%;
+    aspect-ratio: 4 / 5;
+    object-fit: cover;
+  }
+
+  .capture-label {
+    position: absolute;
+    left: 8px;
+    bottom: 8px;
+    padding: 5px 8px;
+    border-radius: 999px;
+    background: rgba(11, 31, 58, 0.82);
+    color: #fff;
+    font-size: 10px;
+    font-weight: 800;
+  }
+
+  .focus-frame {
+    position: absolute;
+    inset: 18px;
+    border: 2px solid rgba(255, 255, 255, 0.9);
+    border-radius: 14px;
+    box-shadow: 0 0 0 999px rgba(0,0,0,0.08);
+  }
+
+  .phone-shutter {
+    width: 32px;
+    height: 32px;
+    margin: 8px auto 0;
+    border-radius: 50%;
+    border: 3px solid rgba(255,255,255,0.6);
+    background: #fff;
+  }
+
+  .camera-flash {
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at 63% 55%, #fff 0%, #fff 18%, rgba(255, 122, 26, 0.55) 34%, rgba(255,255,255,0) 68%);
+    opacity: 0;
+    pointer-events: none;
+    z-index: 12;
+  }
+
+  .publish-card {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: 156px;
+    transform: translate(-50%, calc(-50% - 18px));
+    padding: 10px;
+    border-radius: 20px;
+    background: #fff;
+    border: 1px solid rgba(11, 31, 58, 0.08);
+    box-shadow: 0 18px 38px rgba(11, 31, 58, 0.18);
+    z-index: 6;
+    opacity: 1;
+    will-change: transform, opacity;
+  }
+
+  .pub-badge {
+    display: inline-flex;
+    padding: 4px 8px;
+    border-radius: 999px;
+    background: rgba(255, 122, 26, 0.12);
+    color: var(--story-orange);
+    font-size: 9px;
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+  }
+
+  .pub-thumb {
+    height: 58px;
+    margin-top: 8px;
+    border-radius: 13px;
+    background:
+      linear-gradient(135deg, rgba(11,31,58,0.08), rgba(255,122,26,0.14)),
+      url('/assets/homepage-v31/SOC-01-source-photo.webp') center / cover;
+  }
+
+  .pub-lines {
+    display: grid;
+    gap: 5px;
+    margin: 9px 0;
+  }
+
+  .pub-lines i {
+    display: block;
+    height: 5px;
+    border-radius: 999px;
+    background: rgba(11, 31, 58, 0.14);
+  }
+
+  .pub-lines i:nth-child(1) { width: 95%; }
+  .pub-lines i:nth-child(2) { width: 78%; }
+  .pub-lines i:nth-child(3) { width: 58%; }
+
+  .pub-button {
+    display: grid;
+    place-items: center;
+    height: 28px;
+    border-radius: 9px;
+    background: var(--story-orange);
+    color: #fff;
+    font-size: 11px;
+    font-weight: 900;
+  }
+
+  .burst-logo {
+    position: absolute;
+    left: 50%;
+    top: 48%;
+    width: 52px;
+    height: 52px;
+    display: grid;
+    place-items: center;
+    border-radius: 18px;
+    background: #fff;
+    border: 1px solid rgba(11, 31, 58, 0.08);
+    box-shadow: 0 14px 28px rgba(11, 31, 58, 0.14);
+    opacity: 1;
+    z-index: 7;
+    will-change: transform, opacity;
+  }
+
+  .burst-logo.top-left { transform: translate(-118px, -126px) rotate(-12deg); }
+  .burst-logo.top { transform: translate(-34px, -156px) rotate(8deg); }
+  .burst-logo.top-right { transform: translate(72px, -128px) rotate(-6deg); }
+  .burst-logo.right { transform: translate(124px, -34px) rotate(10deg); }
+  .burst-logo.bottom-right { transform: translate(58px, 74px) rotate(-10deg); }
+  .burst-logo.bottom-left { transform: translate(-86px, 66px) rotate(7deg); }
+
+  .burst-logo img {
+    width: 32px;
+    height: 32px;
+    object-fit: contain;
+  }
+
+  .signal {
+    position: absolute;
+    right: 7%;
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    padding: 8px 11px;
+    border-radius: 999px;
+    background: #fff;
+    color: var(--story-navy);
+    box-shadow: 0 12px 28px rgba(11, 31, 58, 0.13);
+    opacity: 1;
+    z-index: 9;
+    will-change: transform, opacity;
+  }
+
+  .signal b {
+    color: var(--story-orange);
+    font-size: 12px;
+    line-height: 1;
+  }
+
+  .signal small {
+    font-size: 11px;
+    font-weight: 900;
+    white-space: nowrap;
+  }
+
+  .signal.like { top: 15%; }
+  .signal.review { top: 28%; }
+  .signal.mail { top: 41%; }
+
+  @media (max-width: 760px) {
+    .v31-gsap-story {
+      width: min(100%, 342px);
+      aspect-ratio: 1 / 1.12;
+      border-radius: 28px;
+    }
+
+    .artisan {
+      left: 4%;
+      bottom: 10%;
+      transform: scale(0.86);
+    }
+
+    .story-phone {
+      right: 7%;
+      bottom: 16%;
+      width: 122px;
+    }
+
+    .publish-card {
+      width: 134px;
+    }
+
+    .burst-logo {
+      width: 44px;
+      height: 44px;
+      border-radius: 15px;
+    }
+
+    .burst-logo img {
+      width: 27px;
+      height: 27px;
+    }
+
+    .signal {
+      right: 4%;
+      padding: 7px 9px;
+    }
+
+    .signal small {
+      font-size: 9px;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .orbit-lines path {
+      stroke-dasharray: none;
+    }
+
+    .artisan,
+    .story-phone,
+    .publish-card,
+    .burst-logo,
+    .signal {
+      opacity: 1 !important;
+      transform: none !important;
+    }
+
+    .camera-flash {
+      display: none;
+    }
+  }
+</style>
+
+<script>
+  import { gsap } from 'gsap';
+
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  document.querySelectorAll('[data-v31-gsap-story]').forEach((root) => {
+    const artisan = root.querySelector('[data-artisan]');
+    const arm = root.querySelector('[data-artisan-arm]');
+    const phone = root.querySelector('[data-phone]');
+    const flash = root.querySelector('[data-flash]');
+    const publishCard = root.querySelector('[data-publish-card]');
+    const orbitPaths = gsap.utils.toArray(root.querySelectorAll('.orbit-lines path'));
+    const logos = gsap.utils.toArray(root.querySelectorAll('[data-burst-logo]'));
+    const signals = gsap.utils.toArray(root.querySelectorAll('[data-signal]'));
+
+    if (!artisan || !phone || !flash || !publishCard) return;
+
+    const logoTargets = [
+      { x: -118, y: -126, rotation: -12 },
+      { x: -34, y: -156, rotation: 8 },
+      { x: 72, y: -128, rotation: -6 },
+      { x: 124, y: -34, rotation: 10 },
+      { x: 58, y: 74, rotation: -10 },
+      { x: -86, y: 66, rotation: 7 },
+    ];
+
+    if (window.matchMedia('(max-width: 760px)').matches) {
+      logoTargets[0] = { x: -96, y: -108, rotation: -12 };
+      logoTargets[1] = { x: -24, y: -136, rotation: 8 };
+      logoTargets[2] = { x: 62, y: -108, rotation: -6 };
+      logoTargets[3] = { x: 100, y: -24, rotation: 10 };
+      logoTargets[4] = { x: 50, y: 66, rotation: -10 };
+      logoTargets[5] = { x: -76, y: 58, rotation: 7 };
+    }
+
+    if (reduceMotion) {
+      gsap.set([artisan, phone, publishCard, logos, signals], { autoAlpha: 1, clearProps: 'transform' });
+      gsap.set(logos, {
+        x: (index) => logoTargets[index]?.x ?? 0,
+        y: (index) => logoTargets[index]?.y ?? 0,
+        rotation: (index) => logoTargets[index]?.rotation ?? 0,
+      });
+      return;
+    }
+
+    gsap.set(orbitPaths, { strokeDashoffset: 0, autoAlpha: 1 });
+    // Frame de sécurité : la scène finale reste visible même sans JS ou entre deux cycles.
+    gsap.set(artisan, { x: 0, autoAlpha: 1 });
+    gsap.set(phone, { x: 0, y: 0, rotate: 0, autoAlpha: 1, transformOrigin: '50% 80%' });
+    gsap.set(publishCard, { xPercent: -50, yPercent: -50, y: -18, scale: 1, rotate: 0, autoAlpha: 1 });
+    gsap.set(logos, {
+      autoAlpha: 1,
+      scale: 1,
+      x: (index) => logoTargets[index]?.x ?? 0,
+      y: (index) => logoTargets[index]?.y ?? 0,
+      rotation: (index) => logoTargets[index]?.rotation ?? 0,
+    });
+    gsap.set(signals, { x: 0, scale: 1, autoAlpha: 1 });
+
+    const tl = gsap.timeline({
+      repeat: -1,
+      repeatDelay: 1.35,
+      paused: true,
+      defaults: { ease: 'power3.out' },
+    });
+
+    tl
+      .fromTo(artisan, { x: -14 }, { x: 0, duration: 0.38 })
+      .fromTo(phone, { x: 12, y: 8, rotate: -4 }, { x: 0, y: 0, rotate: 0, duration: 0.46 }, '<0.06')
+      .to(arm, { rotate: -15, duration: 0.34 }, '<0.22')
+      .to(phone, { scale: 1.045, duration: 0.16, yoyo: true, repeat: 1 })
+      .to(flash, { autoAlpha: 0.98, duration: 0.06 })
+      .to(flash, { autoAlpha: 0, duration: 0.23 })
+      .fromTo(publishCard, { y: 28, scale: 0.72, rotate: -3, autoAlpha: 0 }, { y: -18, scale: 1, rotate: 0, autoAlpha: 1, duration: 0.52, ease: 'back.out(1.4)', immediateRender: false }, '<0.03')
+      .fromTo(orbitPaths, { strokeDashoffset: 60, autoAlpha: 0 }, { autoAlpha: 1, strokeDashoffset: 0, duration: 0.42, stagger: 0.025, immediateRender: false }, '<0.12')
+      .fromTo(logos, {
+        x: 0,
+        y: 0,
+        scale: 0.25,
+        autoAlpha: 0,
+      }, {
+        autoAlpha: 1,
+        scale: 1,
+        x: (index) => logoTargets[index]?.x ?? 0,
+        y: (index) => logoTargets[index]?.y ?? 0,
+        rotation: (index) => logoTargets[index]?.rotation ?? 0,
+        duration: 0.72,
+        stagger: 0.045,
+        ease: 'back.out(1.65)',
+        immediateRender: false,
+      }, '<0.04')
+      .fromTo(signals, {
+        x: 32,
+        scale: 0.92,
+        autoAlpha: 0,
+      }, {
+        x: 0,
+        scale: 1,
+        autoAlpha: 1,
+        duration: 0.42,
+        stagger: 0.13,
+        ease: 'power2.out',
+        immediateRender: false,
+      }, '-=0.22')
+      .to(logos, {
+        y: '+=7',
+        duration: 1.18,
+        stagger: 0.03,
+        yoyo: true,
+        repeat: 1,
+        ease: 'sine.inOut',
+      })
+      .set([artisan, phone, publishCard, logos, signals, orbitPaths], { autoAlpha: 1 });
+
+    const observer = new IntersectionObserver(([entry]) => {
+      if (entry?.isIntersecting) {
+        tl.play();
+      } else {
+        tl.pause();
+      }
+    }, { threshold: 0.35 });
+
+    observer.observe(root);
+
+    window.addEventListener('pagehide', () => {
+      tl.kill();
+      observer.disconnect();
+    }, { once: true });
+  });
+</script>

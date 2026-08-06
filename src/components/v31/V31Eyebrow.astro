@@ -1,0 +1,48 @@
+---
+interface Props {
+  text: string;
+  tone?: 'light' | 'dark' | 'orange';
+  as?: 'p' | 'span';
+  class?: string;
+}
+
+const { text, tone = 'light', as = 'p' } = Astro.props;
+const Tag = as;
+const className = Astro.props.class;
+---
+
+<Tag class:list={['v31-eyebrow', `is-${tone}`, className]}>{text}</Tag>
+
+<style>
+  .v31-eyebrow {
+    display: inline-flex;
+    align-items: center;
+    width: fit-content;
+    min-height: 32px;
+    border: 1px solid rgba(11, 31, 58, 0.1);
+    border-radius: 999px;
+    background: #ffffff;
+    padding: 7px 14px;
+    color: var(--v31-muted);
+    box-shadow: 0 2px 8px rgba(11, 31, 58, 0.04);
+    font-family: var(--v31-font-display);
+    font-size: 11px;
+    font-weight: 900;
+    letter-spacing: 0.09em;
+    line-height: 16px;
+    text-transform: uppercase;
+  }
+
+  .is-dark {
+    border-color: rgba(255, 255, 255, 0.16);
+    background: rgba(255, 255, 255, 0.08);
+    color: rgba(255, 255, 255, 0.74);
+    box-shadow: none;
+  }
+
+  .is-orange {
+    border-color: rgba(255, 122, 26, 0.18);
+    background: #fff7ef;
+    color: var(--v31-orange);
+  }
+</style>

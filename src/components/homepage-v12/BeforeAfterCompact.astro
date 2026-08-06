@@ -1,0 +1,9 @@
+---
+const { section, images } = Astro.props;
+---
+<section class="v12-section v12-section--soft" id={section.id}>
+  <div class="v12-container">
+    <div class="v12-section-head"><h2>{section.title}</h2><p>{section.subtitle}</p></div>
+    <div class="v12-two-col"><figure class="v12-stage v12-stage--split"><img src={images.beforeAfter.src} width={images.beforeAfter.width} height={images.beforeAfter.height} alt={images.beforeAfter.alt} loading="eager" decoding="async" /></figure><div class="v12-compare-list">{section.rows.map((row: any) => <div><span>{row.before}</span><strong>{row.after}</strong></div>)}</div></div>
+  </div>
+</section>

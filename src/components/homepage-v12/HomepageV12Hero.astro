@@ -1,0 +1,24 @@
+---
+const { hero, images, logos, ctaClass, secondaryCtaClass } = Astro.props;
+---
+<section class="v12-hero" id="demo">
+  <div class="v12-container v12-hero__inner">
+    <p class="v12-eyebrow">{hero.eyebrow}</p>
+    <h1>{hero.h1}</h1>
+    <p class="v12-lead">{hero.subheadline}</p>
+    <div class="v12-actions">
+      <a class={ctaClass} href={hero.primaryCta.href}>{hero.primaryCta.label}</a>
+      <a class={secondaryCtaClass} href={hero.secondaryCta.href}>{hero.secondaryCta.label}</a>
+    </div>
+    <div class="v12-chip-row" aria-label="Garanties produit">
+      {hero.bullets.map((chip: string) => <span class="v12-chip">{chip}</span>)}
+    </div>
+    <figure class="v12-stage v12-stage--hero" data-v12-hero-stage>
+      <img src={images.hero.src} width={images.hero.width} height={images.hero.height} alt={images.hero.alt} loading="eager" fetchpriority="high" decoding="async" />
+      <div class="v12-hero__logos" aria-label="6 destinations disponibles">
+        {logos.map((logo: any) => <span class="v12-logo-pill"><img src={logo.src} alt={logo.alt} width="28" height="28" loading="eager" decoding="async" />{logo.name}</span>)}
+      </div>
+    </figure>
+    <p class="v12-social-proof">{hero.socialProof}</p>
+  </div>
+</section>

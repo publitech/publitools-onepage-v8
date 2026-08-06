@@ -1,0 +1,58 @@
+---
+import V31PageShell from './V31PageShell.astro';
+import V31HeroInternal from './V31HeroInternal.astro';
+import V31Section from './V31Section.astro';
+import V31CardGrid from './V31CardGrid.astro';
+import V31FaqAccordion from './V31FaqAccordion.astro';
+import { commonCtas, socialLogos } from '../../data/siteV31Features';
+import type { CategoryPage } from '../../data/siteV31Features';
+
+interface Props { page: CategoryPage }
+const { page } = Astro.props;
+---
+
+<V31PageShell title={page.title} description={page.description} canonical={page.canonical}>
+  <V31HeroInternal
+    eyebrow={page.eyebrow}
+    title={page.h1}
+    lead={page.lead}
+    proof={page.proof}
+    ctas={commonCtas}
+    visualSrc={page.visualSrc}
+    visualAlt={page.visualAlt}
+    visualLabel={page.visualLabel}
+  />
+
+  <V31Section tone="white" eyebrow="Ce qu’il y a dedans" title={page.featuresTitle} lead={page.featuresLead}>
+    {page.slug === 'automatisation-reseaux-sociaux' && (
+      <div class="social-logo-strip" aria-label="Réseaux sociaux confirmés">
+        {socialLogos.map((network) => (
+          <div>
+            <img src={network.icon} alt="" width="28" height="28" loading="eager" decoding="async" />
+            <span>{network.label}</span>
+          </div>
+        ))}
+      </div>
+    )}
+    <V31CardGrid cards={page.features} columns={page.features.length > 2 ? 4 : 2} />
+  </V31Section>
+
+  <V31Section tone="soft" eyebrow="FAQ" title="Questions courtes" lead="Des réponses simples sur le périmètre réel, les limites et les plans.">
+    <V31FaqAccordion items={page.faq} />
+  </V31Section>
+
+  <V31Section narrow eyebrow="Essai" title="Essayez PubliTools sur vos vrais chantiers" lead="14 jours pour tester les fonctions Pro, puis choisir le plan adapté.">
+    <div class="v31-cta-row cta-center">
+      <a class="v31-btn v31-btn-primary" href="https://app.publichantier.fr/?signup=yes">Essayer PubliTools 14 jours</a>
+      <a class="v31-btn v31-btn-secondary" href="/fr/fonctionnalites/">Découvrir les fonctionnalités</a>
+    </div>
+  </V31Section>
+</V31PageShell>
+
+<style>
+  .social-logo-strip { display: flex; flex-wrap: wrap; gap: 10px; margin: 0 0 28px; }
+  .social-logo-strip div { display: inline-flex; align-items: center; gap: 9px; border: 1px solid #e8edf3; border-radius: 999px; background: #fff; padding: 9px 13px; box-shadow: 0 10px 24px rgba(11,31,58,.06); }
+  .social-logo-strip img { width: 28px; height: 28px; object-fit: contain; }
+  .social-logo-strip span { color: #0b1f3a; font-size: 13px; font-weight: 900; }
+  .cta-center { justify-content: center; }
+</style>

@@ -1,0 +1,32 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import OnePageHeader from '../../components/onepage/OnePageHeader.astro';
+import OnePageHero from '../../components/onepage/OnePageHero.astro';
+import OnePagePersonalize from '../../components/onepage/OnePagePersonalize.astro';
+import OnePageHowItWorks from '../../components/onepage/OnePageHowItWorks.astro';
+import OnePageResults from '../../components/onepage/OnePageResults.astro';
+import OnePagePricing from '../../components/onepage/OnePagePricing.astro';
+import OnePageFaq from '../../components/onepage/OnePageFaq.astro';
+import OnePageFinalCta from '../../components/onepage/OnePageFinalCta.astro';
+import OnePageFooter from '../../components/onepage/OnePageFooter.astro';
+import '../../styles/onepage.css';
+---
+
+<Layout
+  title="L'outil N°1 du BTP pour automatiser vos réseaux sociaux | PubliTools"
+  description="Transformez vos photos, vidéos et vocaux de chantier en publications prêtes à valider sur Facebook, Instagram, LinkedIn, Google Business, TikTok et YouTube."
+  canonical="https://publitools.ai/fr/"
+  footer={false}
+>
+  <OnePageHeader />
+  <main>
+    <OnePageHero />
+    <OnePagePersonalize />
+    <OnePageHowItWorks />
+    <OnePageResults />
+    <OnePagePricing />
+    <OnePageFaq />
+    <OnePageFinalCta />
+  </main>
+  <OnePageFooter />
+</Layout>

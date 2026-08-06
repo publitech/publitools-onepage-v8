@@ -1,0 +1,109 @@
+@import '@fontsource/montserrat/400.css';
+@import '@fontsource/montserrat/500.css';
+@import '@fontsource/montserrat/600.css';
+@import '@fontsource/montserrat/700.css';
+@import '@fontsource/montserrat/800.css';
+@import '@fontsource/montserrat/900.css';
+@import '@fontsource/inter/400.css';
+@import '@fontsource/inter/500.css';
+@import '@fontsource/inter/600.css';
+@import './v31-system.css';
+@import 'tailwindcss';
+
+@theme {
+  --font-sans: 'Montserrat', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+  
+  --color-orange-400: #fbb24a;
+  --color-orange-500: #f99c1c;
+  --color-orange-600: #e2870b;
+
+  --color-slate-900: #252832;
+  --color-slate-950: #1c1f26;
+}
+
+:root {
+  --color-primary: #1c1f26;
+  --color-accent: #f99c1c;
+  --color-secondary: #fac43e;
+  --color-bg: #F4F6F8;
+  --color-text: #1c1f26;
+  --color-muted: #475569;
+  --color-border: #e8e9ea;
+  --color-success: #10b981;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background: var(--color-bg);
+  color: var(--color-text);
+  font-family: 'Inter', ui-sans-serif, system-ui, sans-serif;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+button,
+a {
+  font-family: 'Montserrat', ui-sans-serif, system-ui, sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+.container {
+  margin-inline: auto;
+  width: min(100% - 1.5rem, 1200px);
+}
+
+.site-container {
+  margin-inline: auto;
+  width: min(1184px, calc(100% - 64px));
+}
+
+@media (max-width: 1020px) {
+  .site-container {
+    width: min(1184px, calc(100% - 48px));
+  }
+}
+
+@media (max-width: 680px) {
+  .site-container {
+    width: min(1184px, calc(100% - 32px));
+  }
+}
+
+.section-pad {
+  padding-block: 5.5rem;
+}
+
+@media (min-width: 768px) {
+  .section-pad {
+    padding-block: 7.5rem;
+  }
+}
+
+.glass {
+  background: rgba(255, 255, 255, 0.72);
+  backdrop-filter: blur(14px);
+}
+
+.gradient-brand {
+  background-image: linear-gradient(135deg, #1c1f26 0%, #f99c1c 100%);
+}
+
+.shadow-soft {
+  box-shadow: 0 12px 40px rgba(28, 31, 38, 0.08);
+}

@@ -1,0 +1,29 @@
+---
+const signupUrl = 'https://app.publichantier.fr/?signup=yes';
+---
+
+<footer class="op-footer">
+  <div class="op-container op-footer__inner">
+    <div class="op-footer__brand">
+      <a href="#top" aria-label="Retour en haut de la page PubliTools">
+        <img src="/brand/publitools-logo-official.svg" alt="PubliTools" width="500" height="100" />
+      </a>
+      <p>L’outil marketing IA conçu pour les artisans et entreprises du bâtiment.</p>
+    </div>
+    <nav aria-label="Navigation du pied de page">
+      <a href="#tarifs">Tarifs</a>
+      <a href="#faq">FAQ</a>
+      <a href={signupUrl}>Démarrer gratuitement</a>
+      <a href="https://app.publichantier.fr/">Se connecter</a>
+    </nav>
+    <nav aria-label="Liens légaux">
+      <a href="/fr/mentions-legales/">Mentions légales</a>
+      <a href="/fr/cgu/">CGU</a>
+      <a href="/fr/confidentialite/">Confidentialité</a>
+    </nav>
+  </div>
+  <div class="op-container op-footer__bottom">
+    <span>© {new Date().getFullYear()} PubliTools</span>
+    <span>CUT. BUILD. POST.</span>
+  </div>
+</footer>

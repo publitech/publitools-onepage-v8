@@ -1,0 +1,23 @@
+---
+const { faq, ctaClass } = Astro.props;
+---
+
+<section class="v13-section v13-section--soft" id={faq.id}>
+  <div class="v13-container v13-faq-wrap">
+    <div class="v13-section-head">
+      <h2>{faq.title}</h2>
+    </div>
+    <div class="v13-faq-list">
+      {faq.items.map((item: any) => (
+        <details>
+          <summary>{item.question}</summary>
+          <p>{item.answer}</p>
+        </details>
+      ))}
+    </div>
+    <div class="v13-final-faq-cta">
+      <p>{faq.reassurance}</p>
+      <a class={ctaClass} href={faq.cta.href}>{faq.cta.label}</a>
+    </div>
+  </div>
+</section>

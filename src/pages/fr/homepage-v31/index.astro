@@ -1,0 +1,18 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import SiteHeader from '../../../components/SiteHeader.astro';
+import HomepageV31 from '../../../components/homepage-v31/HomepageV31.astro';
+
+const title = 'PubliTools — Homepage France V31';
+const description = 'PubliTools transforme vos chantiers en visibilité internet régulière : posts, visuels, Google Business, avis clients et publications multi-réseaux.';
+---
+
+<Layout
+  title={title}
+  description={description}
+  canonical="https://publitools.ai/fr/homepage-v31/"
+  footerNetworkText="Facebook, Instagram, LinkedIn, Google Business, TikTok, YouTube — selon comptes connectés."
+>
+  <SiteHeader />
+  <HomepageV31 />
+</Layout>

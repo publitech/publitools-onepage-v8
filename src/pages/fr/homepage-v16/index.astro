@@ -1,0 +1,15 @@
+---
+import { getEntry } from 'astro:content';
+import Layout from '../../../layouts/Layout.astro';
+import SiteHeader from '../../../components/SiteHeader.astro';
+import HomepageV16 from '../../../components/homepage-v16/HomepageV16.astro';
+
+const homepageEntry = await getEntry('homepage', 'fr-v16');
+if (!homepageEntry) throw new Error('Homepage FR V16 content entry not found: src/content/homepage/fr-v16.json');
+const content = homepageEntry.data as any;
+---
+
+<Layout title={content.seo.title} description={content.seo.description} canonical={content.seo.canonical}>
+  <SiteHeader />
+  <HomepageV16 content={content} />
+</Layout>

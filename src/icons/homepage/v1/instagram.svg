@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" fill="none">
+  <!-- Camera body - square with rounded corners -->
+  <rect x="10" y="10" width="28" height="28" rx="6" fill="currentColor" opacity="0.1" stroke="currentColor" stroke-width="2.5"/>
+  
+  <!-- Inner frame -->
+  <rect x="15" y="15" width="18" height="18" rx="3" stroke="currentColor" stroke-width="2" fill="none" opacity="0.3"/>
+  
+  <!-- Lens - orange accent -->
+  <circle cx="24" cy="24" r="6" stroke="currentColor" stroke-width="2.5" fill="none"/>
+  <circle cx="24" cy="24" r="3" fill="#FF7A1A" opacity="0.8"/>
+  
+  <!-- Viewfinder accent -->
+  <circle cx="31" cy="17" r="2" fill="#FF7A1A"/>
+  
+  <!-- Modular corner blocks -->
+  <rect x="10" y="10" width="4" height="4" fill="#FF7A1A" opacity="0.6"/>
+  <rect x="34" y="10" width="4" height="4" fill="currentColor" opacity="0.4"/>
+</svg>

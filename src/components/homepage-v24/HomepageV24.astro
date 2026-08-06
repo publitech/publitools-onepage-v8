@@ -1,0 +1,481 @@
+---
+// Homepage FR V24 — route corrective dédiée.
+// Scope: /fr/homepage-v24/ uniquement. Contenu visible sans JS/reveal.
+const destinations = [
+  { label: 'Google Business', src: '/social/google-official.svg' },
+  { label: 'Instagram', src: '/social/instagram-official.svg' },
+  { label: 'Facebook', src: '/social/facebook-official.svg' },
+  { label: 'LinkedIn', src: '/social/linkedin-official.svg' },
+  { label: 'TikTok', src: '/social/tiktok-official.svg' },
+  { label: 'YouTube', src: '/social/youtube-official.svg' },
+];
+---
+
+<main id="top" class="homepage-v24 page">
+  <section class="hero" aria-labelledby="v24-hero-title">
+    <div class="container hero-grid">
+      <div class="hero-copy">
+        <span class="eyebrow">Pour artisans, TPE et PME du bâtiment</span>
+        <h1 id="v24-hero-title">L'outil IA n°1 du BTP pour faire grossir votre entreprise sur internet</h1>
+        <p class="lead">PubliTools transforme vos photos, vidéos, vocaux et avis clients en publications prêtes pour Google Business, Instagram, Facebook, LinkedIn, TikTok et YouTube.</p>
+        <div class="proof-row" aria-label="Points clés PubliTools">
+          <span class="proof-pill"><i class="dot"></i>1 photo + 1 vocal peuvent suffire</span>
+          <span class="proof-pill"><i class="dot"></i>Posts, visuels, carrousels et avis</span>
+          <span class="proof-pill"><i class="dot"></i>Publication sur vos réseaux connectés</span>
+        </div>
+        <div class="hero-actions">
+          <a class="button" href="#offre">Commencer l’essai gratuit</a>
+          <a class="button-secondary" href="#reseaux">Voir comment ça marche</a>
+        </div>
+        <p class="hero-note">14 jours d’accès Pro complet. Prix HT.</p>
+      </div>
+
+      <div class="hero-visual" aria-label="Démonstration produit PubliTools avec six destinations">
+        <div class="hero-board">
+          <div class="board-top">
+            <div>
+              <span class="small-label">Démo produit</span>
+              <strong>Chantier → publicité Internet</strong>
+            </div>
+            <span class="board-status"><i></i>Prêt à publier</span>
+          </div>
+
+          <div class="hero-machine">
+            <div class="phone-shell">
+              <div class="phone-screen">
+                <div class="phone-bar"><span>Nouvelle publication</span><span>09:41</span></div>
+                <div class="job-photo" role="img" aria-label="Illustration de chantier crédible avec artisan et matériaux"><span class="site-sky"></span><span class="site-frame"></span><span class="site-worker"></span><span class="site-tag">Photo chantier</span></div>
+                <div class="voice-card">
+                  <div class="small-label">Vocal chantier — 32 sec</div>
+                  <div class="wave" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+                </div>
+              </div>
+            </div>
+
+            <div class="arrow-stack" aria-hidden="true">→</div>
+
+            <div class="output-card">
+              <div class="caption-box">
+                <div class="small-label">Caption préparée</div>
+                <span class="caption-line"></span>
+                <span class="caption-line w80"></span>
+                <span class="caption-line w65"></span>
+                <span class="caption-line orange"></span>
+              </div>
+              <div class="retouch-card" aria-label="Avant après photo">
+                <div class="mini-image"><span>Avant</span></div>
+                <div class="mini-image after"><span>Après</span></div>
+              </div>
+              <div class="prep-strip" aria-label="Sorties préparées"><span>Texte</span><span>Visuel</span><span>Format</span></div>
+              <div class="destination-logos" aria-label="Six destinations confirmées">
+                {destinations.map((item) => <span class="logo-chip"><img src={item.src} alt={item.label} /><b>{item.label}</b></span>)}
+              </div>
+            </div>
+          </div>
+          <p class="destination-note">6 destinations confirmées au lancement, dont Google Business.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section feature-section" id="reseaux" aria-labelledby="reseaux-title">
+    <div class="container">
+      <div class="section-head">
+        <span class="eyebrow">Réseaux sociaux</span>
+        <h2 id="reseaux-title">Automatisez vos publications chantier sur tous vos réseaux</h2>
+        <p>Ajoutez les photos ou vidéos du chantier. Ajoutez un vocal si vous voulez expliquer le travail. PubliTools prépare le texte, améliore les visuels et adapte le post aux formats de chaque réseau.</p>
+      </div>
+
+      <div class="feature-grid social-automation">
+        <div class="feature-copy cards-list">
+          <article><h3>Caption prête</h3><p>Votre vocal devient une publication claire, avec le bon niveau de détail pour votre métier.</p></article>
+          <article><h3>Visuels propres</h3><p>Photos améliorées, avant/après, carrousels ou visuels brandés avec votre identité.</p></article>
+          <article><h3>Réseaux connectés</h3><p>Google Business, Instagram, Facebook, LinkedIn, TikTok et YouTube depuis la même interface.</p></article>
+          <a class="button button-inline" href="#offre">Créer une publication chantier</a>
+        </div>
+
+        <div class="social-visual" aria-label="Transformation photo et vocal vers publication multi-destinations">
+          <div class="input-card">
+            <div class="job-photo visual-photo"><span class="site-sky"></span><span class="site-frame"></span><span class="site-worker"></span><span class="site-tag">Photo + vocal</span></div>
+            <div class="voice-card compact"><div class="wave"><i></i><i></i><i></i><i></i><i></i><i></i></div></div>
+          </div>
+          <svg class="flow-arrow" viewBox="0 0 72 24" aria-hidden="true"><path d="M4 12H61"/><path d="M52 4l12 8-12 8"/></svg>
+          <div class="output-card compact-output">
+            <div class="caption-box"><span class="caption-line"></span><span class="caption-line w80"></span><span class="caption-line w65"></span><span class="caption-line orange"></span></div>
+            <div class="destination-logos small" aria-label="Destinations de publication">
+              {destinations.map((item) => <span class="logo-chip"><img src={item.src} alt={item.label} /></span>)}
+            </div>
+            <span class="state-badge">Format réseau préparé</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section feature-section alt" id="google-business" aria-labelledby="google-title">
+    <div class="container">
+      <div class="section-head">
+        <span class="eyebrow">Google Business</span>
+        <h2 id="google-title">Faites vivre votre fiche Google Business avec vos chantiers récents</h2>
+        <p>Une fiche Google qui ne bouge pas donne peu de matière à juger. PubliTools vous aide à y publier des photos, des posts et des preuves récentes issues de vos vrais chantiers.</p>
+      </div>
+
+      <div class="visual-cards three">
+        <article class="mechanism-card">
+          <div class="card-visual photo-upload"><div class="job-photo"><span class="site-sky"></span><span class="site-frame"></span><span class="site-worker"></span></div><span class="upload-icon">↑</span></div>
+          <h3>Photos de chantier</h3>
+          <p>Ajoutez des photos récentes sur votre fiche, sans refaire tout le travail à la main.</p>
+        </article>
+        <article class="mechanism-card">
+          <div class="card-visual gmb-post"><img src="/social/google-official.svg" alt="Google Business" /><div class="post-thumb"></div><span class="caption-line"></span><span class="caption-line w65"></span></div>
+          <h3>Posts Google</h3>
+          <p>Transformez une intervention, une rénovation ou un avant/après en post Google Business.</p>
+        </article>
+        <article class="mechanism-card">
+          <div class="card-visual activity-card"><span class="activity-badge"><i></i>Mise à jour récente</span><strong>Entreprise active cette semaine</strong></div>
+          <h3>Activité visible</h3>
+          <p>Vos prospects voient plus facilement que l’entreprise travaille, avance et montre ses réalisations.</p>
+        </article>
+      </div>
+      <p class="safe-note">PubliTools aide à alimenter votre fiche. Il ne garantit pas de position Google.</p>
+      <div class="section-cta"><a class="button-secondary" href="#offre">Mettre Google Business à jour</a></div>
+    </div>
+  </section>
+
+  <section class="section feature-section" id="avis" aria-labelledby="avis-title">
+    <div class="container">
+      <div class="section-head">
+        <span class="eyebrow">Avis clients</span>
+        <h2 id="avis-title">Transformez vos avis clients en preuve visible</h2>
+        <p>Après un chantier réussi, PubliTools prépare un SMS de demande d’avis avec votre lien Google. Quand un avis est reçu, il peut aussi devenir un visuel ou une publication prête à utiliser avec Pro.</p>
+      </div>
+
+      <div class="visual-cards three review-flow">
+        <article class="mechanism-card review-mechanism">
+          <div class="phone-mini"><div class="bubble">Bonjour, merci pour votre confiance. Pouvez-vous laisser un avis Google ? Voici le lien : g.page/avis</div><span>Ouvrir l’app SMS</span></div>
+          <h3>SMS d’avis prêt</h3>
+          <p>Un message clair, personnalisé, avec le lien vers votre fiche Google Business.</p>
+        </article>
+        <article class="mechanism-card review-mechanism">
+          <span class="fake-badge">Exemple fictif</span>
+          <div class="stars">★★★★★</div>
+          <p class="quote">“Travail soigné, finitions impeccables. Je recommande.”</p>
+          <img class="review-logo" src="/social/google-official.svg" alt="Google" />
+          <h3>Avis mieux exploités</h3>
+          <p>Un avis réel peut devenir un post, une caption ou un visuel de preuve.</p>
+        </article>
+        <article class="mechanism-card review-mechanism">
+          <div class="branded-review"><span class="brand-mark">PT</span><div class="stars">★★★★★</div><p>Travail soigné, résultat propre.</p></div>
+          <span class="pro-badge">Disponible en Pro</span>
+          <h3>Réputation plus active</h3>
+          <p>Vos clients satisfaits ne restent pas seulement dans vos messages ou dans votre téléphone.</p>
+        </article>
+      </div>
+      <p class="safe-note">PubliTools ne crée pas de faux avis et ne promet pas d’avis 5 étoiles.</p>
+      <div class="section-cta"><a class="button-secondary" href="#offre">Demander un avis client</a></div>
+    </div>
+  </section>
+
+  <section class="section results-section" id="resultats" aria-labelledby="results-title">
+    <div class="container">
+      <div class="section-head">
+        <span class="eyebrow">Résultats observés</span>
+        <h2 id="results-title">Des résultats observés chez plus de 50 artisans</h2>
+        <p>Quand les chantiers, les avis et la fiche Google sont alimentés avec régularité, la présence en ligne devient plus solide. C’est ce que PubliTools a observé après 3 mois d’utilisation.</p>
+      </div>
+      <div class="stats-grid">
+        <article class="stat-card"><strong>+40 %</strong><p>Demandes de devis observées.</p></article>
+        <article class="stat-card"><strong>+600 %</strong><p>Vues sur les posts chantier.</p></article>
+        <article class="stat-card"><strong>+12</strong><p>Places gagnées en visibilité locale moyenne.</p></article>
+        <article class="stat-card"><strong>+35 %</strong><p>Avis Google collectés.</p></article>
+      </div>
+      <p class="caution">Résultats observés sur plus de 50 artisans après 3 mois d’utilisation. Les résultats varient selon l’activité, la zone, la régularité et la présence existante.</p>
+      <div class="section-cta"><a class="button" href="#offre">Tester sur mes propres chantiers</a></div>
+    </div>
+  </section>
+
+  <section class="section offer-section" id="offre" aria-labelledby="offre-title">
+    <div class="container">
+      <div class="section-head">
+        <span class="eyebrow">Essai gratuit</span>
+        <h2 id="offre-title">Essayez Pro pendant 14 jours, puis gardez le plan qui vous convient</h2>
+        <p>Vous testez PubliTools avec l’accès Pro complet pendant 14 jours. Ensuite, vous continuez avec Starter ou Pro selon votre rythme de publication.</p>
+      </div>
+      <div class="pricing">
+        <article class="price-card">
+          <span class="plan-badge">Starter</span>
+          <h3>Pour garder une présence régulière sans publier tous les jours.</h3>
+          <div class="price">19,90 € <small>HT/mois</small></div>
+          <ul class="features">
+            <li><span class="check">✓</span>8 publications par mois</li>
+            <li><span class="check">✓</span>3 réseaux maximum par publication</li>
+            <li><span class="check">✓</span>Captions IA à partir d’un vocal</li>
+            <li><span class="check">✓</span>Retouches photo Standard + Intense</li>
+            <li><span class="check">✓</span>Posts Google Business</li>
+            <li><span class="check">✓</span>Demandes d’avis SMS illimitées</li>
+          </ul>
+          <a class="button-secondary" href="https://app.publichantier.fr/?signup=yes">Commencer avec Starter</a>
+        </article>
+        <article class="price-card pro">
+          <span class="plan-badge">Pro</span>
+          <h3>Pour publier sans limite, programmer et exploiter toute la partie visuelle.</h3>
+          <div class="price">39,90 € <small>HT/mois</small></div>
+          <ul class="features">
+            <li><span class="check">✓</span>Publications illimitées</li>
+            <li><span class="check">✓</span>Réseaux connectés sans limite Starter</li>
+            <li><span class="check">✓</span>Programmation</li>
+            <li><span class="check">✓</span>SmartAI illimité</li>
+            <li><span class="check">✓</span>Designs IA exploitables illimités</li>
+            <li><span class="check">✓</span>Avis reçus → contenus publiables</li>
+          </ul>
+          <a class="button" href="https://app.publichantier.fr/?signup=yes">Commencer avec Pro</a>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-tight" id="faq" aria-labelledby="faq-title">
+    <div class="container">
+      <div class="section-head"><h2 id="faq-title">Questions fréquentes</h2></div>
+      <div class="faq-grid">
+        <article class="faq-card"><h3>Est-ce que PubliTools publie sur tous les réseaux ?</h3><p>PubliTools permet de préparer et publier sur Google Business, Instagram, Facebook, LinkedIn, TikTok et YouTube au lancement. Starter limite à 3 réseaux par publication. Pro retire cette limite.</p></article>
+        <article class="faq-card"><h3>Est-ce que je dois écrire les textes moi-même ?</h3><p>Non. Vous pouvez ajouter un vocal ou une description. PubliTools le transforme en caption claire, adaptée au chantier et au réseau.</p></article>
+        <article class="faq-card"><h3>Est-ce que PubliTools gère toute ma fiche Google Business ?</h3><p>Non. PubliTools aide surtout à publier des posts, ajouter des photos, demander des avis par SMS et réutiliser des avis. Ce n’est pas une gestion complète de fiche Google Business.</p></article>
+        <article class="faq-card"><h3>Est-ce que PubliTools envoie les SMS d’avis ?</h3><p>PubliTools prépare le SMS avec votre lien Google Business et ouvre l’app SMS de votre téléphone. L’envoi se fait depuis votre téléphone.</p></article>
+        <article class="faq-card"><h3>Est-ce que les résultats sont garantis ?</h3><p>Non. Les chiffres sont des résultats observés sur plus de 50 artisans après 3 mois. Ils varient selon l’activité, la zone, la régularité et la présence existante.</p></article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section final-section" aria-labelledby="final-title">
+    <div class="container final-cta">
+      <h2 id="final-title">Commencez avec un chantier réel</h2>
+      <p>Prenez une photo, ajoutez un vocal, et voyez ce que PubliTools peut préparer pour vos réseaux, votre fiche Google Business et vos avis clients.</p>
+      <a class="button" href="https://app.publichantier.fr/?signup=yes">Commencer l’essai gratuit</a>
+      <p class="hero-note">14 jours d’accès Pro complet. Prix HT.</p>
+    </div>
+  </section>
+</main>
+
+<style>
+  .homepage-v24 {
+    --orange: #ff7a1a;
+    --orange-dark: #df6410;
+    --navy: #0b1f3a;
+    --ink: #101820;
+    --muted: #64748b;
+    --line: #e5eaf0;
+    --soft: #f4f6f8;
+    --white: #ffffff;
+    --green: #19a974;
+    --shadow: 0 24px 70px rgba(11, 31, 58, .13);
+    --shadow-soft: 0 14px 42px rgba(11, 31, 58, .08);
+    --radius-xl: 34px;
+    --radius-lg: 24px;
+    --radius-md: 16px;
+    font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    color: var(--ink);
+    background: #fff;
+    scroll-behavior: smooth;
+    min-height: 100%;
+    overflow-x: hidden;
+  }
+
+  .homepage-v24 * { box-sizing: border-box; }
+  .homepage-v24 img { max-width: 100%; display: block; }
+  .page { position: relative; isolation: isolate; background: radial-gradient(circle at top left, rgba(255, 122, 26, .13), transparent 30rem), radial-gradient(circle at top right, rgba(31, 111, 235, .07), transparent 28rem), linear-gradient(180deg, #fff 0%, #f6f8fb 48%, #fff 100%); }
+  .container { width: min(1160px, calc(100% - 32px)); margin-inline: auto; }
+  .section { padding: 76px 0; }
+  .section-tight { padding: 54px 0; }
+
+  .button, .button-secondary { display: inline-flex; align-items: center; justify-content: center; gap: 9px; min-height: 46px; padding: 0 18px; border-radius: 12px; text-decoration: none; font-weight: 800; font-size: 14px; border: 1px solid transparent; transition: transform .18s ease, box-shadow .18s ease, background .18s ease; white-space: nowrap; }
+  .button { color: #fff; background: var(--orange); box-shadow: 0 14px 28px rgba(255, 122, 26, .22); }
+  .button:hover { background: var(--orange-dark); transform: translateY(-1px); }
+  .button-secondary { color: var(--navy); border-color: #d8dade; background: #fff; }
+  .button-secondary:hover { transform: translateY(-1px); box-shadow: var(--shadow-soft); }
+  .button-inline { width: fit-content; margin-top: 6px; }
+  .section-cta { display: flex; justify-content: center; margin-top: 24px; }
+
+  .eyebrow { display: inline-flex; align-items: center; gap: 8px; width: fit-content; min-height: 34px; padding: 0 13px; border: 1px solid rgba(255, 122, 26, .28); border-radius: 999px; background: rgba(255, 122, 26, .08); color: #9a4308; font-size: 12px; font-weight: 850; letter-spacing: .08em; text-transform: uppercase; }
+  h1, h2, h3 { font-family: Montserrat, Inter, ui-sans-serif, system-ui, sans-serif; margin: 0; color: var(--navy); letter-spacing: -.045em; }
+  h1 { font-size: clamp(38px, 4vw, 48px); line-height: 1.02; font-weight: 650; max-width: 820px; }
+  h2 { font-size: clamp(31px, 3.5vw, 46px); line-height: 1.04; font-weight: 730; }
+  h3 { font-size: 21px; line-height: 1.14; font-weight: 780; }
+  p { margin: 0; color: #475569; line-height: 1.55; font-size: 17px; }
+  .lead { font-size: clamp(18px, 1.8vw, 21px); line-height: 1.48; color: #334155; max-width: 760px; }
+  .section-head { display: grid; gap: 18px; justify-items: center; text-align: center; max-width: 850px; margin: 0 auto 38px; }
+  .section-head p { max-width: 720px; }
+
+  .hero { padding: 44px 0 64px; }
+  .hero-grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(440px, .95fr); gap: 38px; align-items: center; }
+  .hero-copy { display: grid; gap: 20px; align-content: center; }
+  .hero-actions { display: flex; gap: 12px; align-items: center; flex-wrap: wrap; margin-top: 4px; }
+  .hero-note { font-size: 13px; color: #667085; font-weight: 650; }
+  .proof-row { display: flex; flex-wrap: wrap; gap: 10px; margin: 2px 0; }
+  .proof-pill { display: inline-flex; align-items: center; gap: 7px; padding: 10px 12px; border-radius: 999px; background: #fff; border: 1px solid #e7ebf0; box-shadow: 0 8px 20px rgba(11, 31, 58, .05); font-size: 13px; font-weight: 800; color: #243044; }
+  .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--orange); box-shadow: 0 0 0 5px rgba(255, 122, 26, .12); }
+
+  .hero-visual { position: relative; }
+  .hero-board { position: relative; border-radius: 42px; padding: 20px; background: linear-gradient(145deg, #ffffff, #f7fafc 58%, #eef4fb); border: 1px solid rgba(226, 232, 240, .9); box-shadow: var(--shadow); overflow: hidden; }
+  .hero-board:before { content: ""; position: absolute; inset: -120px -100px auto auto; width: 300px; height: 300px; background: radial-gradient(circle, rgba(255, 122, 26, .19), transparent 66%); border-radius: 50%; }
+  .board-top { position: relative; display: flex; justify-content: space-between; align-items: center; gap: 14px; margin-bottom: 16px; }
+  .board-top strong { display: block; font-family: Montserrat, Inter, sans-serif; color: var(--navy); font-size: 15px; }
+  .small-label { color: #667085; font-size: 12px; font-weight: 750; }
+  .board-status, .state-badge { display: inline-flex; align-items: center; gap: 7px; border-radius: 999px; background: #ecfdf5; color: #067647; padding: 8px 11px; font-size: 12px; font-weight: 850; }
+  .board-status i, .activity-badge i { width: 8px; height: 8px; border-radius: 50%; background: var(--green); }
+  .hero-machine { position: relative; display: grid; grid-template-columns: 1fr 42px 1fr; gap: 12px; align-items: stretch; }
+  .phone-shell { position: relative; border-radius: 31px; background: #101820; padding: 10px; box-shadow: 0 18px 52px rgba(16, 24, 32, .2); min-height: 410px; }
+  .phone-screen { height: 100%; min-height: 390px; border-radius: 24px; background: #fff; overflow: hidden; border: 1px solid rgba(255,255,255,.1); display: grid; grid-template-rows: auto 1fr auto; }
+  .phone-bar { padding: 14px 15px; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #eef2f6; font-size: 12px; font-weight: 850; color: var(--navy); }
+  .job-photo, .post-thumb { position: relative; overflow: hidden; background: linear-gradient(180deg, rgba(255,255,255,.22), transparent 38%), linear-gradient(135deg, #d8c7ad 0%, #a3acb3 42%, #24364c 100%); }
+  .job-photo { margin: 14px; border-radius: 22px; min-height: 170px; }
+  .job-photo:before, .post-thumb:before { content:""; position:absolute; left:-6%; right:-6%; bottom:-2%; height:58%; background: linear-gradient(12deg, #644936, #b57643 45%, #d8a96b 76%, #f2d6a8); clip-path: polygon(0 70%, 18% 52%, 34% 62%, 51% 36%, 70% 54%, 84% 30%, 100% 49%, 100% 100%, 0 100%); }
+  .job-photo:after, .post-thumb:after { content:""; position:absolute; right:10%; bottom:24%; width:31%; height:24%; border-radius: 9px 9px 4px 4px; background: linear-gradient(180deg, #fff, #dce5ec); box-shadow: -22px 14px 0 #c5d0dc, -74px -10px 0 -20px #ff7a1a; transform: rotate(-3deg); }
+  .site-sky { position:absolute; inset:0 0 auto; height:44%; background: linear-gradient(135deg, #eaf2f7, #cfdce6 55%, #9faebc); }
+  .site-frame { position:absolute; right:12%; top:18%; width:30%; height:40%; border:3px solid rgba(11,31,58,.35); border-bottom:0; opacity:.9; }
+  .site-frame:before, .site-frame:after { content:""; position:absolute; inset:22% 0 auto; border-top:3px solid rgba(11,31,58,.35); transform:rotate(-24deg); transform-origin:center; }
+  .site-frame:after { transform:rotate(24deg); }
+  .site-worker { position:absolute; left:16%; bottom:18%; width:15px; height:47px; border-radius:10px 10px 5px 5px; background:#0b1f3a; box-shadow: 0 -14px 0 -3px #ffb066, 0 -22px 0 -6px #ff7a1a; }
+  .site-worker:before { content:""; position:absolute; left:-18px; top:16px; width:48px; height:4px; border-radius:99px; background:#0b1f3a; transform:rotate(-18deg); }
+  .site-worker:after { content:""; position:absolute; left:3px; bottom:-19px; width:6px; height:24px; background:#0b1f3a; box-shadow: 10px 0 0 #0b1f3a; border-radius:4px; }
+  .site-tag { position:absolute; left:12px; top:12px; padding:7px 9px; border-radius:999px; background:rgba(255,255,255,.94); color:var(--navy); font-size:10px; font-weight:950; box-shadow:0 8px 18px rgba(11,31,58,.08); }
+  .voice-card { margin: 0 14px 14px; padding: 13px; border: 1px solid #edf1f5; border-radius: 19px; background: #fbfcfe; display: grid; gap: 10px; }
+  .voice-card.compact { margin: 12px 0 0; }
+  .wave { display: flex; gap: 4px; align-items: center; height: 26px; }
+  .wave i { display: block; width: 5px; border-radius: 99px; background: var(--orange); opacity: .9; }
+  .wave i:nth-child(1){height:10px}.wave i:nth-child(2){height:20px}.wave i:nth-child(3){height:15px}.wave i:nth-child(4){height:25px}.wave i:nth-child(5){height:12px}.wave i:nth-child(6){height:21px}.wave i:nth-child(7){height:11px}.wave i:nth-child(8){height:19px}
+  .arrow-stack { display:grid; place-items:center; color: var(--orange); font-weight: 900; font-size: 30px; }
+  .output-card { border-radius: 28px; background: #fff; border: 1px solid #e8edf3; box-shadow: var(--shadow-soft); padding: 16px; min-height: 410px; display: grid; gap: 14px; align-content: center; }
+  .caption-box { border-radius: 20px; border: 1px solid #e9eef4; padding: 15px; background: linear-gradient(180deg, #fff, #f8fafc); display: grid; gap: 10px; }
+  .caption-line { display: block; height: 10px; background: #dfe6ee; border-radius: 999px; }
+  .caption-line.w80 { width: 80%; } .caption-line.w65 { width: 65%; } .caption-line.orange { background: rgba(255,122,26,.3); width: 46%; }
+  .retouch-card { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+  .mini-image { border-radius: 17px; min-height: 100px; position: relative; overflow:hidden; background: linear-gradient(135deg, #9aa5ad, #56636d 54%, #253142); }
+  .mini-image.after { background: linear-gradient(135deg, #f5d2a6, #8cb5c9 45%, #1d344d); filter:saturate(1.08) contrast(1.04); }
+  .mini-image:before { content:""; position:absolute; inset:auto -8px -2px; height:54%; background:linear-gradient(14deg,#6d513b,#b77543 54%,#e4bd85); clip-path:polygon(0 66%,32% 44%,52% 64%,76% 35%,100% 58%,100% 100%,0 100%); }
+  .mini-image:after { content:""; position:absolute; right:14px; bottom:24px; width:43px; height:27px; border-radius:7px 7px 3px 3px; background:#f8fafc; box-shadow:-20px 10px 0 #cbd5e1; transform:rotate(-3deg); }
+  .mini-image span { position:absolute; left:8px; bottom:8px; z-index:2; background: rgba(255,255,255,.92); border-radius: 999px; padding: 5px 8px; font-size: 10px; font-weight: 900; color: var(--navy); }
+  .prep-strip { display:grid; grid-template-columns: repeat(3, 1fr); gap:7px; }
+  .prep-strip span { border-radius:13px; background:#fff7ed; color:#9a4308; border:1px solid rgba(255,122,26,.22); padding:8px 6px; text-align:center; font-size:10px; font-weight:950; }
+  .destination-logos { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; align-items: center; }
+  .destination-logos.small { grid-template-columns: repeat(6, 1fr); }
+  .logo-chip { min-height: 42px; border-radius: 14px; border: 1px solid #ebeff4; display: flex; align-items: center; justify-content: center; gap: 6px; background:#fff; padding: 6px; }
+  .logo-chip img { width: 20px; height: 20px; object-fit: contain; flex: 0 0 auto; }
+  .logo-chip b { font-size: 10px; color: var(--navy); font-weight: 850; letter-spacing: -.02em; }
+  .destination-note { position: relative; margin-top: 14px; text-align: center; color: #667085; font-size: 13px; font-weight: 750; }
+
+  .feature-section.alt { background: rgba(244, 246, 248, .65); }
+  .feature-grid { display: grid; grid-template-columns: .88fr 1.12fr; gap: 34px; align-items: center; }
+  .cards-list { display: grid; gap: 14px; }
+  .cards-list article { border-radius: 22px; background: #fff; border: 1px solid #e7edf4; padding: 20px; box-shadow: 0 10px 26px rgba(11,31,58,.05); display: grid; gap: 8px; }
+  .cards-list h3 { font-size: 20px; }
+  .cards-list p { font-size: 15px; }
+  .social-visual { border-radius: 34px; background: linear-gradient(145deg, #eef3f8, #fff); border: 1px solid #e6edf4; padding: 22px; box-shadow: var(--shadow-soft); display: grid; grid-template-columns: 1fr 72px 1fr; gap: 14px; align-items: center; }
+  .input-card, .compact-output { border-radius: 24px; background: #fff; border: 1px solid #e8edf3; padding: 14px; box-shadow: var(--shadow-soft); }
+  .visual-photo { margin: 0; min-height: 260px; }
+  .flow-arrow { width: 72px; height: 24px; }
+  .flow-arrow path { fill: none; stroke: var(--orange); stroke-width: 4; stroke-linecap: round; stroke-linejoin: round; }
+  .compact-output { min-height: auto; align-content: center; }
+  .state-badge { justify-content: center; }
+
+  .visual-cards.three { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; align-items: stretch; }
+  .mechanism-card { position: relative; border-radius: 28px; background: #fff; border: 1px solid #e7edf4; padding: 22px; box-shadow: var(--shadow-soft); display: grid; gap: 14px; align-content: start; min-height: 330px; }
+  .mechanism-card h3 { font-size: 20px; }
+  .mechanism-card p { font-size: 15px; }
+  .card-visual { min-height: 178px; border-radius: 22px; background: #f8fafc; border: 1px solid #e8edf3; position: relative; overflow: hidden; padding: 16px; }
+  .photo-upload .job-photo { margin: 0; min-height: 150px; }
+  .upload-icon { position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); width: 48px; height: 48px; border-radius: 18px; display: grid; place-items: center; background: var(--orange); color: #fff; font-size: 28px; font-weight: 900; box-shadow: 0 12px 26px rgba(255,122,26,.28); }
+  .gmb-post { display: grid; gap: 10px; }
+  .gmb-post img { position: absolute; right: 14px; top: 14px; width: 28px; height: 28px; }
+  .post-thumb { width: 92px; height: 72px; border-radius: 16px; }
+  .activity-card { display: grid; align-content: center; justify-items: start; gap: 18px; }
+  .activity-badge { display: inline-flex; align-items: center; gap: 8px; border-radius: 999px; background: #e6f9f0; color: #067647; padding: 9px 13px; font-size: 13px; font-weight: 850; }
+  .activity-card strong { font-family: Montserrat, Inter, sans-serif; color: var(--navy); font-size: 24px; line-height: 1.1; }
+  .safe-note { max-width: 760px; margin: 18px auto 0; text-align: center; color: #667085; font-size: 14px; font-weight: 700; }
+
+  .review-mechanism { min-height: 360px; }
+  .phone-mini { width: min(220px, 100%); min-height: 205px; justify-self: center; border-radius: 28px; background: #101820; padding: 12px; display: grid; align-content: start; gap: 12px; }
+  .phone-mini .bubble { border-radius: 16px 16px 16px 6px; padding: 12px; background: #fff; color: #26364d; font-size: 12px; line-height: 1.42; }
+  .phone-mini span { border-radius: 14px; background: #e5eaf0; color: var(--navy); padding: 10px; text-align: center; font-size: 12px; font-weight: 900; }
+  .fake-badge, .pro-badge { width: fit-content; border-radius: 999px; padding: 6px 10px; background: #ffe5e5; color: #b42318; font-size: 10px; font-weight: 950; text-transform: uppercase; letter-spacing: .06em; }
+  .pro-badge { background: #e8f1ff; color: #1f4f99; }
+  .stars { color: #ffb800; letter-spacing: 1px; font-size: 22px; }
+  .quote { color: var(--navy); font-weight: 760; font-size: 16px !important; }
+  .review-logo { position: absolute; top: 22px; right: 22px; width: 28px; height: 28px; }
+  .branded-review { border-radius: 22px; border: 1px solid #e7edf4; background: linear-gradient(180deg, #fff, #f8fafc); padding: 18px; display: grid; gap: 10px; justify-items: center; text-align: center; }
+  .brand-mark { width: 44px; height: 44px; border-radius: 16px; display: grid; place-items: center; background: var(--navy); color: #fff; font-family: Montserrat, Inter, sans-serif; font-weight: 900; }
+  .branded-review p { color: var(--navy); font-size: 15px; font-weight: 780; }
+
+  .results-section { background: linear-gradient(180deg, #fff, #f8fafc); }
+  .stats-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; margin-top: 30px; }
+  .stat-card { border-radius: 26px; background:#fff; border:1px solid #e7edf4; padding:26px 22px; box-shadow:var(--shadow-soft); text-align: left; }
+  .stat-card strong { display:block; color:var(--navy); font-family:Montserrat, Inter, sans-serif; font-size: clamp(32px, 4vw, 48px); letter-spacing:-.06em; margin-bottom:9px; }
+  .stat-card:first-child strong { color: var(--orange); }
+  .stat-card p { font-size:14px; }
+  .caution { margin:18px auto 0; color:#697586; font-size:13px; text-align:center; max-width: 820px; }
+
+  .pricing { display:grid; grid-template-columns: 1fr 1fr; gap:18px; align-items:stretch; margin-top:30px; }
+  .price-card { position:relative; border-radius: 30px; background:#fff; border:1px solid #e7edf4; padding:26px; box-shadow: var(--shadow-soft); display:grid; gap:18px; }
+  .price-card.pro { border-color: rgba(255,122,26,.45); box-shadow: 0 24px 60px rgba(255,122,26,.13); }
+  .plan-badge { width:fit-content; border-radius:999px; padding:8px 11px; background:#f1f5f9; color:var(--navy); font-size:12px; font-weight:900; text-transform:uppercase; letter-spacing:.06em; }
+  .price-card.pro .plan-badge { background:rgba(255,122,26,.12); color:#a24607; }
+  .price { font-family: Montserrat, Inter, sans-serif; color:var(--navy); font-size:42px; font-weight:850; letter-spacing:-.06em; }
+  .price small { font-size:15px; letter-spacing:0; color:#64748b; font-weight:800; }
+  .features { list-style:none; margin:0; padding:0; display:grid; gap:10px; }
+  .features li { display:flex; align-items:flex-start; gap:9px; color:#334155; font-weight:720; }
+  .check { width:21px; height:21px; border-radius:50%; display:grid; place-items:center; flex:0 0 auto; color:#fff; background:var(--orange); font-size:13px; font-weight:900; margin-top:1px; }
+
+  .faq-grid { display:grid; grid-template-columns: 1fr 1fr; gap:14px; }
+  .faq-card { border:1px solid #e7edf4; border-radius:20px; background:#fff; padding:18px; box-shadow:0 10px 24px rgba(11,31,58,.05); display:grid; gap:9px; }
+  .faq-card h3 { font-size:16px; letter-spacing:-.025em; color:var(--navy); }
+  .faq-card p { font-size:14px; color:#516176; }
+
+  .final-cta { position:relative; overflow:hidden; border-radius:44px; background: var(--navy); color:#fff; padding:48px 28px; text-align:center; box-shadow:var(--shadow); }
+  .final-cta:before { content:""; position:absolute; inset:auto auto -190px 50%; transform:translateX(-50%); width:580px; height:300px; border-radius:50%; background:rgba(255,122,26,.22); filter:blur(4px); }
+  .final-cta > * { position:relative; z-index:1; }
+  .final-cta h2 { color:#fff; margin-bottom:14px; }
+  .final-cta p { color:rgba(255,255,255,.78); max-width:610px; margin:0 auto 22px; }
+  .final-cta .button { margin:0 auto; }
+  .final-cta .hero-note { margin-top: 14px; color: rgba(255,255,255,.72); }
+
+  @media (max-width: 1080px) {
+    .hero-grid, .feature-grid { grid-template-columns: 1fr; }
+    .hero { padding-top: 38px; }
+    .hero-board { max-width: 720px; margin-inline: auto; }
+    .social-visual { grid-template-columns: 1fr; }
+    .flow-arrow { transform: rotate(90deg); justify-self: center; }
+    .visual-cards.three { grid-template-columns: 1fr; max-width: 620px; margin-inline: auto; }
+    .stats-grid { grid-template-columns: 1fr 1fr; }
+    .faq-grid { grid-template-columns: 1fr; }
+  }
+
+  @media (max-width: 640px) {
+    .container { width: min(100% - 24px, 440px); }
+    .section { padding: 56px 0; }
+    .section-tight { padding: 42px 0; }
+    h1 { font-size: clamp(32px, 9.4vw, 40px); line-height: 1.04; letter-spacing:-.052em; }
+    h2 { font-size: clamp(28px, 8vw, 36px); }
+    p, .lead { font-size:15px; }
+    .hero-copy { gap:14px; }
+    .hero-actions { flex-direction:column; align-items:stretch; }
+    .hero-actions .button, .hero-actions .button-secondary { width:100%; }
+    .proof-row { gap:7px; }
+    .proof-pill { font-size:12px; padding:8px 10px; }
+    .hero-board { padding:12px; border-radius:30px; }
+    .board-top { align-items: flex-start; }
+    .hero-machine { grid-template-columns:1fr; }
+    .arrow-stack { transform: rotate(90deg); min-height: 26px; }
+    .phone-shell, .output-card { min-height:auto; }
+    .phone-screen { min-height: 335px; }
+    .job-photo { min-height:140px; }
+    .destination-logos { grid-template-columns: repeat(2, 1fr); }
+    .destination-logos.small { grid-template-columns: repeat(3, 1fr); }
+    .logo-chip b { font-size: 9px; }
+    .cards-list article, .mechanism-card, .price-card { padding: 18px; border-radius: 24px; }
+    .visual-photo { min-height: 210px; }
+    .stats-grid, .pricing { grid-template-columns:1fr; }
+    .price-card.pro { order:-1; }
+    .section-head { margin-bottom:26px; }
+    .final-cta { border-radius: 32px; padding: 38px 20px; }
+  }
+</style>

@@ -1,0 +1,23 @@
+---
+import PlaceholderBlock from './PlaceholderBlock.astro';
+
+const { hero, ctaClass, secondaryCtaClass } = Astro.props;
+---
+
+<section class="v13-hero" id="demo">
+  <div class="v13-container v13-hero__inner">
+    <div class="v13-hero__copy">
+      <p class="v13-eyebrow">{hero.eyebrow}</p>
+      <h1>{hero.h1}</h1>
+      <p class="v13-lead">{hero.subheadline}</p>
+      <div class="v13-actions">
+        <a class={ctaClass} href={hero.primaryCta.href}>{hero.primaryCta.label}</a>
+        <a class={secondaryCtaClass} href={hero.secondaryCta.href}>{hero.secondaryCta.label}</a>
+      </div>
+      <div class="v13-chip-row" aria-label="Points clés">
+        {hero.bullets.map((chip: string) => <span class="v13-chip">{chip}</span>)}
+      </div>
+    </div>
+    <PlaceholderBlock label={hero.placeholder} size="hero" />
+  </div>
+</section>

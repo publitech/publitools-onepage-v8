@@ -1,0 +1,266 @@
+---
+interface Plan {
+  name: string;
+  price: string;
+  badge?: string;
+  audience: string;
+  valueStack?: string[];
+  included: string[];
+  limits?: string[];
+  cta: string;
+  href: string;
+  featured?: boolean;
+}
+
+interface ComparisonRow {
+  feature: string;
+  starter: string;
+  pro: string;
+}
+
+interface Props {
+  plans: Plan[];
+  comparison?: ComparisonRow[];
+}
+
+const { plans, comparison = [] } = Astro.props;
+---
+
+<div class="v31-pricing-table">
+  <div class="pricing-cards">
+    {plans.map((plan) => (
+      <article class:list={['pricing-card', plan.featured && 'is-featured']}>
+        <div class="plan-topline">
+          <p class="plan-name">{plan.name}</p>
+          {plan.badge && <span>{plan.badge}</span>}
+        </div>
+        <p class="plan-audience">{plan.audience}</p>
+        {plan.valueStack && (
+          <div class="value-stack">
+            {plan.valueStack.map((item) => <span>{item}</span>)}
+          </div>
+        )}
+        <p class="plan-price">{plan.price}</p>
+        <a class:list={['v31-btn', plan.featured ? 'v31-btn-primary' : 'v31-btn-secondary']} href={plan.href}>{plan.cta}</a>
+        <div class="plan-list">
+          <h3>Inclus</h3>
+          <ul>
+            {plan.included.map((item) => <li>{item}</li>)}
+          </ul>
+        </div>
+        {plan.limits && plan.limits.length > 0 && (
+          <div class="plan-list plan-limits">
+            <h3>Limites claires</h3>
+            <ul>
+              {plan.limits.map((item) => <li>{item}</li>)}
+            </ul>
+          </div>
+        )}
+      </article>
+    ))}
+  </div>
+
+  {comparison.length > 0 && (
+    <div class="comparison-wrap" aria-label="Comparatif Starter et Pro">
+      <table>
+        <thead>
+          <tr>
+            <th>Fonction</th>
+            <th>Starter</th>
+            <th>Pro</th>
+          </tr>
+        </thead>
+        <tbody>
+          {comparison.map((row) => (
+            <tr>
+              <th>{row.feature}</th>
+              <td>{row.starter}</td>
+              <td>{row.pro}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  )}
+</div>
+
+<style>
+  .pricing-cards {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 20px;
+    align-items: stretch;
+  }
+
+  .pricing-card {
+    display: flex;
+    flex-direction: column;
+    border: 1px solid #e8edf3;
+    border-radius: 32px;
+    background: #ffffff;
+    padding: 30px;
+    box-shadow: 0 18px 50px rgba(11, 31, 58, 0.09);
+  }
+
+  .pricing-card.is-featured {
+    border-color: rgba(255, 122, 26, 0.38);
+    box-shadow: 0 22px 62px rgba(255, 122, 26, 0.16), 0 18px 50px rgba(11, 31, 58, 0.08);
+  }
+
+  .plan-topline {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .plan-name {
+    margin: 0;
+    color: #0b1f3a;
+    font-family: 'Montserrat', ui-sans-serif, system-ui, sans-serif;
+    font-size: 30px;
+    font-weight: 900;
+    letter-spacing: -0.045em;
+  }
+
+  .plan-topline span {
+    border-radius: 999px;
+    background: #fff1e6;
+    padding: 8px 10px;
+    color: #ff7a1a;
+    font-size: 11px;
+    font-weight: 900;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .plan-audience {
+    min-height: 56px;
+    margin: 16px 0 0;
+    color: #0b1f3a;
+    font-size: 17px;
+    font-weight: 800;
+    line-height: 1.55;
+  }
+
+  .value-stack {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 18px;
+  }
+
+  .value-stack span {
+    border: 1px solid #e8edf3;
+    border-radius: 999px;
+    background: #f8fafc;
+    padding: 8px 10px;
+    color: #536174;
+    font-size: 12px;
+    font-weight: 800;
+  }
+
+  .plan-price {
+    margin: 24px 0 18px;
+    color: #0b1f3a;
+    font-family: 'Montserrat', ui-sans-serif, system-ui, sans-serif;
+    font-size: clamp(34px, 4vw, 42px);
+    font-weight: 900;
+    letter-spacing: -0.055em;
+    line-height: 1;
+  }
+
+  .plan-list {
+    margin-top: 24px;
+    border-top: 1px solid #e8edf3;
+    padding-top: 22px;
+  }
+
+  .plan-list h3 {
+    margin: 0 0 13px;
+    color: #0b1f3a;
+    font-size: 14px;
+    font-weight: 900;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+
+  ul {
+    display: grid;
+    gap: 10px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  li {
+    display: flex;
+    gap: 10px;
+    color: #536174;
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 1.45;
+  }
+
+  li::before {
+    content: '✓';
+    color: #ff7a1a;
+    font-weight: 900;
+  }
+
+  .plan-limits li::before {
+    content: '•';
+    color: #0b1f3a;
+  }
+
+  .comparison-wrap {
+    overflow-x: auto;
+    margin-top: 28px;
+    border: 1px solid #e8edf3;
+    border-radius: 26px;
+    background: #ffffff;
+    box-shadow: 0 16px 44px rgba(11, 31, 58, 0.08);
+  }
+
+  table {
+    width: 100%;
+    min-width: 720px;
+    border-collapse: collapse;
+    text-align: left;
+  }
+
+  th,
+  td {
+    border-bottom: 1px solid #e8edf3;
+    padding: 18px 20px;
+    color: #536174;
+    font-size: 14px;
+    line-height: 1.45;
+  }
+
+  thead th,
+  tbody th {
+    color: #0b1f3a;
+    font-weight: 900;
+  }
+
+  tbody tr:last-child th,
+  tbody tr:last-child td {
+    border-bottom: 0;
+  }
+
+  @media (max-width: 760px) {
+    .pricing-cards {
+      grid-template-columns: 1fr;
+    }
+
+    .pricing-card {
+      padding: 24px;
+    }
+
+    .plan-audience {
+      min-height: auto;
+    }
+  }
+</style>

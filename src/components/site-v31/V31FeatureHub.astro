@@ -1,0 +1,66 @@
+---
+import V31PageShell from './V31PageShell.astro';
+import V31HeroInternal from './V31HeroInternal.astro';
+import V31Section from './V31Section.astro';
+import V31CardGrid from './V31CardGrid.astro';
+import V31FaqAccordion from './V31FaqAccordion.astro';
+import { assets, commonCtas, hubPillars, subFeatures } from '../../data/siteV31Features';
+
+const title = 'Fonctionnalités PubliTools — publicité internet pour le bâtiment';
+const description = 'Découvrez les fonctions PubliTools pour préparer les réseaux sociaux, les avis clients et Google Business des entreprises du bâtiment.';
+const featureFaq = [
+  {
+    question: 'Quelles fonctions sont incluses dans PubliTools ?',
+    answer: 'PubliTools couvre la création de publications réseaux sociaux, la retouche photo, la rédaction à partir d’un vocal, Google Business, les demandes d’avis SMS et la réutilisation des avis selon le plan.',
+  },
+  {
+    question: 'Quels réseaux sont confirmés ?',
+    answer: 'Facebook, Instagram, LinkedIn, Google Business, TikTok et YouTube.',
+  },
+  {
+    question: 'Est-ce que PubliTools publie sans validation ?',
+    answer: 'Non. PubliTools prépare les contenus. L’utilisateur peut relire, ajuster, puis publier ou programmer selon son plan.',
+  },
+  {
+    question: 'Quelle différence entre Starter et Pro ?',
+    answer: 'Starter permet 8 publications par mois et jusqu’à 3 réseaux par publication. Pro ajoute les publications illimitées, la programmation et les fonctions avancées comme avis vers publication complète.',
+  },
+];
+---
+
+<V31PageShell title={title} description={description} canonical="https://publitools.ai/fr/fonctionnalites/">
+  <V31HeroInternal
+    eyebrow="Fonctionnalités"
+    title="Tout ce que PubliTools prépare pour votre publicité BTP"
+    lead="Réseaux sociaux, avis Google, Google Business : vos photos, vidéos et vocaux deviennent des publications prêtes à valider."
+    proof="Réseaux sociaux, Google Business, avis clients : PubliTools part de vos photos, vidéos, vocaux et textes chantier."
+    ctas={[commonCtas[0], { label: 'Voir les tarifs', href: '/fr/tarif/', variant: 'secondary' }]}
+    visualSrc={assets.uiNetworks}
+    visualAlt="Mockup PubliTools V31 montrant la sélection des réseaux"
+    visualLabel="Fonctions PubliTools"
+    stats={[{ value: '6', label: 'réseaux confirmés' }, { value: '14j', label: 'accès Pro en essai' }, { value: '3', label: 'piliers marketing' }]}
+  />
+
+  <V31Section id="piliers" tone="white" eyebrow="Ce qu’il y a dedans" title="Les 3 piliers" lead="Les fonctions sont regroupées autour de ce que l’artisan veut vraiment faire : publier, obtenir des avis, alimenter Google Business.">
+    <V31CardGrid cards={hubPillars} columns={3} />
+  </V31Section>
+
+  <V31Section tone="soft" eyebrow="Détail des fonctions" title="Les fonctions disponibles, une par une" lead="Chaque carte mène vers une fiche courte avec les capacités utiles et les limites à connaître.">
+    <V31CardGrid cards={subFeatures} columns={4} />
+  </V31Section>
+
+  <V31Section tone="white" eyebrow="FAQ" title="Questions courtes" lead="Les réponses utiles sur le périmètre réel des fonctions PubliTools.">
+    <V31FaqAccordion items={featureFaq} />
+  </V31Section>
+
+  <V31Section tone="soft" narrow eyebrow="Essai" title="Testez les fonctions avec vos vrais chantiers" lead="Essayez PubliTools pendant 14 jours avec l’accès Pro complet pendant l’essai.">
+    <div class="v31-cta-row cta-center">
+      <a class="v31-btn v31-btn-primary" href="https://app.publichantier.fr/?signup=yes">Essayer PubliTools 14 jours</a>
+      <a class="v31-btn v31-btn-secondary" href="/fr/tarif/">Voir les tarifs</a>
+    </div>
+  </V31Section>
+</V31PageShell>
+
+<style>
+  .cta-center { justify-content: center; }
+</style>

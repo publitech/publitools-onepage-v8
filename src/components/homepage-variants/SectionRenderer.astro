@@ -1,0 +1,19 @@
+---
+import ProofGrid from './ProofGrid.astro';
+import WorkflowDemo from './WorkflowDemo.astro';
+import CapabilityCards from './CapabilityCards.astro';
+import ComparisonBlock from './ComparisonBlock.astro';
+import FaqBlock from './FaqBlock.astro';
+import FinalCta from './FinalCta.astro';
+import type { VariantSection } from '../../content/homepage-variants';
+
+interface Props { section: VariantSection; }
+const { section } = Astro.props;
+---
+
+{section.kind === 'proof-grid' && <ProofGrid section={section} />}
+{section.kind === 'workflow-demo' && <WorkflowDemo section={section} />}
+{section.kind === 'capability-cards' && <CapabilityCards section={section} />}
+{section.kind === 'comparison-block' && <ComparisonBlock section={section} />}
+{section.kind === 'faq-block' && <FaqBlock section={section} />}
+{section.kind === 'final-cta' && <FinalCta section={section} />}

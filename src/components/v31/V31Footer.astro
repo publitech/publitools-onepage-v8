@@ -1,0 +1,161 @@
+---
+import V31Button from './V31Button.astro';
+
+interface Props {
+  networkText?: string;
+  ctaHref?: string;
+  ctaLabel?: string;
+}
+
+const {
+  networkText = 'Facebook, Instagram, LinkedIn, Google Business, TikTok, YouTube — selon comptes connectés.',
+  ctaHref = 'https://app.publichantier.fr/?signup=yes',
+  ctaLabel = 'Essayer PubliTools 14 jours',
+} = Astro.props;
+---
+
+<footer class="v31-footer">
+  <div class="v31-wrap footer-inner">
+    <div class="footer-top">
+      <div>
+        <p class="footer-brand">PubliTools</p>
+        <p class="footer-text">
+          PubliTools aide les entreprises du bâtiment à transformer leurs chantiers, avis et informations métier en publicité claire sur Internet.
+        </p>
+        <nav class="footer-nav" aria-label="Liens utiles pied de page">
+          <a href="/fr/fonctionnalites/">Fonctionnalités</a>
+          <a href="/fr/tarif/">Tarif</a>
+          <a href="/fr/faq/">FAQ</a>
+          <a href="/fr/blog/">Blog</a>
+          <a href="/fr/contact/">Contact</a>
+        </nav>
+      </div>
+      <nav aria-label="Liens légaux pied de page">
+        <p class="footer-heading">Légal</p>
+        <ul>
+          <li><a href="/fr/mentions-legales/">Mentions légales</a></li>
+          <li><a href="/fr/cgv/">CGV</a></li>
+          <li><a href="/fr/cgu/">CGU</a></li>
+          <li><a href="/fr/confidentialite/">Confidentialité</a></li>
+          <li><a href="/fr/cookies/">Cookies</a></li>
+        </ul>
+      </nav>
+    </div>
+    <div class="footer-bottom">
+      <div>
+        <p>© PubliTools — PubliTech OÜ</p>
+        {networkText && <p class="network-text">{networkText}</p>}
+      </div>
+      <V31Button href={ctaHref} label={ctaLabel} fullWidthMobile={false} />
+    </div>
+  </div>
+</footer>
+
+<style>
+  .v31-footer {
+    background: var(--v31-soft);
+    color: var(--v31-navy);
+  }
+
+  .footer-inner {
+    padding-block: 56px 64px;
+  }
+
+  .footer-top {
+    display: grid;
+    grid-template-columns: minmax(0, 2fr) minmax(220px, 1fr);
+    gap: 40px;
+  }
+
+  .footer-brand {
+    margin: 0;
+    color: var(--v31-navy);
+    font-family: var(--v31-font-display);
+    font-size: 24px;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+  }
+
+  .footer-text {
+    max-width: 720px;
+    margin: 16px 0 0;
+    color: #6b7280;
+    font-size: 16px;
+    line-height: 1.7;
+  }
+
+  .footer-nav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px 20px;
+    margin-top: 20px;
+  }
+
+  .footer-heading {
+    margin: 0;
+    color: var(--v31-navy);
+    font-family: var(--v31-font-display);
+    font-weight: 800;
+  }
+
+  ul {
+    display: grid;
+    gap: 12px;
+    margin: 16px 0 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  a {
+    color: #6b7280;
+    font-family: var(--v31-font-display);
+    font-size: 14px;
+    font-weight: 700;
+    text-decoration: none;
+  }
+
+  a:hover {
+    color: var(--v31-orange);
+  }
+
+  .footer-bottom {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+    margin-top: 40px;
+    border-top: 1px solid #e5e7eb;
+    padding-top: 28px;
+  }
+
+  .footer-bottom p {
+    margin: 0;
+    color: #6b7280;
+    font-size: 14px;
+    line-height: 1.55;
+  }
+
+  .network-text {
+    margin-top: 8px !important;
+  }
+
+  @media (max-width: 760px) {
+    .footer-inner {
+      padding-block: 48px 56px;
+    }
+
+    .footer-top,
+    .footer-bottom {
+      grid-template-columns: 1fr;
+    }
+
+    .footer-top {
+      display: grid;
+    }
+
+    .footer-bottom {
+      align-items: flex-start;
+      flex-direction: column;
+    }
+  }
+</style>

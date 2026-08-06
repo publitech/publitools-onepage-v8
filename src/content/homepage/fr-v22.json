@@ -1,0 +1,235 @@
+{
+  "meta": {
+    "version": "V22-responsive-excellence",
+    "market": "FR",
+    "locale": "fr-FR",
+    "generated": "2026-06-08",
+    "source": "Brief consolidé V22 + handoffs Léa/Pedro/Nina/Berta"
+  },
+  "signupUrl": "https://app.publichantier.fr/?signup=yes",
+  "seo": {
+    "title": "PubliTools — L’outil IA n°1 du BTP pour faire grossir votre entreprise sur internet",
+    "description": "PubliTools prépare vos publications à partir de photos, vidéos, vocaux et avis : vous validez, puis vous publiez sur Google Business et vos réseaux connectés.",
+    "canonical": "https://publitools.ai/fr/"
+  },
+  "hero": {
+    "eyebrow": "Pour les artisans, TPE et PME du bâtiment",
+    "h1": "L'outil IA n°1 du BTP pour faire grossir votre entreprise sur internet",
+    "subheadline": "Photos, vidéos, vocaux, avis : PubliTools prépare vos contenus, vous validez, puis vous publiez sur les canaux connectés.",
+    "bullets": [
+      "Matière chantier réelle",
+      "Contenu préparé par IA",
+      "Validation avant publication"
+    ],
+    "primaryCta": {
+      "label": "Commencer l’essai gratuit",
+      "href": "https://app.publichantier.fr/?signup=yes"
+    },
+    "secondaryCta": {
+      "label": "Voir comment ça marche",
+      "href": "#demo-produit"
+    },
+    "socialProof": "Résultats observés sur 50+ artisans après 3 mois d’utilisation.",
+    "placeholder": "Démonstration PubliTools : chantier, contenu prêt, validation et publication"
+  },
+  "demo": {
+    "id": "demo-produit",
+    "eyebrow": "Démonstration produit",
+    "title": "Vous partez de ce que vous avez déjà sur votre téléphone.",
+    "description": "PubliTools met en forme. Rien ne part sans votre validation.",
+    "image": "/homepage/fr/v22/optimized/demo-machine.webp",
+    "steps": [
+      {
+        "label": "Vous envoyez",
+        "title": "Photo, vidéo, vocal ou avis",
+        "text": "Une réalisation, un avant/après, quelques mots sur le chantier ou un avis réel."
+      },
+      {
+        "label": "PubliTools prépare",
+        "title": "Caption, retouche, design, format",
+        "text": "Le contenu est adapté au réseau, avec hashtags, visuel ou post Google selon le cas."
+      },
+      {
+        "label": "Vous validez",
+        "title": "Texte, visuel, destinations",
+        "text": "Vous relisez, corrigez si besoin, cochez les canaux, puis vous gardez le dernier mot."
+      },
+      {
+        "label": "Vous diffusez",
+        "title": "Publication ou programmation",
+        "text": "Publication immédiate ou programmation selon votre plan et les destinations connectées."
+      }
+    ]
+  },
+  "process": {
+    "id": "comment-ca-marche",
+    "eyebrow": "Comment ça marche",
+    "h2": "3 étapes, pas un tunnel marketing.",
+    "sub": "La logique reste simple : matière chantier, préparation PubliTools, validation humaine.",
+    "cta": {
+      "label": "Créer ma première publication",
+      "href": "https://app.publichantier.fr/?signup=yes"
+    },
+    "steps": [
+      {
+        "number": "1",
+        "title": "Ajoutez la matière",
+        "body": "Photo, vidéo, vocal, texte ou avis client : vous partez de ce que vous avez déjà."
+      },
+      {
+        "number": "2",
+        "title": "PubliTools prépare le contenu",
+        "body": "Texte, retouche photo, design, hashtags, format réseau, Google Business ou SMS d’avis selon le cas."
+      },
+      {
+        "number": "3",
+        "title": "Validez et publiez",
+        "body": "Vous relisez, ajustez, choisissez les destinations, puis publiez maintenant ou programmez si votre plan le permet."
+      }
+    ]
+  },
+  "useCases": {
+    "id": "contenus-crees",
+    "eyebrow": "Ce que PubliTools peut créer",
+    "title": "Une seule matière chantier peut servir plusieurs preuves en ligne.",
+    "description": "La page reste courte : 3 usages concrets, chacun avec son vrai périmètre.",
+    "cta": {
+      "label": "Essayer avec mes chantiers",
+      "href": "https://app.publichantier.fr/?signup=yes"
+    },
+    "cards": [
+      {
+        "title": "Publications chantier",
+        "body": "Vos photos, vidéos et vocaux deviennent des posts prêts à valider pour vos réseaux connectés.",
+        "list": ["captions", "retouches photo", "carrousels", "visuels", "hashtags"],
+        "image": "/homepage/fr/v22/optimized/use-publications.webp"
+      },
+      {
+        "title": "Google Business",
+        "body": "Vos chantiers peuvent alimenter votre fiche avec des posts et des photos propres.",
+        "list": ["posts Google Business", "photos", "preuve d’activité récente"],
+        "image": "/homepage/fr/v22/optimized/use-google.webp"
+      },
+      {
+        "title": "Avis clients",
+        "body": "PubliTools prépare un SMS d’avis à envoyer depuis votre téléphone et peut transformer un avis réel en contenu publiable en Pro.",
+        "list": ["SMS prérédigé", "lien Google", "avis réel → visuel/post Pro"],
+        "image": "/homepage/fr/v22/optimized/use-avis.webp"
+      }
+    ]
+  },
+  "destinations": {
+    "id": "destinations",
+    "title": "Compatible avec 6 destinations, sans brouiller les limites de plan.",
+    "description": "Google Business, Instagram, Facebook, LinkedIn, TikTok et YouTube sont confirmés au lancement. Starter permet de choisir jusqu’à 3 réseaux par publication. Pro permet de publier sur les destinations connectées nécessaires.",
+    "items": ["Google Business", "Instagram", "Facebook", "LinkedIn", "TikTok", "YouTube"]
+  },
+  "proof": {
+    "id": "preuves",
+    "h2": "Des résultats observés, pas une garantie individuelle.",
+    "sub": "Résultats observés sur plus de 50 artisans après 3 mois d’utilisation. Ils varient selon l’activité, la zone, la régularité et la présence existante.",
+    "stats": [
+      { "value": "+40 %", "label": "demandes de devis observées" },
+      { "value": "+600 %", "label": "vues sur les posts chantier" },
+      { "value": "+12", "label": "places gagnées en moyenne en visibilité locale" },
+      { "value": "+35 %", "label": "avis Google collectés" }
+    ]
+  },
+  "pricing": {
+    "id": "tarif",
+    "eyebrow": "Tarifs",
+    "title": "14 jours d’accès Pro complet. Ensuite, vous gardez le plan choisi.",
+    "description": "Prix HT. Starter donne déjà une routine de publication. Pro enlève les limites qui bloquent une vraie cadence.",
+    "note": "Essai 14 jours avec accès Pro complet. Prix HT.",
+    "plans": [
+      {
+        "name": "Starter",
+        "subtitle": "Pour publier régulièrement sans complexité",
+        "price": "19,90 € HT/mois",
+        "href": "https://app.publichantier.fr/?signup=yes&plan=starter",
+        "icon": "starter",
+        "featured": false,
+        "features": [
+          "8 publications/mois",
+          "3 réseaux maximum par publication",
+          "Caption IA vocal → post",
+          "Retouches photo Standard + Intense",
+          "Posts Google Business",
+          "Demandes d’avis SMS illimitées"
+        ],
+        "ctaLabel": "Commencer en Starter"
+      },
+      {
+        "name": "Pro",
+        "subtitle": "Pour faire tourner toute la machine PubliTools",
+        "price": "39,90 € HT/mois",
+        "href": "https://app.publichantier.fr/?signup=yes&plan=pro",
+        "icon": "pro",
+        "featured": true,
+        "featuredLabel": "Plan cœur",
+        "features": [
+          "Publications illimitées",
+          "Destinations connectées nécessaires",
+          "Programmation",
+          "SmartAI illimité",
+          "Designs IA exploitables illimités",
+          "Avis reçus → visuels publiables",
+          "Choix de designs"
+        ],
+        "ctaLabel": "Commencer en Pro"
+      }
+    ]
+  },
+  "faq": {
+    "id": "faq",
+    "title": "Questions fréquentes",
+    "items": [
+      {
+        "question": "Est-ce que PubliTools publie automatiquement à ma place ?",
+        "answer": "Non. PubliTools prépare les contenus. Vous relisez, corrigez si besoin et validez avant publication."
+      },
+      {
+        "question": "Quels réseaux sont compatibles ?",
+        "answer": "Google Business, Instagram, Facebook, LinkedIn, TikTok et YouTube sont confirmés au lancement. Starter limite à 3 réseaux maximum par publication. Pro permet d’aller plus loin avec les destinations connectées nécessaires."
+      },
+      {
+        "question": "Est-ce que PubliTools envoie les SMS d’avis ?",
+        "answer": "PubliTools prépare le SMS avec le lien Google. L’app SMS de votre téléphone s’ouvre, et vous gardez la main sur l’envoi."
+      },
+      {
+        "question": "Comment fonctionne l’essai de 14 jours ?",
+        "answer": "Pendant 14 jours, vous avez accès au plan Pro complet. À la fin, vous continuez avec le plan choisi au moment de l’inscription."
+      },
+      {
+        "question": "Quelle est la différence entre Starter et Pro ?",
+        "answer": "Starter inclut 8 publications par mois, 3 réseaux maximum par publication et les demandes d’avis SMS illimitées. Pro ajoute les publications illimitées, la programmation, SmartAI, les designs exploitables et les avis reçus transformés en contenus publiables."
+      },
+      {
+        "question": "Est-ce que PubliTools gère toute ma fiche Google Business ?",
+        "answer": "Non. PubliTools couvre un périmètre partiel : posts, photos, demandes d’avis SMS et réutilisation d’avis. Il ne promet pas une gestion complète de fiche ni un classement Google garanti."
+      },
+      {
+        "question": "Est-ce que je dois savoir faire du marketing ?",
+        "answer": "Non. Vous partez de vos photos, vidéos, vocaux ou avis. PubliTools prépare une base professionnelle à valider."
+      },
+      {
+        "question": "Les résultats sont-ils garantis ?",
+        "answer": "Non. Les chiffres affichés sont des observations sur une cohorte. Vos résultats dépendent de votre activité, de votre zone, de votre régularité et de votre présence actuelle."
+      }
+    ],
+    "cta": {
+      "label": "Commencer l’essai gratuit",
+      "href": "https://app.publichantier.fr/?signup=yes"
+    },
+    "reassurance": "Rien ne part sans votre validation."
+  },
+  "final_cta": {
+    "heading": "Commencez avec une photo, un vocal ou un avis récent.",
+    "sub": "PubliTools prépare le contenu. Vous validez avant publication.",
+    "image": "/homepage/fr/v22/optimized/final.jpg",
+    "cta_primary": {
+      "label": "Créer ma première publication",
+      "href": "https://app.publichantier.fr/?signup=yes"
+    }
+  }
+}

@@ -1,0 +1,122 @@
+---
+const { content } = Astro.props;
+const ctaHref = content.signupUrl || content.hero?.primaryCta?.href || 'https://app.publichantier.fr/?signup=yes';
+const destinations = content.section_3_validate_diffuse_local.left.destinations;
+---
+
+<main class="homepage-v16">
+  <section class="v16-hero" id="top">
+    <div class="v16-container v16-hero__grid">
+      <div class="v16-hero__copy">
+        <p class="v16-badge">{content.hero.eyebrow}</p>
+        <h1>{content.hero.h1}</h1>
+        <p class="v16-lead">{content.hero.subheadline}</p>
+        <div class="v16-hero__actions">
+          <a class="v16-btn v16-btn--primary" href={content.hero.primaryCta.href}>{content.hero.primaryCta.label}</a>
+          <span class="v16-cta-note">14 jours d’essai — accès complet Pro</span>
+        </div>
+        <p class="v16-social-proof"><span></span>{content.hero.socialProof}</p>
+      </div>
+
+      <div class="v16-product-card" role="img" aria-label={content.hero.placeholder}>
+        <div class="v16-product-card__top"><span></span><span></span><span></span></div>
+        <div class="v16-product-card__body">
+          <div class="v16-photo-panel">
+            <small>Photo chantier</small>
+            <strong>Toiture rénovée</strong>
+            <em>Retouche SmartAI</em>
+          </div>
+          <div class="v16-flow-panel">
+            <div><span>Vocal</span><p>“Chantier livré en 4 jours…”</p></div>
+            <div><span>Caption IA</span><p>Toiture terrasse rénovée, finitions propres, chantier validé.</p></div>
+            <div class="v16-validation"><span>Validation</span><button>Valider et publier</button></div>
+          </div>
+        </div>
+        <div class="v16-destination-row">
+          {destinations.map((item: any) => <span>{item.name}</span>)}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="v16-section v16-section--soft" id={content.section_1_matter.id}>
+    <div class="v16-container">
+      <header class="v16-head"><h2>{content.section_1_matter.h2}</h2><p>{content.section_1_matter.sub}</p></header>
+      <div class="v16-card-grid v16-card-grid--4">
+        {content.section_1_matter.cards.map((card: any) => <article class="v16-card"><span class="v16-icon">{card.icon.slice(0,1).toUpperCase()}</span><h3>{card.title}</h3><p>{card.body}</p></article>)}
+      </div>
+    </div>
+  </section>
+
+  <section class="v16-section" id="transform">
+    <div class="v16-container">
+      <header class="v16-head"><h2>{content.section_2_transform.h2}</h2><p>{content.section_2_transform.sub}</p></header>
+      <div class="v16-step-grid">
+        {content.section_2_transform.steps.map((step: any) => <article class="v16-step"><span>{step.step_number}</span><h3>{step.title}</h3><p>{step.body}</p></article>)}
+      </div>
+    </div>
+  </section>
+
+  <section class="v16-section v16-section--soft" id="diffusion">
+    <div class="v16-container">
+      <header class="v16-head"><h2>{content.section_3_validate_diffuse_local.h2}</h2><p>{content.section_3_validate_diffuse_local.sub}</p></header>
+      <div class="v16-split">
+        <article class="v16-panel">
+          <h3>{content.section_3_validate_diffuse_local.left.heading}</h3>
+          <p>{content.section_3_validate_diffuse_local.left.body}</p>
+          <strong>{content.section_3_validate_diffuse_local.left.destinations_heading}</strong>
+          <div class="v16-network-grid">
+            {destinations.map((item: any) => <span><b>{item.name}</b><small>{item.type}</small></span>)}
+          </div>
+          <small class="v16-muted">{content.section_3_validate_diffuse_local.left.programming_note}</small>
+        </article>
+        <article class="v16-panel">
+          <h3>{content.section_3_validate_diffuse_local.right.heading}</h3>
+          <div class="v16-feature-list">
+            {content.section_3_validate_diffuse_local.right.features.map((feature: any) => <div><span class="v16-icon">{feature.icon.slice(0,1).toUpperCase()}</span><div><h4>{feature.title}</h4><p>{feature.body}</p>{feature.badge && <em>{feature.badge}</em>}</div></div>)}
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="v16-section v16-section--dark" id={content.section_4_results.id}>
+    <div class="v16-container">
+      <header class="v16-head v16-head--dark"><h2>{content.section_4_results.h2}</h2><p>{content.section_4_results.sub}</p><small>{content.section_4_results.disclaimer}</small></header>
+      <div class="v16-stats">
+        {content.section_4_results.stats.map((stat: any) => <article><strong>{stat.value}</strong><span>{stat.label}</span></article>)}
+      </div>
+      <p class="v16-dark-note">{content.section_4_results.reassurance}</p>
+    </div>
+  </section>
+
+  <section class="v16-section" id={content.section_5_pricing.id}>
+    <div class="v16-container">
+      <header class="v16-head"><h2>{content.section_5_pricing.h2}</h2><p>{content.section_5_pricing.sub}</p></header>
+      <div class="v16-pricing">
+        {content.section_5_pricing.plans.map((plan: any) => <article class:list={['v16-plan', plan.featured && 'is-featured']}><h3>{plan.name}</h3><p class="v16-price"><strong>{plan.price}</strong><span>{plan.currency} {plan.period}</span></p><ul>{plan.highlights.map((item: string) => <li>{item}</li>)}</ul><a class:list={['v16-btn', plan.featured ? 'v16-btn--primary' : 'v16-btn--outline']} href={plan.cta.href}>{plan.cta.label}</a></article>)}
+      </div>
+    </div>
+  </section>
+
+  <section class="v16-section v16-section--soft" id={content.section_6_faq.id}>
+    <div class="v16-container v16-container--narrow">
+      <header class="v16-head"><h2>{content.section_6_faq.h2}</h2></header>
+      <div class="v16-faq">
+        {content.section_6_faq.items.map((item: any) => <details><summary>{item.q}</summary><p>{item.a}</p></details>)}
+      </div>
+    </div>
+  </section>
+
+  <section class="v16-final">
+    <div class="v16-container">
+      <h2>{content.final_cta.heading}</h2>
+      <p>{content.final_cta.sub}</p>
+      <a class="v16-btn v16-btn--primary" href={content.final_cta.cta_primary.href || ctaHref}>{content.final_cta.cta_primary.label}</a>
+    </div>
+  </section>
+</main>
+
+<style is:global>
+.homepage-v16{--navy:#262832;--orange:#f4862d;--orange-hover:#e5751c;--white:#fff;--soft:#f7f7f5;--line:#e7e8ea;--muted:#5d6370;--dark:#1f222b;background:#fff;color:var(--navy);font-family:Montserrat,system-ui,sans-serif;overflow-x:hidden}.homepage-v16 *{box-sizing:border-box}.homepage-v16 h1,.homepage-v16 h2,.homepage-v16 h3,.homepage-v16 h4,.homepage-v16 a,.homepage-v16 button{font-family:Montserrat,system-ui,sans-serif}.v16-container{width:min(100% - 32px,1200px);margin-inline:auto}.v16-container--narrow{width:min(100% - 32px,760px)}.v16-hero{padding:20px 0 28px;background:#fff}.v16-hero__grid{display:grid;grid-template-columns:minmax(0,.96fr) minmax(420px,1.04fr);gap:clamp(28px,4vw,54px);align-items:center}.v16-badge{display:inline-flex;margin:0 0 10px;padding:5px 12px;border-radius:999px;background:var(--soft);color:var(--muted);font-size:12px;font-weight:550}.homepage-v16 h1{max-width:650px;margin:0;color:var(--navy);font-size:clamp(34px,3.6vw,48px);font-weight:600;line-height:1.12;letter-spacing:-.025em}.v16-lead{max-width:560px;margin:13px 0 0;color:var(--muted);font-size:clamp(15px,1.25vw,17px);line-height:1.48}.v16-hero__actions{display:flex;align-items:center;flex-wrap:wrap;gap:12px;margin-top:20px}.v16-btn{display:inline-flex;align-items:center;justify-content:center;min-height:42px;border-radius:10px;padding:12px 20px;font-size:15px;font-weight:650;text-decoration:none;transition:transform .16s ease,background .16s ease,box-shadow .16s ease}.v16-btn:hover{transform:translateY(-1px)}.v16-btn--primary{background:var(--orange);color:#fff;box-shadow:0 10px 26px rgba(244,134,45,.22)}.v16-btn--primary:hover{background:var(--orange-hover)}.v16-btn--outline{border:1px solid var(--orange);color:var(--orange);background:#fff}.v16-cta-note{color:var(--muted);font-size:13px}.v16-social-proof{display:inline-flex;align-items:center;gap:8px;margin:11px 0 0;color:var(--muted);font-size:13px;font-weight:550}.v16-social-proof span{width:8px;height:8px;border-radius:50%;background:var(--orange)}.v16-product-card{max-height:calc(100vh - 64px - 58px);min-height:390px;border:1px solid var(--line);border-radius:18px;background:#fff;box-shadow:0 12px 34px rgba(38,40,50,.12);overflow:hidden}.v16-product-card__top{display:flex;gap:7px;border-bottom:1px solid var(--line);padding:10px 14px;background:#fbfbfa}.v16-product-card__top span{width:8px;height:8px;border-radius:50%;background:#d7d9dd}.v16-product-card__body{display:grid;grid-template-columns:.92fr 1.08fr;gap:13px;padding:14px}.v16-photo-panel{min-height:218px;border-radius:14px;background:linear-gradient(140deg,#343846,#878b83 55%,#e9d3b0);padding:15px;color:#fff;display:flex;flex-direction:column;justify-content:flex-end}.v16-photo-panel small,.v16-flow-panel span{font-size:11px;font-weight:650;opacity:.76;text-transform:uppercase;letter-spacing:.08em}.v16-photo-panel strong{font-size:22px;line-height:1.05}.v16-photo-panel em{margin-top:7px;font-style:normal;font-size:12px}.v16-flow-panel{display:grid;gap:8px}.v16-flow-panel>div{border:1px solid var(--line);border-radius:12px;background:#fbfbfa;padding:11px}.v16-flow-panel p{margin:5px 0 0;color:var(--muted);font-size:12px;line-height:1.32}.v16-validation{display:flex;align-items:center;justify-content:space-between;gap:8px}.v16-validation button{border:0;border-radius:10px;background:var(--orange);color:#fff;padding:9px 10px;font-weight:650}.v16-destination-row{display:grid;grid-template-columns:repeat(6,1fr);gap:7px;padding:0 14px 14px}.v16-destination-row span{border:1px solid var(--line);border-radius:10px;background:#fff;padding:8px 5px;text-align:center;font-size:10px;font-weight:650;color:#3c414b}.v16-section{padding:76px 0;background:#fff}.v16-section--soft{background:var(--soft)}.v16-section--dark{background:var(--navy);color:#fff}.v16-head{text-align:center;margin:0 auto 44px}.v16-head h2,.v16-final h2{margin:0 auto 12px;text-align:center;color:var(--navy);font-size:clamp(26px,2.8vw,36px);font-weight:700;line-height:1.13;letter-spacing:-.02em}.v16-head p{max-width:620px;margin:0 auto;color:var(--muted);font-size:17px;line-height:1.55}.v16-head small{display:block;max-width:680px;margin:14px auto 0;color:rgba(255,255,255,.56);font-size:12px;line-height:1.45}.v16-head--dark h2{color:#fff}.v16-head--dark p{color:rgba(255,255,255,.76)}.v16-card-grid{display:grid;gap:22px}.v16-card-grid--4{grid-template-columns:repeat(4,1fr)}.v16-card,.v16-step,.v16-panel,.v16-plan,.v16-faq details{border:1px solid var(--line);border-radius:14px;background:#fff;box-shadow:0 1px 3px rgba(0,0,0,.04)}.v16-card{padding:24px}.v16-icon{display:inline-flex;width:38px;height:38px;border-radius:10px;align-items:center;justify-content:center;background:rgba(244,134,45,.1);color:var(--orange);font-weight:800;margin-bottom:14px}.v16-card h3,.v16-step h3,.v16-panel h3,.v16-feature-list h4,.v16-plan h3{margin:0 0 8px;color:var(--navy);font-size:16px;font-weight:700}.v16-card p,.v16-step p,.v16-panel p,.v16-feature-list p{margin:0;color:var(--muted);font-size:14px;line-height:1.55}.v16-step-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:22px}.v16-step{padding:26px;background:var(--soft)}.v16-step>span{display:inline-flex;width:34px;height:34px;border-radius:50%;align-items:center;justify-content:center;background:var(--orange);color:#fff;font-weight:800;margin-bottom:15px}.v16-split{display:grid;grid-template-columns:1fr 1fr;gap:28px}.v16-panel{padding:28px}.v16-panel>strong{display:block;margin:22px 0 14px;color:var(--navy);font-size:18px}.v16-network-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}.v16-network-grid span{border:1px solid var(--line);border-radius:10px;background:#fff;padding:12px}.v16-network-grid b,.v16-network-grid small{display:block}.v16-network-grid b{font-size:13px}.v16-network-grid small,.v16-muted{color:var(--muted);font-size:12px}.v16-muted{display:block;margin-top:14px}.v16-feature-list{display:grid;gap:14px}.v16-feature-list>div{display:grid;grid-template-columns:42px 1fr;gap:14px}.v16-feature-list em{display:inline-block;margin-top:8px;border-radius:7px;background:rgba(244,134,45,.1);color:var(--orange);padding:4px 9px;font-size:12px;font-style:normal;font-weight:650}.v16-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}.v16-stats article{border:1px solid rgba(255,255,255,.12);border-radius:14px;background:rgba(255,255,255,.06);padding:28px 18px;text-align:center}.v16-stats strong{display:block;color:var(--orange);font-size:38px;line-height:1;font-weight:800}.v16-stats span{display:block;margin-top:8px;color:rgba(255,255,255,.82);font-size:14px;line-height:1.35}.v16-dark-note{margin:34px 0 0;text-align:center;color:rgba(255,255,255,.68);font-size:14px}.v16-pricing{display:grid;grid-template-columns:repeat(2,minmax(0,390px));justify-content:center;gap:24px}.v16-plan{position:relative;padding:32px}.v16-plan.is-featured{border:2px solid var(--orange);box-shadow:0 12px 28px rgba(244,134,45,.14)}.v16-price{margin:14px 0 22px}.v16-price strong{font-size:44px;line-height:1;color:var(--navy)}.v16-price span{margin-left:6px;color:var(--muted);font-size:14px}.v16-plan ul{list-style:none;margin:0 0 26px;padding:0}.v16-plan li{border-bottom:1px solid #f0f0ef;padding:9px 0;color:#3f4550;font-size:14px}.v16-plan li:before{content:'✓';color:var(--orange);font-weight:800;margin-right:9px}.v16-plan .v16-btn{width:100%}.v16-faq{display:grid;gap:12px}.v16-faq details{padding:18px 22px}.v16-faq summary{cursor:pointer;color:var(--navy);font-weight:700;font-size:15px}.v16-faq p{margin:12px 0 0;color:var(--muted);font-size:14px;line-height:1.6}.v16-final{padding:64px 0;text-align:center;background:var(--navy);color:#fff}.v16-final h2{color:#fff}.v16-final p{margin:0 auto 26px;max-width:560px;color:rgba(255,255,255,.74);font-size:17px}@media(max-width:1050px){.v16-hero__grid,.v16-split{grid-template-columns:1fr}.v16-product-card{max-height:none}.v16-card-grid--4,.v16-step-grid,.v16-stats{grid-template-columns:repeat(2,1fr)}}@media(max-width:767px){.v16-container{width:min(100% - 24px,1200px)}.v16-hero{padding:24px 0 32px}.homepage-v16 h1{font-size:clamp(28px,7vw,36px)}.v16-lead{font-size:16px}.v16-product-card{min-height:0}.v16-product-card__body{grid-template-columns:1fr}.v16-destination-row,.v16-network-grid{grid-template-columns:repeat(2,1fr)}.v16-card-grid--4,.v16-step-grid,.v16-stats,.v16-pricing{grid-template-columns:1fr}.v16-section{padding:52px 0}.v16-head{margin-bottom:30px}.v16-cta-note{width:100%}}
+</style>

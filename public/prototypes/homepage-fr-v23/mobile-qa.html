@@ -1,0 +1,20 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>QA mobile V23 — 390 / 430</title>
+  <style>
+    body{margin:0;background:#0b1f3a;color:#fff;font-family:Inter,system-ui,sans-serif;}
+    header{padding:18px 22px;border-bottom:1px solid rgba(255,255,255,.14);position:sticky;top:0;background:#0b1f3a;z-index:2}
+    h1{margin:0;font-size:18px;letter-spacing:-.02em}p{margin:6px 0 0;color:#cbd5e1;font-size:13px}.wrap{display:flex;gap:24px;align-items:flex-start;padding:24px;overflow:auto}.device{flex:0 0 auto}.label{font-weight:900;margin:0 0 10px;font-size:13px;color:#fff}.phone{border:10px solid #111827;border-radius:34px;overflow:hidden;background:white;box-shadow:0 24px 70px rgba(0,0,0,.35)}iframe{display:block;border:0;height:6800px;background:#fff}.w390 iframe{width:390px}.w430 iframe{width:430px}.w390 .phone{width:390px}.w430 .phone{width:430px}
+  </style>
+</head>
+<body>
+  <header><h1>QA mobile prototype V23</h1><p>Deux iframes réelles : 390 px et 430 px. Le CSS responsive du prototype s’applique dans chaque iframe.</p></header>
+  <main class="wrap">
+    <section class="device w390"><div class="label">Viewport 390 px</div><div class="phone"><iframe title="Prototype V23 mobile 390" src="./"></iframe></div></section>
+    <section class="device w430"><div class="label">Viewport 430 px</div><div class="phone"><iframe title="Prototype V23 mobile 430" src="./"></iframe></div></section>
+  </main>
+</body>
+</html>

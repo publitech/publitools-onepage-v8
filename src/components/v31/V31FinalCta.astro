@@ -1,0 +1,111 @@
+---
+import V31Button from './V31Button.astro';
+import V31Eyebrow from './V31Eyebrow.astro';
+
+interface Cta {
+  label: string;
+  href: string;
+  variant?: 'primary' | 'secondary';
+}
+
+interface Props {
+  eyebrow?: string;
+  title: string;
+  lead?: string;
+  ctas: Cta[];
+  tone?: 'navy' | 'soft' | 'white';
+}
+
+const { eyebrow, title, lead, ctas, tone = 'navy' } = Astro.props;
+---
+
+<section class:list={['v31-final-cta', `tone-${tone}`]}>
+  <div class="v31-wrap final-inner">
+    {eyebrow && <V31Eyebrow text={eyebrow} tone={tone === 'navy' ? 'dark' : 'orange'} />}
+    <h2>{title}</h2>
+    {lead && <p>{lead}</p>}
+    {ctas.length > 0 && (
+      <div class="final-actions">
+        {ctas.map((cta) => (
+          <V31Button href={cta.href} label={cta.label} variant={cta.variant || 'primary'} />
+        ))}
+      </div>
+    )}
+  </div>
+</section>
+
+<style>
+  .v31-final-cta {
+    padding-block: 96px;
+  }
+
+  .tone-navy {
+    background: var(--v31-navy);
+    color: #ffffff;
+  }
+
+  .tone-soft {
+    background: var(--v31-soft);
+    color: var(--v31-navy);
+  }
+
+  .tone-white {
+    background: #ffffff;
+    color: var(--v31-navy);
+  }
+
+  .final-inner {
+    display: grid;
+    justify-items: center;
+    text-align: center;
+  }
+
+  h2 {
+    max-width: 850px;
+    margin: 24px 0 0;
+    font-family: var(--v31-font-display);
+    font-size: clamp(36px, 5vw, 64px);
+    font-weight: 800;
+    letter-spacing: -0.05em;
+    line-height: 1.04;
+    text-wrap: balance;
+  }
+
+  p {
+    max-width: 680px;
+    margin: 22px 0 0;
+    color: var(--v31-muted);
+    font-size: 18px;
+    line-height: 1.6;
+  }
+
+  .tone-navy p {
+    color: rgba(255, 255, 255, 0.72);
+  }
+
+  .final-actions {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 12px;
+    margin-top: 30px;
+  }
+
+  @media (max-width: 680px) {
+    .v31-final-cta {
+      padding-block: 72px;
+    }
+
+    h2 {
+      font-size: clamp(32px, 9vw, 42px);
+    }
+
+    p {
+      font-size: 16px;
+    }
+
+    .final-actions {
+      width: 100%;
+    }
+  }
+</style>

@@ -1,0 +1,124 @@
+---
+interface BlogCard {
+  title: string;
+  excerpt: string;
+  href?: string;
+  image: string;
+  imageAlt: string;
+  tag?: string;
+  status?: string;
+}
+
+interface Props {
+  cards: BlogCard[];
+}
+
+const { cards } = Astro.props;
+---
+
+<div class="v31-blog-cards">
+  {cards.map((card) => {
+    const Tag = card.href ? 'a' : 'article';
+    return (
+      <Tag class="blog-card" href={card.href}>
+        <img src={card.image} alt={card.imageAlt} width="1536" height="1024" loading="eager" decoding="async" />
+        <div>
+          <p class="tag-row">
+            {card.tag && <span>{card.tag}</span>}
+            {card.status && <em>{card.status}</em>}
+          </p>
+          <h3>{card.title}</h3>
+          <p class="excerpt">{card.excerpt}</p>
+        </div>
+      </Tag>
+    );
+  })}
+</div>
+
+<style>
+  .v31-blog-cards {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 18px;
+  }
+
+  .blog-card {
+    display: block;
+    overflow: hidden;
+    border: 1px solid #e8edf3;
+    border-radius: 28px;
+    background: #ffffff;
+    color: inherit;
+    text-decoration: none;
+    box-shadow: 0 16px 44px rgba(11, 31, 58, 0.08);
+  }
+
+  img {
+    display: block;
+    aspect-ratio: 16 / 10;
+    width: 100%;
+    object-fit: cover;
+  }
+
+  .blog-card > div {
+    padding: 22px;
+  }
+
+  .tag-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin: 0 0 14px;
+  }
+
+  .tag-row span,
+  .tag-row em {
+    border-radius: 999px;
+    padding: 7px 9px;
+    font-size: 11px;
+    font-style: normal;
+    font-weight: 900;
+    letter-spacing: 0.08em;
+    line-height: 1;
+    text-transform: uppercase;
+  }
+
+  .tag-row span {
+    background: #fff1e6;
+    color: #ff7a1a;
+  }
+
+  .tag-row em {
+    background: #f4f6f8;
+    color: #536174;
+  }
+
+  h3 {
+    margin: 0;
+    color: #0b1f3a;
+    font-family: 'Montserrat', ui-sans-serif, system-ui, sans-serif;
+    font-size: 21px;
+    font-weight: 900;
+    letter-spacing: -0.035em;
+    line-height: 1.18;
+  }
+
+  .excerpt {
+    margin: 12px 0 0;
+    color: #536174;
+    font-size: 15px;
+    line-height: 1.65;
+  }
+
+  @media (max-width: 920px) {
+    .v31-blog-cards {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+
+  @media (max-width: 640px) {
+    .v31-blog-cards {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

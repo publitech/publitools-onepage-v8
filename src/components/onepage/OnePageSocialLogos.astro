@@ -1,0 +1,38 @@
+---
+interface Props {
+  label?: string;
+  caption?: string;
+  onDark?: boolean;
+  compact?: boolean;
+  pricing?: boolean;
+}
+
+const {
+  label = 'Publiez là où vos clients vous cherchent',
+  caption = '',
+  onDark = false,
+  compact = false,
+  pricing = false,
+} = Astro.props;
+
+const platforms = [
+  { name: 'Facebook', icon: '/social/facebook-official.svg' },
+  { name: 'Instagram', icon: '/social/instagram-official.svg' },
+  { name: 'LinkedIn', icon: '/social/linkedin-official.svg' },
+  { name: 'Google Business', icon: '/social/google-official.svg' },
+  { name: 'TikTok', icon: '/social/tiktok-official.svg' },
+  { name: 'YouTube', icon: '/social/youtube-official.svg' },
+];
+---
+
+<div class:list={['op-socials', onDark && 'op-socials--dark', compact && 'op-socials--compact', pricing && 'op-socials--pricing']}>
+  {label && <p>{label}</p>}
+  <ul aria-label="Plateformes disponibles">
+    {platforms.map((platform) => (
+      <li>
+        <img src={platform.icon} alt={platform.name} width="44" height="44" loading="eager" decoding="async" />
+      </li>
+    ))}
+  </ul>
+  {caption && <p class="op-socials__caption">{caption}</p>}
+</div>

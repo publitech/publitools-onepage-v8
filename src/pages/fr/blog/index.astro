@@ -1,0 +1,246 @@
+---
+import V31PageShell from '../../../components/site-v31/V31PageShell.astro';
+import V31HeroInternal from '../../../components/site-v31/V31HeroInternal.astro';
+import V31Section from '../../../components/site-v31/V31Section.astro';
+import V31CardGrid from '../../../components/site-v31/V31CardGrid.astro';
+import V31BlogCards from '../../../components/site-v31/V31BlogCards.astro';
+import V31FinalCta from '../../../components/v31/V31FinalCta.astro';
+
+const title = 'Blog PubliTools — guides marketing pour entreprises du bâtiment';
+const description = 'Guides PubliTools pour réseaux sociaux, avis Google, Google Business, photos chantier et marketing simple des entreprises BTP.';
+const signupHref = 'https://app.publichantier.fr/?signup=yes';
+
+const categories = [
+  {
+    title: 'Réseaux sociaux BTP',
+    text: 'Publier plus régulièrement, montrer les bons chantiers, écrire des textes simples et éviter les publications qui ne disent rien.',
+    href: '#reseaux-sociaux-btp',
+    cta: 'Voir le sujet',
+  },
+  {
+    title: 'Avis Google',
+    text: 'Demander des avis au bon moment, rassurer les futurs clients et réutiliser les avis sans les déformer.',
+    href: '#avis-google',
+    cta: 'Voir le sujet',
+  },
+  {
+    title: 'Google Business',
+    text: 'Alimenter la fiche avec des posts, photos et preuves récentes, sans promettre de miracle sur le classement Google.',
+    href: '#google-business',
+    cta: 'Voir le sujet',
+  },
+  {
+    title: 'Photos chantier',
+    text: 'Choisir les bonnes photos, montrer l’avant/après, rendre le travail plus lisible et professionnel.',
+    href: '#photos-chantier',
+    cta: 'Voir le sujet',
+  },
+  {
+    title: 'Marketing BTP simple',
+    text: 'Des méthodes concrètes pour gagner en visibilité sans transformer le dirigeant en marketeur à plein temps.',
+    href: '#marketing-btp-simple',
+    cta: 'Voir le sujet',
+  },
+];
+
+const guides = [
+  {
+    title: 'Comment transformer vos photos chantier en publications qui rassurent vraiment',
+    tag: 'Photos chantier',
+    status: 'Guide en préparation',
+    excerpt: 'Quelles photos choisir, quoi expliquer, comment éviter les publications trop vagues et montrer un chantier qui donne confiance.',
+    image: '/assets/site-v31/blog-thumbnails/blog-thumb-01-social-media-strategy.webp',
+    imageAlt: 'Visuel BTP Renov pour un guide sur les photos chantier et les réseaux sociaux',
+  },
+  {
+    title: 'Avis Google : le bon moment pour demander, et le message à éviter',
+    tag: 'Avis Google',
+    status: 'Guide en préparation',
+    excerpt: 'Un client satisfait peut laisser un avis. Encore faut-il demander proprement, au bon moment, avec un message simple.',
+    image: '/assets/site-v31/blog-thumbnails/blog-thumb-02-customer-reviews.webp',
+    imageAlt: 'Visuel BTP Renov pour un guide sur les avis Google clients',
+  },
+  {
+    title: 'Google Business pour le bâtiment : ce qu’il faut alimenter, sans promettre un rang précis',
+    tag: 'Google Business',
+    status: 'Guide en préparation',
+    excerpt: 'Posts, photos, avis récents : les éléments visibles qui peuvent rassurer un prospect avant l’appel.',
+    image: '/assets/site-v31/blog-thumbnails/blog-thumb-03-google-business.webp',
+    imageAlt: 'Visuel BTP Renov pour un guide Google Business bâtiment',
+  },
+  {
+    title: 'Réseaux sociaux BTP : quoi publier quand on n’a pas le temps',
+    tag: 'Réseaux sociaux BTP',
+    status: 'Guide en préparation',
+    excerpt: 'Des idées simples à partir de vrais chantiers : avant/après, étape importante, avis client, finition, détail technique utile.',
+    image: '/assets/site-v31/blog-thumbnails/blog-thumb-04-ai-marketing-automation.webp',
+    imageAlt: 'Visuel BTP Renov pour un guide sur quoi publier sur les réseaux sociaux',
+  },
+  {
+    title: 'Pourquoi vos chantiers valent mieux qu’un discours commercial',
+    tag: 'Marketing BTP simple',
+    status: 'Guide en préparation',
+    excerpt: 'Les prospects veulent voir du concret : photos, preuves, avis, activité récente. Votre travail terrain est déjà votre meilleure matière marketing.',
+    image: '/assets/site-v31/blog-thumbnails/blog-thumb-05-content-marketing.webp',
+    imageAlt: 'Visuel BTP Renov pour un guide de marketing BTP simple',
+  },
+  {
+    title: 'Que publier sur Facebook, Instagram, LinkedIn et Google Business quand on est artisan ?',
+    tag: 'Réseaux sociaux BTP',
+    status: 'Guide en préparation',
+    excerpt: 'La même matière chantier peut être adaptée selon le réseau, sans repartir de zéro à chaque fois.',
+    image: '/assets/site-v31/blog-thumbnails/blog-thumb-06-digital-transformation.webp',
+    imageAlt: 'Visuel BTP Renov pour un guide sur les réseaux sociaux des artisans',
+  },
+];
+
+const subjectLinks = [
+  { title: 'Réseaux sociaux pour artisans du bâtiment', text: 'Guides courts pour publier des chantiers sans perdre une soirée.', href: '#reseaux-sociaux-btp' },
+  { title: 'Avis Google pour entreprises BTP', text: 'Quand demander, comment formuler, quoi faire d’un avis reçu.', href: '#avis-google' },
+  { title: 'Google Business pour artisans', text: 'Posts, photos et activité visible, sans promesse de classement.', href: '#google-business' },
+  { title: 'Photos chantier et avant/après', text: 'Transformer les images déjà dans le téléphone en preuves plus nettes.', href: '#photos-chantier' },
+  { title: 'Marketing simple pour entreprise du bâtiment', text: 'Méthodes concrètes, pas théorie de consultant.', href: '#marketing-btp-simple' },
+];
+
+const schema = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'CollectionPage',
+    name: title,
+    description,
+    url: 'https://publitools.ai/fr/blog/',
+    about: categories.map((category) => category.title),
+    mainEntity: {
+      '@type': 'ItemList',
+      itemListElement: guides.map((guide, index) => ({
+        '@type': 'ListItem',
+        position: index + 1,
+        name: guide.title,
+        description: guide.excerpt,
+      })),
+    },
+  },
+];
+---
+
+<V31PageShell title={title} description={description} canonical="https://publitools.ai/fr/blog/" schema={schema}>
+  <V31HeroInternal
+    eyebrow="Blog PubliTools"
+    title="Guides PubliTools pour mieux vendre votre entreprise BTP sur internet"
+    lead="Réseaux sociaux, avis Google, fiche Google Business, photos chantier : des guides courts et concrets pour transformer votre travail terrain en preuves visibles."
+    proof="Les guides complets sont en préparation. Cette page organise les sujets prioritaires sans inventer de fausses dates ni de faux auteurs."
+    ctas={[{ label: 'Essayer PubliTools 14 jours', href: signupHref }, { label: 'Voir les fonctionnalités', href: '/fr/fonctionnalites/', variant: 'secondary' }]}
+    visualSrc="/assets/site-v31/chantier-source/btp-renov-chantier-02-bathroom.webp"
+    visualAlt="Chantier BTP Renov utilisé comme matière de communication"
+    visualLabel="Matière éditoriale : vrais chantiers"
+    stats={[{ value: '5', label: 'sujets utiles' }, { value: '6', label: 'guides prioritaires' }, { value: 'BTP', label: 'cas concrets' }]}
+  />
+
+  <V31Section
+    tone="soft"
+    eyebrow="Catégories"
+    title="Les sujets utiles pour une entreprise du bâtiment"
+    lead="Le blog part de ce que les prospects vérifient vraiment : vos chantiers, vos avis, votre fiche Google et votre régularité sur les réseaux."
+  >
+    <V31CardGrid cards={categories} columns={3} />
+  </V31Section>
+
+  <V31Section
+    id="guides"
+    eyebrow="Guides"
+    title="Guides à publier en priorité"
+    lead="Les cartes ci-dessous présentent les guides prioritaires à publier pour aider les entreprises du bâtiment."
+  >
+    <V31BlogCards cards={guides} />
+  </V31Section>
+
+  <V31FinalCta
+    eyebrow="Application concrète"
+    title="Vous voulez appliquer tout ça sans y passer vos soirées ?"
+    lead="PubliTools part de vos photos chantier, de vos vocaux et de vos avis pour préparer vos publications, alimenter vos réseaux et votre fiche Google Business."
+    ctas={[{ label: 'Essayer PubliTools 14 jours', href: signupHref }, { label: 'Voir les tarifs', href: '/fr/tarif/', variant: 'secondary' }]}
+  />
+
+  <V31Section
+    tone="soft"
+    eyebrow="Explorer"
+    title="Explorer par sujet"
+    lead="Des sujets courts, utiles et directement reliés aux chantiers, aux avis et à Google Business."
+  >
+    <div class="subject-list">
+      {subjectLinks.map((link, index) => (
+        <a class="subject-link" id={link.href.slice(1)} href={link.href}>
+          <span>{String(index + 1).padStart(2, '0')}</span>
+          <strong>{link.title}</strong>
+          <em>{link.text}</em>
+        </a>
+      ))}
+    </div>
+  </V31Section>
+</V31PageShell>
+
+<style>
+  .subject-list {
+    display: grid;
+    gap: 12px;
+  }
+
+  .subject-link {
+    display: grid;
+    grid-template-columns: 64px minmax(0, 0.9fr) minmax(0, 1.4fr);
+    gap: 20px;
+    align-items: center;
+    border: 1px solid #e8edf3;
+    border-radius: 24px;
+    background: #ffffff;
+    padding: 22px;
+    color: inherit;
+    text-decoration: none;
+    box-shadow: 0 12px 34px rgba(11, 31, 58, 0.06);
+    transition: transform 180ms ease, border-color 180ms ease, box-shadow 180ms ease;
+  }
+
+  .subject-link:hover {
+    border-color: rgba(255, 122, 26, 0.34);
+    box-shadow: 0 18px 44px rgba(11, 31, 58, 0.09);
+    transform: translateY(-1px);
+  }
+
+  .subject-link span {
+    display: inline-flex;
+    width: 44px;
+    height: 44px;
+    align-items: center;
+    justify-content: center;
+    border-radius: 999px;
+    background: #fff1e6;
+    color: #ff7a1a;
+    font-family: 'Montserrat', ui-sans-serif, system-ui, sans-serif;
+    font-size: 13px;
+    font-weight: 900;
+    letter-spacing: 0.08em;
+  }
+
+  .subject-link strong {
+    color: #0b1f3a;
+    font-family: 'Montserrat', ui-sans-serif, system-ui, sans-serif;
+    font-size: 20px;
+    font-weight: 900;
+    letter-spacing: -0.03em;
+    line-height: 1.18;
+  }
+
+  .subject-link em {
+    color: #536174;
+    font-size: 15px;
+    font-style: normal;
+    line-height: 1.55;
+  }
+
+  @media (max-width: 780px) {
+    .subject-link {
+      grid-template-columns: 1fr;
+      gap: 12px;
+    }
+  }
+</style>

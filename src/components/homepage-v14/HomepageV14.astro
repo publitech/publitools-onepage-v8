@@ -1,0 +1,233 @@
+---
+const { content } = Astro.props;
+const cta = content.hero.primaryCta;
+const secondary = content.hero.secondaryCta;
+---
+
+<main class="homepage-v14">
+  <section class="v14-hero" id="top">
+    <div class="v14-container v14-hero__grid">
+      <div class="v14-hero__copy">
+        <p class="v14-eyebrow">{content.hero.eyebrow}</p>
+        <h1>{content.hero.h1}</h1>
+        <p class="v14-lead">{content.hero.subheadline}</p>
+        <div class="v14-actions">
+          <a class="v14-btn v14-btn--primary" href={cta.href}>{cta.label}</a>
+          <a class="v14-btn v14-btn--secondary" href={secondary.href}>{secondary.label}</a>
+        </div>
+        <div class="v14-bullets" aria-label="Points clés">
+          {content.hero.bullets.map((item: string) => <span>{item}</span>)}
+        </div>
+        <p class="v14-proofline">{content.hero.socialProof}</p>
+      </div>
+
+      <div class="v14-device" role="img" aria-label={content.hero.placeholder}>
+        <div class="v14-device__chrome">
+          <span></span><span></span><span></span>
+        </div>
+        <div class="v14-phone-card is-photo">
+          <small>Photo chantier</small>
+          <strong>Rénovation salle de bain</strong>
+          <div class="v14-photo-lines"><i></i><i></i><i></i></div>
+        </div>
+        <div class="v14-phone-card is-caption">
+          <small>Caption IA</small>
+          <p>Chantier terminé à Lyon : reprise complète, finitions propres, résultat prêt à présenter.</p>
+        </div>
+        <div class="v14-publish-panel">
+          <span>Google Business</span><span>Instagram</span><span>Facebook</span><span>LinkedIn</span>
+          <button>Valider et publier</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="v14-proof" id={content.proof.id}>
+    <div class="v14-container">
+      <p class="v14-section-kicker">{content.proof.headline}</p>
+      <div class="v14-proof__grid">
+        {content.proof.metrics.map((metric: any) => (
+          <article>
+            <strong>{metric.value}</strong>
+            <span>{metric.label}</span>
+          </article>
+        ))}
+      </div>
+      <p class="v14-note">{content.proof.note}</p>
+    </div>
+  </section>
+
+  <section class="v14-section v14-section--split" id={content.growth.id}>
+    <div class="v14-container v14-split">
+      <div>
+        <p class="v14-section-kicker">Le mécanisme</p>
+        <h2>{content.growth.title}</h2>
+        <p class="v14-subtitle">{content.growth.subtitle}</p>
+        <p class="v14-body">{content.growth.text}</p>
+      </div>
+      <div class="v14-triad">
+        {content.growth.cards.map((card: any, index: number) => (
+          <article>
+            <span>0{index + 1}</span>
+            <h3>{card.title}</h3>
+            <p>{card.text}</p>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="v14-section v14-section--cream" id={content.transforms.id}>
+    <div class="v14-container">
+      <div class="v14-centered">
+        <p class="v14-section-kicker">Ce que PubliTools transforme</p>
+        <h2>{content.transforms.title}</h2>
+        <p class="v14-subtitle">{content.transforms.subtitle}</p>
+      </div>
+      <div class="v14-transform-grid">
+        {content.transforms.items.map((item: any) => (
+          <article>
+            <span>{item.input}</span>
+            <strong>{item.output}</strong>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="v14-section" id={content.workflow.id}>
+    <div class="v14-container v14-workflow-grid">
+      <div class="v14-workflow-visual" role="img" aria-label="Workflow PubliTools en trois étapes">
+        <div class="v14-flow-card one">Ajoutez<br /><strong>photo + vocal</strong></div>
+        <div class="v14-flow-line"></div>
+        <div class="v14-flow-card two">L’IA prépare<br /><strong>caption + visuel</strong></div>
+        <div class="v14-flow-line"></div>
+        <div class="v14-flow-card three">Vous validez<br /><strong>publication</strong></div>
+      </div>
+      <div>
+        <p class="v14-section-kicker">Comment ça marche</p>
+        <h2>{content.workflow.title}</h2>
+        <p class="v14-subtitle">{content.workflow.subtitle}</p>
+        <div class="v14-steps">
+          {content.workflow.steps.map((step: any) => (
+            <article>
+              <span>{step.label}</span>
+              <div><h3>{step.title}</h3><p>{step.text}</p></div>
+            </article>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="v14-section v14-section--navy" id={content.googleReviews.id}>
+    <div class="v14-container v14-google-grid">
+      <div>
+        <p class="v14-section-kicker">Google Business + avis</p>
+        <h2>{content.googleReviews.title}</h2>
+        <p class="v14-subtitle">{content.googleReviews.subtitle}</p>
+        <div class="v14-dark-pills">
+          {content.googleReviews.items.map((item: string) => <span>{item}</span>)}
+        </div>
+      </div>
+      <div class="v14-review-mock" role="img" aria-label="Mockup fiche Google Business et avis client">
+        <div class="v14-map"></div>
+        <article>
+          <strong>4,8 ★★★★★</strong>
+          <span>Nouvel avis reçu</span>
+          <p>“Travail propre, délais respectés.”</p>
+        </article>
+        <button>Créer un visuel d’avis</button>
+      </div>
+    </div>
+  </section>
+
+  <section class="v14-section" id={content.destinations.id}>
+    <div class="v14-container">
+      <div class="v14-centered">
+        <p class="v14-section-kicker">Distribution</p>
+        <h2>{content.destinations.title}</h2>
+        <p class="v14-subtitle">{content.destinations.subtitle}</p>
+      </div>
+      <div class="v14-destinations">
+        {content.destinations.items.map((item: string) => <span>{item}</span>)}
+      </div>
+    </div>
+  </section>
+
+  <section class="v14-section v14-section--cream" id={content.comparison.id}>
+    <div class="v14-container v14-split">
+      <div>
+        <p class="v14-section-kicker">Avant / avec PubliTools</p>
+        <h2>{content.comparison.title}</h2>
+        <p class="v14-subtitle">{content.comparison.subtitle}</p>
+      </div>
+      <div class="v14-compare">
+        {content.comparison.rows.map((row: any) => (
+          <article>
+            <span>{row.before}</span>
+            <strong>{row.after}</strong>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="v14-section" id={content.pricing.id}>
+    <div class="v14-container">
+      <div class="v14-centered">
+        <p class="v14-section-kicker">{content.pricing.eyebrow}</p>
+        <h2>{content.pricing.title}</h2>
+        <p class="v14-subtitle">{content.pricing.description}</p>
+      </div>
+      <div class="v14-pricing-grid">
+        {content.pricing.plans.map((plan: any) => (
+          <article class:list={['v14-price-card', plan.featured && 'is-featured']}>
+            {plan.featured && <span class="v14-featured">{plan.featuredLabel}</span>}
+            <h3>{plan.name}</h3>
+            <p>{plan.subtitle}</p>
+            <strong>{plan.price}</strong>
+            <ul>{plan.features.map((feature: string) => <li>{feature}</li>)}</ul>
+            <a class="v14-btn v14-btn--primary" href={plan.href}>{plan.ctaLabel}</a>
+          </article>
+        ))}
+      </div>
+      <p class="v14-note">{content.pricing.note}</p>
+    </div>
+  </section>
+
+  <section class="v14-section v14-section--faq" id={content.faq.id}>
+    <div class="v14-container v14-faq-grid">
+      <div>
+        <p class="v14-section-kicker">FAQ</p>
+        <h2>{content.faq.title}</h2>
+        <p class="v14-subtitle">{content.faq.reassurance}</p>
+        <a class="v14-btn v14-btn--primary" href={content.faq.cta.href}>{content.faq.cta.label}</a>
+      </div>
+      <div class="v14-faq-list">
+        {content.faq.items.map((item: any) => (
+          <details>
+            <summary>{item.question}</summary>
+            <p>{item.answer}</p>
+          </details>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="v14-final" id={content.finalCta.id}>
+    <div class="v14-container v14-final__inner">
+      <h2>{content.finalCta.title}</h2>
+      <p>{content.finalCta.subtitle}</p>
+      <div class="v14-actions v14-actions--center">
+        <a class="v14-btn v14-btn--primary" href={content.finalCta.primaryCta.href}>{content.finalCta.primaryCta.label}</a>
+        <a class="v14-btn v14-btn--ghost" href={content.finalCta.secondaryCta.href}>{content.finalCta.secondaryCta.label}</a>
+      </div>
+      <span>{content.finalCta.proof}</span>
+    </div>
+  </section>
+</main>
+
+<style is:global>
+  .homepage-v14{--orange:#ff7a1a;--orange-dark:#d8640f;--navy:#0b1f3a;--ink:#121821;--muted:#5d6978;--line:#e4e8ee;--cream:#f7f4ee;--soft:#f4f6f8;overflow:hidden;background:#fbfaf7;color:var(--ink);font-family:Inter,system-ui,sans-serif}.homepage-v14 h1,.homepage-v14 h2,.homepage-v14 h3,.homepage-v14 a,.homepage-v14 button{font-family:Montserrat,Inter,system-ui,sans-serif}.v14-container{width:min(1160px,calc(100% - 32px));margin-inline:auto}.v14-hero{position:relative;padding:clamp(58px,8vw,110px) 0 52px;background:radial-gradient(circle at 12% 4%,rgba(255,122,26,.18),transparent 30%),linear-gradient(180deg,#fff 0%,#fbfaf7 72%)}.v14-hero:after{content:"";position:absolute;left:0;right:0;bottom:-1px;height:96px;background:linear-gradient(180deg,transparent,#fff)}.v14-hero__grid{position:relative;z-index:1;display:grid;grid-template-columns:minmax(0,.92fr) minmax(360px,1.08fr);align-items:center;gap:clamp(34px,6vw,76px)}.v14-eyebrow,.v14-section-kicker{margin:0 0 14px;color:var(--orange);font-size:.74rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase}.homepage-v14 h1{max-width:780px;margin:0;color:var(--navy);font-size:clamp(2.45rem,5.8vw,5.15rem);font-weight:800;line-height:.95;letter-spacing:-.065em}.v14-lead{max-width:660px;margin:20px 0 0;color:#415066;font-size:clamp(1.08rem,1.7vw,1.28rem);line-height:1.5}.v14-actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:26px}.v14-actions--center{justify-content:center}.v14-btn{display:inline-flex;min-height:52px;align-items:center;justify-content:center;border-radius:999px;padding:.98rem 1.35rem;text-decoration:none;font-size:.94rem;font-weight:700;transition:transform .18s ease,box-shadow .18s ease,background .18s ease}.v14-btn:hover{transform:translateY(-2px)}.v14-btn--primary{background:var(--orange);color:#fff;box-shadow:0 18px 45px rgba(255,122,26,.25)}.v14-btn--primary:hover{background:var(--orange-dark);box-shadow:0 24px 54px rgba(255,122,26,.28)}.v14-btn--secondary{border:1px solid rgba(11,31,58,.14);background:#fff;color:var(--navy);box-shadow:0 12px 34px rgba(11,31,58,.06)}.v14-btn--ghost{border:1px solid rgba(255,255,255,.25);color:#fff;background:rgba(255,255,255,.08)}.v14-bullets{display:flex;flex-wrap:wrap;gap:9px;margin-top:20px}.v14-bullets span{border:1px solid rgba(11,31,58,.08);border-radius:999px;background:#fff;padding:.6rem .82rem;color:#253247;font-size:.82rem;font-weight:700;box-shadow:0 10px 28px rgba(11,31,58,.055)}.v14-proofline{margin:16px 0 0;color:#6a7482;font-size:.88rem;font-weight:600}.v14-device{position:relative;min-height:570px;border:1px solid rgba(11,31,58,.12);border-radius:34px;background:linear-gradient(135deg,#f0f3f7,#e4e8ee 52%,#fafafa);box-shadow:0 34px 90px rgba(11,31,58,.14);overflow:hidden}.v14-device:before{content:"";position:absolute;inset:0;background-image:linear-gradient(rgba(11,31,58,.06) 1px,transparent 1px),linear-gradient(90deg,rgba(11,31,58,.06) 1px,transparent 1px);background-size:28px 28px;mask-image:radial-gradient(circle at 48% 38%,#000 0%,transparent 76%)}.v14-device__chrome{position:absolute;top:22px;left:24px;display:flex;gap:7px}.v14-device__chrome span{width:10px;height:10px;border-radius:99px;background:rgba(11,31,58,.18)}.v14-phone-card,.v14-publish-panel{position:absolute;border:1px solid rgba(11,31,58,.1);border-radius:22px;background:rgba(255,255,255,.78);backdrop-filter:blur(14px);box-shadow:0 22px 54px rgba(11,31,58,.12)}.v14-phone-card{padding:18px}.v14-phone-card small{display:block;color:#7a8492;font-size:.72rem;font-weight:700;letter-spacing:.09em;text-transform:uppercase}.v14-phone-card strong{display:block;margin-top:8px;color:var(--navy);font-size:1.1rem;font-weight:700}.v14-phone-card.is-photo{top:72px;left:36px;width:56%;min-height:190px}.v14-phone-card.is-caption{right:34px;top:245px;width:52%}.v14-phone-card.is-caption p{margin:8px 0 0;color:#536174;line-height:1.45}.v14-photo-lines{display:grid;grid-template-columns:1.2fr .8fr;gap:10px;margin-top:18px}.v14-photo-lines i{display:block;height:78px;border-radius:14px;background:linear-gradient(135deg,#d9dee6,#f7f8fa)}.v14-photo-lines i:first-child{grid-row:span 2;height:166px}.v14-publish-panel{left:44px;right:44px;bottom:42px;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px;padding:18px}.v14-publish-panel span{border-radius:12px;background:#f4f6f8;padding:.72rem;color:#233149;font-weight:700;text-align:center}.v14-publish-panel button{grid-column:1/-1;border:0;border-radius:14px;background:var(--orange);color:#fff;padding:.9rem;font-weight:700}.v14-proof{position:relative;z-index:2;padding:34px 0 50px;background:#fff}.v14-proof__grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}.v14-proof article{border:1px solid var(--line);border-radius:22px;background:#fff;padding:23px 16px;text-align:center;box-shadow:0 15px 44px rgba(11,31,58,.06)}.v14-proof strong{display:block;color:var(--orange);font-size:clamp(1.8rem,3.2vw,2.5rem);font-weight:800;letter-spacing:-.04em}.v14-proof span{display:block;margin-top:8px;color:var(--navy);font-size:.88rem;font-weight:700;line-height:1.32}.v14-note{margin:15px auto 0;max-width:760px;color:#76808d;text-align:center;font-size:.86rem;font-weight:600}.v14-section{padding:clamp(68px,8vw,118px) 0;background:#fff}.v14-section--cream{background:var(--cream)}.v14-section--split{background:linear-gradient(180deg,#fff,#f8fafc)}.v14-section--navy{background:var(--navy);color:#fff}.v14-split,.v14-workflow-grid,.v14-google-grid,.v14-faq-grid{display:grid;grid-template-columns:minmax(0,.92fr) minmax(360px,1.08fr);align-items:center;gap:clamp(32px,6vw,76px)}.homepage-v14 h2{margin:0;color:var(--navy);font-size:clamp(2rem,4.6vw,4.15rem);font-weight:700;line-height:1;letter-spacing:-.055em}.v14-section--navy h2{color:#fff}.v14-subtitle,.v14-body{max-width:680px;margin:16px 0 0;color:var(--muted);font-size:clamp(1rem,1.6vw,1.16rem);line-height:1.52}.v14-section--navy .v14-subtitle{color:rgba(255,255,255,.74)}.v14-body{font-size:1.02rem}.v14-centered{max-width:860px;margin:0 auto 34px;text-align:center}.v14-centered .v14-subtitle{margin-inline:auto}.v14-triad{display:grid;gap:14px}.v14-triad article{position:relative;border:1px solid var(--line);border-radius:24px;background:#fff;padding:24px;box-shadow:0 18px 50px rgba(11,31,58,.07)}.v14-triad span{color:var(--orange);font-weight:800;letter-spacing:.12em}.v14-triad h3,.v14-steps h3{margin:9px 0 0;color:var(--navy);font-size:1.35rem;font-weight:700}.v14-triad p,.v14-steps p{margin:8px 0 0;color:var(--muted);line-height:1.5}.v14-transform-grid{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:12px}.v14-transform-grid article{min-height:158px;border:1px solid rgba(11,31,58,.08);border-radius:24px;background:#fff;padding:20px;box-shadow:0 16px 42px rgba(11,31,58,.055)}.v14-transform-grid span{display:inline-flex;border-radius:999px;background:#fff2e8;color:#9c4d12;padding:.42rem .64rem;font-size:.78rem;font-weight:700}.v14-transform-grid strong{display:block;margin-top:18px;color:var(--navy);font-size:1.04rem;font-weight:700;line-height:1.28}.v14-workflow-visual{position:relative;min-height:450px;border-radius:34px;background:linear-gradient(135deg,#eef2f6,#fafafa);border:1px solid rgba(11,31,58,.1);box-shadow:0 30px 80px rgba(11,31,58,.11);padding:38px;display:grid;align-content:center;gap:14px;overflow:hidden}.v14-workflow-visual:before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 18% 20%,rgba(255,122,26,.2),transparent 28%),linear-gradient(90deg,rgba(11,31,58,.045) 1px,transparent 1px),linear-gradient(rgba(11,31,58,.045) 1px,transparent 1px);background-size:auto,30px 30px,30px 30px}.v14-flow-card{position:relative;z-index:1;border-radius:22px;background:rgba(255,255,255,.82);padding:20px;color:#657183;font-weight:700;box-shadow:0 18px 48px rgba(11,31,58,.1)}.v14-flow-card strong{display:block;margin-top:5px;color:var(--navy);font-size:1.25rem}.v14-flow-card.two{margin-left:54px}.v14-flow-card.three{margin-left:108px}.v14-flow-line{position:relative;z-index:1;width:2px;height:22px;margin-left:36px;background:var(--orange)}.v14-steps{display:grid;gap:13px;margin-top:26px}.v14-steps article{display:flex;gap:16px;border:1px solid var(--line);border-radius:22px;background:#fff;padding:18px;box-shadow:0 14px 38px rgba(11,31,58,.055)}.v14-steps span{display:grid;place-items:center;flex:0 0 42px;width:42px;height:42px;border-radius:99px;background:#fff2e8;color:var(--orange);font-weight:800}.v14-dark-pills{display:flex;flex-wrap:wrap;gap:10px;margin-top:26px}.v14-dark-pills span{border:1px solid rgba(255,255,255,.14);border-radius:999px;background:rgba(255,255,255,.08);padding:.66rem .86rem;color:#fff;font-weight:700}.v14-review-mock{min-height:420px;border:1px solid rgba(255,255,255,.16);border-radius:34px;background:linear-gradient(135deg,rgba(255,255,255,.13),rgba(255,255,255,.06));padding:28px;box-shadow:0 30px 80px rgba(0,0,0,.2)}.v14-map{height:170px;border-radius:24px;background:linear-gradient(135deg,#dce2ea,#f9fafb);position:relative;overflow:hidden}.v14-map:after{content:"";position:absolute;inset:0;background-image:linear-gradient(rgba(11,31,58,.08) 1px,transparent 1px),linear-gradient(90deg,rgba(11,31,58,.08) 1px,transparent 1px);background-size:24px 24px}.v14-review-mock article{margin-top:16px;border-radius:22px;background:#fff;padding:21px}.v14-review-mock strong{display:block;color:var(--navy);font-size:1.45rem}.v14-review-mock span,.v14-review-mock p{color:#566274}.v14-review-mock button{width:100%;margin-top:14px;border:0;border-radius:16px;background:var(--orange);color:#fff;padding:1rem;font-weight:700}.v14-destinations{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:12px}.v14-destinations span{border:1px solid var(--line);border-radius:24px;background:#fff;padding:26px 12px;text-align:center;color:var(--navy);font-family:Montserrat,Inter,sans-serif;font-weight:700;box-shadow:0 16px 44px rgba(11,31,58,.06)}.v14-compare{display:grid;gap:10px}.v14-compare article{display:grid;grid-template-columns:1fr 1fr;gap:12px;border:1px solid rgba(11,31,58,.08);border-radius:20px;background:#fff;padding:14px;box-shadow:0 14px 36px rgba(11,31,58,.05)}.v14-compare span{color:#7a4d2b;font-weight:700}.v14-compare strong{color:#177257;font-weight:700}.v14-pricing-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px;max-width:920px;margin:34px auto 0}.v14-price-card{position:relative;border:1px solid var(--line);border-radius:30px;background:#fff;padding:30px;box-shadow:0 22px 66px rgba(11,31,58,.075)}.v14-price-card.is-featured{border:2px solid var(--orange);box-shadow:0 28px 76px rgba(255,122,26,.15)}.v14-featured{position:absolute;right:26px;top:-15px;border-radius:99px;background:var(--orange);color:#fff;padding:.5rem .75rem;font-size:.72rem;font-weight:700;text-transform:uppercase;letter-spacing:.1em}.v14-price-card h3{margin:0;color:var(--navy);font-size:1.65rem;font-weight:700}.v14-price-card p{margin:.45rem 0 0;color:var(--muted);font-weight:600}.v14-price-card>strong{display:block;margin:18px 0;color:var(--navy);font-size:2.1rem;font-weight:800;letter-spacing:-.04em}.v14-price-card ul{display:grid;gap:10px;margin:0 0 24px;padding:0;list-style:none}.v14-price-card li{display:flex;gap:9px;color:#2a3548;font-weight:650}.v14-price-card li:before{content:"✓";color:var(--orange);font-weight:800}.v14-section--faq{background:linear-gradient(180deg,#fff,#f7f9fc)}.v14-faq-grid{align-items:start}.v14-faq-list{display:grid;gap:10px}.v14-faq-list details{border:1px solid var(--line);border-radius:18px;background:#fff;box-shadow:0 12px 34px rgba(11,31,58,.05)}.v14-faq-list summary{cursor:pointer;padding:18px 20px;color:var(--navy);font-family:Montserrat,Inter,sans-serif;font-weight:700}.v14-faq-list p{margin:0;padding:0 20px 18px;color:var(--muted);line-height:1.55}.v14-final{padding:clamp(72px,8vw,118px) 0;background:radial-gradient(circle at 50% 0%,rgba(255,122,26,.24),transparent 36%),var(--navy);color:#fff;text-align:center}.v14-final__inner{max-width:860px}.v14-final h2{color:#fff}.v14-final p{margin:18px auto 0;max-width:650px;color:rgba(255,255,255,.76);font-size:1.14rem;line-height:1.5}.v14-final span{display:block;margin-top:18px;color:rgba(255,255,255,.62);font-weight:650}@media(max-width:980px){.v14-hero__grid,.v14-split,.v14-workflow-grid,.v14-google-grid,.v14-faq-grid{grid-template-columns:1fr}.v14-transform-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.v14-destinations{grid-template-columns:repeat(3,minmax(0,1fr))}.v14-proof__grid{grid-template-columns:repeat(2,minmax(0,1fr))}.v14-device{min-height:520px}.v14-hero__copy{text-align:center}.v14-actions,.v14-bullets{justify-content:center}.v14-proofline{text-align:center}}@media(max-width:640px){.v14-container{width:min(100% - 24px,1160px)}.homepage-v14 h1{font-size:clamp(2.35rem,13vw,3.4rem)}.homepage-v14 h2{font-size:clamp(1.95rem,10vw,2.8rem)}.v14-device{min-height:500px;border-radius:26px}.v14-phone-card.is-photo{left:18px;width:66%}.v14-phone-card.is-caption{right:18px;width:64%}.v14-publish-panel{left:18px;right:18px}.v14-transform-grid,.v14-pricing-grid,.v14-destinations{grid-template-columns:1fr}.v14-compare article{grid-template-columns:1fr}.v14-proof__grid{grid-template-columns:1fr}.v14-flow-card.two,.v14-flow-card.three{margin-left:0}}
+</style>

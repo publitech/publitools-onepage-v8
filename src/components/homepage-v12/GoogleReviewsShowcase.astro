@@ -1,0 +1,9 @@
+---
+const { section, images } = Astro.props;
+---
+<section class="v12-section v12-section--navy" id={section.id}>
+  <div class="v12-container v12-two-col v12-two-col--visual-right">
+    <div class="v12-section-head v12-section-head--left"><h2>{section.title}</h2><p>{section.subtitle}</p><div class="v12-annotation-list">{section.annotations.map((a: string) => <span>{a}</span>)}</div></div>
+    <figure class="v12-stage v12-stage--phone"><img src={images.googleReviews.src} width={images.googleReviews.width} height={images.googleReviews.height} alt={images.googleReviews.alt} loading="eager" decoding="async" /></figure>
+  </div>
+</section>

@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" fill="none">
+  <!-- Main star - orange -->
+  <path d="M24 8 L27 18 L38 18 L29 25 L32 36 L24 29 L16 36 L19 25 L10 18 L21 18 Z" fill="#FF7A1A" opacity="0.9" stroke="currentColor" stroke-width="1.5"/>
+  
+  <!-- Supporting star points as dots -->
+  <circle cx="12" cy="40" r="2" fill="currentColor" opacity="0.5"/>
+  <circle cx="24" cy="42" r="2" fill="currentColor" opacity="0.5"/>
+  <circle cx="36" cy="40" r="2" fill="currentColor" opacity="0.5"/>
+</svg>

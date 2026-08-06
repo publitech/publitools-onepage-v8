@@ -1,0 +1,65 @@
+---
+import homepageContent from '../content/homepage/fr.json';
+import HomepageIcon from './icons/HomepageIcon.astro';
+import type { HomepageIconId } from '../content/homepage/iconManifest';
+
+type PricingPlan = {
+  name: string;
+  subtitle: string;
+  price: string;
+  href: string;
+  icon: HomepageIconId;
+  featured?: boolean;
+  featuredLabel?: string;
+  features: string[];
+  ctaLabel: string;
+};
+
+type PricingContent = {
+  id: string;
+  eyebrow: string;
+  title: string;
+  description: string;
+  plans: PricingPlan[];
+  note: string;
+};
+
+const { pricing: pricingProp } = Astro.props as { pricing?: PricingContent };
+const pricing = pricingProp ?? homepageContent.pricing;
+
+if (!pricing) {
+  throw new Error('Pricing content missing: pass pricing prop or define src/content/homepage/fr.json');
+}
+---
+
+<section id={pricing.id} class="section-pad bg-white">
+  <div class="container">
+    <div class="mx-auto max-w-3xl text-center">
+      <p class="text-sm font-bold uppercase tracking-[0.18em] text-[#FF7A1A]">{pricing.eyebrow}</p>
+      <h2 class="mt-4 text-4xl font-bold tracking-[-0.03em] text-[#0B1F3A] md:text-5xl">{pricing.title}</h2>
+      <p class="mx-auto mt-5 max-w-2xl text-lg leading-8 text-[#4B5563]">{pricing.description}</p>
+    </div>
+
+    <div class="mx-auto mt-12 grid max-w-4xl gap-6 lg:grid-cols-2">
+      {pricing.plans.map((plan) => (
+        <article class:list={['relative rounded-2xl border-2 bg-white p-8 shadow-soft md:p-10', plan.featured ? 'border-[#FF7A1A]' : 'border-[#E5E7EB]']}>
+          {plan.featured && <span class="absolute right-6 top-[-14px] rounded-full bg-[#FF7A1A] px-4 py-1.5 text-xs font-bold uppercase tracking-[0.12em] text-white">{plan.featuredLabel ?? 'Le plus complet'}</span>}
+          <div class="mb-5 inline-flex h-14 w-14 items-center justify-center rounded-2xl bg-[#FFF8F2] text-[#FF7A1A] ring-1 ring-[#FFE1C7]">
+            <HomepageIcon icon={plan.icon} size={36} tone={plan.featured ? 'orange' : 'navy'} />
+          </div>
+          <h3 class="text-2xl font-bold text-[#0B1F3A]">{plan.name}</h3>
+          <p class="mt-2 text-base text-[#6B7280]">{plan.subtitle}</p>
+          <p class="mt-5 text-4xl font-bold text-[#0B1F3A]">{plan.price}{!plan.price.includes('HT') && <span class="ml-2 text-base font-medium text-[#6B7280]">/mois</span>}</p>
+          <ul class="mt-7 space-y-3 text-base leading-7 text-[#101820]">
+            {plan.features.map((feature) => (
+              <li class="flex gap-3"><span class="font-bold text-[#FF7A1A]" aria-hidden="true">✓</span><span>{feature}</span></li>
+            ))}
+          </ul>
+          <a class="mt-8 inline-flex min-h-12 w-full items-center justify-center rounded-lg bg-[#FF7A1A] px-6 py-4 text-center text-base font-bold text-white no-underline transition hover:bg-[#E66F18]" href={plan.href}>{plan.ctaLabel}</a>
+        </article>
+      ))}
+    </div>
+
+    <p class="mx-auto mt-8 max-w-3xl text-center text-base font-semibold leading-7 text-[#6B7280]">{pricing.note}</p>
+  </div>
+</section>

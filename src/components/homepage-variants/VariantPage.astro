@@ -1,0 +1,47 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import VariantHero from './VariantHero.astro';
+import SectionRenderer from './SectionRenderer.astro';
+import type { HomepageVariant } from '../../content/homepage-variants';
+
+interface Props { variant: HomepageVariant; }
+const { variant } = Astro.props;
+---
+
+<Layout title={variant.title} description={variant.description} canonical={`https://publitools.ai${variant.route}`}>
+  <VariantHero hero={variant.hero} label={variant.label} />
+  <main>
+    <section class="border-b border-[#e8e9ea] bg-white py-6">
+      <div class="container grid gap-3 text-sm text-[#5b6170] md:grid-cols-3 md:items-start">
+        <p><strong class="text-[#101820]">Intention :</strong> {variant.strategicIntent}</p>
+        <p><strong class="text-[#101820]">Assets :</strong> {variant.assetStatus}</p>
+        <p><strong class="text-[#101820]">Motion :</strong> {variant.motionStatus}</p>
+      </div>
+    </section>
+    {variant.sections.map((section) => <SectionRenderer section={section} />)}
+  </main>
+</Layout>
+
+<script>
+  import { gsap } from 'gsap';
+
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const sections = document.querySelectorAll('.variant-reveal');
+
+  if (!reduceMotion && sections.length > 0) {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) return;
+        const cards = entry.target.querySelectorAll('.variant-card');
+        gsap.fromTo(
+          cards.length ? cards : entry.target,
+          { opacity: 0, y: 28 },
+          { opacity: 1, y: 0, stagger: 0.12, duration: 0.5, ease: 'power2.out' }
+        );
+        observer.unobserve(entry.target);
+      });
+    }, { threshold: 0.2 });
+
+    sections.forEach((section) => observer.observe(section));
+  }
+</script>

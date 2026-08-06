@@ -1,0 +1,10 @@
+---
+const { section, images, logos } = Astro.props;
+---
+<section class="v12-section v12-section--white" id={section.id} data-v12-validation>
+  <div class="v12-container v12-two-col">
+    <div class="v12-section-head v12-section-head--left"><h2>{section.title}</h2><p>{section.subtitle}</p><span class="v12-valid-badge">Rien ne part sans validation.</span></div>
+    <figure class="v12-stage v12-stage--compact"><img src={images.flow.src} width={images.flow.width} height={images.flow.height} alt={images.flow.alt} loading="eager" decoding="async" /></figure>
+  </div>
+  <div class="v12-container"><div class="v12-destination-band" aria-label="6 destinations visibles">{logos.map((logo: any) => <span data-v12-destination><img src={logo.src} alt={logo.alt} width="30" height="30" loading="lazy" decoding="async" />{logo.name}</span>)}</div></div>
+</section>

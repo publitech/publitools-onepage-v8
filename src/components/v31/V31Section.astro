@@ -1,0 +1,70 @@
+---
+import V31Container from './V31Container.astro';
+import V31SectionHeader from './V31SectionHeader.astro';
+
+type Tone = 'white' | 'soft' | 'navy';
+
+interface Props {
+  id?: string;
+  eyebrow?: string;
+  title?: string;
+  lead?: string;
+  tone?: Tone;
+  narrow?: boolean;
+  headerAlign?: 'center' | 'left';
+  labelledBy?: string;
+}
+
+const {
+  id,
+  eyebrow,
+  title,
+  lead,
+  tone = 'white',
+  narrow = false,
+  headerAlign = 'center',
+  labelledBy,
+} = Astro.props;
+const computedLabel = labelledBy || (title && id ? `${id}-title` : undefined);
+---
+
+<section id={id} class:list={['v31-section', `tone-${tone}`]} aria-labelledby={computedLabel}>
+  <V31Container narrow={narrow}>
+    {(eyebrow || title || lead) && (
+      <V31SectionHeader
+        eyebrow={eyebrow}
+        title={title}
+        lead={lead}
+        align={headerAlign}
+        tone={tone === 'navy' ? 'dark' : 'light'}
+        titleId={computedLabel}
+      />
+    )}
+    <slot />
+  </V31Container>
+</section>
+
+<style>
+  .v31-section {
+    padding-block: 112px;
+  }
+
+  .tone-white {
+    background: #ffffff;
+  }
+
+  .tone-soft {
+    background: var(--v31-soft);
+  }
+
+  .tone-navy {
+    background: var(--v31-navy);
+    color: #ffffff;
+  }
+
+  @media (max-width: 680px) {
+    .v31-section {
+      padding-block: 72px;
+    }
+  }
+</style>

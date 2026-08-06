@@ -1,0 +1,42 @@
+---
+const questions = [
+  [
+    'Comment fonctionne l’essai de 14 jours ?',
+    'Vous créez votre compte, choisissez Starter ou Pro, puis vous utilisez PubliTools gratuitement pendant 14 jours. Pendant l’essai, vous pouvez générer et publier en illimité sur les 6 réseaux. À la fin des 14 jours, l’abonnement démarre automatiquement sur la formule choisie.',
+  ],
+  [
+    'Quels sont les 6 réseaux connectés ?',
+    'PubliTools publie sur Facebook, Instagram, LinkedIn, Google Business, TikTok et YouTube. Vous connectez vos comptes une fois, puis vous choisissez où publier à chaque création.',
+  ],
+  [
+    'Que puis-je ajouter dans l’application ?',
+    'Vous pouvez ajouter vos photos et vidéos directement depuis le chantier. Vous décrivez ensuite les travaux avec un vocal de 10 secondes ou un texte court.',
+  ],
+  [
+    'Combien de temps prend la préparation d’une publication ?',
+    'Moins de 2 minutes suffisent pour une publication simple : vous ajoutez vos photos ou vidéos, dictez votre vocal, relisez le texte proposé et validez la publication.',
+  ],
+  [
+    'Quelle est la différence entre Starter et Pro ?',
+    'Starter comprend 8 créations par mois, avec 3 réseaux maximum par publication et sans programmation. Pro comprend les créations illimitées, la publication sur les 6 réseaux en même temps et la programmation.',
+  ],
+];
+---
+
+<section class="op-faq" id="faq" aria-labelledby="op-faq-title">
+  <div class="op-container op-faq__grid">
+    <div class="op-section-head op-faq__head">
+      <p class="op-kicker">FAQ</p>
+      <h2 id="op-faq-title">Les réponses avant de commencer.</h2>
+      <p>Des explications simples sur l’essai, les photos, les vidéos et les deux formules.</p>
+    </div>
+    <div class="op-faq__list">
+      {questions.map(([question, answer], index) => (
+        <details open={index === 0}>
+          <summary>{question}<span aria-hidden="true">+</span></summary>
+          <p>{answer}</p>
+        </details>
+      ))}
+    </div>
+  </div>
+</section>

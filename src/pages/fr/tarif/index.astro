@@ -1,0 +1,180 @@
+---
+import V31PageShell from '../../../components/site-v31/V31PageShell.astro';
+import V31HeroInternal from '../../../components/site-v31/V31HeroInternal.astro';
+import V31Section from '../../../components/site-v31/V31Section.astro';
+import V31CardGrid from '../../../components/site-v31/V31CardGrid.astro';
+import V31PricingTable from '../../../components/site-v31/V31PricingTable.astro';
+import V31FaqAccordion from '../../../components/site-v31/V31FaqAccordion.astro';
+import V31FinalCta from '../../../components/v31/V31FinalCta.astro';
+
+const title = 'Tarifs PubliTools — Starter et Pro pour les entreprises du bâtiment';
+const description = 'Comparez les plans PubliTools : Starter à 19,90 € HT/mois, Pro à 39,90 € HT/mois, essai 14 jours avec accès Pro complet.';
+const signupHref = 'https://app.publichantier.fr/?signup=yes';
+
+const plans = [
+  {
+    name: 'Starter',
+    price: '19,90 € HT/mois',
+    audience: 'Pour commencer à publier régulièrement sans workflow compliqué.',
+    valueStack: ['8 publications/mois', '3 réseaux par publication', 'Avis SMS illimités'],
+    included: [
+      '8 publications par mois',
+      'jusqu’à 3 réseaux par publication',
+      'Facebook, Instagram, LinkedIn, Google Business, TikTok, YouTube disponibles',
+      'texte IA à partir d’un vocal',
+      'retouche photo/vidéo classique',
+      'demande d’avis par SMS illimitée',
+    ],
+    limits: [
+      'designs avancés disponibles en aperçu',
+      'programmation non incluse',
+      'avis reçu → publication : aperçu seulement, sortie publiable en Pro',
+    ],
+    cta: 'Essayer PubliTools 14 jours',
+    href: signupHref,
+  },
+  {
+    name: 'Pro',
+    price: '39,90 € HT/mois',
+    badge: 'Recommandé pour publier régulièrement',
+    audience: 'Pour publier plus souvent, programmer et utiliser toute la puissance créative de PubliTools.',
+    valueStack: ['Publications illimitées', 'Programmation', 'Designs avancés'],
+    included: [
+      'publications illimitées',
+      'réseaux illimités par publication selon connexions et contraintes plateformes',
+      'programmation',
+      'retouches et designs avancés',
+      'designs IA illimités',
+      'demande d’avis par SMS illimitée',
+      'avis reçu → design ou publication prête',
+      'accès complet aux fonctions cœur PubliTools',
+    ],
+    cta: 'Essayer PubliTools 14 jours',
+    href: signupHref,
+    featured: true,
+  },
+];
+
+const comparison = [
+  { feature: 'Publications', starter: '8 / mois', pro: 'Illimitées' },
+  { feature: 'Réseaux par publication', starter: '3 max', pro: 'Illimité selon connexions' },
+  { feature: 'Réseaux disponibles', starter: '6 confirmés', pro: '6 confirmés' },
+  { feature: 'Texte IA vocal', starter: 'Oui', pro: 'Oui' },
+  { feature: 'Retouche classique', starter: 'Oui', pro: 'Oui' },
+  { feature: 'Designs avancés', starter: 'Aperçu', pro: 'Inclus' },
+  { feature: 'Designs IA', starter: 'Aperçu', pro: 'Inclus' },
+  { feature: 'Programmation', starter: 'Non', pro: 'Oui' },
+  { feature: 'Demande d’avis SMS', starter: 'Illimitée', pro: 'Illimitée' },
+  { feature: 'Avis reçu → publication', starter: 'Aperçu seulement', pro: 'Oui' },
+];
+
+const trialCards = [
+  {
+    title: 'Vous testez avec vos vrais chantiers.',
+    text: 'Photos, vidéos, vocal, avis et publications : l’essai sert à voir PubliTools sur votre matière réelle.',
+  },
+  {
+    title: 'Vous voyez les publications avant de les publier.',
+    text: 'PubliTools prépare le contenu. Vous relisez, vous ajustez si besoin, puis vous déclenchez la publication.',
+  },
+  {
+    title: 'À la fin, l’abonnement bascule sur le plan choisi.',
+    text: 'L’essai donne accès aux fonctions Pro pendant 14 jours. Ensuite, vous gardez Starter ou Pro selon votre choix.',
+  },
+];
+
+const chooseCards = [
+  {
+    title: 'Starter si…',
+    text: 'Vous voulez une routine simple pour commencer.',
+    items: [
+      'vous voulez commencer avec 8 publications par mois',
+      'vous publiez surtout sur 2 ou 3 réseaux',
+      'vous voulez demander des avis sans changer toute votre organisation',
+    ],
+  },
+  {
+    title: 'Pro si…',
+    text: 'Vous voulez faire de PubliTools votre moteur de présence en ligne.',
+    items: [
+      'vous voulez publier plus souvent',
+      'vous voulez programmer',
+      'vous voulez les designs avancés et avis transformés en publications',
+      'vous voulez utiliser PubliTools comme vrai moteur de présence en ligne',
+    ],
+  },
+];
+
+const pricingFaq = [
+  { question: 'Combien dure l’essai ?', answer: '14 jours.' },
+  { question: 'Qu’est-ce qui est inclus pendant l’essai ?', answer: 'L’accès Pro complet pendant 14 jours.' },
+  { question: 'Les prix sont-ils HT ?', answer: 'Oui. Les prix affichés sont en HT.' },
+  { question: 'Starter permet-il de publier sur TikTok et YouTube ?', answer: 'Oui. Les 6 réseaux confirmés sont disponibles sur Starter et Pro. La limite Starter porte sur le nombre de réseaux par publication : 3 maximum.' },
+  { question: 'La programmation est-elle incluse dans Starter ?', answer: 'Non. La programmation est incluse dans Pro.' },
+  { question: 'Les demandes d’avis SMS sont-elles limitées ?', answer: 'Non. Elles sont illimitées sur Starter et Pro.' },
+  { question: 'Puis-je transformer un avis Google en publication avec Starter ?', answer: 'Starter peut donner un aperçu selon le parcours produit. La sortie exploitable et publiable est incluse dans Pro.' },
+  { question: 'PubliTools garantit-il des devis ou des avis ?', answer: 'Non. PubliTools aide à publier plus régulièrement, à demander des avis plus facilement et à mieux montrer vos preuves. Aucun devis, avis ou classement Google n’est garanti.' },
+];
+
+const schema = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: pricingFaq.map((item) => ({
+      '@type': 'Question',
+      name: item.question,
+      acceptedAnswer: { '@type': 'Answer', text: item.answer },
+    })),
+  },
+];
+---
+
+<V31PageShell title={title} description={description} canonical="https://publitools.ai/fr/tarif/" schema={schema}>
+  <V31HeroInternal
+    eyebrow="Tarifs PubliTools"
+    title="Choisissez le plan PubliTools qui suit votre rythme de publication"
+    lead="Essayez PubliTools pendant 14 jours avec l’accès Pro complet. Ensuite, gardez le plan choisi : Starter pour publier simplement, Pro pour publier sans limite et programmer."
+    proof="Prix HT. Accès Pro complet pendant l’essai."
+    ctas={[{ label: 'Essayer PubliTools 14 jours', href: signupHref }, { label: 'Comparer les plans', href: '#comparatif', variant: 'secondary' }]}
+    visualSrc="/assets/site-v31/ui-screens/btp-renov-ui-network-selection.webp"
+    visualAlt="Écran PubliTools BTP Renov de sélection des réseaux sociaux"
+    visualLabel="Sélection des réseaux connectés"
+    stats={[{ value: '14 j', label: 'd’essai Pro complet' }, { value: '19,90 €', label: 'HT/mois Starter' }, { value: '39,90 €', label: 'HT/mois Pro' }]}
+  />
+
+  <V31Section
+    id="comparatif"
+    eyebrow="Plans"
+    title="Deux plans simples. Le même objectif : faire vivre votre entreprise BTP sur internet."
+    lead="La différence ne porte pas sur les réseaux disponibles : les 6 réseaux confirmés existent sur Starter et Pro. Elle porte sur le volume, la programmation et les sorties avancées."
+  >
+    <V31PricingTable plans={plans} comparison={comparison} />
+  </V31Section>
+
+  <V31Section
+    tone="soft"
+    eyebrow="Essai"
+    title="Pendant 14 jours, vous testez Pro complet"
+    lead="Vous pouvez comprendre la vraie valeur de PubliTools : publications illimitées, programmation, designs avancés et avis → publication."
+  >
+    <V31CardGrid cards={trialCards} columns={3} numbered />
+  </V31Section>
+
+  <V31Section
+    eyebrow="Choix du plan"
+    title="Si vous publiez peu, Starter suffit. Si vous voulez une vraie routine, Pro est le plan naturel."
+  >
+    <V31CardGrid cards={chooseCards} columns={2} />
+  </V31Section>
+
+  <V31Section tone="soft" eyebrow="FAQ tarifs" title="Les réponses utiles avant de choisir">
+    <V31FaqAccordion items={pricingFaq} />
+  </V31Section>
+
+  <V31FinalCta
+    eyebrow="Essai 14 jours"
+    title="Le plus simple : testez Pro avec vos vrais chantiers"
+    lead="Accès Pro complet pendant l’essai. Prix HT."
+    ctas={[{ label: 'Essayer PubliTools 14 jours', href: signupHref }, { label: 'Lire la FAQ', href: '/fr/faq/', variant: 'secondary' }]}
+  />
+</V31PageShell>

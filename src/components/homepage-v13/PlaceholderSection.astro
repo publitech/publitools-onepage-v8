@@ -1,0 +1,33 @@
+---
+import PlaceholderBlock from './PlaceholderBlock.astro';
+
+const { section, index } = Astro.props;
+const isEven = index % 2 === 1;
+---
+
+<section class:list={['v13-section', isEven ? 'v13-section--soft' : 'v13-section--white']} id={section.id}>
+  <div class:list={['v13-container', 'v13-section__grid', isEven && 'is-reversed']}>
+    <div class="v13-section__copy">
+      <span class="v13-section__number">0{index + 1}</span>
+      <h2>{section.title}</h2>
+      <p>{section.subtitle}</p>
+
+      {section.rows ? (
+        <div class="v13-compare-list">
+          {section.rows.map((row: any) => (
+            <article>
+              <span>{row.before}</span>
+              <strong>{row.after}</strong>
+            </article>
+          ))}
+        </div>
+      ) : (
+        <div class:list={['v13-pill-list', `v13-pill-list--${section.variant}`]} aria-label="Éléments de section">
+          {section.items.map((item: string) => <span>{item}</span>)}
+        </div>
+      )}
+    </div>
+
+    <PlaceholderBlock label={section.placeholder} size={section.variant === 'tiles' ? 'square' : 'wide'} />
+  </div>
+</section>

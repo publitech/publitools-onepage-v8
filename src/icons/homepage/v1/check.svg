@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" fill="none">
+  <!-- Checkmark circle - clean and bold -->
+  <circle cx="24" cy="24" r="14" stroke="currentColor" stroke-width="3" fill="none"/>
+  
+  <!-- Check path - orange -->
+  <path d="M16 24 L21 29 L32 18" stroke="#FF7A1A" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+</svg>

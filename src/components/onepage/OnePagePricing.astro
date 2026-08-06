@@ -1,0 +1,75 @@
+---
+import OnePageButton from './OnePageButton.astro';
+import OnePageSocialLogos from './OnePageSocialLogos.astro';
+
+const signupUrl = 'https://app.publichantier.fr/?signup=yes';
+const starter = [
+  '8 créations par mois',
+  'Textes générés depuis vos photos, vidéos, votre vocal ou un texte court',
+  'Amélioration classique des photos et vidéos',
+  'Jusqu’à 3 réseaux sélectionnés par publication',
+  'Demandes d’avis par SMS illimitées',
+  'Aperçu des améliorations SmartAI',
+  'Validation avant publication',
+  'Support WhatsApp',
+];
+const pro = [
+  'Créations illimitées',
+  'Publication simultanée sur les 6 réseaux',
+  'Textes générés depuis vos photos, vidéos, votre vocal ou un texte court',
+  'Amélioration classique des photos et vidéos',
+  'SmartAI illimitée',
+  'Designs IA illimités',
+  'Programmation des publications',
+  'Demandes d’avis par SMS illimitées',
+  'Avis reçu transformé en publication',
+  'Validation avant publication',
+  'Support WhatsApp',
+];
+---
+
+<section class="op-pricing" id="tarifs" aria-labelledby="op-pricing-title">
+  <div class="op-container">
+    <div class="op-section-head op-pricing__head">
+      <p class="op-kicker">Tarifs</p>
+      <h2 id="op-pricing-title">Testez l'application gratuitement sur votre prochain chantier</h2>
+      <p>14 jours d’essai gratuit pour générer et publier en illimité sur tous vos réseaux.</p>
+    </div>
+    <div class="op-pricing__grid">
+      <article class="op-price-card op-price-card--starter">
+        <div class="op-price-card__head">
+          <p class="op-price-card__label">Starter</p>
+          <h3>Pour publier régulièrement</h3>
+
+        </div>
+        <ul>
+          {starter.map((item) => <li>{item}</li>)}
+        </ul>
+        <OnePageSocialLogos label="Réseaux disponibles" caption="3 réseaux maximum par publication" compact pricing />
+        <p class="op-price-card__price">
+          <span class="op-price-card__price-kicker">Seulement</span>
+          <strong>19,90&nbsp;€</strong>
+          <span class="op-price-card__price-unit">HT/mois</span>
+        </p>
+        <OnePageButton href={signupUrl}>Tester pendant 14 jours</OnePageButton>
+      </article>
+      <article class="op-price-card op-price-card--pro">
+        <div class="op-price-card__head">
+          <p class="op-price-card__label">Pro <span>Recommandé</span></p>
+          <h3>Pour automatiser sans limite</h3>
+
+        </div>
+        <ul>
+          {pro.map((item) => <li>{item}</li>)}
+        </ul>
+        <OnePageSocialLogos label="Réseaux disponibles" caption="Publication simultanée sur les 6 réseaux" compact pricing />
+        <p class="op-price-card__price">
+          <span class="op-price-card__price-kicker">Seulement</span>
+          <strong>39,90&nbsp;€</strong>
+          <span class="op-price-card__price-unit">HT/mois</span>
+        </p>
+        <OnePageButton href={signupUrl}>Tester pendant 14 jours</OnePageButton>
+      </article>
+    </div>
+  </div>
+</section>

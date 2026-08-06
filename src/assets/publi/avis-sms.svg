@@ -1,0 +1,22 @@
+<svg width="1200" height="900" viewBox="0 0 1200 900" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1200" height="900" rx="36" fill="#F3F3F3"/>
+  <rect x="100" y="120" width="1000" height="660" rx="28" fill="#FFFFFF" stroke="#E8E9EA" stroke-width="4"/>
+  <rect x="170" y="180" width="320" height="520" rx="32" fill="#262832"/>
+  <rect x="205" y="240" width="250" height="88" rx="18" fill="#F4862D"/>
+  <text x="235" y="294" fill="white" font-family="Inter, Arial, sans-serif" font-size="28" font-weight="700">Bonjour M. Martin,</text>
+  <rect x="205" y="350" width="220" height="22" rx="10" fill="#D7D9DE"/>
+  <rect x="205" y="390" width="240" height="22" rx="10" fill="#D7D9DE"/>
+  <rect x="205" y="430" width="200" height="22" rx="10" fill="#D7D9DE"/>
+  <rect x="205" y="500" width="180" height="56" rx="18" fill="#FAC43E"/>
+  <text x="232" y="536" fill="#262832" font-family="Inter, Arial, sans-serif" font-size="24" font-weight="700">Laisser un avis</text>
+  <rect x="610" y="210" width="370" height="180" rx="28" fill="#FFF7E8" stroke="#F7D79D" stroke-width="3"/>
+  <text x="660" y="280" fill="#262832" font-family="Inter, Arial, sans-serif" font-size="38" font-weight="700">SMS prêt à envoyer</text>
+  <text x="660" y="330" fill="#5B6170" font-family="Inter, Arial, sans-serif" font-size="24">Après chaque chantier terminé</text>
+  <rect x="610" y="450" width="420" height="180" rx="28" fill="#262832"/>
+  <text x="650" y="520" fill="white" font-family="Inter, Arial, sans-serif" font-size="34" font-weight="700">Avis collectés</text>
+  <g>
+    <path d="M675 575L688 602L717 606L696 626L701 655L675 641L649 655L654 626L633 606L662 602L675 575Z" fill="#FAC43E"/>
+    <path d="M755 575L768 602L797 606L776 626L781 655L755 641L729 655L734 626L713 606L742 602L755 575Z" fill="#FAC43E"/>
+    <path d="M835 575L848 602L877 606L856 626L861 655L835 641L809 655L814 626L793 606L822 602L835 575Z" fill="#FAC43E"/>
+  </g>
+</svg>

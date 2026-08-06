@@ -1,0 +1,339 @@
+{
+  "manifest_version": "1.0",
+  "deliverable": "SmartAI Lab multi-secteurs — paires photographiques strictement scène-identiques",
+  "created_by": "Léa Création (Hermes subagent)",
+  "source_hierarchy": [
+    "/root/wiki/publitools-operating-bible/DESIGN.md",
+    "/root/wiki/publitools-operating-bible/10_VISUAL_IDENTITY.md",
+    "/tmp/kimi-k3-onepage-v3-design-final.md",
+    "/tmp/publitools-onepage-v3-kimi-implementation-brief.md"
+  ],
+  "identity_checksum": {
+    "direction": "CUT, BUILD & POST",
+    "palette": [
+      "#262832",
+      "#F4862D",
+      "#FAC43E",
+      "#00518F",
+      "#F6F2EA",
+      "#FFFFFF"
+    ],
+    "typography": "Montserrat principale; la planche QA utilise DejaVu Sans faute de Montserrat installée, jamais dans les assets de paire",
+    "logo_rule": "aucun logo généré/recomposé; aucun logo client ajouté; aucun master BTP Renoff autorisé",
+    "photo_rule": "artisans, gestes métier et chantiers crédibles; image générée éventuelle toujours étiquetée illustration",
+    "explicit_interdits": [
+      "faux logo",
+      "faux client",
+      "faux texte/UI",
+      "rénovation virtuelle",
+      "ajout/suppression d’objet"
+    ]
+  },
+  "processing": {
+    "software": "Pillow 10.2.0",
+    "generative_model_used": null,
+    "policy": "global color/tone/sharpness only; exact source geometry retained"
+  },
+  "cases": [
+    {
+      "id": "cuisine-renovation",
+      "sector": "Cuisine / rénovation",
+      "source": {
+        "path": "/root/marco-dev-workspace/publitools-onepage-header-hero-footer/public/homepage-variants/pool-photos/encours-cuisine-renovation.png",
+        "sha256": "3c0dff975e31aacfcdf3ad4dfbc4ca7a234fe6baf6141604793baf882fee7506",
+        "dimensions": {
+          "width": 1024,
+          "height": 768
+        },
+        "status": "asset PubliTools existant audité; usage démonstratif, origine terrain/client non prouvée"
+      },
+      "before": {
+        "webp": {
+          "path": "/tmp/publitools-smartai-v3-assets/cuisine-renovation-before.webp",
+          "sha256": "8bd4f2995aed18de698bbf6c2a1f209623ddda3d4187e2536e1447fd14703659",
+          "bytes": 102930
+        },
+        "jpeg": {
+          "path": "/tmp/publitools-smartai-v3-assets/cuisine-renovation-before.jpg",
+          "sha256": "b0242697e690c544e1a9a06484fef436ecc660fda33a24b027925d06903b782f",
+          "bytes": 170996
+        }
+      },
+      "after": {
+        "webp": {
+          "path": "/tmp/publitools-smartai-v3-assets/cuisine-renovation-after.webp",
+          "sha256": "ac85874b585b72ee208916cd2a26779291abb59010b1a1b675a7f3f36d5be56d",
+          "bytes": 150182
+        },
+        "jpeg": {
+          "path": "/tmp/publitools-smartai-v3-assets/cuisine-renovation-after.jpg",
+          "sha256": "7e16af48eea29a910126be349999e321a0ddc15ed35375743f2eda1be7b4b8f2",
+          "bytes": 218290
+        }
+      },
+      "dimensions": {
+        "width": 1024,
+        "height": 768,
+        "aspect_ratio": "1024:768"
+      },
+      "illustrative": true,
+      "required_display_label": "Exemple illustratif",
+      "visible_operations": [
+        "exposition/luminosité ×1.04",
+        "contraste ×1.14",
+        "saturation ×1.1",
+        "unsharp radius 1.2 / 80% / threshold 3"
+      ],
+      "scene_integrity": {
+        "generative_edit": false,
+        "crop_or_resize": false,
+        "objects_added_removed": false,
+        "text_or_logo_added": false,
+        "materials_quantities_geometry_perspective_changed": false
+      },
+      "visual_audit": "Chantier de cuisine en cours, outils et protections visibles; aucun logo client ajouté; inscriptions techniques préexistantes au sol.",
+      "difference_metrics": {
+        "mean_absolute_rgb_difference_0_255": 11.063,
+        "mean_absolute_rgb_difference_percent": 4.338,
+        "edge_map_mae_0_255": 10.043,
+        "dimensions_identical": true,
+        "geometry_pipeline": "identical pixels positions; global tonal/color adjustment + unsharp mask only"
+      },
+      "qa_status": "accepted after final contact-sheet vision review: same scene and geometry; tonal/color/sharpness change only"
+    },
+    {
+      "id": "plomberie-intervention",
+      "sector": "Plomberie",
+      "source": {
+        "path": "/root/marco-dev-workspace/publitools-onepage-header-hero-footer/public/homepage-variants/pool-photos/artisan-plombier-intervention.png",
+        "sha256": "c847bfb58f18b078908b4927c9da67aa4085f1c417c3dc3d7d7b1949ad514a10",
+        "dimensions": {
+          "width": 1024,
+          "height": 768
+        },
+        "status": "asset PubliTools existant audité; usage démonstratif, origine terrain/client non prouvée"
+      },
+      "before": {
+        "webp": {
+          "path": "/tmp/publitools-smartai-v3-assets/plomberie-intervention-before.webp",
+          "sha256": "302431d7d52a2dbee9f1ab246f1567943d9d15fc17f89201024498e4fb3ce691",
+          "bytes": 82904
+        },
+        "jpeg": {
+          "path": "/tmp/publitools-smartai-v3-assets/plomberie-intervention-before.jpg",
+          "sha256": "23694d995494acc88ce3c8157d6d5e5628f73e62b50470f993282036a8bddd9f",
+          "bytes": 155805
+        }
+      },
+      "after": {
+        "webp": {
+          "path": "/tmp/publitools-smartai-v3-assets/plomberie-intervention-after.webp",
+          "sha256": "10dc3e0d202e7df1fa5b8d17e995ff6eb94df34d20a9bc9c9e4fda17aeaa7250",
+          "bytes": 117852
+        },
+        "jpeg": {
+          "path": "/tmp/publitools-smartai-v3-assets/plomberie-intervention-after.jpg",
+          "sha256": "4de7cee188ed9c043b2f8a0389a062c5aeeac8e237264e282f4247e66aafa5dd",
+          "bytes": 189008
+        }
+      },
+      "dimensions": {
+        "width": 1024,
+        "height": 768,
+        "aspect_ratio": "1024:768"
+      },
+      "illustrative": true,
+      "required_display_label": "Exemple illustratif",
+      "visible_operations": [
+        "exposition/luminosité ×1.01",
+        "contraste ×1.12",
+        "saturation ×1.05",
+        "unsharp radius 1.2 / 80% / threshold 3"
+      ],
+      "scene_integrity": {
+        "generative_edit": false,
+        "crop_or_resize": false,
+        "objects_added_removed": false,
+        "text_or_logo_added": false,
+        "materials_quantities_geometry_perspective_changed": false
+      },
+      "visual_audit": "Intervention sous évier; marque fabricant WÜRTH préexistante sur la ceinture-outils, non ajoutée ni modifiée; aucun logo client ajouté.",
+      "difference_metrics": {
+        "mean_absolute_rgb_difference_0_255": 9.281,
+        "mean_absolute_rgb_difference_percent": 3.639,
+        "edge_map_mae_0_255": 6.678,
+        "dimensions_identical": true,
+        "geometry_pipeline": "identical pixels positions; global tonal/color adjustment + unsharp mask only"
+      },
+      "qa_status": "accepted after final contact-sheet vision review: same scene and geometry; tonal/color/sharpness change only"
+    },
+    {
+      "id": "toiture-pose",
+      "sector": "Toiture",
+      "source": {
+        "path": "/root/marco-dev-workspace/publitools-onepage-header-hero-footer/public/assets/site-v31/chantier-source/btp-renov-chantier-03-roofing.png",
+        "sha256": "3c8e2304d81e68e3fc4f745b9dfeeb673053a62dcf4109677baa43b8f2fef809",
+        "dimensions": {
+          "width": 1536,
+          "height": 1024
+        },
+        "status": "asset PubliTools existant audité; usage démonstratif, origine terrain/client non prouvée"
+      },
+      "before": {
+        "webp": {
+          "path": "/tmp/publitools-smartai-v3-assets/toiture-pose-before.webp",
+          "sha256": "2cd715dca3d1761c14bc57e4a077362119a0ed83c2b282fba6008210fcbf5324",
+          "bytes": 146086
+        },
+        "jpeg": {
+          "path": "/tmp/publitools-smartai-v3-assets/toiture-pose-before.jpg",
+          "sha256": "9bfff76219e9eea1669e3f1387880b69c8395941a7b0544154676b3cbf61a780",
+          "bytes": 276034
+        }
+      },
+      "after": {
+        "webp": {
+          "path": "/tmp/publitools-smartai-v3-assets/toiture-pose-after.webp",
+          "sha256": "05c41521da7657faad7c9eeb4d1d07135ef0a84075eec7e4e87ee02d0f40f8b1",
+          "bytes": 206328
+        },
+        "jpeg": {
+          "path": "/tmp/publitools-smartai-v3-assets/toiture-pose-after.jpg",
+          "sha256": "fcf1d6aba361578fe1a88b2e82158ab9dcff0b87932e93758302a690bd5fccd6",
+          "bytes": 335801
+        }
+      },
+      "dimensions": {
+        "width": 1536,
+        "height": 1024,
+        "aspect_ratio": "1536:1024"
+      },
+      "illustrative": true,
+      "required_display_label": "Exemple illustratif",
+      "visible_operations": [
+        "exposition/luminosité ×1.05",
+        "contraste ×1.16",
+        "saturation ×1.1",
+        "unsharp radius 1.2 / 80% / threshold 3"
+      ],
+      "scene_integrity": {
+        "generative_edit": false,
+        "crop_or_resize": false,
+        "objects_added_removed": false,
+        "text_or_logo_added": false,
+        "materials_quantities_geometry_perspective_changed": false
+      },
+      "visual_audit": "Pose de tuiles sur liteaux; aucun texte, logo ou UI visible; aucun logo BTP Renoff/Renov.",
+      "difference_metrics": {
+        "mean_absolute_rgb_difference_0_255": 13.653,
+        "mean_absolute_rgb_difference_percent": 5.354,
+        "edge_map_mae_0_255": 6.916,
+        "dimensions_identical": true,
+        "geometry_pipeline": "identical pixels positions; global tonal/color adjustment + unsharp mask only"
+      },
+      "qa_status": "accepted after final contact-sheet vision review: same scene and geometry; tonal/color/sharpness change only"
+    },
+    {
+      "id": "salle-de-bain-chantier",
+      "sector": "Salle de bain / rénovation",
+      "source": {
+        "path": "/root/marco-dev-workspace/publitools-onepage-header-hero-footer/public/assets/site-v31/chantier-source/btp-renov-chantier-02-bathroom.png",
+        "sha256": "bf40ab5cb38b2a0ccb3921acf6e0b2a7cc86d9edb3555c89c746a1db9d49ebd9",
+        "dimensions": {
+          "width": 1536,
+          "height": 1024
+        },
+        "status": "asset PubliTools existant audité; usage démonstratif, origine terrain/client non prouvée"
+      },
+      "before": {
+        "webp": {
+          "path": "/tmp/publitools-smartai-v3-assets/salle-de-bain-chantier-before.webp",
+          "sha256": "744850a0ed9c43ce538df9fe979cea5cfd18ecae0e60d981ff7dcdc0f7b58862",
+          "bytes": 123248
+        },
+        "jpeg": {
+          "path": "/tmp/publitools-smartai-v3-assets/salle-de-bain-chantier-before.jpg",
+          "sha256": "ae1b51d26eeb6de4fb73df7bef82f5a4fd0ba716f7770145443b47b686e4118b",
+          "bytes": 249966
+        }
+      },
+      "after": {
+        "webp": {
+          "path": "/tmp/publitools-smartai-v3-assets/salle-de-bain-chantier-after.webp",
+          "sha256": "8cd57b8d7d16a1a27d99c7aefed4bbb57f5901e67017b348766354a1c84933e7",
+          "bytes": 198966
+        },
+        "jpeg": {
+          "path": "/tmp/publitools-smartai-v3-assets/salle-de-bain-chantier-after.jpg",
+          "sha256": "6eb6713ef10565c76debc10bd6b20f95ca014c3f2abd2a6b94c97382175d65c4",
+          "bytes": 319565
+        }
+      },
+      "dimensions": {
+        "width": 1536,
+        "height": 1024,
+        "aspect_ratio": "1536:1024"
+      },
+      "illustrative": true,
+      "required_display_label": "Exemple illustratif",
+      "visible_operations": [
+        "exposition/luminosité ×1.04",
+        "contraste ×1.14",
+        "saturation ×1.05",
+        "unsharp radius 1.2 / 80% / threshold 3"
+      ],
+      "scene_integrity": {
+        "generative_edit": false,
+        "crop_or_resize": false,
+        "objects_added_removed": false,
+        "text_or_logo_added": false,
+        "materials_quantities_geometry_perspective_changed": false
+      },
+      "visual_audit": "Salle de bain en cours de finition; outils, croisillons et matériaux conservés; aucun texte, logo ou UI visible.",
+      "difference_metrics": {
+        "mean_absolute_rgb_difference_0_255": 9.488,
+        "mean_absolute_rgb_difference_percent": 3.721,
+        "edge_map_mae_0_255": 6.153,
+        "dimensions_identical": true,
+        "geometry_pipeline": "identical pixels positions; global tonal/color adjustment + unsharp mask only"
+      },
+      "qa_status": "accepted after final contact-sheet vision review: same scene and geometry; tonal/color/sharpness change only"
+    }
+  ],
+  "rejected_candidates": [
+    {
+      "source": "/root/marco-dev-workspace/publitools-onepage-header-hero-footer/public/homepage-variants/pool-photos/artisan-electricien-atelier.png",
+      "sector": "Électricité",
+      "reason": "rejeté: logo/enseigne client DELÉC et wordmark brodé visibles; master/autorisation non établis, donc risque de faux client/logo"
+    },
+    {
+      "source": "/root/marco-dev-workspace/publitools-onepage-header-hero-footer/public/homepage/fr/v3/hero/hero-kitchen-before.webp + hero-kitchen-after.webp",
+      "sector": "Cuisine",
+      "reason": "rejeté comme preuve principale: écart moyen déjà documenté ≈5 niveaux RGB, trop peu perceptible"
+    },
+    {
+      "source": "/root/marco-dev-workspace/publitools-onepage-header-hero-footer/public/brand/btp-renov-logo.jpg",
+      "sector": "Logo client",
+      "reason": "interdit: aucun master autorisé; non utilisé et non recopié"
+    }
+  ],
+  "contact_sheet": {
+    "path": "/tmp/publitools-smartai-v3-assets/contact-sheet.png",
+    "sha256": "9a3460ee55edde6e86782aac3ce30e4408e26c7ba864c7dfaaf58ec5360ee4d5",
+    "bytes": 2316104
+  },
+  "compliance": {
+    "DESIGN.md_lu": true,
+    "conforme": true,
+    "ecarts": "Typographie DejaVu Sans sur la planche QA diagnostic uniquement; aucune typo dans les paires",
+    "ecarts_valides_par": "non applicable au livrable image; planche non marketing",
+    "QA_grille_espacements": "non applicable aux paires; pass sur planche diagnostic",
+    "QA_contraste_mobile_motion": "non applicable (assets photo statiques)"
+  },
+  "limitations": [
+    "Origine réelle/client des sources non prouvée par les fichiers seuls: toutes les paires doivent porter « Exemple illustratif ».",
+    "La paire plomberie conserve une marque fabricant WÜRTH déjà présente dans la source; elle n’est ni un logo client ajouté ni une création.",
+    "Le secteur électricité est absent du lot accepté pour éviter d’exposer un logo client non autorisé.",
+    "Aucune rénovation virtuelle: « après » signifie amélioration photographique, pas résultat de travaux."
+  ]
+}

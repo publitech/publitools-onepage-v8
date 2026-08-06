@@ -1,0 +1,104 @@
+---
+import { v31SocialNetworks } from '../../data/v31SocialNetworks';
+
+interface Props {
+  label?: string;
+  size?: 'sm' | 'md' | 'lg';
+  showNames?: boolean;
+  align?: 'left' | 'center';
+}
+
+const { label, size = 'md', showNames = false, align = 'left' } = Astro.props;
+---
+
+<div class:list={['v31-social-logo-strip', `size-${size}`, `align-${align}`]}>
+  {label && <span class="strip-label">{label}</span>}
+  <ul aria-label="Réseaux pris en charge">
+    {v31SocialNetworks.map((network) => (
+      <li>
+        <img src={network.src} alt="" width="28" height="28" loading="lazy" decoding="async" />
+        {showNames && <span>{network.label}</span>}
+      </li>
+    ))}
+  </ul>
+</div>
+
+<style>
+  .v31-social-logo-strip {
+    display: grid;
+    gap: 12px;
+  }
+
+  .align-center {
+    justify-items: center;
+    text-align: center;
+  }
+
+  .strip-label {
+    color: var(--v31-muted);
+    font-size: 13px;
+    font-weight: 800;
+    line-height: 1.4;
+  }
+
+  ul {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .align-center ul {
+    justify-content: center;
+  }
+
+  li {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    border: 1px solid var(--v31-border);
+    border-radius: 999px;
+    background: #ffffff;
+    color: var(--v31-navy);
+    font-size: 12px;
+    font-weight: 800;
+    line-height: 1;
+    box-shadow: 0 10px 24px rgba(11, 31, 58, 0.05);
+  }
+
+  .size-sm li {
+    min-height: 34px;
+    padding: 6px 10px;
+  }
+
+  .size-md li {
+    min-height: 40px;
+    padding: 7px 12px;
+  }
+
+  .size-lg li {
+    min-height: 48px;
+    padding: 9px 14px;
+  }
+
+  img {
+    width: 24px;
+    height: 24px;
+    object-fit: contain;
+    opacity: 1;
+    filter: none;
+  }
+
+  .size-sm img {
+    width: 20px;
+    height: 20px;
+  }
+
+  .size-lg img {
+    width: 28px;
+    height: 28px;
+  }
+</style>

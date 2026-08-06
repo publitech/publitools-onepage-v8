@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512" role="img" aria-label="Structor construction icon">
+  <title>Structor construction icon</title>
+  <desc>Three rectilinear construction masses forming a stepped load-bearing structure with a doorway in negative space.</desc>
+  <!-- Geometry is locked to a 32-unit module so edges land on whole pixels at 16px and 32px. -->
+  <g shape-rendering="crispEdges">
+    <!-- Upper structural block -->
+    <path fill="#262832" d="M96 64H256V224H96Z"/>
+    <!-- Lower load-bearing frame and negative-space doorway -->
+    <path fill="#262832" fill-rule="evenodd" d="M64 224H448V448H320V320H192V448H64V224Z"/>
+    <!-- Active masonry block -->
+    <path fill="#F4862D" d="M224 128H416V224H224Z"/>
+  </g>
+</svg>

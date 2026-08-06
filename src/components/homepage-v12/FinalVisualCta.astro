@@ -1,0 +1,14 @@
+---
+const { section, images, ctaClass, secondaryCtaClass } = Astro.props;
+---
+<section class="v12-final" id={section.id}>
+  <div class="v12-container v12-final__grid">
+    <div>
+      <h2>{section.title}</h2>
+      <p>{section.subtitle}</p>
+      <div class="v12-actions"><a class={ctaClass} href={section.primaryCta.href}>{section.primaryCta.label}</a><a class={secondaryCtaClass} href={section.secondaryCta.href}>{section.secondaryCta.label}</a></div>
+      <span>{section.proof}</span>
+    </div>
+    <figure class="v12-stage v12-stage--final"><img src={images.finalCta.src} width={images.finalCta.width} height={images.finalCta.height} alt={images.finalCta.alt} loading="eager" decoding="async" /></figure>
+  </div>
+</section>

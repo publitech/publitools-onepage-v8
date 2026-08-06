@@ -1,0 +1,293 @@
+{
+  "meta": {
+    "version": "V18-gpt-image-2-coherent",
+    "market": "FR",
+    "locale": "fr-FR",
+    "generated": "2026-06-06",
+    "source": "Le Sage + Patrick + profils PubliTools + Léa GPT Image 2 direct",
+    "designReference": "V16 typography and rhythm validated"
+  },
+  "signupUrl": "https://app.publichantier.fr/?signup=yes",
+  "seo": {
+    "title": "PubliTools — L’outil IA n°1 du BTP pour faire grossir votre entreprise sur internet",
+    "description": "PubliTools transforme vos chantiers en présence digitale complète : contenus, visuels, Google Business, avis clients et publications.",
+    "canonical": "https://publitools.ai/fr/"
+  },
+  "hero": {
+    "eyebrow": "Pour les artisans, TPE et PME du Bâtiment",
+    "h1": "L'outil IA n°1 du BTP pour faire grossir votre entreprise sur internet",
+    "subheadline": "Disponible pour",
+    "bullets": [
+      "Photos, vidéos, vocaux, avis",
+      "Validation humaine",
+      "Google Business + 6 réseaux",
+      "Essai 14 jours"
+    ],
+    "primaryCta": {
+      "label": "Commencer l'essai gratuit",
+      "href": "https://app.publichantier.fr/?signup=yes"
+    },
+    "secondaryCta": {
+      "label": "Voir la machine PubliTools",
+      "href": "#visible-credible-recommande"
+    },
+    "socialProof": "Déjà adopté par 150+ artisans",
+    "placeholder": "Visuel produit : chantier → contenus → Google Business → avis → validation → publication"
+  },
+  "engine": {
+    "id": "visible-credible-recommande",
+    "h2": "Devenez",
+    "sub": "",
+    "cards": [
+      {
+        "title": "Visible",
+        "body": "Vos chantiers deviennent des contenus prêts à diffuser sur Google Business, Instagram, LinkedIn, Facebook, TikTok et YouTube.",
+        "badge": "Chantier → contenus visibles",
+        "image": "/homepage/fr/v20/lea-gpt-image-2-premium-system/visible-smartphone-publication-diffusion.png"
+      },
+      {
+        "title": "Crédible",
+        "body": "Photos, retouches et captions gardent une image sérieuse, cohérente et professionnelle sur vos profils.",
+        "badge": "Rendu propre, ton maîtrisé",
+        "image": "/homepage/fr/v20/lea-gpt-image-2-premium-system/credible-profil-social-renovation.png"
+      },
+      {
+        "title": "Recommandé",
+        "body": "Vos avis réels peuvent devenir des visuels utiles pour rassurer sans inventer de témoignage.",
+        "badge": "Avis réels valorisés",
+        "image": "/homepage/fr/v20/lea-gpt-image-2-premium-system/recommande-avis-google-cartes.png"
+      }
+    ]
+  },
+  "contentMachine": {
+    "id": "machine-contenus",
+    "h2": "Vos photos, vidéos, vocaux et avis deviennent une machine à visibilité",
+    "sub": "",
+    "cta": {
+      "label": "Voir ce que PubliTools peut tirer de mes chantiers",
+      "href": "https://app.publichantier.fr/?signup=yes"
+    },
+    "cards": [
+      {
+        "raw": "Matière terrain",
+        "result": "Vous partez de vrais chantiers : réalisations, avant/après, interventions, détails de finition.",
+        "tag": "Photos & vidéos"
+      },
+      {
+        "raw": "Contexte métier",
+        "result": "Vous expliquez ce qui a été fait ; PubliTools prépare une caption claire et relisible.",
+        "tag": "Vocal & texte"
+      },
+      {
+        "raw": "Preuves clients",
+        "result": "Avis réels, logo et couleurs deviennent des supports cohérents, prêts à valider.",
+        "tag": "Avis & marque"
+      }
+    ],
+    "heroImage": "/homepage/fr/v20/lea-gpt-image-2-premium-system/machine-visibilite-photo-video-vocal-vers-publitools-publications-21x9-gpt-image-2.png"
+  },
+  "process": {
+    "id": "comment-ca-marche",
+    "h2": "Comment ça marche en 3 étapes",
+    "sub": "Vous fournissez la matière, PubliTools prépare, vous validez avant diffusion.",
+    "steps": [
+      {
+        "number": "1",
+        "title": "Envoyez la matière",
+        "body": "Photo, vidéo, vocal, texte ou avis client : vous partez de ce que vous avez déjà sur votre téléphone."
+      },
+      {
+        "number": "2",
+        "title": "PubliTools prépare",
+        "body": "Caption, retouche, design, hashtags, Google Business, SMS d’avis ou format réseau : l’IA met tout en forme."
+      },
+      {
+        "number": "3",
+        "title": "Vous validez",
+        "body": "Vous relisez, ajustez si besoin, choisissez les destinations, puis publiez ou programmez selon votre plan."
+      }
+    ],
+    "image": "/homepage/fr/v20/lea-gpt-image-2-premium-system/valider-contenu-tablette.png"
+  },
+  "localProof": {
+    "id": "google-avis",
+    "h2": "Google Business + avis : activez vos preuves terrain",
+    "sub": "",
+    "cta": {
+      "label": "Activer Google Business + avis",
+      "href": "https://app.publichantier.fr/?signup=yes"
+    },
+    "cards": [
+      {
+        "title": "Ajout de photo automatisé",
+        "body": "Vos photos chantier alimentent votre profil Google Business.",
+        "image": "/homepage/fr/v21/lea-google-business-cards/ajout-photo-automatise-google-profile.png"
+      },
+      {
+        "title": "Récolte d’avis SMS",
+        "body": "Un SMS prêt à envoyer aide vos clients à laisser un avis.",
+        "image": "/homepage/fr/v21/lea-google-business-cards/recolte-avis-sms.png"
+      },
+      {
+        "title": "Publication Google Post",
+        "body": "Vos chantiers deviennent des posts Google Business propres.",
+        "image": "/homepage/fr/v21/lea-google-business-cards/publication-google-post-clean.png"
+      }
+    ],
+    "image": "/homepage/fr/v20/lea-gpt-image-2-premium-system/recommande-avis-google-cartes.png",
+    "google": [
+      "Posts Google Business préparés à partir de vos chantiers",
+      "Visuels avant/après, descriptions structurées, preuves récentes",
+      "Fiche alimentée régulièrement, sans promesse de classement Google"
+    ],
+    "reviews": [
+      "SMS d’avis préparé avec le bon texte",
+      "Notification d’avis reçu à valoriser",
+      "Avis transformé en visuel publiable sur le plan Pro"
+    ]
+  },
+  "destinations": {
+    "id": "destinations",
+    "h2": "Google Business, Instagram, LinkedIn, Facebook, TikTok, YouTube — une publication adaptée, puis validée",
+    "sub": "Un même chantier peut devenir plusieurs rendus adaptés aux canaux compatibles. Vous vérifiez le texte, le visuel et les destinations avant diffusion.",
+    "cta": {
+      "label": "Créer une publication multi-canaux",
+      "href": "https://app.publichantier.fr/?signup=yes"
+    },
+    "items": [
+      {
+        "name": "Facebook",
+        "body": "Posts chantier, photos, vidéos et albums si le format est compatible."
+      },
+      {
+        "name": "Instagram",
+        "body": "Images, vidéos, carrousels et textes adaptés au compte connecté."
+      },
+      {
+        "name": "LinkedIn",
+        "body": "Contenus professionnels, études de cas chantiers, recrutement."
+      },
+      {
+        "name": "Google Business",
+        "body": "Posts locaux, offres, actualités chantier."
+      },
+      {
+        "name": "TikTok",
+        "body": "Vidéos courtes de chantier quand la matière fournie est compatible."
+      },
+      {
+        "name": "YouTube",
+        "body": "Shorts ou vidéos compatibles, avec titre, description et visuel quand la matière fournie le permet."
+      }
+    ]
+  },
+  "proof": {
+    "id": "results",
+    "h2": "Ce qu’on a mesuré",
+    "sub": "Résultats observés sur plus de 50 artisans après 3 mois d’utilisation. Les résultats varient selon l’activité, la zone et la régularité.",
+    "stats": [
+      {
+        "value": "+40 %",
+        "label": "demandes de devis observées"
+      },
+      {
+        "value": "+600 %",
+        "label": "vues sur les posts chantier"
+      },
+      {
+        "value": "+12",
+        "label": "places moyennes en visibilité locale"
+      },
+      {
+        "value": "+35 %",
+        "label": "avis Google collectés"
+      }
+    ]
+  },
+  "pricing": {
+    "id": "pricing",
+    "eyebrow": "Tarifs",
+    "title": "Deux plans. Une vraie machine marketing dès le départ.",
+    "description": "14 jours d’accès complet Pro, quel que soit le plan choisi. Prix HT.",
+    "note": "Essai gratuit de 14 jours. Prix HT. Carte bancaire requise en interne, non utilisée comme argument public.",
+    "plans": [
+      {
+        "name": "Starter",
+        "subtitle": "Déjà de quoi publier sérieusement",
+        "price": "19,90 € HT/mois",
+        "href": "https://app.publichantier.fr/?signup=yes&plan=starter",
+        "icon": "starter",
+        "featured": false,
+        "features": [
+          "8 publications/mois",
+          "3 réseaux au choix par publication",
+          "Caption IA vocal → post",
+          "Retouches Standard + Intense",
+          "Posts Google Business",
+          "Demandes d’avis SMS illimitées"
+        ],
+        "ctaLabel": "Commencer en Starter"
+      },
+      {
+        "name": "Pro",
+        "subtitle": "Toute la puissance PubliTools",
+        "price": "39,90 € HT/mois",
+        "href": "https://app.publichantier.fr/?signup=yes&plan=pro",
+        "icon": "pro",
+        "featured": true,
+        "featuredLabel": "Recommandé",
+        "features": [
+          "Publications illimitées",
+          "6 destinations simultanées",
+          "Programmation",
+          "SmartAI illimité",
+          "Designs IA illimités",
+          "Avis reçus → visuels publiables",
+          "Choix de designs",
+          "Demandes d’avis SMS illimitées"
+        ],
+        "ctaLabel": "Commencer en Pro"
+      }
+    ]
+  },
+  "faq": {
+    "id": "faq",
+    "title": "Questions fréquentes",
+    "items": [
+      {
+        "question": "Est-ce que PubliTools publie automatiquement à ma place ?",
+        "answer": "Non. PubliTools prépare les contenus, mais vous relisez, corrigez si besoin et validez avant publication."
+      },
+      {
+        "question": "Je dois déjà savoir faire du marketing ?",
+        "answer": "Non. Vous fournissez vos photos, vidéos ou vocaux de chantier. PubliTools structure le texte, le visuel et les formats."
+      },
+      {
+        "question": "Quels réseaux sont compatibles ?",
+        "answer": "Facebook, Instagram, LinkedIn, Google Business, TikTok et YouTube sont prévus au lancement. Starter limite à 3 réseaux par publication ; Pro permet de publier sur les destinations connectées nécessaires."
+      },
+      {
+        "question": "L’essai donne accès à quoi ?",
+        "answer": "Pendant 14 jours, vous avez accès au plan Pro complet. À la fin, vous basculez sur le plan choisi au paywall."
+      },
+      {
+        "question": "Les résultats sont-ils les mêmes pour tout le monde ?",
+        "answer": "Non. Les chiffres affichés sont des observations sur une cohorte. Vos résultats dépendent de votre activité, de votre zone, de votre régularité et de votre présence actuelle."
+      }
+    ],
+    "cta": {
+      "label": "Commencer l'essai gratuit",
+      "href": "https://app.publichantier.fr/?signup=yes"
+    },
+    "reassurance": "Rien ne part sans votre validation."
+  },
+  "final_cta": {
+    "heading": "Commencez avec une photo, un vocal ou un avis récent.",
+    "sub": "Pas besoin de préparer une stratégie complète : PubliTools transforme une matière réelle en publication professionnelle à valider.",
+    "cta_primary": {
+      "label": "Créer ma première publication",
+      "href": "https://app.publichantier.fr/?signup=yes"
+    },
+    "backgroundImage": "/homepage/fr/v18/gpt-image-2/cta-final-premium-btp.png"
+  }
+}

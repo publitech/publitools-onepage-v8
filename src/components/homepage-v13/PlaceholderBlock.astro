@@ -1,0 +1,17 @@
+---
+interface Props {
+  label: string;
+  eyebrow?: string;
+  size?: 'hero' | 'wide' | 'square' | 'compact';
+}
+
+const { label, eyebrow = 'Placeholder image / animation', size = 'wide' } = Astro.props;
+---
+
+<div class:list={['v13-placeholder', `v13-placeholder--${size}`]} role="img" aria-label={`${eyebrow} : ${label}`}>
+  <div class="v13-placeholder__grid" aria-hidden="true"></div>
+  <div class="v13-placeholder__content">
+    <span>{eyebrow}</span>
+    <strong>{label}</strong>
+  </div>
+</div>

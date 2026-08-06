@@ -1,0 +1,8 @@
+---
+import CopyVariantPage from '../../../../components/homepage-copy-variants/CopyVariantPage.astro';
+import { getCopyHomepageVariant } from '../../../../content/homepage-copy-variants';
+
+const variant = getCopyHomepageVariant('publicite-internet');
+---
+
+<CopyVariantPage variant={variant} />

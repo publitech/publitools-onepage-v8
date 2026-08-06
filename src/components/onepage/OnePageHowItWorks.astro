@@ -1,0 +1,51 @@
+---
+import { Image } from 'astro:assets';
+import uploadMedia from '../../assets/onepage/ui/upload-media.png';
+import recordVocal from '../../assets/onepage/ui/record-vocal-v7.png';
+import publishNetworks from '../../assets/onepage/ui/publish-networks-v7.jpeg';
+import publishTiming from '../../assets/onepage/ui/publish-timing-v7.jpeg';
+import renovationInputs from '../../assets/onepage/backgrounds/renovation-inputs-v7.png';
+import OnePageSocialLogos from './OnePageSocialLogos.astro';
+import OnePageSmartAiLab from './OnePageSmartAiLab.astro';
+---
+
+<section class="op-step op-step--inputs" aria-labelledby="op-inputs-title">
+  <div class="op-container op-inputs-v3">
+    <div class="op-step__copy">
+      <p class="op-kicker">02 — Vos chantiers</p>
+      <h2 id="op-inputs-title">Ajoutez vos photos / vidéos et dictez un vocal de 10 secondes</h2>
+      <p>Depuis le chantier, importez vos réalisations puis décrivez les travaux effectués à voix haute.</p>
+    </div>
+    <div class="op-inputs-v3__proof" style={`--op-proof-background: url("${renovationInputs.src}")`}>
+      <figure class="op-inputs-v3__shot op-inputs-v3__shot--upload">
+        <Image src={uploadMedia} alt="Zone réelle pour ajouter des photos et vidéos" loading="lazy" decoding="async" />
+        <figcaption>Photo</figcaption>
+      </figure>
+      <figure class="op-inputs-v3__shot op-inputs-v3__shot--vocal">
+        <Image src={recordVocal} alt="Bouton réel pour enregistrer un vocal" loading="lazy" decoding="async" />
+        <figcaption>Vocal · 10 secondes</figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<OnePageSmartAiLab />
+
+<section class="op-step op-step--publish" aria-labelledby="op-publish-title">
+  <div class="op-grid op-container op-step__grid">
+    <div class="op-step__copy op-step__copy--left">
+      <p class="op-kicker op-kicker--light">04 — Validation & publication</p>
+      <h2 id="op-publish-title">Publiez en 1 clic sur tous vos réseaux.</h2>
+      <p>Choisissez vos comptes connectés, vérifiez la publication puis publiez tout depuis le même endroit.</p>
+      <OnePageSocialLogos label="6 plateformes disponibles" onDark={true} compact={true} />
+    </div>
+    <div class="op-publish-composition">
+      <div class="op-publish-composition__networks">
+        <Image src={publishNetworks} alt="Écran réel On publie où ? avec les comptes sélectionnables" loading="lazy" decoding="async" />
+      </div>
+      <div class="op-publish-composition__timing">
+        <Image src={publishTiming} alt="Écran réel de publication immédiate ou planifiée" loading="lazy" decoding="async" />
+      </div>
+    </div>
+  </div>
+</section>

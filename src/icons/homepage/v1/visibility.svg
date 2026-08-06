@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" fill="none">
+  <!-- Eye outline - geometric modular -->
+  <path d="M8 24 C8 24 14 12 24 12 C34 12 40 24 40 24 C40 24 34 36 24 36 C14 36 8 24 8 24 Z" stroke="currentColor" stroke-width="2.5" fill="none"/>
+  
+  <!-- Inner eye shape -->
+  <path d="M12 24 C12 24 16 16 24 16 C32 16 36 24 36 24 C36 24 32 32 24 32 C16 32 12 24 12 24 Z" fill="currentColor" opacity="0.1"/>
+  
+  <!-- Iris - orange -->
+  <circle cx="24" cy="24" r="6" fill="#FF7A1A" opacity="0.8"/>
+  <circle cx="24" cy="24" r="3" fill="currentColor"/>
+  
+  <!-- Highlight -->
+  <circle cx="26" cy="22" r="1.5" fill="white" opacity="0.8"/>
+</svg>

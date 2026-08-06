@@ -1,0 +1,38 @@
+---
+interface ExampleItem {
+  title: string;
+  subtitle: string;
+  image: ImageMetadata;
+}
+interface Props {
+  title?: string;
+  description?: string;
+  items: ExampleItem[];
+}
+const { title = 'Exemples', description = 'Aperçus visuels de l’interface.', items } = Astro.props;
+---
+<section class="section-pad bg-white">
+  <div class="container">
+    <div class="mx-auto max-w-3xl text-center">
+      <h2 class="text-4xl font-semibold tracking-[-0.03em] text-[#262832] md:text-5xl">{title}</h2>
+      <p class="mt-4 text-lg text-[#5b6170]">{description}</p>
+    </div>
+    <div class="mt-12 grid gap-6 md:grid-cols-3">
+      {items.map((item) => (
+        <article class="rounded-[18px] border border-[#e8e9ea] bg-[#fafafa] p-4 shadow-soft">
+          <img
+            src={item.image.src}
+            width={item.image.width}
+            height={item.image.height}
+            alt={item.title}
+            loading="lazy"
+            decoding="async"
+            class="w-full rounded-[18px] border border-[#e8e9ea]"
+          />
+          <p class="mt-4 text-center text-sm font-semibold text-[#262832]">{item.title}</p>
+          <p class="mt-1 text-center text-sm text-[#7a7f8c]">{item.subtitle}</p>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>

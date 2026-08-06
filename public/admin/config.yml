@@ -1,0 +1,428 @@
+backend:
+  name: github
+  repo: publitech/publitools
+  branch: main
+
+media_folder: public/uploads
+public_folder: /uploads
+site_url: https://publitools.ai
+display_url: https://publitools.ai
+
+collections:
+  - name: homepage
+    label: Homepage V3
+    editor:
+      preview: false
+    files:
+      - name: fr
+        label: Homepage France
+        file: src/content/homepage/fr.json
+        extension: json
+        format: json
+        fields:
+          - label: SEO
+            name: seo
+            widget: object
+            fields:
+              - { name: title, label: Title, widget: string }
+              - { name: description, label: Meta description, widget: text }
+              - { name: canonical, label: Canonical, widget: string }
+          - { name: signupUrl, label: URL inscription globale, widget: string }
+          - { name: assetBase, label: Base assets mobile V2, widget: string }
+          - label: Hero
+            name: hero
+            widget: object
+            fields:
+              - { name: eyebrow, label: Eyebrow, widget: string }
+              - { name: h1, label: H1, widget: string }
+              - { name: subheadline, label: Subheadline, widget: text }
+              - label: Badges
+                name: badges
+                widget: list
+                summary: "{{fields.title}} — {{fields.icon}}"
+                fields:
+                  - { name: title, label: Texte badge, widget: string }
+                  - label: Icône
+                    name: icon
+                    widget: select
+                    options:
+                          - { label: "Photo (photo)", value: "photo" }
+                          - { label: "Vidéo (video)", value: "video" }
+                          - { label: "Vocal (vocal)", value: "vocal" }
+                          - { label: "IA prépare (ai-prepare)", value: "ai-prepare" }
+                          - { label: "Validation (validation)", value: "validation" }
+                          - { label: "Publication (publication)", value: "publication" }
+                          - { label: "Programmation (scheduling)", value: "scheduling" }
+                          - { label: "Google Business (google-business)", value: "google-business" }
+                          - { label: "Avis étoiles (review-stars)", value: "review-stars" }
+                          - { label: "SMS (sms)", value: "sms" }
+                          - { label: "Instagram (instagram)", value: "instagram" }
+                          - { label: "Facebook (facebook)", value: "facebook" }
+                          - { label: "LinkedIn (linkedin)", value: "linkedin" }
+                          - { label: "TikTok (tiktok)", value: "tiktok" }
+                          - { label: "YouTube (youtube)", value: "youtube" }
+                          - { label: "Retouche (retouch)", value: "retouch" }
+                          - { label: "Avant-Après (before-after)", value: "before-after" }
+                          - { label: "Carrousel (carousel)", value: "carousel" }
+                          - { label: "Calendrier (calendar)", value: "calendar" }
+                          - { label: "Preuve locale (local-proof)", value: "local-proof" }
+                          - { label: "Croissance (growth)", value: "growth" }
+                          - { label: "Visibilité (visibility)", value: "visibility" }
+                          - { label: "Check (check)", value: "check" }
+                          - { label: "Outil artisan (tool-artisan)", value: "tool-artisan" }
+                          - { label: "Waveform vocal (waveform)", value: "waveform" }
+                          - { label: "Upload (upload)", value: "upload" }
+                    hint: Choisir une icône PubliTools validée par Léa.
+                  - { name: variant, label: Style, widget: select, options: [default, orange, navy, neutral], required: false }
+                  - { name: visible, label: Afficher, widget: boolean, default: true, required: false }
+                  - { name: order, label: Ordre, widget: number, value_type: int, min: 1, required: false }
+              - label: CTA principal
+                name: primaryCta
+                widget: object
+                fields: &cta_fields
+                  - { name: label, label: Libellé, widget: string }
+                  - { name: href, label: URL, widget: string }
+              - label: CTA secondaire
+                name: secondaryCta
+                widget: object
+                fields: *cta_fields
+              - { name: reassurance, label: Réassurance, widget: string }
+          - label: Section fonctionnement
+            name: workflow
+            widget: object
+            fields:
+              - { name: id, label: Ancre HTML, widget: hidden }
+              - { name: eyebrow, label: Eyebrow, widget: string }
+              - { name: title, label: Titre, widget: string }
+              - { name: body, label: Texte, widget: text }
+              - label: Étapes
+                name: steps
+                widget: list
+                fields:
+                  - { name: label, label: Label étape, widget: string }
+                  - { name: title, label: Titre, widget: string }
+                  - label: Icône étape
+                    name: icon
+                    widget: select
+                    options:
+                          - { label: "Photo (photo)", value: "photo" }
+                          - { label: "Vidéo (video)", value: "video" }
+                          - { label: "Vocal (vocal)", value: "vocal" }
+                          - { label: "IA prépare (ai-prepare)", value: "ai-prepare" }
+                          - { label: "Validation (validation)", value: "validation" }
+                          - { label: "Publication (publication)", value: "publication" }
+                          - { label: "Programmation (scheduling)", value: "scheduling" }
+                          - { label: "Google Business (google-business)", value: "google-business" }
+                          - { label: "Avis étoiles (review-stars)", value: "review-stars" }
+                          - { label: "SMS (sms)", value: "sms" }
+                          - { label: "Instagram (instagram)", value: "instagram" }
+                          - { label: "Facebook (facebook)", value: "facebook" }
+                          - { label: "LinkedIn (linkedin)", value: "linkedin" }
+                          - { label: "TikTok (tiktok)", value: "tiktok" }
+                          - { label: "YouTube (youtube)", value: "youtube" }
+                          - { label: "Retouche (retouch)", value: "retouch" }
+                          - { label: "Avant-Après (before-after)", value: "before-after" }
+                          - { label: "Carrousel (carousel)", value: "carousel" }
+                          - { label: "Calendrier (calendar)", value: "calendar" }
+                          - { label: "Preuve locale (local-proof)", value: "local-proof" }
+                          - { label: "Croissance (growth)", value: "growth" }
+                          - { label: "Visibilité (visibility)", value: "visibility" }
+                          - { label: "Check (check)", value: "check" }
+                          - { label: "Outil artisan (tool-artisan)", value: "tool-artisan" }
+                          - { label: "Waveform vocal (waveform)", value: "waveform" }
+                          - { label: "Upload (upload)", value: "upload" }
+                    hint: Choisir une icône PubliTools validée par Léa.
+                  - { name: variant, label: Style carte, widget: select, options: [step, highlight, neutral], required: false }
+                  - { name: visible, label: Afficher, widget: boolean, default: true, required: false }
+                  - { name: order, label: Ordre, widget: number, value_type: int, min: 1, required: false }
+                  - { name: image, label: Nom image sans extension, widget: string }
+                  - { name: alt, label: Texte alternatif, widget: text }
+              - label: CTA
+                name: cta
+                widget: object
+                fields: *cta_fields
+          - label: Section avis
+            name: reviews
+            widget: object
+            fields:
+              - { name: id, label: Ancre HTML, widget: hidden }
+              - { name: eyebrow, label: Eyebrow, widget: string }
+              - { name: title, label: Titre, widget: string }
+              - { name: body, label: Texte, widget: text }
+              - { name: image, label: Nom image sans extension, widget: string }
+              - { name: imageAlt, label: Texte alternatif image, widget: text }
+              - { name: quote, label: Citation affichée, widget: text }
+              - label: Étapes
+                name: steps
+                widget: list
+                summary: "{{fields.title}} — {{fields.icon}}"
+                fields:
+                  - { name: title, label: Texte étape, widget: string }
+                  - label: Icône étape avis
+                    name: icon
+                    widget: select
+                    options:
+                          - { label: "Photo (photo)", value: "photo" }
+                          - { label: "Vidéo (video)", value: "video" }
+                          - { label: "Vocal (vocal)", value: "vocal" }
+                          - { label: "IA prépare (ai-prepare)", value: "ai-prepare" }
+                          - { label: "Validation (validation)", value: "validation" }
+                          - { label: "Publication (publication)", value: "publication" }
+                          - { label: "Programmation (scheduling)", value: "scheduling" }
+                          - { label: "Google Business (google-business)", value: "google-business" }
+                          - { label: "Avis étoiles (review-stars)", value: "review-stars" }
+                          - { label: "SMS (sms)", value: "sms" }
+                          - { label: "Instagram (instagram)", value: "instagram" }
+                          - { label: "Facebook (facebook)", value: "facebook" }
+                          - { label: "LinkedIn (linkedin)", value: "linkedin" }
+                          - { label: "TikTok (tiktok)", value: "tiktok" }
+                          - { label: "YouTube (youtube)", value: "youtube" }
+                          - { label: "Retouche (retouch)", value: "retouch" }
+                          - { label: "Avant-Après (before-after)", value: "before-after" }
+                          - { label: "Carrousel (carousel)", value: "carousel" }
+                          - { label: "Calendrier (calendar)", value: "calendar" }
+                          - { label: "Preuve locale (local-proof)", value: "local-proof" }
+                          - { label: "Croissance (growth)", value: "growth" }
+                          - { label: "Visibilité (visibility)", value: "visibility" }
+                          - { label: "Check (check)", value: "check" }
+                          - { label: "Outil artisan (tool-artisan)", value: "tool-artisan" }
+                          - { label: "Waveform vocal (waveform)", value: "waveform" }
+                          - { label: "Upload (upload)", value: "upload" }
+                    hint: Choisir une icône PubliTools validée par Léa.
+                  - { name: variant, label: Style, widget: select, options: [default, proof, orange], required: false }
+                  - { name: visible, label: Afficher, widget: boolean, default: true, required: false }
+                  - { name: order, label: Ordre, widget: number, value_type: int, min: 1, required: false }
+              - label: CTA
+                name: cta
+                widget: object
+                fields: *cta_fields
+              - { name: note, label: Note, widget: text }
+          - label: Section Google Business
+            name: googleBusiness
+            widget: object
+            fields:
+              - { name: id, label: Ancre HTML, widget: hidden }
+              - { name: eyebrow, label: Eyebrow, widget: string }
+              - { name: title, label: Titre, widget: string }
+              - { name: body, label: Texte, widget: text }
+              - label: Puces
+                name: bullets
+                widget: list
+                summary: "{{fields.title}} — {{fields.icon}}"
+                fields:
+                  - { name: title, label: Texte puce, widget: string }
+                  - label: Icône puce
+                    name: icon
+                    widget: select
+                    options:
+                          - { label: "Photo (photo)", value: "photo" }
+                          - { label: "Vidéo (video)", value: "video" }
+                          - { label: "Vocal (vocal)", value: "vocal" }
+                          - { label: "IA prépare (ai-prepare)", value: "ai-prepare" }
+                          - { label: "Validation (validation)", value: "validation" }
+                          - { label: "Publication (publication)", value: "publication" }
+                          - { label: "Programmation (scheduling)", value: "scheduling" }
+                          - { label: "Google Business (google-business)", value: "google-business" }
+                          - { label: "Avis étoiles (review-stars)", value: "review-stars" }
+                          - { label: "SMS (sms)", value: "sms" }
+                          - { label: "Instagram (instagram)", value: "instagram" }
+                          - { label: "Facebook (facebook)", value: "facebook" }
+                          - { label: "LinkedIn (linkedin)", value: "linkedin" }
+                          - { label: "TikTok (tiktok)", value: "tiktok" }
+                          - { label: "YouTube (youtube)", value: "youtube" }
+                          - { label: "Retouche (retouch)", value: "retouch" }
+                          - { label: "Avant-Après (before-after)", value: "before-after" }
+                          - { label: "Carrousel (carousel)", value: "carousel" }
+                          - { label: "Calendrier (calendar)", value: "calendar" }
+                          - { label: "Preuve locale (local-proof)", value: "local-proof" }
+                          - { label: "Croissance (growth)", value: "growth" }
+                          - { label: "Visibilité (visibility)", value: "visibility" }
+                          - { label: "Check (check)", value: "check" }
+                          - { label: "Outil artisan (tool-artisan)", value: "tool-artisan" }
+                          - { label: "Waveform vocal (waveform)", value: "waveform" }
+                          - { label: "Upload (upload)", value: "upload" }
+                    hint: Choisir une icône PubliTools validée par Léa.
+                  - { name: variant, label: Style, widget: select, options: [default, blue, orange], required: false }
+                  - { name: visible, label: Afficher, widget: boolean, default: true, required: false }
+                  - { name: order, label: Ordre, widget: number, value_type: int, min: 1, required: false }
+              - { name: image, label: Nom image sans extension, widget: string }
+              - { name: imageAlt, label: Texte alternatif image, widget: text }
+              - label: CTA
+                name: cta
+                widget: object
+                fields: *cta_fields
+              - { name: note, label: Note, widget: text }
+          - label: Section comparatif
+            name: comparison
+            widget: object
+            fields:
+              - { name: id, label: Ancre HTML, widget: hidden }
+              - { name: eyebrow, label: Eyebrow, widget: string }
+              - { name: title, label: Titre, widget: string }
+              - label: Lignes
+                name: rows
+                widget: list
+                fields:
+                  - { name: task, label: Sujet, widget: string }
+                  - label: Icône sujet
+                    name: icon
+                    widget: select
+                    options:
+                          - { label: "Photo (photo)", value: "photo" }
+                          - { label: "Vidéo (video)", value: "video" }
+                          - { label: "Vocal (vocal)", value: "vocal" }
+                          - { label: "IA prépare (ai-prepare)", value: "ai-prepare" }
+                          - { label: "Validation (validation)", value: "validation" }
+                          - { label: "Publication (publication)", value: "publication" }
+                          - { label: "Programmation (scheduling)", value: "scheduling" }
+                          - { label: "Google Business (google-business)", value: "google-business" }
+                          - { label: "Avis étoiles (review-stars)", value: "review-stars" }
+                          - { label: "SMS (sms)", value: "sms" }
+                          - { label: "Instagram (instagram)", value: "instagram" }
+                          - { label: "Facebook (facebook)", value: "facebook" }
+                          - { label: "LinkedIn (linkedin)", value: "linkedin" }
+                          - { label: "TikTok (tiktok)", value: "tiktok" }
+                          - { label: "YouTube (youtube)", value: "youtube" }
+                          - { label: "Retouche (retouch)", value: "retouch" }
+                          - { label: "Avant-Après (before-after)", value: "before-after" }
+                          - { label: "Carrousel (carousel)", value: "carousel" }
+                          - { label: "Calendrier (calendar)", value: "calendar" }
+                          - { label: "Preuve locale (local-proof)", value: "local-proof" }
+                          - { label: "Croissance (growth)", value: "growth" }
+                          - { label: "Visibilité (visibility)", value: "visibility" }
+                          - { label: "Check (check)", value: "check" }
+                          - { label: "Outil artisan (tool-artisan)", value: "tool-artisan" }
+                          - { label: "Waveform vocal (waveform)", value: "waveform" }
+                          - { label: "Upload (upload)", value: "upload" }
+                    hint: Choisir une icône PubliTools validée par Léa.
+                  - { name: manual, label: À la main, widget: string }
+                  - { name: publitools, label: Avec PubliTools, widget: string }
+                  - { name: variant, label: Style carte, widget: select, options: [default, orange, navy], required: false }
+                  - { name: visible, label: Afficher, widget: boolean, default: true, required: false }
+                  - { name: order, label: Ordre, widget: number, value_type: int, min: 1, required: false }
+              - { name: note, label: Note, widget: text }
+              - label: CTA
+                name: cta
+                widget: object
+                fields: *cta_fields
+          - label: Section résultats observés
+            name: results
+            widget: object
+            fields:
+              - { name: id, label: Ancre HTML, widget: hidden }
+              - { name: eyebrow, label: Eyebrow, widget: string }
+              - { name: title, label: Titre, widget: string }
+              - label: Métriques
+                name: metrics
+                widget: list
+                fields:
+                  - { name: value, label: Valeur, widget: string, hint: Résultats observés validés uniquement. Ne pas inventer de nouveaux chiffres sans validation Patrick/Le Sage. }
+                  - { name: label, label: Libellé, widget: string }
+                  - label: Icône métrique
+                    name: icon
+                    widget: select
+                    options:
+                          - { label: "Photo (photo)", value: "photo" }
+                          - { label: "Vidéo (video)", value: "video" }
+                          - { label: "Vocal (vocal)", value: "vocal" }
+                          - { label: "IA prépare (ai-prepare)", value: "ai-prepare" }
+                          - { label: "Validation (validation)", value: "validation" }
+                          - { label: "Publication (publication)", value: "publication" }
+                          - { label: "Programmation (scheduling)", value: "scheduling" }
+                          - { label: "Google Business (google-business)", value: "google-business" }
+                          - { label: "Avis étoiles (review-stars)", value: "review-stars" }
+                          - { label: "SMS (sms)", value: "sms" }
+                          - { label: "Instagram (instagram)", value: "instagram" }
+                          - { label: "Facebook (facebook)", value: "facebook" }
+                          - { label: "LinkedIn (linkedin)", value: "linkedin" }
+                          - { label: "TikTok (tiktok)", value: "tiktok" }
+                          - { label: "YouTube (youtube)", value: "youtube" }
+                          - { label: "Retouche (retouch)", value: "retouch" }
+                          - { label: "Avant-Après (before-after)", value: "before-after" }
+                          - { label: "Carrousel (carousel)", value: "carousel" }
+                          - { label: "Calendrier (calendar)", value: "calendar" }
+                          - { label: "Preuve locale (local-proof)", value: "local-proof" }
+                          - { label: "Croissance (growth)", value: "growth" }
+                          - { label: "Visibilité (visibility)", value: "visibility" }
+                          - { label: "Check (check)", value: "check" }
+                          - { label: "Outil artisan (tool-artisan)", value: "tool-artisan" }
+                          - { label: "Waveform vocal (waveform)", value: "waveform" }
+                          - { label: "Upload (upload)", value: "upload" }
+                    hint: Choisir une icône PubliTools validée par Léa.
+                  - { name: variant, label: Style métrique, widget: select, options: [default, orange, navy], required: false }
+                  - { name: visible, label: Afficher, widget: boolean, default: true, required: false }
+                  - { name: order, label: Ordre, widget: number, value_type: int, min: 1, required: false }
+              - { name: note, label: Note légale, widget: text }
+              - label: CTA
+                name: cta
+                widget: object
+                fields: *cta_fields
+          - label: Section tarif
+            name: pricing
+            widget: object
+            fields:
+              - { name: id, label: Ancre HTML, widget: hidden }
+              - { name: eyebrow, label: Eyebrow, widget: string }
+              - { name: title, label: Titre, widget: string }
+              - { name: description, label: Description, widget: text }
+              - label: Offres
+                name: plans
+                widget: list
+                fields:
+                  - { name: name, label: Nom, widget: string }
+                  - { name: subtitle, label: Sous-titre, widget: string }
+                  - { name: price, label: Prix, widget: string }
+                  - { name: href, label: URL CTA, widget: string }
+                  - label: Icône offre
+                    name: icon
+                    widget: select
+                    options:
+                          - { label: "Photo (photo)", value: "photo" }
+                          - { label: "Vidéo (video)", value: "video" }
+                          - { label: "Vocal (vocal)", value: "vocal" }
+                          - { label: "IA prépare (ai-prepare)", value: "ai-prepare" }
+                          - { label: "Validation (validation)", value: "validation" }
+                          - { label: "Publication (publication)", value: "publication" }
+                          - { label: "Programmation (scheduling)", value: "scheduling" }
+                          - { label: "Google Business (google-business)", value: "google-business" }
+                          - { label: "Avis étoiles (review-stars)", value: "review-stars" }
+                          - { label: "SMS (sms)", value: "sms" }
+                          - { label: "Instagram (instagram)", value: "instagram" }
+                          - { label: "Facebook (facebook)", value: "facebook" }
+                          - { label: "LinkedIn (linkedin)", value: "linkedin" }
+                          - { label: "TikTok (tiktok)", value: "tiktok" }
+                          - { label: "YouTube (youtube)", value: "youtube" }
+                          - { label: "Retouche (retouch)", value: "retouch" }
+                          - { label: "Avant-Après (before-after)", value: "before-after" }
+                          - { label: "Carrousel (carousel)", value: "carousel" }
+                          - { label: "Calendrier (calendar)", value: "calendar" }
+                          - { label: "Preuve locale (local-proof)", value: "local-proof" }
+                          - { label: "Croissance (growth)", value: "growth" }
+                          - { label: "Visibilité (visibility)", value: "visibility" }
+                          - { label: "Check (check)", value: "check" }
+                          - { label: "Outil artisan (tool-artisan)", value: "tool-artisan" }
+                          - { label: "Waveform vocal (waveform)", value: "waveform" }
+                          - { label: "Upload (upload)", value: "upload" }
+                    hint: Icône du plan. Ne modifie pas le prix ni les fonctionnalités.
+                  - { name: featured, label: Offre mise en avant, widget: boolean, required: false }
+                  - { name: featuredLabel, label: Badge mise en avant, widget: string, required: false }
+                  - { name: features, label: Fonctionnalités, widget: list, field: { name: feature, label: Fonctionnalité, widget: string } }
+                  - { name: ctaLabel, label: Libellé CTA, widget: string }
+              - { name: note, label: Note tarif, widget: string }
+          - label: FAQ
+            name: faq
+            widget: object
+            fields:
+              - { name: id, label: Ancre HTML, widget: hidden }
+              - { name: title, label: Titre, widget: string }
+              - label: Questions
+                name: items
+                widget: list
+                fields:
+                  - { name: question, label: Question, widget: string }
+                  - { name: answer, label: Réponse, widget: text }
+              - label: CTA
+                name: cta
+                widget: object
+                fields: *cta_fields
+              - { name: reassurance, label: Réassurance, widget: string }

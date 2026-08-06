@@ -1,0 +1,10 @@
+---
+const { section, images, logos } = Astro.props;
+---
+<section class="v12-section v12-section--soft" id={section.id} data-v12-outputs>
+  <div class="v12-container">
+    <div class="v12-section-head"><h2>{section.title}</h2><p>{section.subtitle}</p></div>
+    <figure class="v12-stage v12-stage--split"><img src={images.outputs.src} width={images.outputs.width} height={images.outputs.height} alt={images.outputs.alt} loading="eager" decoding="async" /><figcaption class="v12-output-labels">{section.outputs.map((output: string) => <span>{output}</span>)}</figcaption></figure>
+    <div class="v12-mini-logos" aria-label="Destinations disponibles">{logos.map((logo: any) => <span><img src={logo.src} alt={logo.alt} width="24" height="24" loading="lazy" decoding="async" />{logo.name}</span>)}</div>
+  </div>
+</section>

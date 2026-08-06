@@ -1,0 +1,117 @@
+---
+const cases = [
+  { id: 'cuisine', label: 'Cuisine', title: 'Rénovation de cuisine', before: '/assets/onepage/smartai-v5/cuisine-before.webp', after: '/assets/onepage/smartai-v5/cuisine-after.webp' },
+  { id: 'salle-de-bain', label: 'Salle de bain', title: 'Salle de bain en cours', before: '/assets/onepage/smartai-v5/salle-de-bain-before.webp', after: '/assets/onepage/smartai-v5/salle-de-bain-after.webp' },
+  { id: 'facade', label: 'Façade', title: 'Ravalement de façade', before: '/assets/onepage/smartai-v5/facade-before.webp', after: '/assets/onepage/smartai-v5/facade-after.webp' },
+  { id: 'parquet-sol', label: 'Parquet / sol', title: 'Pose de parquet', before: '/assets/onepage/smartai-v5/parquet-sol-before.webp', after: '/assets/onepage/smartai-v5/parquet-sol-after.webp' },
+  { id: 'peinture', label: 'Peinture', title: 'Peinture intérieure', before: '/assets/onepage/smartai-v5/peinture-before.webp', after: '/assets/onepage/smartai-v5/peinture-after.webp' },
+  { id: 'carrelage', label: 'Carrelage', title: 'Pose de carrelage', before: '/assets/onepage/smartai-v5/carrelage-before.webp', after: '/assets/onepage/smartai-v5/carrelage-after.webp' },
+  { id: 'maconnerie', label: 'Maçonnerie', title: 'Travaux de maçonnerie', before: '/assets/onepage/smartai-v5/maconnerie-before.webp', after: '/assets/onepage/smartai-v5/maconnerie-after.webp' },
+  { id: 'menuiserie', label: 'Menuiserie', title: 'Pose de menuiserie', before: '/assets/onepage/smartai-v5/menuiserie-before.webp', after: '/assets/onepage/smartai-v5/menuiserie-after.webp' },
+];
+---
+
+<section class="op-smartai op-smartai-v4" aria-labelledby="op-smartai-title" data-smartai-lab>
+  <div class="op-container op-smartai-v4__layout">
+    <div class="op-smartai-v4__side">
+      <header class="op-smartai__head">
+        <p class="op-kicker">03 — Amélioration SmartAI</p>
+        <h2 id="op-smartai-title">Notre IA retouche et rédige vos publications</h2>
+        <p>Choisissez un métier, puis passez de la photo prise sur le chantier à la version améliorée.</p>
+      </header>
+
+      <div class="op-smartai__tabs" role="tablist" aria-label="Choisir un métier">
+        {cases.map((item, index) => (
+          <button
+            type="button"
+            role="tab"
+            id={`op-smartai-tab-${item.id}`}
+            aria-controls={`op-smartai-panel-${item.id}`}
+            aria-selected={index === 0 ? 'true' : 'false'}
+            tabindex={index === 0 ? 0 : -1}
+            data-case={item.id}
+          >
+            {item.label}
+          </button>
+        ))}
+      </div>
+    </div>
+
+    <div class="op-smartai-v4__stage">
+      {cases.map((item, index) => (
+        <article
+          class="op-smartai__panel"
+          id={`op-smartai-panel-${item.id}`}
+          role="tabpanel"
+          aria-labelledby={`op-smartai-tab-${item.id}`}
+          data-panel={item.id}
+          data-view="before"
+        >
+          <h3>{item.title}</h3>
+          <div class="op-smartai-v4__toggle" role="group" aria-label={`Afficher la photo avant ou après pour ${item.label}`}>
+            <button type="button" aria-pressed="true" data-view-button="before">Avant</button>
+            <button type="button" aria-pressed="false" data-view-button="after">Après</button>
+          </div>
+          <div class="op-smartai__compare">
+            <figure class="op-smartai__figure op-smartai__figure--before">
+              <img src={item.before} alt={`${item.title} avant amélioration photographique`} width="1200" height="900" loading={index === 0 ? 'eager' : 'lazy'} decoding="async" />
+              <figcaption>Avant</figcaption>
+            </figure>
+            <figure class="op-smartai__figure op-smartai__figure--after">
+              <img src={item.after} alt={`${item.title} après amélioration photographique`} width="1200" height="900" loading={index === 0 ? 'eager' : 'lazy'} decoding="async" />
+              <figcaption>Après</figcaption>
+            </figure>
+          </div>
+        </article>
+      ))}
+    </div>
+
+    <p class="op-smartai__notice">Exemples illustratifs — amélioration photographique uniquement. Aucun élément du chantier n’est ajouté, retiré ou remplacé.</p>
+  </div>
+</section>
+
+<script>
+  document.querySelectorAll<HTMLElement>('[data-smartai-lab]').forEach((root) => {
+    const tabs = Array.from(root.querySelectorAll<HTMLButtonElement>('[role="tab"]'));
+    const panels = Array.from(root.querySelectorAll<HTMLElement>('[role="tabpanel"]'));
+
+    const setView = (panel: HTMLElement, view: 'before' | 'after') => {
+      panel.dataset.view = view;
+      panel.querySelectorAll<HTMLButtonElement>('[data-view-button]').forEach((button) => {
+        button.setAttribute('aria-pressed', String(button.dataset.viewButton === view));
+      });
+    };
+
+    const activateCase = (id: string, focus = false) => {
+      tabs.forEach((tab) => {
+        const active = tab.dataset.case === id;
+        tab.setAttribute('aria-selected', String(active));
+        tab.tabIndex = active ? 0 : -1;
+        if (active && focus) tab.focus();
+      });
+      panels.forEach((panel) => {
+        panel.hidden = panel.dataset.panel !== id;
+      });
+    };
+
+    root.classList.add('is-enhanced');
+    panels.forEach((panel) => setView(panel, 'before'));
+    activateCase(tabs[0]?.dataset.case || 'cuisine');
+
+    tabs.forEach((tab, index) => {
+      tab.addEventListener('click', () => activateCase(tab.dataset.case || 'cuisine'));
+      tab.addEventListener('keydown', (event) => {
+        if (!['ArrowRight', 'ArrowLeft', 'Home', 'End'].includes(event.key)) return;
+        event.preventDefault();
+        const nextIndex = event.key === 'Home' ? 0 : event.key === 'End' ? tabs.length - 1 : event.key === 'ArrowRight' ? (index + 1) % tabs.length : (index - 1 + tabs.length) % tabs.length;
+        activateCase(tabs[nextIndex].dataset.case || 'cuisine', true);
+      });
+    });
+
+    panels.forEach((panel) => {
+      panel.querySelectorAll<HTMLButtonElement>('[data-view-button]').forEach((button) => {
+        button.addEventListener('click', () => setView(panel, button.dataset.viewButton === 'before' ? 'before' : 'after'));
+      });
+    });
+  });
+</script>

@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" fill="none">
+  <!-- Document body -->
+  <rect x="12" y="8" width="24" height="32" rx="2" fill="currentColor" opacity="0.1" stroke="currentColor" stroke-width="2"/>
+  
+  <!-- Checklist lines -->
+  <line x1="18" y1="16" x2="30" y2="16" stroke="currentColor" stroke-width="1.5" opacity="0.3"/>
+  <line x1="18" y1="22" x2="30" y2="22" stroke="currentColor" stroke-width="1.5" opacity="0.3"/>
+  <line x1="18" y1="28" x2="30" y2="28" stroke="currentColor" stroke-width="1.5" opacity="0.3"/>
+  
+  <!-- Checkmarks - orange accents -->
+  <path d="M16 15 L17 16.5 L19 14" stroke="#FF7A1A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+  <path d="M16 21 L17 22.5 L19 20" stroke="#FF7A1A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+  <path d="M16 27 L17 28.5 L19 26" stroke="#FF7A1A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+</svg>
