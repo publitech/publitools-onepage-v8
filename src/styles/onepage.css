@@ -2757,8 +2757,8 @@ body :where(a, button, summary) {
 .op-personalize__configured {
   position: absolute;
   z-index: 3;
-  right: 12px;
-  bottom: 0;
+  top: 12px;
+  left: 12px;
   display: flex;
   align-items: center;
   gap: 10px;
@@ -2853,8 +2853,8 @@ body :where(a, button, summary) {
   }
 
   .op-personalize__configured {
-    right: -8px;
-    bottom: 8px;
+    top: 16px;
+    left: 32px;
   }
 
   .op-personalize__card--identity {
