@@ -614,6 +614,7 @@ body :where(a, button, summary) {
   display: grid;
   gap: 8px;
   padding-block: 32px;
+  text-align: center;
 }
 
 .op-results__strip strong {
@@ -1073,6 +1074,7 @@ body :where(a, button, summary) {
 
   .op-results__strip article {
     padding: 40px;
+    text-align: left;
   }
 
   .op-results__strip strong span {
