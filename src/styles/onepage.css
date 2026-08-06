@@ -2317,7 +2317,7 @@ body :where(a, button, summary) {
   }
 
   .op-smartai-v4__stage {
-    grid-column: 2 / 12;
+    grid-column: 1 / -1;
   }
 
   .op-smartai-v4 .op-smartai__tabs {
@@ -2334,7 +2334,7 @@ body :where(a, button, summary) {
   }
 
   .op-smartai-v4 .op-smartai__notice {
-    grid-column: 2 / 12;
+    grid-column: 1 / -1;
   }
 
   .op-social-wall__rail {
@@ -2399,7 +2399,7 @@ body :where(a, button, summary) {
   border-color: var(--op-yellow);
 }
 
-/* SmartAI — le bleu soutient l'orange, toggle actif orange à texte anthracite. */
+/* SmartAI — le bleu soutient l'orange, toggle actif orange à texte blanc. */
 .op-smartai-v4 .op-smartai__tabs button[aria-selected='true'] {
   border-color: var(--op-blue);
   background: var(--op-blue);
@@ -2408,7 +2408,7 @@ body :where(a, button, summary) {
 
 .op-smartai-v4__toggle button[aria-pressed='true'] {
   background: var(--op-orange);
-  color: var(--op-ink);
+  color: var(--op-white);
 }
 
 /* Publication — accent jaune ponctuel sur la carte timing, section anthracite. */
