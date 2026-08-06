@@ -1,0 +1,214 @@
+/* ===== One-page — TARIFS ===== */
+.op-pricing {
+  background: var(--op-white);
+}
+
+.op-pricing__head {
+  display: grid;
+  gap: 20px;
+}
+
+.op-pricing__grid {
+  display: grid;
+  gap: 24px;
+  margin-top: 40px;
+}
+
+.op-price-card {
+  display: grid;
+  align-content: start;
+  gap: 24px;
+  padding: 24px;
+  border: 1px solid var(--op-line);
+  border-radius: 24px;
+  background: var(--op-white);
+  box-shadow: var(--op-shadow-surface);
+}
+
+.op-price-card--pro {
+  background: var(--op-paper);
+  color: var(--op-ink);
+}
+
+.op-price-card__head {
+  display: grid;
+  gap: 16px;
+}
+
+.op-price-card__label {
+  color: var(--op-blue);
+  font-size: 15px;
+  font-weight: 800;
+  text-transform: uppercase;
+}
+
+.op-price-card__label span {
+  display: inline-block;
+  margin-left: 8px;
+  padding: 8px;
+  border-radius: 4px;
+  background: var(--op-yellow);
+  color: var(--op-ink);
+  font-size: 13px;
+}
+
+.op-price-card h3 {
+  font-size: 24px;
+  font-weight: 800;
+  line-height: 1.16;
+  letter-spacing: -0.015em;
+}
+
+.op-price-card__price {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  column-gap: 12px;
+  row-gap: 4px;
+  color: var(--op-muted);
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.op-price-card__price-kicker,
+.op-price-card__price-unit {
+  font-size: 14px;
+}
+
+.op-price-card__price-kicker {
+  flex-basis: 100%;
+  color: var(--op-blue);
+  font-weight: 800;
+  letter-spacing: 0.01em;
+  text-transform: uppercase;
+}
+
+.op-price-card__price strong {
+  color: var(--op-ink);
+  font-size: 36px;
+  font-weight: 900;
+  letter-spacing: -0.04em;
+  line-height: 1;
+}
+
+.op-price-card .op-button {
+  width: 100%;
+}
+
+.op-price-card ul {
+  display: grid;
+  gap: 12px;
+  padding: 24px 0 0;
+  border-top: 1px solid var(--op-line);
+  list-style: none;
+}
+
+.op-price-card li {
+  position: relative;
+  padding-left: 24px;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1.5;
+}
+
+.op-price-card li::before {
+  position: absolute;
+  top: 6px;
+  left: 0;
+  width: 8px;
+  height: 8px;
+  background: var(--op-orange);
+  content: '';
+}
+
+.op-pricing__microcopy {
+  margin-top: 24px;
+  color: var(--op-muted);
+  font-size: 14px;
+  font-weight: 600;
+  text-align: center;
+}
+
+/* Logos réseaux dans les cartes */
+.op-socials--pricing {
+  gap: 10px;
+  padding-top: 20px;
+  border-top: 1px solid var(--op-line);
+}
+
+.op-socials--pricing > p:first-child {
+  color: rgba(38, 40, 50, 0.72);
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.op-socials--pricing ul {
+  display: flex;
+  padding: 0;
+  border: 0;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.op-socials--pricing li,
+.op-socials--pricing.op-socials--compact li {
+  position: static;
+  width: 24px;
+  height: 24px;
+  padding-left: 0;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+}
+
+.op-socials--pricing li::before {
+  display: none;
+  content: none;
+}
+
+.op-socials--pricing img,
+.op-socials--pricing.op-socials--compact img {
+  width: 20px;
+  height: 20px;
+}
+
+.op-socials--pricing .op-socials__caption {
+  color: var(--op-muted);
+  font-size: 13px;
+  font-weight: 600;
+  line-height: 1.5;
+}
+
+@media (min-width: 768px) {
+  .op-pricing__grid {
+    grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+    align-items: start;
+    gap: 32px;
+  }
+
+  .op-price-card {
+    padding: 32px;
+  }
+
+  .op-price-card--starter {
+    margin-top: 40px;
+  }
+
+  .op-price-card__price strong {
+    font-size: 40px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .op-pricing__grid {
+    margin-top: 48px;
+  }
+
+  .op-pricing__head {
+    max-width: 940px;
+  }
+}

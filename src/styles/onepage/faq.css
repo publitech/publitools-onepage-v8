@@ -1,0 +1,85 @@
+/* ===== One-page — FAQ ===== */
+.op-faq {
+  background: var(--op-yellow);
+  color: var(--op-ink);
+}
+
+.op-faq__head {
+  display: grid;
+  gap: 20px;
+}
+
+.op-faq__grid {
+  display: grid;
+  gap: 40px;
+}
+
+.op-faq__list {
+  border-top: 1px solid rgba(38, 40, 50, 0.35);
+}
+
+.op-faq details {
+  border-bottom: 1px solid rgba(38, 40, 50, 0.35);
+}
+
+.op-faq summary {
+  display: grid;
+  min-height: 64px;
+  cursor: pointer;
+  list-style: none;
+  grid-template-columns: 1fr 44px;
+  align-items: center;
+  gap: 16px;
+  padding-block: 12px;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 1.4;
+}
+
+.op-faq summary::-webkit-details-marker {
+  display: none;
+}
+
+.op-faq summary span {
+  display: grid;
+  width: 44px;
+  height: 44px;
+  place-items: center;
+  color: var(--op-blue);
+  font-size: 28px;
+  transition: transform 250ms ease;
+}
+
+.op-faq details[open] summary span {
+  transform: rotate(45deg);
+}
+
+.op-faq details > p {
+  max-width: 720px;
+  padding: 0 48px 24px 0;
+  color: var(--op-ink);
+  font-size: 15px;
+  font-weight: 500;
+  line-height: 1.7;
+}
+
+.op-faq .op-section-head > p:last-child {
+  color: var(--op-ink);
+}
+
+@media (min-width: 1024px) {
+  .op-faq__grid {
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+    column-gap: 24px;
+  }
+
+  .op-faq__head,
+  .op-faq__list {
+    grid-column: 3 / 11;
+  }
+
+  .op-faq__head {
+    position: static;
+    align-self: start;
+  }
+}
