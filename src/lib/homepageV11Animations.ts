@@ -6,7 +6,7 @@ export type V11AnimationCleanup = () => void;
 const prefersReducedMotion = () => window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
 const safeRegisterScrollTrigger = () => {
-  if (!gsap.core.globals().ScrollTrigger) {
+  if (!(gsap.core as any).globals().ScrollTrigger) {
     gsap.registerPlugin(ScrollTrigger);
   }
 };

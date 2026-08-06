@@ -3,7 +3,7 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
 export type HomepageV12Cleanup = () => void;
 const reduced = () => window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-const register = () => { if (!gsap.core.globals().ScrollTrigger) gsap.registerPlugin(ScrollTrigger); };
+const register = () => { if (!(gsap.core as any).globals().ScrollTrigger) gsap.registerPlugin(ScrollTrigger); };
 
 export const initHomepageV12Motion = (root: ParentNode = document): HomepageV12Cleanup => {
   const page = root.querySelector<HTMLElement>('.homepage-v12');
