@@ -2784,6 +2784,54 @@ body :where(a, button, summary) {
   box-shadow: 0 8px 24px rgba(38, 40, 50, 0.12);
 }
 
+.op-personalize__configured {
+  position: absolute;
+  z-index: 3;
+  right: 12px;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 0;
+  padding: 10px 18px 10px 10px;
+  border-radius: 14px;
+  background: var(--op-white);
+  box-shadow: 0 8px 24px rgba(38, 40, 50, 0.16);
+}
+
+.op-personalize__configured img {
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+}
+
+.op-personalize__configured-text {
+  display: grid;
+  gap: 2px;
+}
+
+.op-personalize__configured-name {
+  font-size: 15px;
+  font-weight: 800;
+  letter-spacing: -0.01em;
+  color: var(--op-ink);
+}
+
+.op-personalize__configured-status {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12.5px;
+  font-weight: 600;
+  color: var(--op-muted);
+}
+
+.op-personalize__configured-status svg {
+  width: 14px;
+  height: 14px;
+  color: #1fa971;
+}
+
 .op-personalize__card {
   position: absolute;
   z-index: 2;
@@ -2832,6 +2880,11 @@ body :where(a, button, summary) {
     right: 8px;
     width: 64px;
     height: 64px;
+  }
+
+  .op-personalize__configured {
+    right: -8px;
+    bottom: 8px;
   }
 
   .op-personalize__card--identity {
