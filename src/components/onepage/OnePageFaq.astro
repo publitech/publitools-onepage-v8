@@ -1,24 +1,48 @@
 ---
 const questions = [
   [
-    'Comment fonctionne l’essai de 14 jours ?',
-    'Vous créez votre compte, choisissez Starter ou Pro, puis vous utilisez PubliTools gratuitement pendant 14 jours. Pendant l’essai, vous pouvez générer et publier en illimité sur les 6 réseaux. À la fin des 14 jours, l’abonnement démarre automatiquement sur la formule choisie.',
+    "L'essai est-il vraiment gratuit ?",
+    "Oui. Vous bénéficiez de 14 jours d'essai gratuit avec un accès complet au plan Pro. Aucun frais de mise en place ne vous est facturé.",
   ],
   [
-    'Quels sont les 6 réseaux connectés ?',
-    'PubliTools publie sur Facebook, Instagram, LinkedIn, Google Business, TikTok et YouTube. Vous connectez vos comptes une fois, puis vous choisissez où publier à chaque création.',
+    'Et si je ne suis pas doué en informatique ?',
+    "Pas besoin d'être un pro du numérique. Vous transmettez vos photos / vidéos de chantier et expliquez vos travaux par vocal ou par texte : l'IA rédige la publication, retouche vos photos, applique votre logo et vos couleurs.",
   ],
   [
-    'Que puis-je ajouter dans l’application ?',
-    'Vous pouvez ajouter vos photos et vidéos directement depuis le chantier. Vous décrivez ensuite les travaux avec un vocal de 10 secondes ou un texte court.',
+    'Combien de temps faut-il pour préparer une publication ?',
+    'Comptez moins de 2 minutes pour préparer une publication simple, prête à être validée. Vous faites tout depuis le chantier, directement avec votre téléphone.',
   ],
   [
-    'Combien de temps prend la préparation d’une publication ?',
-    'Moins de 2 minutes suffisent pour une publication simple : vous ajoutez vos photos ou vidéos, dictez votre vocal, relisez le texte proposé et validez la publication.',
+    "Est-ce que les publications respecteront l'image de mon entreprise ?",
+    "Oui. L'IA retouche vos photos, applique votre logo et vos couleurs, tout en respectant le ton de votre entreprise configuré à l'ouverture du compte. Pour les vidéos, un traitement léger est appliqué.",
   ],
   [
-    'Quelle est la différence entre Starter et Pro ?',
-    'Starter comprend 8 créations par mois, avec 3 réseaux maximum par publication et sans programmation. Pro comprend les créations illimitées, la publication sur les 6 réseaux en même temps et la programmation.',
+    'Est-ce que je garde le contrôle sur ce qui est publié ?',
+    "Vous voyez tout avant que ça parte. L'application vous présente un aperçu complet que vous pouvez relire et modifier si nécessaire avant de valider l'envoi.",
+  ],
+  [
+    "Est-ce vraiment utile pour mon entreprise du bâtiment ?",
+    'Vos futurs clients cherchent des preuves de votre travail avant de signer un devis. PubliTools alimente régulièrement vos comptes et votre fiche Google Business pour valoriser vos chantiers et rassurer vos prospects.',
+  ],
+  [
+    'Quels sont les résultats observés chez les artisans ?',
+    "Des résultats observés sur plus de 50 artisans après 3 mois montrent jusqu'à +40 % de demandes de devis et jusqu'à +600 % de vues sur les publications chantier. Les résultats varient selon l'entreprise, son activité et sa zone.",
+  ],
+  [
+    'Comment est préservée la confidentialité de mes chantiers ?',
+    "Vous sélectionnez vous-même les photos / vidéos que vous ajoutez dans l'application. Rien n'est diffusé sans votre vérification préalable.",
+  ],
+  [
+    'Est-ce difficile de relier mes réseaux sociaux ?',
+    'La connexion s\'effectue simplement lors de l\'installation de votre compte, une fois pour toutes. PubliTools gère 6 réseaux dont Google : Facebook, Instagram, LinkedIn, Google Business, TikTok et YouTube.',
+  ],
+  [
+    "Comment fonctionne la demande d'avis clients ?",
+    "PubliTools génère un SMS prérédigé avec le lien vers votre fiche Google Business. L'application de votre téléphone s'ouvre automatiquement et vous envoyez vous-même le message à votre client.",
+  ],
+  [
+    "Que se passe-t-il après les 14 jours d'essai gratuit ?",
+    "À la fin des 14 jours d'essai gratuit, vous continuez avec le plan choisi.",
   ],
 ];
 ---
@@ -28,7 +52,7 @@ const questions = [
     <div class="op-section-head op-faq__head">
       <p class="op-kicker">FAQ</p>
       <h2 id="op-faq-title">Les réponses avant de commencer.</h2>
-      <p>Des explications simples sur l’essai, les photos, les vidéos et les deux formules.</p>
+      <p>Des explications simples sur l'essai, les photos, les vidéos et les deux formules.</p>
     </div>
     <div class="op-faq__list">
       {questions.map(([question, answer], index) => (
