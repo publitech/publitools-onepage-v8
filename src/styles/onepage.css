@@ -2100,7 +2100,9 @@ body :where(a, button, summary) {
 }
 
 .op-smartai-v4 .op-smartai__figure img {
-  aspect-ratio: 3 / 2;
+  aspect-ratio: auto;
+  height: auto;
+  object-fit: contain;
 }
 
 .op-smartai-v4.is-enhanced .op-smartai__compare {
