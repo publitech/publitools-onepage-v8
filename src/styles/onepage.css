@@ -604,6 +604,7 @@ body :where(a, button, summary) {
 
 .op-results__strip {
   display: grid;
+  gap: 20px;
   margin-top: 40px;
   border-top: 4px solid var(--op-ink);
   border-bottom: 4px solid var(--op-ink);
@@ -613,10 +614,6 @@ body :where(a, button, summary) {
   display: grid;
   gap: 8px;
   padding-block: 32px;
-}
-
-.op-results__strip article + article {
-  border-top: 1px solid var(--op-line);
 }
 
 .op-results__strip strong {
@@ -1076,11 +1073,6 @@ body :where(a, button, summary) {
 
   .op-results__strip article {
     padding: 40px;
-  }
-
-  .op-results__strip article + article {
-    border-top: 0;
-    border-left: 1px solid var(--op-line);
   }
 
   .op-results__strip strong span {
@@ -1617,6 +1609,13 @@ body :where(a, button, summary) {
   font-weight: 800;
   line-height: 1.08;
   letter-spacing: -0.025em;
+}
+
+.op-social-wall__support {
+  color: var(--op-white);
+  font-size: 17px;
+  font-weight: 600;
+  line-height: 1.5;
 }
 
 .op-social-wall__rail {
@@ -2501,8 +2500,21 @@ body :where(a, button, summary) {
   background: var(--op-blue-deep);
 }
 
-.op-results__strip article + article {
-  border-top-color: rgba(255, 255, 255, 0.2);
+.op-results__strip article {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  background-image: var(--op-stat-background);
+  background-position: center;
+  background-size: cover;
+}
+
+.op-results__strip article::before {
+  position: absolute;
+  z-index: -1;
+  inset: 0;
+  background: rgba(38, 40, 50, 0.6);
+  content: '';
 }
 
 .op-results__strip strong span {
@@ -2532,8 +2544,12 @@ body :where(a, button, summary) {
 }
 
 @media (min-width: 768px) {
-  .op-results__strip article + article {
-    border-left-color: rgba(255, 255, 255, 0.2);
+  .op-results__strip {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .op-results__strip article {
+    padding: 40px;
   }
 }
 
