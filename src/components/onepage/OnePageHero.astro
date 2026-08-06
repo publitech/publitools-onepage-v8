@@ -1,7 +1,4 @@
 ---
-import { Image } from 'astro:assets';
-import publicationPreview from '../../assets/onepage/ui/publication-preview.png';
-import recordVocal from '../../assets/onepage/ui/record-vocal.png';
 import OnePageButton from './OnePageButton.astro';
 import OnePageSocialLogos from './OnePageSocialLogos.astro';
 
@@ -24,19 +21,45 @@ const signupUrl = 'https://app.publichantier.fr/?signup=yes';
     <div class="op-hero-v4__visual">
       <figure class="op-hero-v4__artisan">
         <img
-          src="/assets/onepage/hero-artisan-v4.webp"
-          alt="Artisan dans un chantier de rénovation"
-          width="960"
-          height="1200"
+          src="/assets/onepage/hero-parquet-peintre.png"
+          alt="Artisan prenant en photo un chantier de rénovation avec parquet en point de hongrie"
+          width="1024"
+          height="1280"
           loading="eager"
           decoding="async"
         />
       </figure>
-      <figure class="op-hero-v4__fragment op-hero-v4__fragment--vocal">
-        <Image src={recordVocal} alt="Enregistrement vocal dans PubliTools" loading="eager" decoding="async" />
+      <p class="op-hero-v4__brand">
+        <img
+          src="/assets/onepage/structor-logo.png"
+          alt=""
+          aria-hidden="true"
+          width="1024"
+          height="1024"
+          loading="eager"
+          decoding="async"
+        />
+        <span>Structor</span>
+      </p>
+      <figure class="op-hero-v4__fragment op-hero-v4__fragment--dashboard">
+        <img
+          src="/assets/onepage/hero-app-dashboard.png"
+          alt="Tableau de bord de l'application Structor"
+          width="390"
+          height="844"
+          loading="eager"
+          decoding="async"
+        />
       </figure>
-      <figure class="op-hero-v4__fragment op-hero-v4__fragment--preview">
-        <Image src={publicationPreview} alt="Aperçu d'une publication dans PubliTools" loading="eager" decoding="async" />
+      <figure class="op-hero-v4__fragment op-hero-v4__fragment--config">
+        <img
+          src="/assets/onepage/hero-app-config-ia.png"
+          alt="Configuration de l'IA en cours dans l'application Structor"
+          width="339"
+          height="325"
+          loading="lazy"
+          decoding="async"
+        />
       </figure>
     </div>
   </div>

@@ -1969,19 +1969,48 @@ body :where(a, button, summary) {
   height: auto;
 }
 
-.op-hero-v4__fragment--vocal {
-  bottom: -18px;
-  left: -12px;
-  width: min(58%, 190px);
-  transform: rotate(-1.5deg);
+.op-hero-v4__brand {
+  position: absolute;
+  z-index: 3;
+  top: 14px;
+  left: 10px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 0;
+  padding: 8px 22px 8px 8px;
+  border-radius: 999px;
+  background: var(--op-white);
+  box-shadow: 0 8px 24px rgba(38, 40, 50, 0.18);
 }
 
-.op-hero-v4__fragment--preview {
-  right: auto;
-  bottom: 96px;
-  left: -8px;
-  width: min(42%, 142px);
-  transform: rotate(1.5deg);
+.op-hero-v4__brand img {
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+}
+
+.op-hero-v4__brand span {
+  font-size: 20px;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  color: var(--op-ink);
+}
+
+.op-hero-v4__fragment--dashboard {
+  top: 24px;
+  right: -6px;
+  width: min(46%, 216px);
+  border-radius: 18px;
+  transform: rotate(2deg);
+}
+
+.op-hero-v4__fragment--config {
+  bottom: -14px;
+  left: -10px;
+  width: min(52%, 208px);
+  border-radius: 14px;
+  transform: rotate(-2deg);
 }
 
 .op-inputs-v3__shot {
@@ -2209,17 +2238,21 @@ body :where(a, button, summary) {
     inset: 0 32px 0 64px;
   }
 
-  .op-hero-v4__fragment--vocal {
-    bottom: 32px;
-    left: -48px;
-    width: min(54%, 252px);
+  .op-hero-v4__brand {
+    top: 20px;
+    left: 44px;
   }
 
-  .op-hero-v4__fragment--preview {
-    right: auto;
-    bottom: 138px;
-    left: -18px;
-    width: min(36%, 168px);
+  .op-hero-v4__fragment--dashboard {
+    top: 36px;
+    right: 6px;
+    width: min(44%, 248px);
+  }
+
+  .op-hero-v4__fragment--config {
+    bottom: 28px;
+    left: -16px;
+    width: min(48%, 236px);
   }
 
   .op-smartai-v4 .op-smartai__compare:not(:where(.is-enhanced *)) {
@@ -2362,8 +2395,8 @@ body :where(a, button, summary) {
   color: var(--op-ink);
 }
 
-/* Hero — cadre jaune ponctuel façon sticker sur le fragment vocal. */
-.op-hero-v4__fragment--vocal {
+/* Hero — cadre jaune ponctuel façon sticker sur le fragment configuration IA. */
+.op-hero-v4__fragment--config {
   border-color: var(--op-yellow);
 }
 
