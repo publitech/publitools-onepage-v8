@@ -4,7 +4,7 @@ import uploadMedia from '../../assets/onepage/ui/upload-media.png';
 import recordVocal from '../../assets/onepage/ui/record-vocal-v7.png';
 import publishNetworks from '../../assets/onepage/ui/publish-networks-v7.jpeg';
 import publishTiming from '../../assets/onepage/ui/publish-timing-v7.jpeg';
-import renovationInputs from '../../assets/onepage/backgrounds/renovation-inputs-v7.png';
+import electricienVocal from '../../assets/onepage/backgrounds/electricien-vocal.png';
 import OnePageSocialLogos from './OnePageSocialLogos.astro';
 import OnePageSmartAiLab from './OnePageSmartAiLab.astro';
 ---
@@ -13,10 +13,10 @@ import OnePageSmartAiLab from './OnePageSmartAiLab.astro';
   <div class="op-container op-inputs-v3">
     <div class="op-step__copy">
       <p class="op-kicker">02 — Vos chantiers</p>
-      <h2 id="op-inputs-title">Ajoutez vos photos / vidéos et dictez un vocal de 10 secondes</h2>
+      <h2 id="op-inputs-title">Ajoutez vos photos / vidéos et décrivez vocalement votre tâche / chantier (entre 5 et 30sec)</h2>
       <p>Depuis le chantier, importez vos réalisations puis décrivez les travaux effectués à voix haute.</p>
     </div>
-    <div class="op-inputs-v3__proof" style={`--op-proof-background: url("${renovationInputs.src}")`}>
+    <div class="op-inputs-v3__proof" style={`--op-proof-background: url("${electricienVocal.src}")`}>
       <figure class="op-inputs-v3__shot op-inputs-v3__shot--upload">
         <Image src={uploadMedia} alt="Zone réelle pour ajouter des photos et vidéos" loading="lazy" decoding="async" />
         <figcaption>Photo</figcaption>
