@@ -330,7 +330,7 @@ body :where(a, button, summary) {
 .op-hero h1 {
   max-width: 720px;
   font-size: clamp(40px, 10.2vw, 48px);
-  font-weight: 900;
+  font-weight: 800;
   line-height: 1.02;
   letter-spacing: -0.04em;
   text-wrap: balance;
@@ -1359,11 +1359,6 @@ body :where(a, button, summary) {
   gap: 16px;
 }
 
-.op-inputs-v3 .op-step__copy h2 {
-  font-size: clamp(30px, 8vw, 36px);
-  line-height: 1.08;
-}
-
 .op-inputs-v3__proof {
   display: grid;
   align-items: center;
@@ -1814,11 +1809,6 @@ body :where(a, button, summary) {
 
   .op-inputs-v3 .op-step__copy {
     grid-column: 1 / 7;
-  }
-
-  .op-inputs-v3 .op-step__copy h2 {
-    font-size: clamp(36px, 3.05vw, 44px);
-    line-height: 1.1;
   }
 
   .op-inputs-v3__proof {
