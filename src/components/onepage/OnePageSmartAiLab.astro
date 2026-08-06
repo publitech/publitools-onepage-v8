@@ -1,14 +1,21 @@
 ---
 const cases = [
-  { id: 'cuisine', label: 'Cuisine', title: 'Rénovation de cuisine', before: '/assets/onepage/smartai-v5/cuisine-before.webp', after: '/assets/onepage/smartai-v5/cuisine-after.webp' },
-  { id: 'salle-de-bain', label: 'Salle de bain', title: 'Salle de bain en cours', before: '/assets/onepage/smartai-v5/salle-de-bain-before.webp', after: '/assets/onepage/smartai-v5/salle-de-bain-after.webp' },
-  { id: 'facade', label: 'Façade', title: 'Ravalement de façade', before: '/assets/onepage/smartai-v5/facade-before.webp', after: '/assets/onepage/smartai-v5/facade-after.webp' },
-  { id: 'parquet-sol', label: 'Parquet / sol', title: 'Pose de parquet', before: '/assets/onepage/smartai-v5/parquet-sol-before.webp', after: '/assets/onepage/smartai-v5/parquet-sol-after.webp' },
-  { id: 'peinture', label: 'Peinture', title: 'Peinture intérieure', before: '/assets/onepage/smartai-v5/peinture-before.webp', after: '/assets/onepage/smartai-v5/peinture-after.webp' },
-  { id: 'carrelage', label: 'Carrelage', title: 'Pose de carrelage', before: '/assets/onepage/smartai-v5/carrelage-before.webp', after: '/assets/onepage/smartai-v5/carrelage-after.webp' },
-  { id: 'maconnerie', label: 'Maçonnerie', title: 'Travaux de maçonnerie', before: '/assets/onepage/smartai-v5/maconnerie-before.webp', after: '/assets/onepage/smartai-v5/maconnerie-after.webp' },
-  { id: 'menuiserie', label: 'Menuiserie', title: 'Pose de menuiserie', before: '/assets/onepage/smartai-v5/menuiserie-before.webp', after: '/assets/onepage/smartai-v5/menuiserie-after.webp' },
-];
+  { id: 'renovation', label: 'Rénovation', title: "Rénovation d'appartement" },
+  { id: 'maconnerie', label: 'Maçonnerie', title: "Construction d'un mur en parpaings" },
+  { id: 'plomberie', label: 'Plomberie', title: "Installation de plomberie en salle de bain" },
+  { id: 'electricien', label: 'Électricien', title: "Travaux d'installation électrique" },
+  { id: 'couvreur', label: 'Couvreur', title: "Rénovation de toiture" },
+  { id: 'menuiserie', label: 'Menuiserie', title: "Pose de menuiserie" },
+  { id: 'peinture', label: 'Peinture', title: "Peinture intérieure" },
+  { id: 'carrelage', label: 'Carrelage', title: "Pose de carrelage" },
+  { id: 'plaquiste', label: 'Plaquiste', title: "Pose de cloisons en plaques de plâtre" },
+  { id: 'chauffagiste', label: 'Chauffagiste', title: "Installation de chauffage" },
+].map((item) => ({
+  ...item,
+  before: `/assets/onepage/smartai-v6/${item.id}-before.jpg`,
+  // Les images « après » seront branchées ici dès qu'elles seront fournies.
+  after: `/assets/onepage/smartai-v6/${item.id}-before.jpg`,
+}));
 ---
 
 <section class="op-smartai op-smartai-v4" aria-labelledby="op-smartai-title" data-smartai-lab>
@@ -66,7 +73,7 @@ const cases = [
       ))}
     </div>
 
-    <p class="op-smartai__notice">Exemples illustratifs — amélioration photographique uniquement. Aucun élément du chantier n’est ajouté, retiré ou remplacé.</p>
+    <p class="op-smartai__notice">Exemples illustratifs — amélioration photographique uniquement. Aucun élément du chantier n'est ajouté, retiré ou remplacé.</p>
   </div>
 </section>
 
@@ -96,15 +103,15 @@ const cases = [
 
     root.classList.add('is-enhanced');
     panels.forEach((panel) => setView(panel, 'before'));
-    activateCase(tabs[0]?.dataset.case || 'cuisine');
+    activateCase(tabs[0]?.dataset.case || 'renovation');
 
     tabs.forEach((tab, index) => {
-      tab.addEventListener('click', () => activateCase(tab.dataset.case || 'cuisine'));
+      tab.addEventListener('click', () => activateCase(tab.dataset.case || 'renovation'));
       tab.addEventListener('keydown', (event) => {
         if (!['ArrowRight', 'ArrowLeft', 'Home', 'End'].includes(event.key)) return;
         event.preventDefault();
         const nextIndex = event.key === 'Home' ? 0 : event.key === 'End' ? tabs.length - 1 : event.key === 'ArrowRight' ? (index + 1) % tabs.length : (index - 1 + tabs.length) % tabs.length;
-        activateCase(tabs[nextIndex].dataset.case || 'cuisine', true);
+        activateCase(tabs[nextIndex].dataset.case || 'renovation', true);
       });
     });
 
