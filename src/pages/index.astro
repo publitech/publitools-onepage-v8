@@ -1,3 +1,36 @@
 ---
-return Astro.redirect('/en/');
+// Page racine : simple aiguillage, jamais indexée.
+// - En production Vercel : les règles `redirects` de vercel.json prennent
+//   le relais au edge (géolocalisation IP) AVANT que cette page soit servie.
+// - En build statique / préview : redirection client instantanée et invisible
+//   (fond blanc, aucun texte), basée sur la langue du navigateur.
 ---
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="robots" content="noindex" />
+    <meta name="color-scheme" content="light" />
+    <title>PubliTools</title>
+    <link rel="canonical" href="https://publitools.ai/en/" />
+    <meta http-equiv="refresh" content="0; url=/en/" />
+    <style>
+      html,
+      body {
+        margin: 0;
+        height: 100%;
+        background: #ffffff;
+      }
+    </style>
+    <script>
+      (function () {
+        var lang = (navigator.language || 'en').slice(0, 2).toLowerCase();
+        var supported = ['fr', 'es', 'de'];
+        var target = supported.indexOf(lang) !== -1 ? '/' + lang + '/' : '/en/';
+        location.replace(target);
+      })();
+    </script>
+  </head>
+  <body></body>
+</html>
