@@ -2,7 +2,6 @@
 import '../styles/global.css';
 import V31Footer from '../components/v31/V31Footer.astro';
 import { dict, localeConfig, type Locale } from '../i18n';
-import { buildHreflang } from '../lib/seo';
 
 interface Props {
   title: string;
@@ -14,22 +13,31 @@ interface Props {
   footer?: boolean;
   locale?: Locale;
   pathname?: string;
+  alternates?: Array<{ hreflang: string; href: string }>;
 }
+
+const SITE_URL = 'https://publitools.ai';
 
 const {
   title,
   description,
-  canonical = 'https://publitools.ai/fr/',
-  image = 'https://publitools.ai/og-cover.png',
+  canonical,
+  image = `${SITE_URL}/og-cover.png`,
   schema = [],
   footerNetworkText,
   footer = true,
   locale = 'fr',
-  pathname = '/fr/',
+  alternates = [],
 } = Astro.props;
 
 const cfg = localeConfig[locale];
-const hreflangs = buildHreflang(pathname, locale);
+
+// Canonical normalisée : URL absolue + trailing slash (toutes les routes Astro sont des dossiers).
+const rawCanonical = canonical ?? new URL(Astro.url.pathname, SITE_URL).href;
+const parsedCanonical = new URL(rawCanonical);
+const hasFileExtension = /\.[a-z0-9]+$/i.test(parsedCanonical.pathname);
+const canonicalUrl =
+  hasFileExtension || rawCanonical.endsWith('/') ? rawCanonical : `${rawCanonical}/`;
 ---
 
 <!doctype html>
@@ -42,23 +50,19 @@ const hreflangs = buildHreflang(pathname, locale);
     <link rel="icon" sizes="any" href="/favicon.ico" />
     <link rel="icon" type="image/png" sizes="512x512" href="/favicon-512.png" />
     <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
-    <link rel="canonical" href={canonical} />
-    {hreflangs.map((entry) => (
-      <link
-        rel="alternate"
-        hreflang={entry.hreflang}
-        href={entry.href}
-      />
+    <link rel="canonical" href={canonicalUrl} />
+    {alternates.map((entry) => (
+      <link rel="alternate" hreflang={entry.hreflang} href={entry.href} />
     ))}
     <title>{title}</title>
     <meta name="description" content={description} />
-    <meta name="robots" content="noindex,nofollow" />
+    <meta name="robots" content="index, follow" />
     <meta property="og:type" content="website" />
     <meta property="og:locale" content={cfg.ogLocale} />
     <meta property="og:site_name" content={cfg.siteName} />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
-    <meta property="og:url" content={canonical} />
+    <meta property="og:url" content={canonicalUrl} />
     <meta property="og:image" content={image} />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={title} />

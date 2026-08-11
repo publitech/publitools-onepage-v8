@@ -1,45 +1,138 @@
 ---
-import { useState } from 'react';
-
 const navItems = [
-  { label: 'Réseaux sociaux', href: '/fr/#reseaux-sociaux' },
-  { label: 'Avis clients', href: '/fr/#avis' },
-  { label: 'Google Business', href: '/fr/#google-business' },
-  { label: 'Comparatif', href: '/fr/#comparatif' },
-  { label: 'Résultats', href: '/fr/#resultats' },
+  { label: 'Tarifs', href: '/fr/#tarifs' },
+  { label: 'FAQ', href: '/fr/#faq' },
   { label: 'Blog', href: '/fr/blog/' },
-] as const;
+];
+---
 
-export default function MobileMenu() {
-  const [open, setOpen] = useState(false);
+<details class="mobile-menu" data-mobile-menu>
+  <summary class="mobile-menu__toggle" aria-label="Ouvrir le menu">
+    <span class="mobile-menu__bars" aria-hidden="true">
+      <span></span>
+      <span></span>
+      <span></span>
+    </span>
+  </summary>
+  <div class="mobile-menu__panel">
+    <nav class="mobile-menu__nav" aria-label="Navigation mobile">
+      {navItems.map((item) => (
+        <a href={item.href} data-mobile-link>{item.label}</a>
+      ))}
+      <a class="mobile-menu__login" href="https://app.publichantier.fr/" data-mobile-link>Se connecter</a>
+      <a class="mobile-menu__cta" href="https://app.publichantier.fr/?signup=yes" data-mobile-link>Essayer 14 jours</a>
+    </nav>
+  </div>
+</details>
 
-  return (
-    <div className="lg:hidden">
-      <button
-        aria-expanded={open}
-        aria-label="Ouvrir le menu"
-        className="flex min-h-11 min-w-11 items-center justify-center rounded-lg border border-[#E5E7EB] bg-white text-[#0B1F3A]"
-        onClick={() => setOpen((value) => !value)}
-      >
-        <div className="space-y-1.5">
-          <span className={`block h-0.5 w-5 bg-current transition ${open ? 'translate-y-2 rotate-45' : ''}`} />
-          <span className={`block h-0.5 w-5 bg-current transition ${open ? 'opacity-0' : ''}`} />
-          <span className={`block h-0.5 w-5 bg-current transition ${open ? '-translate-y-2 -rotate-45' : ''}`} />
-        </div>
-      </button>
-      {open && (
-        <div className="absolute inset-x-4 top-20 z-50 rounded-2xl border border-[#E5E7EB] bg-white p-4 shadow-soft">
-          <nav className="flex flex-col gap-2" aria-label="Navigation mobile">
-            {navItems.map((item) => (
-              <a key={item.label} className="min-h-11 rounded-xl px-4 py-3 text-base font-semibold text-[#0B1F3A] no-underline hover:bg-[#F4F6F8]" href={item.href} onClick={() => setOpen(false)}>
-                {item.label}
-              </a>
-            ))}
-            <a className="mt-2 min-h-11 rounded-lg border border-[#0B1F3A] px-4 py-3 text-center font-semibold text-[#0B1F3A] no-underline" href="https://app.publichantier.fr/">Se connecter</a>
-            <a className="min-h-11 rounded-lg bg-[#FF7A1A] px-4 py-3 text-center font-semibold text-white no-underline" href="https://app.publichantier.fr/?signup=yes">Essayer 14 jours</a>
-          </nav>
-        </div>
-      )}
-    </div>
-  );
-}
+<script>
+  document.querySelectorAll<HTMLDetailsElement>('[data-mobile-menu]').forEach((menu) => {
+    menu.querySelectorAll<HTMLAnchorElement>('[data-mobile-link]').forEach((link) => {
+      link.addEventListener('click', () => {
+        menu.open = false;
+      });
+    });
+  });
+</script>
+
+<style>
+  .mobile-menu {
+    position: static;
+  }
+
+  @media (min-width: 1024px) {
+    .mobile-menu {
+      display: none;
+    }
+  }
+
+  .mobile-menu__toggle {
+    display: flex;
+    min-height: 44px;
+    min-width: 44px;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #e5e7eb;
+    border-radius: 8px;
+    background: #ffffff;
+    cursor: pointer;
+    list-style: none;
+  }
+
+  .mobile-menu__toggle::-webkit-details-marker {
+    display: none;
+  }
+
+  .mobile-menu__bars {
+    display: grid;
+    gap: 5px;
+  }
+
+  .mobile-menu__bars span {
+    display: block;
+    width: 20px;
+    height: 2px;
+    border-radius: 2px;
+    background: #0b1f3a;
+    transition: transform 180ms ease, opacity 180ms ease;
+  }
+
+  .mobile-menu[open] .mobile-menu__bars span:nth-child(1) {
+    transform: translateY(7px) rotate(45deg);
+  }
+
+  .mobile-menu[open] .mobile-menu__bars span:nth-child(2) {
+    opacity: 0;
+  }
+
+  .mobile-menu[open] .mobile-menu__bars span:nth-child(3) {
+    transform: translateY(-7px) rotate(-45deg);
+  }
+
+  .mobile-menu__panel {
+    position: absolute;
+    top: calc(100% + 10px);
+    right: 16px;
+    left: 16px;
+    z-index: 50;
+    border: 1px solid #e5e7eb;
+    border-radius: 16px;
+    background: #ffffff;
+    padding: 16px;
+    box-shadow: 0 12px 40px rgba(38, 40, 50, 0.08);
+  }
+
+  .mobile-menu__nav {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .mobile-menu__nav a {
+    display: flex;
+    min-height: 44px;
+    align-items: center;
+    border-radius: 12px;
+    padding: 0 16px;
+    color: #0b1f3a;
+    font-size: 16px;
+    font-weight: 600;
+    text-decoration: none;
+  }
+
+  .mobile-menu__nav a:hover {
+    background: #f4f6f8;
+  }
+
+  .mobile-menu__login {
+    margin-top: 8px;
+    border: 1px solid #0b1f3a;
+    justify-content: center;
+  }
+
+  .mobile-menu__cta {
+    background: #ff7a1a;
+    color: #ffffff !important;
+    justify-content: center;
+  }
+</style>

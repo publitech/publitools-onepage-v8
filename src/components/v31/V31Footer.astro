@@ -32,8 +32,9 @@ const finalNetworkText = networkText ?? fallbackNetworkText;
           {t.common.footer.about}
         </p>
         <nav class="footer-nav" aria-label={t.common.footer.heading}>
-          <a href={t.common.nav.featuresHref}>{t.common.nav.features}</a>
-          <a href={t.common.nav.blogHref}>{t.common.nav.blog}</a>
+          <a href={`/${locale}/#tarifs`}>{t.common.nav.pricing}</a>
+          <a href={`/${locale}/#faq`}>{t.common.nav.faq}</a>
+          <a href="/fr/blog/">Blog</a>
         </nav>
       </div>
       <nav aria-label={t.common.footer.legal}>

@@ -1,33 +1,33 @@
 import { LOCALES, localeConfig, dict, type Locale } from '../i18n';
 
+export const SITE_URL = 'https://publitools.ai';
+
 export interface HreflangEntry {
   hreflang: string;
   href: string;
 }
 
 /**
- * Build a `hreflang` entry for each locale, including the `x-default`
- * fallback. `x-default` pointe vers la version anglaise, qui sert de
- * page de base quand le pays du visiteur est inconnu.
+ * Entrées `hreflang` pour un chemin qui existe dans les 4 langues.
+ * `x-default` pointe vers la version anglaise : c'est la page de base
+ * quand le pays du visiteur est inconnu.
  */
-export function buildHreflang(pathname: string, _currentLocale: Locale): HreflangEntry[] {
-  const base = 'https://publitools.ai';
-  const stripped = pathname
-    .replace(/^\/(fr|en|es|de)/, '')
-    .replace(/^\/+/, '/');
+export function buildHreflang(pathname: string, _currentLocale?: Locale): HreflangEntry[] {
+  const stripped = pathname.replace(/^\/(fr|en|es|de)/, '').replace(/^\/+/, '/');
   const suffix = !stripped || stripped === '/' ? '/' : stripped;
 
   const entries: HreflangEntry[] = LOCALES.map((code) => ({
     hreflang: code,
-    href: `${base}/${code}${suffix}`,
+    href: `${SITE_URL}/${code}${suffix}`,
   }));
 
-  entries.push({
-    hreflang: 'x-default',
-    href: `${base}/en${suffix}`,
-  });
-
+  entries.push({ hreflang: 'x-default', href: `${SITE_URL}/en${suffix}` });
   return entries;
+}
+
+/** Alternates des 4 pages d'accueil (les seules pages traduites en 4 langues). */
+export function buildHomepageAlternates(): HreflangEntry[] {
+  return buildHreflang('/');
 }
 
 /**
@@ -37,15 +37,16 @@ export function buildHreflang(pathname: string, _currentLocale: Locale): Hreflan
 export function buildHomepageSchema(locale: Locale): Record<string, unknown>[] {
   const t = dict[locale];
   const cfg = localeConfig[locale];
-  const url = `https://publitools.ai/${locale}/`;
+  const url = `${SITE_URL}/${locale}/`;
+  const priceCurrency = locale === 'en' ? 'USD' : 'EUR';
 
   return [
     {
       '@context': 'https://schema.org',
       '@type': 'Organization',
       name: t.common.siteName,
-      url,
-      logo: 'https://publitools.ai/brand/publitools-logo-official.svg',
+      url: SITE_URL,
+      logo: `${SITE_URL}/brand/publitools-logo-official.svg`,
     },
     {
       '@context': 'https://schema.org',
@@ -67,7 +68,7 @@ export function buildHomepageSchema(locale: Locale): Record<string, unknown>[] {
         '@type': 'AggregateOffer',
         lowPrice: '19.90',
         highPrice: '39.90',
-        priceCurrency: 'EUR',
+        priceCurrency,
         offerCount: 2,
       },
     },

@@ -1,0 +1,21 @@
+# PubliTools
+
+> PubliTools est l'outil IA n°1 du BTP : il transforme les photos, vidéos et vocaux de chantier des artisans et entreprises du bâtiment en publications prêtes à valider pour les réseaux sociaux (Facebook, Instagram, LinkedIn, TikTok, YouTube), Google Business et les avis clients.
+>
+> PubliTools is the #1 AI tool for construction businesses: it turns jobsite photos, videos and voice notes into ready-to-approve content for social networks (Facebook, Instagram, LinkedIn, TikTok, YouTube), Google Business and customer reviews.
+
+## Pages principales / Main pages
+- [Accueil (FR)](https://publitools.ai/fr/) : présentation de l'outil, tarifs (Starter 19,90 € HT/mois, Pro 39,90 € HT/mois), FAQ. Essai gratuit 14 jours avec accès Pro complet.
+- [Home (EN)](https://publitools.ai/en/): product overview, pricing (Starter, Pro), FAQ. 14-day free trial with full Pro access.
+- [Inicio (ES)](https://publitools.ai/es/): página principal en español.
+- [Startseite (DE)](https://publitools.ai/de/): Startseite auf Deutsch.
+- [Blog (FR)](https://publitools.ai/fr/blog/) : guides marketing pour entreprises du bâtiment (réseaux sociaux, avis Google, Google Business, photos chantier).
+
+## Fonctionnement / How it works
+1. L'utilisateur ajoute des photos ou vidéos de chantier et un vocal de 30 secondes.
+2. L'IA rédige la caption, retouche les photos (SmartAI), applique le logo et les couleurs de l'entreprise.
+3. L'utilisateur valide puis publie en 1 clic sur Facebook, Instagram, LinkedIn, Google Business, TikTok et YouTube.
+
+## Limites honnêtes / Honest limits
+- PubliTools ne garantit ni nombre d'avis, ni classement Google, ni volume de devis : c'est un outil de création et de publication assistée.
+- Chaque contenu est relu et validé par l'utilisateur avant publication.

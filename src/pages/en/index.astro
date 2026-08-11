@@ -9,7 +9,7 @@ import OnePagePricing from '../../components/onepage/OnePagePricing.astro';
 import OnePageFaq from '../../components/onepage/OnePageFaq.astro';
 import OnePageFinalCta from '../../components/onepage/OnePageFinalCta.astro';
 import OnePageFooter from '../../components/onepage/OnePageFooter.astro';
-import { buildHomepageSchema } from '../../lib/seo';
+import { buildHomepageSchema, buildHomepageAlternates } from '../../lib/seo';
 import '../../styles/onepage.css';
 ---
 
@@ -18,6 +18,7 @@ import '../../styles/onepage.css';
   description="1 jobsite photo + a 20-second voice note. PubliTools writes, edits, and posts across 6 networks in under 2 minutes. Start your free 14-day trial."
   canonical="https://publitools.ai/en/"
   schema={buildHomepageSchema('en')}
+  alternates={buildHomepageAlternates()}
   footer={false}
   locale="en"
   pathname="/en/"
