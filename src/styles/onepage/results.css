@@ -26,38 +26,64 @@
 
 .op-result-card {
   display: grid;
-  gap: 16px;
-  padding: 16px;
-  border: 1px solid rgba(255, 255, 255, 0.16);
+  grid-template-rows: auto auto;
+  gap: 0;
+  overflow: hidden;
+  border: 1px solid var(--op-line);
   border-radius: 16px;
-  background: var(--op-blue-deep);
+  background: var(--op-white);
   box-shadow: 0 12px 32px rgba(0, 0, 0, 0.18);
 }
 
 .op-result-card__media {
   overflow: hidden;
-  border-radius: 12px;
   background: var(--op-white);
-  aspect-ratio: 16 / 10;
+  aspect-ratio: auto;
 }
 
 .op-result-card__media img {
   display: block;
   width: 100%;
-  height: 100%;
-  object-fit: cover;
+  height: auto;
+  object-fit: contain;
   object-position: top center;
 }
 
 .op-result-card__title {
   margin: 0;
-  padding: 4px 4px 8px;
-  color: var(--op-white);
+  padding: 20px 20px 24px;
   font-size: 18px;
   font-weight: 800;
   line-height: 1.32;
   letter-spacing: -0.015em;
   text-wrap: balance;
+}
+
+.op-result-card--orange {
+  background: var(--op-orange);
+  border-color: var(--op-orange);
+}
+
+.op-result-card--orange .op-result-card__title {
+  color: var(--op-white);
+}
+
+.op-result-card--navy {
+  background: var(--op-ink);
+  border-color: var(--op-ink);
+}
+
+.op-result-card--navy .op-result-card__title {
+  color: var(--op-white);
+}
+
+.op-result-card--yellow {
+  background: var(--op-yellow);
+  border-color: var(--op-yellow);
+}
+
+.op-result-card--yellow .op-result-card__title {
+  color: var(--op-ink);
 }
 
 .op-results__note {
@@ -76,6 +102,7 @@
 
   .op-result-card__title {
     font-size: 20px;
+    padding: 24px 24px 28px;
   }
 }
 
@@ -86,11 +113,12 @@
   }
 
   .op-result-card {
-    padding: 20px;
+    border-radius: 24px;
   }
 
   .op-result-card__title {
     font-size: 22px;
+    padding: 28px 28px 32px;
   }
 }
 
