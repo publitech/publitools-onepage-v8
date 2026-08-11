@@ -1,0 +1,76 @@
+---
+import { LOCALES, localeConfig, type Locale } from '../../i18n';
+
+interface Props {
+  locale?: Locale;
+  variant?: 'desktop' | 'mobile';
+}
+
+const { locale = 'fr', variant = 'desktop' } = Astro.props;
+---
+
+<div class:list={['op-lang-switch', `op-lang-switch--${variant}`]} role="group" aria-label="Changer de langue">
+  {LOCALES.map((code) => {
+    const isActive = code === locale;
+    const config = localeConfig[code];
+    return (
+      <a
+        class:list={['op-lang-item', isActive && 'is-active']}
+        href={`/${code}/`}
+        hreflang={code}
+        aria-label={config.label}
+        aria-current={isActive ? 'true' : undefined}
+        title={config.label}
+      >
+        {config.short}
+      </a>
+    );
+  })}
+</div>
+
+<style>
+  .op-lang-switch {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    border: 1px solid var(--op-line);
+    border-radius: 999px;
+    background: var(--op-white);
+    padding: 4px;
+  }
+
+  .op-lang-item {
+    display: inline-flex;
+    min-height: 36px;
+    min-width: 40px;
+    align-items: center;
+    justify-content: center;
+    border-radius: 999px;
+    color: var(--op-muted);
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: 0.02em;
+    text-decoration: none;
+    transition: background 150ms ease, color 150ms ease;
+  }
+
+  .op-lang-item:hover {
+    background: var(--op-paper);
+    color: var(--op-ink);
+  }
+
+  .op-lang-item.is-active {
+    background: var(--op-orange);
+    color: var(--op-white);
+  }
+
+  .op-lang-switch--mobile {
+    width: 100%;
+    justify-content: space-between;
+    margin-bottom: 12px;
+  }
+
+  .op-lang-switch--mobile .op-lang-item {
+    flex: 1;
+  }
+</style>

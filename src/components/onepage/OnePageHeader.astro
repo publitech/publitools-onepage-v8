@@ -1,5 +1,6 @@
 ---
 import OnePageButton from './OnePageButton.astro';
+import OnePageLanguageSwitcher from './OnePageLanguageSwitcher.astro';
 import { dict, type Locale } from '../../i18n';
 
 interface Props {
@@ -23,6 +24,7 @@ const loginUrl = t.common.nav.loginHref;
       <a href="#faq">{t.common.nav.faq}</a>
       <OnePageButton href={signupUrl} class="op-header__cta">{t.common.nav.cta}</OnePageButton>
       <a href={loginUrl}>{t.common.nav.login}</a>
+      <OnePageLanguageSwitcher locale={locale} variant="desktop" />
     </nav>
 
     <details class="op-header__mobile" data-mobile-menu>
@@ -36,6 +38,7 @@ const loginUrl = t.common.nav.loginHref;
           <button type="button" aria-label={t.common.nav.close} data-menu-close>×</button>
         </div>
         <nav aria-label={t.common.nav.mobileNav}>
+          <OnePageLanguageSwitcher locale={locale} variant="mobile" />
           <a href="#tarifs" data-menu-link>{t.common.nav.pricing}</a>
           <a href="#faq" data-menu-link>{t.common.nav.faq}</a>
           <OnePageButton href={signupUrl} class="op-mobile-menu__cta">{t.common.nav.cta}</OnePageButton>
