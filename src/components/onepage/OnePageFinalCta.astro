@@ -8,16 +8,17 @@ interface Props {
 
 const { locale = 'fr' } = Astro.props;
 const t = dict[locale];
+const op = t.home.onepage;
 const signupUrl = t.common.nav.ctaHref;
 ---
 
 <section class="op-final-cta" aria-labelledby="op-final-cta-title">
   <div class="op-container op-final-cta__inner">
     <div>
-      <p class="op-kicker op-kicker--light">{locale === 'fr' ? 'Votre prochain chantier suffit pour commencer' : 'Your next job is enough to get started'}</p>
-      <h2 id="op-final-cta-title">{t.home.finalCta.title}</h2>
-      <p>{t.home.finalCta.text}</p>
+      <p class="op-kicker op-kicker--light">{op.finalCta.kicker}</p>
+      <h2 id="op-final-cta-title">{op.finalCta.title}</h2>
+      <p>{op.finalCta.text}</p>
     </div>
-    <OnePageButton href={signupUrl}>{t.home.finalCta.primaryCta}</OnePageButton>
+    <OnePageButton href={signupUrl}>{op.finalCta.cta}</OnePageButton>
   </div>
 </section>

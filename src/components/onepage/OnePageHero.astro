@@ -10,6 +10,7 @@ interface Props {
 const { locale = 'fr' } = Astro.props;
 const t = dict[locale];
 const signupUrl = t.common.nav.ctaHref;
+const op = t.home.onepage;
 ---
 
 <section class="op-hero op-hero-v4" id="top" aria-labelledby="op-hero-title">
@@ -17,7 +18,7 @@ const signupUrl = t.common.nav.ctaHref;
     <div class="op-hero__copy">
       <p class="op-eyebrow"><span aria-hidden="true"></span>Powered by IA</p>
       <h1 id="op-hero-title">{t.home.hero.h1}</h1>
-      <p class="op-hero__lead">{locale === 'fr' ? '1 photo. 1 vocal. Et vos photos chantiers sont partout.' : '1 photo. 1 voice note. And your jobsite photos are everywhere.'}</p>
+      <p class="op-hero__lead">{t.home.hero.subheadline}</p>
       <OnePageSocialLogos label={t.home.hero.promiseChip2} />
       <div class="op-actions">
         <OnePageButton href={signupUrl}>{t.home.hero.primaryCta}</OnePageButton>

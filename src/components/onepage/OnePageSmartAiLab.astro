@@ -1,15 +1,25 @@
 ---
+import { dict, type Locale } from '../../i18n';
+
+interface Props {
+  locale?: Locale;
+}
+
+const { locale = 'fr' } = Astro.props;
+const t = dict[locale];
+const op = t.home.onepage;
+
 const cases = [
-  { id: 'renovation', label: 'Rénovation', title: "Rénovation d'appartement" },
-  { id: 'maconnerie', label: 'Maçonnerie', title: "Construction d'un mur en parpaings" },
-  { id: 'plomberie', label: 'Plomberie', title: "Installation de plomberie en salle de bain" },
-  { id: 'electricien', label: 'Électricien', title: "Travaux d'installation électrique" },
-  { id: 'couvreur', label: 'Couvreur', title: "Rénovation de toiture" },
-  { id: 'menuiserie', label: 'Menuiserie', title: "Pose de menuiserie" },
-  { id: 'peinture', label: 'Peinture', title: "Peinture intérieure" },
-  { id: 'carrelage', label: 'Carrelage', title: "Pose de carrelage" },
-  { id: 'plaquiste', label: 'Plaquiste', title: "Pose de cloisons en plaques de plâtre" },
-  { id: 'chauffagiste', label: 'Chauffagiste', title: "Installation de chauffage" },
+  { id: 'renovation', label: locale === 'fr' ? 'Rénovation' : 'Renovation', title: locale === 'fr' ? "Rénovation d'appartement" : 'Apartment renovation' },
+  { id: 'maconnerie', label: locale === 'fr' ? 'Maçonnerie' : 'Masonry', title: locale === 'fr' ? "Construction d'un mur en parpaings" : 'Building a cinder block wall' },
+  { id: 'plomberie', label: locale === 'fr' ? 'Plomberie' : 'Plumbing', title: locale === 'fr' ? "Installation de plomberie en salle de bain" : 'Bathroom plumbing installation' },
+  { id: 'electricien', label: locale === 'fr' ? 'Électricien' : 'Electrician', title: locale === 'fr' ? "Travaux d'installation électrique" : 'Electrical installation work' },
+  { id: 'couvreur', label: locale === 'fr' ? 'Couvreur' : 'Roofer', title: locale === 'fr' ? "Rénovation de toiture" : 'Roof renovation' },
+  { id: 'menuiserie', label: locale === 'fr' ? 'Menuiserie' : 'Carpentry', title: locale === 'fr' ? "Pose de menuiserie" : 'Joinery installation' },
+  { id: 'peinture', label: locale === 'fr' ? 'Peinture' : 'Painting', title: locale === 'fr' ? "Peinture intérieure" : 'Interior painting' },
+  { id: 'carrelage', label: locale === 'fr' ? 'Carrelage' : 'Tiling', title: locale === 'fr' ? "Pose de carrelage" : 'Tile laying' },
+  { id: 'plaquiste', label: locale === 'fr' ? 'Plaquiste' : 'Drywall', title: locale === 'fr' ? "Pose de cloisons en plaques de plâtre" : 'Drywall partition installation' },
+  { id: 'chauffagiste', label: locale === 'fr' ? 'Chauffagiste' : 'Heating', title: locale === 'fr' ? "Installation de chauffage" : 'Heating installation' },
 ].map((item) => ({
   ...item,
   before: `/assets/onepage/smartai-v6/${item.id}-before.jpg`,
@@ -21,12 +31,12 @@ const cases = [
   <div class="op-container op-smartai-v4__layout">
     <div class="op-smartai-v4__side">
       <header class="op-smartai__head">
-        <p class="op-kicker">03 — Amélioration SmartAI</p>
-        <h2 id="op-smartai-title">Notre <span class="box-decoration-clone rounded-lg bg-[#262832] px-2 py-0 text-white">IA</span> <span class="underline">retouche</span> et <span class="underline">rédige</span> vos publications</h2>
-        <p>Choisissez un métier, puis passez de la photo prise sur le chantier à la version améliorée.</p>
+        <p class="op-kicker">{op.smartai.kicker}</p>
+        <h2 id="op-smartai-title">{op.smartai.title}</h2>
+        <p>{op.smartai.text}</p>
       </header>
 
-      <div class="op-smartai__tabs" role="tablist" aria-label="Choisir un métier">
+      <div class="op-smartai__tabs" role="tablist" aria-label={locale === 'fr' ? 'Choisir un métier' : 'Choose a trade'}>
         {cases.map((item, index) => (
           <button
             type="button"
@@ -54,25 +64,25 @@ const cases = [
           data-view="before"
         >
           <h3>{item.title}</h3>
-          <div class="op-smartai-v4__toggle" role="group" aria-label={`Afficher la photo avant ou après pour ${item.label}`}>
-            <button type="button" aria-pressed="true" data-view-button="before">Avant</button>
-            <button type="button" aria-pressed="false" data-view-button="after">Après</button>
+          <div class="op-smartai-v4__toggle" role="group" aria-label={locale === 'fr' ? `Afficher la photo avant ou après pour ${item.label}` : `Show before or after photo for ${item.label}`}>
+            <button type="button" aria-pressed="true" data-view-button="before">{locale === 'fr' ? 'Avant' : 'Before'}</button>
+            <button type="button" aria-pressed="false" data-view-button="after">{locale === 'fr' ? 'Après' : 'After'}</button>
           </div>
           <div class="op-smartai__compare">
             <figure class="op-smartai__figure op-smartai__figure--before">
-              <img src={item.before} alt={`${item.title} avant amélioration photographique`} width="1200" height="900" loading={index === 0 ? 'eager' : 'lazy'} decoding="async" />
-              <figcaption>Avant</figcaption>
+              <img src={item.before} alt={`${item.title} ${locale === 'fr' ? 'avant amélioration photographique' : 'before photo enhancement'}`} width="1200" height="900" loading={index === 0 ? 'eager' : 'lazy'} decoding="async" />
+              <figcaption>{locale === 'fr' ? 'Avant' : 'Before'}</figcaption>
             </figure>
             <figure class="op-smartai__figure op-smartai__figure--after">
-              <img src={item.after} alt={`${item.title} après amélioration photographique`} width="1200" height="900" loading={index === 0 ? 'eager' : 'lazy'} decoding="async" />
-              <figcaption>Après</figcaption>
+              <img src={item.after} alt={`${item.title} ${locale === 'fr' ? 'après amélioration photographique' : 'after photo enhancement'}`} width="1200" height="900" loading={index === 0 ? 'eager' : 'lazy'} decoding="async" />
+              <figcaption>{locale === 'fr' ? 'Après' : 'After'}</figcaption>
             </figure>
           </div>
         </article>
       ))}
     </div>
 
-    <p class="op-smartai__notice">Exemples illustratifs — amélioration photographique uniquement. Aucun élément du chantier n'est ajouté, retiré ou remplacé.</p>
+    <p class="op-smartai__notice">{op.smartai.notice}</p>
   </div>
 </section>
 
