@@ -8,59 +8,51 @@ import electricienVocal from '../../assets/onepage/backgrounds/electricien-vocal
 import OnePageSocialLogos from './OnePageSocialLogos.astro';
 import OnePageSmartAiLab from './OnePageSmartAiLab.astro';
 import OnePageButton from './OnePageButton.astro';
-import { dict, type Locale } from '../../i18n';
 
-interface Props {
-  locale?: Locale;
-}
-
-const { locale = 'fr' } = Astro.props;
-const t = dict[locale];
-const op = t.home.onepage;
-const signupUrl = t.common.nav.ctaHref;
+const signupUrl = 'https://app.publichantier.fr/?signup=yes';
 ---
 
 <section class="op-step op-step--inputs" aria-labelledby="op-inputs-title">
   <div class="op-container op-inputs-v3">
     <div class="op-step__copy">
-      <p class="op-kicker">{op.step1.kicker}</p>
-      <h2 id="op-inputs-title">{op.step1.title}</h2>
-      <p>{op.step1.text}</p>
-      <a class="op-button op-button--ghost-light op-inputs-v3__cta-mobile" href="#tarifs">{t.common.nav.pricing}</a>
+      <p class="op-kicker">02 — Vos chantiers</p>
+      <h2 id="op-inputs-title">Ajoutez vos <span class="box-decoration-clone rounded-lg bg-[#00518f] px-2 py-0 text-white">photos / vidéos</span> + <span class="underline">1 vocal</span> (30sec)</h2>
+      <p>Depuis votre chantier ou chez vous, importez vos réalisations puis décrivez rapidement à voix haute ce que vous avez fait .</p>
+      <a class="op-button op-button--ghost-light op-inputs-v3__cta-mobile" href="#tarifs">Voir les tarifs</a>
     </div>
     <div class="op-inputs-v3__proof" style={`--op-proof-background: url("${electricienVocal.src}")`}>
       <figure class="op-inputs-v3__shot op-inputs-v3__shot--upload">
-        <Image src={uploadMedia} alt={locale === 'fr' ? 'Zone réelle pour ajouter des photos et vidéos' : 'Real upload area for photos and videos'} loading="lazy" decoding="async" />
-        <figcaption>{locale === 'fr' ? 'Photo' : 'Photo'}</figcaption>
+        <Image src={uploadMedia} alt="Zone réelle pour ajouter des photos et vidéos" loading="lazy" decoding="async" />
+        <figcaption>Photo</figcaption>
       </figure>
       <figure class="op-inputs-v3__shot op-inputs-v3__shot--vocal">
-        <Image src={recordVocal} alt={locale === 'fr' ? 'Bouton réel pour enregistrer un vocal' : 'Real button to record a voice note'} loading="lazy" decoding="async" />
-        <figcaption>{locale === 'fr' ? 'Vocal · 10 secondes' : 'Voice · 10 seconds'}</figcaption>
+        <Image src={recordVocal} alt="Bouton réel pour enregistrer un vocal" loading="lazy" decoding="async" />
+        <figcaption>Vocal · 10 secondes</figcaption>
       </figure>
     </div>
   </div>
 </section>
 
-<OnePageSmartAiLab locale={locale} />
+<OnePageSmartAiLab />
 
 <section class="op-step op-step--publish" aria-labelledby="op-publish-title">
   <div class="op-grid op-container op-step__grid">
     <div class="op-step__copy op-step__copy--left">
-      <p class="op-kicker op-kicker--light">{op.step3.kicker}</p>
-      <h2 id="op-publish-title">{op.step3.title}</h2>
-      <p>{op.step3.text}</p>
-      <OnePageSocialLogos label={locale === 'fr' ? '6 plateformes disponibles' : '6 platforms available'} onDark={true} compact={true} />
+      <p class="op-kicker op-kicker--light">04 — Validation & publication</p>
+      <h2 id="op-publish-title">Publiez en <span class="box-decoration-clone rounded-lg bg-[#f4862d] px-2 py-0 text-white">1 clic</span> sur tous vos réseaux.</h2>
+      <p>Choisissez vos comptes connectés, vérifiez la publication puis publiez tout depuis le même endroit.</p>
+      <OnePageSocialLogos label="6 plateformes disponibles" onDark={true} compact={true} />
     </div>
     <div class="op-publish-composition">
       <div class="op-publish-composition__networks">
-        <Image src={publishNetworks} alt={locale === 'fr' ? 'Écran réel On publie où ? avec les comptes sélectionnables' : 'Real screen: Where to publish? with selectable accounts'} loading="lazy" decoding="async" />
+        <Image src={publishNetworks} alt="Écran réel On publie où ? avec les comptes sélectionnables" loading="lazy" decoding="async" />
       </div>
       <div class="op-publish-composition__timing">
-        <Image src={publishTiming} alt={locale === 'fr' ? 'Écran réel de publication immédiate ou planifiée' : 'Real screen: immediate or scheduled publishing'} loading="lazy" decoding="async" />
+        <Image src={publishTiming} alt="Écran réel de publication immédiate ou planifiée" loading="lazy" decoding="async" />
       </div>
     </div>
   </div>
   <div class="op-publish__cta">
-    <OnePageButton href={signupUrl}>{op.step3.cta}</OnePageButton>
+    <OnePageButton href={signupUrl}>Lancer mes 14 jours gratuits</OnePageButton>
   </div>
 </section>

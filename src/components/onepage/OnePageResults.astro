@@ -1,14 +1,4 @@
 ---
-import { dict, type Locale } from '../../i18n';
-
-interface Props {
-  locale?: Locale;
-}
-
-const { locale = 'fr' } = Astro.props;
-const t = dict[locale];
-const op = t.home.onepage;
-
 const socialOutputs = [
   { network: 'Instagram', key: 'instagram', icon: '/social/instagram-official.svg', src: '/assets/onepage/mockups-v8/mockup-instagram.jpg' },
   { network: 'Facebook', key: 'facebook', icon: '/social/facebook-official.svg', src: '/assets/onepage/mockups-v8/mockup-facebook.jpg' },
@@ -28,20 +18,20 @@ const resultCards: Array<{
 }> = [
   {
     image: '/assets/onepage/results/tableau-de-bord-instagram.jpg',
-    alt: locale === 'fr' ? "Tableau de bord professionnel Instagram avec statistiques de vues et portée" : "Professional Instagram dashboard with view and reach statistics",
-    title: op.results.stat1,
+    alt: "Tableau de bord professionnel Instagram avec statistiques de vues et portée",
+    title: "Jusqu'à +600% de vues sur les RS",
     tone: 'orange',
   },
   {
     image: '/assets/onepage/results/google-positions-publitools.jpg',
-    alt: locale === 'fr' ? "Courbe de progression des positions Google Business sur 6 mois" : "Google Business position progression curve over 6 months",
-    title: op.results.stat2,
+    alt: "Courbe de progression des positions Google Business sur 6 mois",
+    title: '+12 positions sur Google',
     tone: 'navy',
   },
   {
     image: '/assets/onepage/results/gmail-reception-devis.jpg',
-    alt: locale === 'fr' ? "Boîte de réception Gmail avec nouvelles demandes de devis reçues" : "Gmail inbox with new quote requests received",
-    title: op.results.stat3,
+    alt: "Boîte de réception Gmail avec nouvelles demandes de devis reçues",
+    title: "Jusqu'à +40% de demandes de devis",
     tone: 'yellow',
   },
 ];
@@ -50,15 +40,15 @@ const resultCards: Array<{
 <section class="op-results" aria-labelledby="op-results-title">
   <div class="op-container">
     <div class="op-results__head">
-      <p class="op-kicker">{op.results.kicker}</p>
-      <h2 id="op-results-title">{op.results.title}</h2>
-      <p>{op.results.text}</p>
+      <p class="op-kicker">05 — Résultats observés</p>
+      <h2 id="op-results-title">Le <span class="box-decoration-clone rounded-lg bg-[#262832] px-2 py-0 text-white">résultat</span> ?</h2>
+      <p>Résultats observés sur plus de 50 artisans après 3 mois d'utilisation.</p>
     </div>
     <div class="op-social-wall" aria-labelledby="op-social-wall-title">
       <header class="op-social-wall__head">
-        <p class="op-kicker">{op.results.socialWallKicker}</p>
-        <h3 id="op-social-wall-title">{op.results.socialWallTitle}</h3>
-        <p class="op-social-wall__support">{op.results.socialWallSupport}</p>
+        <p class="op-kicker">1 photo, 6 publications...</p>
+        <h3 id="op-social-wall-title">1 photo, <span class="box-decoration-clone rounded-lg bg-[#fac43e] px-2 py-0 text-white">6 publications</span>...</h3>
+        <p class="op-social-wall__support">... et un maximum de visibilité gratuitement sur tous ces réseaux !</p>
       </header>
       <div class="op-social-wall__viewport">
         <div class="op-social-wall__rail" data-social-output-wall>
@@ -68,7 +58,7 @@ const resultCards: Array<{
                 <img src={output.icon} alt="" width="24" height="24" loading="lazy" decoding="async" />
                 <span>{output.network}</span>
               </figcaption>
-              <img class="op-social-output__asset" src={output.src} alt={locale === 'fr' ? `Exemple de publication ${output.network} créée à partir du chantier` : `Example ${output.network} post created from the jobsite`} loading="lazy" decoding="async" />
+              <img class="op-social-output__asset" src={output.src} alt={`Exemple de publication ${output.network} créée à partir du chantier`} loading="lazy" decoding="async" />
             </figure>
           ))}
           {socialOutputs.map((output) => (
@@ -86,9 +76,9 @@ const resultCards: Array<{
 
     <div class="op-results__cards-wall">
       <header class="op-results__cards-head">
-        <p class="op-kicker">{locale === 'fr' ? 'Résultat' : 'Result'}</p>
-        <h3 class="op-results__cards-title">{locale === 'fr' ? 'Des résultats qui payent les factures' : 'Results that pay the bills'}</h3>
-        <p class="op-results__cards-support">{locale === 'fr' ? 'Avant / après utilisations (constaté sur 50+ artisans en 3 mois)' : 'Before / after usage (observed on 50+ contractors in 3 months)'}</p>
+        <p class="op-kicker">Résultat</p>
+        <h3 class="op-results__cards-title">Des résultats <span class="box-decoration-clone rounded-lg bg-[#f4862d] px-2 py-0 text-white">qui payent les factures</span></h3>
+        <p class="op-results__cards-support">Avant / après utilisations (constaté sur 50+ artisans en 3 mois)</p>
       </header>
       <div class="op-results__cards">
         {resultCards.map((card) => (
@@ -101,6 +91,6 @@ const resultCards: Array<{
         ))}
       </div>
     </div>
-    <p class="op-results__note">{op.results.note}</p>
+    <p class="op-results__note">Les résultats varient selon l'activité, la zone, la régularité et la présence existante.</p>
   </div>
 </section>

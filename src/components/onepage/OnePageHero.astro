@@ -1,28 +1,20 @@
 ---
 import OnePageButton from './OnePageButton.astro';
 import OnePageSocialLogos from './OnePageSocialLogos.astro';
-import { dict, type Locale } from '../../i18n';
 
-interface Props {
-  locale?: Locale;
-}
-
-const { locale = 'fr' } = Astro.props;
-const t = dict[locale];
-const signupUrl = t.common.nav.ctaHref;
-const op = t.home.onepage;
+const signupUrl = 'https://app.publichantier.fr/?signup=yes';
 ---
 
 <section class="op-hero op-hero-v4" id="top" aria-labelledby="op-hero-title">
   <div class="op-hero__grid op-grid op-container">
     <div class="op-hero__copy">
       <p class="op-eyebrow"><span aria-hidden="true"></span>Powered by IA</p>
-      <h1 id="op-hero-title">{t.home.hero.h1}</h1>
-      <p class="op-hero__lead">{t.home.hero.subheadline}</p>
-      <OnePageSocialLogos label={t.home.hero.promiseChip2} />
+      <h1 id="op-hero-title">L'outil N°1 du BTP pour automatiser vos réseaux sociaux</h1>
+      <p class="op-hero__lead">1 photo. 1 vocal. Et vos photos chantiers sont partout.</p>
+      <OnePageSocialLogos />
       <div class="op-actions">
-        <OnePageButton href={signupUrl}>{t.home.hero.primaryCta}</OnePageButton>
-        <OnePageButton href="#tarifs" variant="secondary">{t.common.nav.pricing}</OnePageButton>
+        <OnePageButton href={signupUrl}>Démarrer mes 14 jours d'essai gratuit</OnePageButton>
+        <OnePageButton href="#tarifs" variant="secondary">Voir les tarifs</OnePageButton>
       </div>
     </div>
 
@@ -30,7 +22,7 @@ const op = t.home.onepage;
       <figure class="op-hero-v4__artisan">
         <img
           src="/assets/onepage/hero-parquet-peintre.png"
-          alt={locale === 'fr' ? 'Artisan prenant en photo un chantier de rénovation avec parquet en point de hongrie' : 'Contractor taking a photo of a renovation jobsite with herringbone parquet'}
+          alt="Artisan prenant en photo un chantier de rénovation avec parquet en point de hongrie"
           width="1024"
           height="1280"
           loading="eager"
@@ -40,7 +32,7 @@ const op = t.home.onepage;
       <figure class="op-hero-v4__fragment op-hero-v4__fragment--dashboard">
         <img
           src="/assets/onepage/hero-app-dashboard.png"
-          alt={locale === 'fr' ? "Tableau de bord de l'application PubliTools" : "PubliTools application dashboard"}
+          alt="Tableau de bord de l'application Structor"
           width="390"
           height="844"
           loading="eager"
@@ -50,7 +42,7 @@ const op = t.home.onepage;
       <figure class="op-hero-v4__fragment op-hero-v4__fragment--config">
         <img
           src="/assets/onepage/hero-app-config-ia.png"
-          alt={locale === 'fr' ? "Configuration de l'IA en cours dans l'application PubliTools" : "AI configuration in progress in PubliTools app"}
+          alt="Configuration de l'IA en cours dans l'application Structor"
           width="339"
           height="325"
           loading="lazy"
@@ -60,7 +52,7 @@ const op = t.home.onepage;
       <figure class="op-hero-v4__fragment op-hero-v4__fragment--banner">
         <img
           src="/assets/onepage/hero-app-banner.jpeg"
-          alt={locale === 'fr' ? "Capture d'écran complémentaire de l'application PubliTools" : "Additional screenshot of the PubliTools app"}
+          alt="Capture d'écran complémentaire de l'application PubliTools"
           width="640"
           height="233"
           loading="lazy"

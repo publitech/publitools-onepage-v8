@@ -1,14 +1,5 @@
 ---
-import { dict, type Locale } from '../../i18n';
-
-interface Props {
-  locale?: Locale;
-}
-
-const { locale = 'fr' } = Astro.props;
-const t = dict[locale];
-
-const questions = locale === 'fr' ? [
+const questions = [
   [
     "L'essai est-il vraiment gratuit ?",
     "Oui. Vous bénéficiez de 14 jours d'essai gratuit avec un accès complet au plan Pro. Aucun frais de mise en place ne vous est facturé.",
@@ -53,60 +44,15 @@ const questions = locale === 'fr' ? [
     "Que se passe-t-il après les 14 jours d'essai gratuit ?",
     "À la fin des 14 jours d'essai gratuit, vous continuez avec le plan choisi.",
   ],
-] : [
-  [
-    "Is the trial really free?",
-    "Yes. You get 14 days of free trial with full access to the Pro plan. No setup fees are charged.",
-  ],
-  [
-    "What if I'm not tech-savvy?",
-    "No need to be a tech pro. You upload your jobsite photos / videos and explain your work by voice or text: the AI writes the post, edits your photos, applies your logo and brand colors.",
-  ],
-  [
-    "How long does it take to prepare a post?",
-    "Count less than 2 minutes to prepare a simple post, ready to be validated. You do everything from the jobsite, directly with your phone.",
-  ],
-  [
-    "Will the posts match my company's image?",
-    "Yes. The AI edits your photos, applies your logo and brand colors, while respecting the tone of your business configured at account setup. For videos, light processing is applied.",
-  ],
-  [
-    "Do I keep control over what gets published?",
-    "You see everything before it goes out. The app presents a full preview that you can review and edit if necessary before validating the send.",
-  ],
-  [
-    "Is it really useful for my construction business?",
-    "Your future clients look for proof of your work before signing a quote. PubliTools regularly feeds your accounts and your Google Business profile to showcase your jobs and reassure prospects.",
-  ],
-  [
-    "What results have been observed with contractors?",
-    "Results observed on more than 50 contractors after 3 months show up to +40% more quote requests and up to +600% more views on jobsite posts. Results vary by business, activity and area.",
-  ],
-  [
-    "How is the confidentiality of my jobsites preserved?",
-    "You select yourself the photos / videos you add to the app. Nothing is published without your prior verification.",
-  ],
-  [
-    "Is it difficult to connect my social networks?",
-    "The connection is done simply during your account setup, once and for all. PubliTools manages 6 networks including Google: Facebook, Instagram, LinkedIn, Google Business, TikTok and YouTube.",
-  ],
-  [
-    "How does the customer review request work?",
-    "PubliTools generates a pre-written SMS with the link to your Google Business profile. Your phone's SMS app opens automatically and you send the message to your client yourself.",
-  ],
-  [
-    "What happens after the 14-day free trial?",
-    "At the end of the 14-day free trial, you continue with the plan you chose.",
-  ],
 ];
 ---
 
 <section class="op-faq" id="faq" aria-labelledby="op-faq-title">
   <div class="op-container op-faq__grid">
     <div class="op-section-head op-faq__head">
-      <p class="op-kicker">{t.common.nav.faq}</p>
-      <h2 id="op-faq-title">{locale === 'fr' ? 'Les réponses avant de commencer.' : 'Answers before you start.'}</h2>
-      <p>{locale === 'fr' ? "Des explications simples sur l'essai, les photos, les vidéos et les deux formules." : "Simple explanations about the trial, photos, videos and the two plans."}</p>
+      <p class="op-kicker">FAQ</p>
+      <h2 id="op-faq-title">Les réponses avant de commencer.</h2>
+      <p>Des explications simples sur l'essai, les photos, les vidéos et les deux formules.</p>
     </div>
     <div class="op-faq__list">
       {questions.map(([question, answer], index) => (

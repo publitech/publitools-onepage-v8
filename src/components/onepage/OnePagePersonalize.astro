@@ -3,28 +3,19 @@ import { Image } from 'astro:assets';
 import chantierFini from '../../assets/onepage/backgrounds/personalize-chantier-v1.png';
 import identityVisuelle from '../../assets/onepage/personalize/identity-visuelle.png';
 import styleTexte from '../../assets/onepage/personalize/style-texte.png';
-import { dict, type Locale } from '../../i18n';
-
-interface Props {
-  locale?: Locale;
-}
-
-const { locale = 'fr' } = Astro.props;
-const t = dict[locale];
-const op = t.home.onepage;
 ---
 
 <section class="op-personalize" aria-labelledby="op-personalize-title">
   <div class="op-grid op-container op-personalize__grid">
     <div class="op-personalize__copy">
-      <p class="op-kicker">{op.personalize.kicker}</p>
-      <h2 id="op-personalize-title">{op.personalize.title}</h2>
-      <p>{op.personalize.text}</p>
+      <p class="op-kicker">01 — Personnaliser</p>
+      <h2 id="op-personalize-title"><span class="box-decoration-clone rounded-lg bg-[#f4862d] px-2 py-0 text-white">Personnalisez</span> votre <span class="underline">IA</span> aux couleurs de votre <span class="underline">entreprise</span></h2>
+      <p>Ajoutez votre logo, vos couleurs, le ton que vous souhaitez utiliser et plein d'autres personnalisations, simple à mettre en place.</p>
     </div>
 
     <div class="op-personalize__visual">
       <figure class="op-personalize__chantier">
-        <Image src={chantierFini} alt={locale === 'fr' ? 'Artisan configurant son IA depuis son téléphone sur un chantier' : 'Contractor configuring AI from phone on a jobsite'} loading="lazy" decoding="async" />
+        <Image src={chantierFini} alt="Artisan configurant son IA depuis son téléphone sur un chantier" loading="lazy" decoding="async" />
       </figure>
       <p class="op-personalize__configured">
         <img
@@ -40,7 +31,7 @@ const op = t.home.onepage;
           <span class="op-personalize__configured-name">Structor</span>
           <span class="op-personalize__configured-status">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5" /></svg>
-            {locale === 'fr' ? 'Entreprise configurée' : 'Company configured'}
+            Entreprise configurée
           </span>
         </span>
       </p>
@@ -54,10 +45,10 @@ const op = t.home.onepage;
         decoding="async"
       />
       <figure class="op-personalize__card op-personalize__card--identity">
-        <Image src={identityVisuelle} alt={locale === 'fr' ? 'Écran réel : identité visuelle (logo et couleur principale)' : 'Real screen: visual identity (logo and main color)'} loading="lazy" decoding="async" />
+        <Image src={identityVisuelle} alt="Écran réel : identité visuelle (logo et couleur principale)" loading="lazy" decoding="async" />
       </figure>
       <figure class="op-personalize__card op-personalize__card--style">
-        <Image src={styleTexte} alt={locale === 'fr' ? 'Écran réel : style de texte (ton de rédaction)' : 'Real screen: text style (writing tone)'} loading="lazy" decoding="async" />
+        <Image src={styleTexte} alt="Écran réel : style de texte (ton de rédaction)" loading="lazy" decoding="async" />
       </figure>
     </div>
   </div>

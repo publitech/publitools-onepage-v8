@@ -1,24 +1,15 @@
 ---
 import OnePageButton from './OnePageButton.astro';
-import { dict, type Locale } from '../../i18n';
-
-interface Props {
-  locale?: Locale;
-}
-
-const { locale = 'fr' } = Astro.props;
-const t = dict[locale];
-const op = t.home.onepage;
-const signupUrl = t.common.nav.ctaHref;
+const signupUrl = 'https://app.publichantier.fr/?signup=yes';
 ---
 
 <section class="op-final-cta" aria-labelledby="op-final-cta-title">
   <div class="op-container op-final-cta__inner">
     <div>
-      <p class="op-kicker op-kicker--light">{op.finalCta.kicker}</p>
-      <h2 id="op-final-cta-title">{op.finalCta.title}</h2>
-      <p>{op.finalCta.text}</p>
+      <p class="op-kicker op-kicker--light">Votre prochain chantier suffit pour commencer</p>
+      <h2 id="op-final-cta-title">Testez PubliTools pendant 14 jours.</h2>
+      <p>Accédez au plan Pro complet pendant l’essai, puis continuez avec le plan choisi.</p>
     </div>
-    <OnePageButton href={signupUrl}>{op.finalCta.cta}</OnePageButton>
+    <OnePageButton href={signupUrl}>Démarrer mes 14 jours d'essai gratuit</OnePageButton>
   </div>
 </section>
