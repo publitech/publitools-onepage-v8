@@ -38,6 +38,11 @@ const parsedCanonical = new URL(rawCanonical);
 const hasFileExtension = /\.[a-z0-9]+$/i.test(parsedCanonical.pathname);
 const canonicalUrl =
   hasFileExtension || rawCanonical.endsWith('/') ? rawCanonical : `${rawCanonical}/`;
+
+// Version des favicons : incrémenter à chaque changement pour forcer
+// le navigateur à invalider son cache (sinon Chrome/Safari gardent l'ancien).
+const FAVICON_VERSION = '2';
+const fav = (path: string) => `${path}?v=${FAVICON_VERSION}`;
 ---
 
 <!doctype html>
@@ -49,12 +54,12 @@ const canonicalUrl =
     <meta name="theme-color" content="#0B1F3A" />
     <meta name="color-scheme" content="light" />
 
-    <link rel="icon" type="image/svg+xml" href="/logo-icon.svg" />
-    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-512.png" />
-    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-512.png" />
-    <link rel="shortcut icon" href="/favicon.ico" />
-    <link rel="apple-touch-icon" sizes="180x180" href="/favicon-180.png" />
-    <link rel="manifest" href="/site.webmanifest" />
+    <link rel="icon" type="image/svg+xml" href={fav('/logo-icon.svg')} />
+    <link rel="icon" type="image/png" sizes="32x32" href={fav('/favicon-512.png')} />
+    <link rel="icon" type="image/png" sizes="16x16" href={fav('/favicon-512.png')} />
+    <link rel="shortcut icon" href={fav('/favicon.ico')} />
+    <link rel="apple-touch-icon" sizes="180x180" href={fav('/favicon-180.png')} />
+    <link rel="manifest" href={fav('/site.webmanifest')} />
 
     <link rel="canonical" href={canonicalUrl} />
     {alternates.map((entry) => (
