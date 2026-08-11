@@ -9,6 +9,7 @@ import OnePagePricing from '../../components/onepage/OnePagePricing.astro';
 import OnePageFaq from '../../components/onepage/OnePageFaq.astro';
 import OnePageFinalCta from '../../components/onepage/OnePageFinalCta.astro';
 import OnePageFooter from '../../components/onepage/OnePageFooter.astro';
+import { buildHomepageSchema } from '../../lib/seo';
 import '../../styles/onepage.css';
 ---
 
@@ -16,6 +17,7 @@ import '../../styles/onepage.css';
   title="The #1 AI Social Media Tool Built for Contractors & Trade Businesses | PubliTools"
   description="1 jobsite photo + a 20-second voice note. PubliTools writes, edits, and posts across 6 networks in under 2 minutes. Start your free 14-day trial."
   canonical="https://publitools.ai/en/"
+  schema={buildHomepageSchema('en')}
   footer={false}
   locale="en"
   pathname="/en/"

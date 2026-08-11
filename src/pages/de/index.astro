@@ -9,6 +9,7 @@ import OnePagePricing from '../../components/onepage/OnePagePricing.astro';
 import OnePageFaq from '../../components/onepage/OnePageFaq.astro';
 import OnePageFinalCta from '../../components/onepage/OnePageFinalCta.astro';
 import OnePageFooter from '../../components/onepage/OnePageFooter.astro';
+import { buildHomepageSchema } from '../../lib/seo';
 import '../../styles/onepage.css';
 ---
 
@@ -16,6 +17,7 @@ import '../../styles/onepage.css';
   title="Das KI-Tool Nr. 1 fürs Bauhandwerk zur Automatisierung Ihrer sozialen Netzwerke | PubliTools"
   description="1 Baustellenfoto + eine 20-Sekunden-Sprachnachricht. PubliTools schreibt, bearbeitet und veröffentlicht auf 6 Netzwerken in unter 2 Minuten. Jetzt 14 Tage kostenlos testen."
   canonical="https://publitools.ai/de/"
+  schema={buildHomepageSchema('de')}
   footer={false}
   locale="de"
   pathname="/de/"

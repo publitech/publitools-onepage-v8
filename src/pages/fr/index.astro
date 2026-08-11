@@ -9,6 +9,7 @@ import OnePagePricing from '../../components/onepage/OnePagePricing.astro';
 import OnePageFaq from '../../components/onepage/OnePageFaq.astro';
 import OnePageFinalCta from '../../components/onepage/OnePageFinalCta.astro';
 import OnePageFooter from '../../components/onepage/OnePageFooter.astro';
+import { buildHomepageSchema } from '../../lib/seo';
 import '../../styles/onepage.css';
 ---
 
@@ -16,6 +17,7 @@ import '../../styles/onepage.css';
   title="L'outil N°1 du BTP pour automatiser vos réseaux sociaux | PubliTools"
   description="Transformez vos photos, vidéos et vocaux de chantier en publications prêtes à valider sur Facebook, Instagram, LinkedIn, Google Business, TikTok et YouTube."
   canonical="https://publitools.ai/fr/"
+  schema={buildHomepageSchema('fr')}
   footer={false}
 >
   <OnePageHeader />

@@ -6,7 +6,43 @@
   "redirects": [
     {
       "source": "/",
+      "has": [
+        {
+          "type": "header",
+          "key": "x-vercel-ip-country",
+          "value": "FR"
+        }
+      ],
       "destination": "/fr/",
+      "permanent": false
+    },
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "header",
+          "key": "x-vercel-ip-country",
+          "value": "ES"
+        }
+      ],
+      "destination": "/es/",
+      "permanent": false
+    },
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "header",
+          "key": "x-vercel-ip-country",
+          "value": "DE"
+        }
+      ],
+      "destination": "/de/",
+      "permanent": false
+    },
+    {
+      "source": "/",
+      "destination": "/en/",
       "permanent": false
     },
     {
@@ -37,6 +73,16 @@
     {
       "source": "/fr/contact/",
       "destination": "/fr/",
+      "permanent": true
+    },
+    {
+      "source": "/fr/fonctionnalites/reseaux-sociaux/publication-multicanale",
+      "destination": "/fr/fonctionnalites/automatisation-reseaux-sociaux/publication-multi-reseaux/",
+      "permanent": true
+    },
+    {
+      "source": "/fr/fonctionnalites/reseaux-sociaux/programmation-editoriale",
+      "destination": "/fr/fonctionnalites/automatisation-reseaux-sociaux/programmation-publications/",
       "permanent": true
     },
     {
@@ -77,16 +123,6 @@
     {
       "source": "/fr/fonctionnalites/google-my-business/publication-photo-automatique",
       "destination": "/fr/fonctionnalites/booster-google-business/publication-photo-automatique/",
-      "permanent": true
-    },
-    {
-      "source": "/fr/fonctionnalites/reseaux-sociaux/publication-multicanale",
-      "destination": "/fr/fonctionnalites/automatisation-reseaux-sociaux/publication-multi-reseaux/",
-      "permanent": true
-    },
-    {
-      "source": "/fr/fonctionnalites/reseaux-sociaux/programmation-editoriale",
-      "destination": "/fr/fonctionnalites/automatisation-reseaux-sociaux/programmation-publications/",
       "permanent": true
     }
   ]
