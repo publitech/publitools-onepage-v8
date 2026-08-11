@@ -186,12 +186,8 @@
   display: flex;
   width: max-content;
   gap: 16px;
-  animation: op-social-marquee 40s linear infinite;
-}
-
-.op-social-wall__viewport:hover .op-social-wall__rail,
-.op-social-wall__viewport:focus-within .op-social-wall__rail {
-  animation-play-state: paused;
+  animation: op-social-marquee 25s linear infinite;
+  will-change: transform;
 }
 
 @keyframes op-social-marquee {
