@@ -1,0 +1,126 @@
+---
+import V31Button from '../v31/V31Button.astro';
+import { dict, type Locale } from '../../i18n';
+
+interface Props {
+  networkText?: string;
+  ctaHref?: string;
+  ctaLabel?: string;
+  locale?: Locale;
+}
+
+const {
+  networkText,
+  ctaHref,
+  ctaLabel,
+  locale = 'fr',
+} = Astro.props;
+
+const t = dict[locale];
+const finalCtaHref = ctaHref ?? t.common.nav.ctaHref;
+const finalCtaLabel = ctaLabel ?? t.common.footer.cta;
+---
+
+<footer class="v31-site-footer">
+  <div class="v31-wrap">
+    <div class="v31-site-footer__row">
+      <a class="v31-site-footer__brand" href={t.common.nav.featuresHref}>
+        <span>{t.common.siteName}</span>
+      </a>
+      <nav aria-label={t.common.footer.heading}>
+        <a href={t.common.nav.featuresHref}>{t.common.nav.features}</a>
+        <a href={t.common.nav.pricingHref}>{t.common.nav.pricing}</a>
+        <a href={t.common.nav.faqHref}>{t.common.nav.faq}</a>
+        <a href={t.common.nav.blogHref}>{t.common.nav.blog}</a>
+        <a href="/fr/contact/">{t.common.footer.contact}</a>
+      </nav>
+    </div>
+    <div class="v31-site-footer__row v31-site-footer__row--secondary">
+      <small>{t.common.footer.copyright}</small>
+      <nav aria-label={t.common.footer.legal}>
+        <a href={t.common.footer.legalLinks.legal.href}>{t.common.footer.legalLinks.legal.label}</a>
+        <a href={t.common.footer.legalLinks.cgv.href}>{t.common.footer.legalLinks.cgv.label}</a>
+        <a href={t.common.footer.legalLinks.cgu.href}>{t.common.footer.legalLinks.cgu.label}</a>
+        <a href={t.common.footer.legalLinks.privacy.href}>{t.common.footer.legalLinks.privacy.label}</a>
+        <a href={t.common.footer.legalLinks.cookies.href}>{t.common.footer.legalLinks.cookies.label}</a>
+      </nav>
+    </div>
+    {networkText && <p class="v31-site-footer__network">{networkText}</p>}
+    <div class="v31-site-footer__cta">
+      <V31Button href={finalCtaHref} label={finalCtaLabel} fullWidthMobile={false} />
+    </div>
+  </div>
+</footer>
+
+<style>
+  .v31-site-footer {
+    background: var(--v31-soft);
+    color: var(--v31-navy);
+    border-top: 1px solid var(--v31-border);
+  }
+
+  .v31-site-footer .v31-wrap {
+    display: grid;
+    gap: 28px;
+    padding-block: 56px 64px;
+  }
+
+  .v31-site-footer__row {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+  }
+
+  .v31-site-footer__brand span {
+    color: var(--v31-navy);
+    font-family: var(--v31-font-display);
+    font-size: 22px;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+  }
+
+  nav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px 24px;
+  }
+
+  nav a,
+  small {
+    color: #536174;
+    font-family: var(--v31-font-display);
+    font-size: 14px;
+    font-weight: 700;
+    text-decoration: none;
+  }
+
+  nav a:hover {
+    color: var(--v31-orange);
+  }
+
+  .v31-site-footer__row--secondary {
+    border-top: 1px solid var(--v31-border);
+    padding-top: 24px;
+  }
+
+  .v31-site-footer__network {
+    margin: 0;
+    color: #6b7280;
+    font-size: 14px;
+    line-height: 1.6;
+    max-width: 720px;
+  }
+
+  .v31-site-footer__cta {
+    display: flex;
+    justify-content: flex-end;
+  }
+
+  @media (max-width: 760px) {
+    .v31-site-footer__cta {
+      justify-content: stretch;
+    }
+  }
+</style>

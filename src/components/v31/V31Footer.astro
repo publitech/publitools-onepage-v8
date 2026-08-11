@@ -1,52 +1,61 @@
 ---
 import V31Button from './V31Button.astro';
+import { dict, type Locale } from '../../i18n';
 
 interface Props {
   networkText?: string;
   ctaHref?: string;
   ctaLabel?: string;
+  locale?: Locale;
 }
 
 const {
-  networkText = 'Facebook, Instagram, LinkedIn, Google Business, TikTok, YouTube — selon comptes connectés.',
-  ctaHref = 'https://app.publichantier.fr/?signup=yes',
-  ctaLabel = 'Essayer PubliTools 14 jours',
+  networkText,
+  ctaHref,
+  ctaLabel,
+  locale = 'fr',
 } = Astro.props;
+
+const t = dict[locale];
+const finalCtaHref = ctaHref ?? t.common.nav.ctaHref;
+const finalCtaLabel = ctaLabel ?? t.common.footer.cta;
+const fallbackNetworkText = t.common.footer.about;
+const finalNetworkText = networkText ?? fallbackNetworkText;
 ---
 
 <footer class="v31-footer">
   <div class="v31-wrap footer-inner">
     <div class="footer-top">
       <div>
-        <p class="footer-brand">PubliTools</p>
+        <p class="footer-brand">{t.common.siteName}</p>
         <p class="footer-text">
-          PubliTools aide les entreprises du bâtiment à transformer leurs chantiers, avis et informations métier en publicité claire sur Internet.
+          {t.common.footer.about}
         </p>
-        <nav class="footer-nav" aria-label="Liens utiles pied de page">
-          <a href="/fr/fonctionnalites/">Fonctionnalités</a>
-          <a href="/fr/tarif/">Tarif</a>
-          <a href="/fr/faq/">FAQ</a>
-          <a href="/fr/blog/">Blog</a>
-          <a href="/fr/contact/">Contact</a>
+        <nav class="footer-nav" aria-label={t.common.footer.heading}>
+          <a href={t.common.nav.featuresHref}>{t.common.nav.features}</a>
+          <a href={t.common.nav.pricingHref}>{t.common.nav.pricing}</a>
+          <a href={t.common.nav.faqHref}>{t.common.nav.faq}</a>
+          <a href={t.common.nav.blogHref}>{t.common.nav.blog}</a>
+          <a href="/fr/contact/">{t.common.footer.contact}</a>
         </nav>
       </div>
-      <nav aria-label="Liens légaux pied de page">
-        <p class="footer-heading">Légal</p>
+      <nav aria-label={t.common.footer.legal}>
+        <p class="footer-heading">{t.common.footer.legal}</p>
         <ul>
-          <li><a href="/fr/mentions-legales/">Mentions légales</a></li>
-          <li><a href="/fr/cgv/">CGV</a></li>
-          <li><a href="/fr/cgu/">CGU</a></li>
-          <li><a href="/fr/confidentialite/">Confidentialité</a></li>
-          <li><a href="/fr/cookies/">Cookies</a></li>
+          <li><a href={t.common.footer.legalLinks.legal.href}>{t.common.footer.legalLinks.legal.label}</a></li>
+          <li><a href={t.common.footer.legalLinks.cgv.href}>{t.common.footer.legalLinks.cgv.label}</a></li>
+          <li><a href={t.common.footer.legalLinks.cgu.href}>{t.common.footer.legalLinks.cgu.label}</a></li>
+          <li><a href={t.common.footer.legalLinks.privacy.href}>{t.common.footer.legalLinks.privacy.label}</a></li>
+          <li><a href={t.common.footer.legalLinks.cookies.href}>{t.common.footer.legalLinks.cookies.label}</a></li>
         </ul>
       </nav>
     </div>
     <div class="footer-bottom">
       <div>
-        <p>© PubliTools — PubliTech OÜ</p>
-        {networkText && <p class="network-text">{networkText}</p>}
+        <p>{t.common.footer.copyright}</p>
+        {finalNetworkText && <p class="network-text">{finalNetworkText}</p>}
       </div>
-      <V31Button href={ctaHref} label={ctaLabel} fullWidthMobile={false} />
+      <V31Button href={finalCtaHref} label={finalCtaLabel} fullWidthMobile={false} />
     </div>
   </div>
 </footer>
