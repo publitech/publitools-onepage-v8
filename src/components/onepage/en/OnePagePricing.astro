@@ -1,0 +1,85 @@
+---
+import OnePageButton from '../OnePageButton.astro';
+import OnePageSocialLogos from '../OnePageSocialLogos.astro';
+
+const signupUrl = 'https://app.publichantier.fr/?signup=yes';
+const starter = [
+  '8 posts per month',
+  'Copy generated from your photos, videos, voice note or a short text',
+  'Standard photo and video enhancement',
+  'Up to 3 networks selected per post',
+  'Unlimited SMS review requests',
+  'SmartAI enhancements preview',
+  'Review before publishing',
+  'WhatsApp support',
+];
+const pro = [
+  'Unlimited posts',
+  'Simultaneous publishing on all 6 networks',
+  'Copy generated from your photos, videos, voice note or a short text',
+  'Standard photo and video enhancement',
+  'Unlimited SmartAI',
+  'Unlimited AI designs',
+  'Post scheduling',
+  'Unlimited SMS review requests',
+  'Received review turned into a post',
+  'Review before publishing',
+  'WhatsApp support',
+];
+---
+
+<section class="op-pricing" id="pricing" aria-labelledby="op-pricing-title">
+  <div class="op-container">
+    <div class="op-section-head op-pricing__head">
+      <p class="op-kicker">Pricing</p>
+      <h2 id="op-pricing-title">Try the app <span class="box-decoration-clone rounded-lg bg-[#f4862d] px-2 py-0 text-white">free</span> on your next jobsite</h2>
+      <p>14 free days to prepare your social media posts from the field.</p>
+    </div>
+    <div class="op-pricing__grid">
+      <article class="op-price-card op-price-card--starter">
+        <div class="op-price-card__head">
+          <p class="op-price-card__label">Starter</p>
+          <h3>To post consistently</h3>
+
+        </div>
+        <ul class="op-price-card__features">
+          {starter.map((item) => (
+            <li>
+              <span class="op-price-card__bullet" aria-hidden="true"></span>
+              <span class="op-price-card__label-text">{item}</span>
+            </li>
+          ))}
+        </ul>
+        <OnePageSocialLogos label="Available networks" caption="Up to 3 networks per post" compact pricing />
+        <p class="op-price-card__price">
+          <span class="op-price-card__price-kicker">Only</span>
+          <strong>€19.90</strong>
+          <span class="op-price-card__price-unit">excl. VAT / month</span>
+        </p>
+        <OnePageButton href={signupUrl}>Start my free 14-day trial</OnePageButton>
+      </article>
+      <article class="op-price-card op-price-card--pro">
+        <div class="op-price-card__head">
+          <p class="op-price-card__label">Pro <span>Recommended</span></p>
+          <h3>To automate without limits</h3>
+
+        </div>
+        <ul class="op-price-card__features">
+          {pro.map((item) => (
+            <li>
+              <span class="op-price-card__bullet" aria-hidden="true"></span>
+              <span class="op-price-card__label-text">{item}</span>
+            </li>
+          ))}
+        </ul>
+        <OnePageSocialLogos label="Available networks" caption="Simultaneous publishing on all 6 networks" compact pricing />
+        <p class="op-price-card__price">
+          <span class="op-price-card__price-kicker">Only</span>
+          <strong>€39.90</strong>
+          <span class="op-price-card__price-unit">excl. VAT / month</span>
+        </p>
+        <OnePageButton href={signupUrl}>Start my free 14-day trial</OnePageButton>
+      </article>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,29 @@
+---
+const signupUrl = 'https://app.publichantier.fr/?signup=yes';
+---
+
+<footer class="op-footer">
+  <div class="op-container op-footer__inner">
+    <div class="op-footer__brand">
+      <a href="#top" aria-label="Back to the top of the PubliTools page">
+        <img src="/brand/publitools-logo-official.svg" alt="PubliTools" width="500" height="100" />
+      </a>
+      <p>The AI marketing tool built for contractors and trade businesses.</p>
+    </div>
+    <nav aria-label="Footer navigation">
+      <a href="#pricing">Pricing</a>
+      <a href="#faq">FAQ</a>
+      <a href={signupUrl}>Start for free</a>
+      <a href="https://app.publichantier.fr/">Sign in</a>
+    </nav>
+    <nav aria-label="Legal links">
+      <a href="/en/legal-notice/">Legal notice</a>
+      <a href="/en/terms-of-use/">Terms of use</a>
+      <a href="/en/privacy-policy/">Privacy policy</a>
+    </nav>
+  </div>
+  <div class="op-container op-footer__bottom">
+    <span>© {new Date().getFullYear()} PubliTools</span>
+    <span>CUT. BUILD. POST.</span>
+  </div>
+</footer>

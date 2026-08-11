@@ -1,0 +1,118 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import OnePageHeader from '../../components/onepage/en/OnePageHeader.astro';
+import OnePageHero from '../../components/onepage/en/OnePageHero.astro';
+import OnePagePersonalize from '../../components/onepage/en/OnePagePersonalize.astro';
+import OnePageHowItWorks from '../../components/onepage/en/OnePageHowItWorks.astro';
+import OnePageResults from '../../components/onepage/en/OnePageResults.astro';
+import OnePagePricing from '../../components/onepage/en/OnePagePricing.astro';
+import OnePageFaq from '../../components/onepage/en/OnePageFaq.astro';
+import OnePageFinalCta from '../../components/onepage/en/OnePageFinalCta.astro';
+import OnePageFooter from '../../components/onepage/en/OnePageFooter.astro';
+import '../../styles/onepage.css';
+
+const faqItems: Array<[string, string]> = [
+  [
+    'Is the trial really free?',
+    'Yes. You get a 14-day free trial with full access to the Pro plan. No setup fees are charged.',
+  ],
+  [
+    "What if I'm not good with computers?",
+    'No need to be tech-savvy. You send your jobsite photos / videos and explain your work by voice note or text: the AI writes the post, edits your photos, and applies your logo and colors.',
+  ],
+  [
+    'How long does it take to prepare a post?',
+    'Under 2 minutes to prepare a simple post, ready to approve. Do it all from the jobsite, straight from your phone.',
+  ],
+  [
+    "Will the posts match my company's image?",
+    "Yes. The AI edits your photos and applies your logo and colors, while respecting your company's tone set at account setup. Videos get light processing.",
+  ],
+  [
+    'Do I keep control over what gets published?',
+    'You see everything before it goes out. The app shows you a full preview that you can review and edit before approving the send.',
+  ],
+  [
+    'Is it really useful for my construction business?',
+    'Your future customers look for proof of your work before signing a quote. PubliTools regularly feeds your accounts and your Google Business profile to showcase your jobsites and reassure prospects.',
+  ],
+  [
+    'What results have trade professionals seen?',
+    'Results observed on 50+ trade professionals after 3 months show up to +40% quote requests and up to +600% views on jobsite posts. Results vary by business, activity and area.',
+  ],
+  [
+    'How is the privacy of my jobsites protected?',
+    'You choose which photos / videos you add to the app. Nothing is published without your prior review.',
+  ],
+  [
+    'Is it hard to connect my social media accounts?',
+    'Connecting is simple and done once when setting up your account. PubliTools manages 6 networks including Google: Facebook, Instagram, LinkedIn, Google Business, TikTok and YouTube.',
+  ],
+  [
+    'How do customer review requests work?',
+    "PubliTools generates a pre-written SMS with the link to your Google Business profile. Your phone's messaging app opens automatically and you send the message to your customer yourself.",
+  ],
+  [
+    'What happens after the 14-day free trial?',
+    'At the end of the 14-day free trial, your subscription switches to the plan you chose when you signed up.',
+  ],
+];
+
+const title = 'The #1 AI Social Media Tool Built for Contractors & Trade Businesses | PubliTools';
+const description = '1 jobsite photo + a 20-second voice note. PubliTools writes, edits and posts across 6 networks in under 2 minutes: Facebook, Instagram, LinkedIn, Google Business, TikTok and YouTube.';
+
+const schema = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'Organization',
+    name: 'PubliTools',
+    url: 'https://publitools.ai/en/',
+    logo: 'https://publitools.ai/og-cover.png',
+    parentOrganization: { '@type': 'Organization', name: 'PubliTech OÜ' },
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'SoftwareApplication',
+    name: 'PubliTools',
+    applicationCategory: 'BusinessApplication',
+    operatingSystem: 'Web',
+    description,
+    url: 'https://publitools.ai/en/',
+    offers: [
+      { '@type': 'Offer', name: 'Starter', price: '19.90', priceCurrency: 'EUR' },
+      { '@type': 'Offer', name: 'Pro', price: '39.90', priceCurrency: 'EUR' },
+    ],
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: faqItems.map(([question, answer]) => ({
+      '@type': 'Question',
+      name: question,
+      acceptedAnswer: { '@type': 'Answer', text: answer },
+    })),
+  },
+];
+---
+
+<Layout
+  lang="en"
+  title={title}
+  description={description}
+  canonical="https://publitools.ai/en/"
+  alternateUrl="https://publitools.ai/fr/"
+  schema={schema}
+  footer={false}
+>
+  <OnePageHeader />
+  <main>
+    <OnePageHero />
+    <OnePagePersonalize />
+    <OnePageHowItWorks />
+    <OnePageResults />
+    <OnePagePricing />
+    <OnePageFaq items={faqItems} />
+    <OnePageFinalCta />
+  </main>
+  <OnePageFooter />
+</Layout>

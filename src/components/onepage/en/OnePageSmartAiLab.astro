@@ -1,0 +1,123 @@
+---
+const cases = [
+  { id: 'renovation', label: 'Renovation', title: 'Apartment renovation' },
+  { id: 'maconnerie', label: 'Masonry', title: 'Concrete block wall construction' },
+  { id: 'plomberie', label: 'Plumbing', title: 'Bathroom plumbing installation' },
+  { id: 'electricien', label: 'Electrical', title: 'Electrical installation work' },
+  { id: 'couvreur', label: 'Roofing', title: 'Roof renovation' },
+  { id: 'menuiserie', label: 'Carpentry', title: 'Carpentry installation' },
+  { id: 'peinture', label: 'Painting', title: 'Interior painting' },
+  { id: 'carrelage', label: 'Tiling', title: 'Tile installation' },
+  { id: 'plaquiste', label: 'Drywall', title: 'Drywall partition installation' },
+  { id: 'chauffagiste', label: 'Heating', title: 'Heating system installation' },
+].map((item) => ({
+  ...item,
+  before: `/assets/onepage/smartai-v6/${item.id}-before.jpg`,
+  after: `/assets/onepage/smartai-v6/${item.id}-after.jpg`,
+}));
+---
+
+<section class="op-smartai op-smartai-v4" aria-labelledby="op-smartai-title" data-smartai-lab>
+  <div class="op-container op-smartai-v4__layout">
+    <div class="op-smartai-v4__side">
+      <header class="op-smartai__head">
+        <p class="op-kicker">03 — SmartAI enhancement</p>
+        <h2 id="op-smartai-title">Our <span class="box-decoration-clone rounded-lg bg-[#262832] px-2 py-0 text-white">AI</span> <span class="underline">edits</span> and <span class="underline">writes</span> your posts</h2>
+        <p>Pick a trade, then switch from the photo taken on site to the enhanced version.</p>
+      </header>
+
+      <div class="op-smartai__tabs" role="tablist" aria-label="Choose a trade">
+        {cases.map((item, index) => (
+          <button
+            type="button"
+            role="tab"
+            id={`op-smartai-tab-${item.id}`}
+            aria-controls={`op-smartai-panel-${item.id}`}
+            aria-selected={index === 0 ? 'true' : 'false'}
+            tabindex={index === 0 ? 0 : -1}
+            data-case={item.id}
+          >
+            {item.label}
+          </button>
+        ))}
+      </div>
+    </div>
+
+    <div class="op-smartai-v4__stage">
+      {cases.map((item, index) => (
+        <article
+          class="op-smartai__panel"
+          id={`op-smartai-panel-${item.id}`}
+          role="tabpanel"
+          aria-labelledby={`op-smartai-tab-${item.id}`}
+          data-panel={item.id}
+          data-view="before"
+        >
+          <h3>{item.title}</h3>
+          <div class="op-smartai-v4__toggle" role="group" aria-label={`Show the before or after photo for ${item.label}`}>
+            <button type="button" aria-pressed="true" data-view-button="before">Before</button>
+            <button type="button" aria-pressed="false" data-view-button="after">After</button>
+          </div>
+          <div class="op-smartai__compare">
+            <figure class="op-smartai__figure op-smartai__figure--before">
+              <img src={item.before} alt={`${item.title} before photo enhancement`} width="1200" height="900" loading={index === 0 ? 'eager' : 'lazy'} decoding="async" />
+              <figcaption>Before</figcaption>
+            </figure>
+            <figure class="op-smartai__figure op-smartai__figure--after">
+              <img src={item.after} alt={`${item.title} after photo enhancement`} width="1200" height="900" loading={index === 0 ? 'eager' : 'lazy'} decoding="async" />
+              <figcaption>After</figcaption>
+            </figure>
+          </div>
+        </article>
+      ))}
+    </div>
+
+    <p class="op-smartai__notice">Illustrative examples — photo enhancement only. No jobsite element is added, removed or replaced.</p>
+  </div>
+</section>
+
+<script>
+  document.querySelectorAll<HTMLElement>('[data-smartai-lab]').forEach((root) => {
+    const tabs = Array.from(root.querySelectorAll<HTMLButtonElement>('[role="tab"]'));
+    const panels = Array.from(root.querySelectorAll<HTMLElement>('[role="tabpanel"]'));
+
+    const setView = (panel: HTMLElement, view: 'before' | 'after') => {
+      panel.dataset.view = view;
+      panel.querySelectorAll<HTMLButtonElement>('[data-view-button]').forEach((button) => {
+        button.setAttribute('aria-pressed', String(button.dataset.viewButton === view));
+      });
+    };
+
+    const activateCase = (id: string, focus = false) => {
+      tabs.forEach((tab) => {
+        const active = tab.dataset.case === id;
+        tab.setAttribute('aria-selected', String(active));
+        tab.tabIndex = active ? 0 : -1;
+        if (active && focus) tab.focus();
+      });
+      panels.forEach((panel) => {
+        panel.hidden = panel.dataset.panel !== id;
+      });
+    };
+
+    root.classList.add('is-enhanced');
+    panels.forEach((panel) => setView(panel, 'before'));
+    activateCase(tabs[0]?.dataset.case || 'renovation');
+
+    tabs.forEach((tab, index) => {
+      tab.addEventListener('click', () => activateCase(tab.dataset.case || 'renovation'));
+      tab.addEventListener('keydown', (event) => {
+        if (!['ArrowRight', 'ArrowLeft', 'Home', 'End'].includes(event.key)) return;
+        event.preventDefault();
+        const nextIndex = event.key === 'Home' ? 0 : event.key === 'End' ? tabs.length - 1 : event.key === 'ArrowRight' ? (index + 1) % tabs.length : (index - 1 + tabs.length) % tabs.length;
+        activateCase(tabs[nextIndex].dataset.case || 'renovation', true);
+      });
+    });
+
+    panels.forEach((panel) => {
+      panel.querySelectorAll<HTMLButtonElement>('[data-view-button]').forEach((button) => {
+        button.addEventListener('click', () => setView(panel, button.dataset.viewButton === 'before' ? 'before' : 'after'));
+      });
+    });
+  });
+</script>

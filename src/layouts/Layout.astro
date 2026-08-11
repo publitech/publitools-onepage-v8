@@ -10,6 +10,8 @@ interface Props {
   schema?: Record<string, unknown>[];
   footerNetworkText?: string;
   footer?: boolean;
+  lang?: 'fr' | 'en';
+  alternateUrl?: string;
 }
 
 const {
@@ -20,11 +22,18 @@ const {
   schema = [],
   footerNetworkText,
   footer = true,
+  lang = 'fr',
+  alternateUrl,
 } = Astro.props;
+
+const alternateLang = lang === 'fr' ? 'en' : 'fr';
+const ogLocale = lang === 'fr' ? 'fr_FR' : 'en_US';
+const ogLocaleAlternate = lang === 'fr' ? 'en_US' : 'fr_FR';
+const skipLabel = lang === 'fr' ? 'Aller au contenu principal' : 'Skip to main content';
 ---
 
 <!doctype html>
-<html lang="fr">
+<html lang={lang}>
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -34,11 +43,19 @@ const {
         <link rel="icon" type="image/png" sizes="512x512" href="/favicon-512.png" />
         <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
         <link rel="canonical" href={canonical} />
+        {alternateUrl && (
+          <>
+            <link rel="alternate" hreflang={lang} href={canonical} />
+            <link rel="alternate" hreflang={alternateLang} href={alternateUrl} />
+            <link rel="alternate" hreflang="x-default" href={lang === 'fr' ? canonical : alternateUrl} />
+          </>
+        )}
     <title>{title}</title>
     <meta name="description" content={description} />
     <meta name="robots" content="noindex,nofollow" />
     <meta property="og:type" content="website" />
-    <meta property="og:locale" content="fr_FR" />
+    <meta property="og:locale" content={ogLocale} />
+    {alternateUrl && <meta property="og:locale:alternate" content={ogLocaleAlternate} />}
     <meta property="og:site_name" content="PubliTools" />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
@@ -54,7 +71,7 @@ const {
   </head>
   <body>
     <a href="#page-content" class="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-50 focus:rounded-full focus:bg-white focus:px-4 focus:py-3 focus:text-sm focus:font-semibold focus:text-slate-900">
-      Aller au contenu principal
+      {skipLabel}
     </a>
     <div id="page-content">
       <slot />

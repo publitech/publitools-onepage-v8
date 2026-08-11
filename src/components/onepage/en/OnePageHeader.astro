@@ -1,5 +1,5 @@
 ---
-import OnePageButton from './OnePageButton.astro';
+import OnePageButton from '../OnePageButton.astro';
 
 const signupUrl = 'https://app.publichantier.fr/?signup=yes';
 const loginUrl = 'https://app.publichantier.fr/';
@@ -7,39 +7,39 @@ const loginUrl = 'https://app.publichantier.fr/';
 
 <header class="op-header" data-onepage-header>
   <div class="op-header__inner op-container">
-    <a class="op-header__brand" href="#top" aria-label="Retour en haut de la page PubliTools">
+    <a class="op-header__brand" href="#top" aria-label="Back to the top of the PubliTools page">
       <img src="/brand/publitools-logo-official.svg" alt="PubliTools" width="500" height="100" />
     </a>
 
-    <nav class="op-header__desktop-nav" aria-label="Navigation principale">
-      <a href="#tarifs">Tarifs</a>
+    <nav class="op-header__desktop-nav" aria-label="Main navigation">
+      <a href="#pricing">Pricing</a>
       <a href="#faq">FAQ</a>
-      <OnePageButton href={signupUrl} class="op-header__cta">Démarrer gratuitement</OnePageButton>
-      <a href={loginUrl}>Se connecter</a>
-      <a class="op-lang-switch" href="/en/" hreflang="en" lang="en" aria-label="Switch to English">
-        <svg viewBox="0 0 60 40" aria-hidden="true" focusable="false"><rect width="60" height="40" fill="#012169"/><path d="M0 0l60 40M60 0L0 40" stroke="#fff" stroke-width="8"/><path d="M0 0l60 40M60 0L0 40" stroke="#C8102E" stroke-width="4"/><path d="M30 0v40M0 20h60" stroke="#fff" stroke-width="13"/><path d="M30 0v40M0 20h60" stroke="#C8102E" stroke-width="8"/></svg>
-        <span>EN</span>
+      <OnePageButton href={signupUrl} class="op-header__cta">Start for free</OnePageButton>
+      <a href={loginUrl}>Sign in</a>
+      <a class="op-lang-switch" href="/fr/" hreflang="fr" lang="fr" aria-label="Passer en français">
+        <svg viewBox="0 0 60 40" aria-hidden="true" focusable="false"><rect width="20" height="40" fill="#0055A4"/><rect x="20" width="20" height="40" fill="#fff"/><rect x="40" width="20" height="40" fill="#EF4135"/></svg>
+        <span>FR</span>
       </a>
     </nav>
 
     <details class="op-header__mobile" data-mobile-menu>
-      <summary aria-controls="onepage-mobile-menu" aria-label="Ouvrir le menu" data-menu-toggle>
+      <summary aria-controls="onepage-mobile-menu" aria-label="Open the menu" data-menu-toggle>
         <span aria-hidden="true"></span>
         <span aria-hidden="true"></span>
       </summary>
       <div class="op-mobile-menu" id="onepage-mobile-menu">
         <div class="op-mobile-menu__top">
           <span>Menu</span>
-          <button type="button" aria-label="Fermer le menu" data-menu-close>×</button>
+          <button type="button" aria-label="Close the menu" data-menu-close>×</button>
         </div>
-        <nav aria-label="Navigation mobile">
-          <a href="#tarifs" data-menu-link>Tarifs</a>
+        <nav aria-label="Mobile navigation">
+          <a href="#pricing" data-menu-link>Pricing</a>
           <a href="#faq" data-menu-link>FAQ</a>
-          <OnePageButton href={signupUrl} class="op-mobile-menu__cta">Démarrer gratuitement</OnePageButton>
-          <a href={loginUrl} data-menu-link>Se connecter</a>
-          <a class="op-lang-switch" href="/en/" hreflang="en" lang="en" data-menu-link aria-label="Switch to English">
-            <svg viewBox="0 0 60 40" aria-hidden="true" focusable="false"><rect width="60" height="40" fill="#012169"/><path d="M0 0l60 40M60 0L0 40" stroke="#fff" stroke-width="8"/><path d="M0 0l60 40M60 0L0 40" stroke="#C8102E" stroke-width="4"/><path d="M30 0v40M0 20h60" stroke="#fff" stroke-width="13"/><path d="M30 0v40M0 20h60" stroke="#C8102E" stroke-width="8"/></svg>
-            <span>EN — English version</span>
+          <OnePageButton href={signupUrl} class="op-mobile-menu__cta">Start for free</OnePageButton>
+          <a href={loginUrl} data-menu-link>Sign in</a>
+          <a class="op-lang-switch" href="/fr/" hreflang="fr" lang="fr" data-menu-link aria-label="Passer en français">
+            <svg viewBox="0 0 60 40" aria-hidden="true" focusable="false"><rect width="20" height="40" fill="#0055A4"/><rect x="20" width="20" height="40" fill="#fff"/><rect x="40" width="20" height="40" fill="#EF4135"/></svg>
+            <span>FR — Version française</span>
           </a>
         </nav>
       </div>
@@ -75,7 +75,7 @@ const loginUrl = 'https://app.publichantier.fr/';
     if (!menu || !toggle) return;
     menu.open = open;
     toggle.setAttribute('aria-expanded', String(open));
-    toggle.setAttribute('aria-label', open ? 'Fermer le menu' : 'Ouvrir le menu');
+    toggle.setAttribute('aria-label', open ? 'Close the menu' : 'Open the menu');
     if (open) closeButton?.focus();
     if (!open && restoreFocus) toggle.focus();
   };
@@ -83,7 +83,7 @@ const loginUrl = 'https://app.publichantier.fr/';
   menu?.addEventListener('toggle', () => {
     if (!toggle) return;
     toggle.setAttribute('aria-expanded', String(menu.open));
-    toggle.setAttribute('aria-label', menu.open ? 'Fermer le menu' : 'Ouvrir le menu');
+    toggle.setAttribute('aria-label', menu.open ? 'Close the menu' : 'Open the menu');
   });
   closeButton?.addEventListener('click', () => setMenuOpen(false, true));
   links?.forEach((link) => link.addEventListener('click', () => setMenuOpen(false)));
