@@ -42,8 +42,13 @@ const pro = [
           <h3>Pour publier régulièrement</h3>
 
         </div>
-        <ul>
-          {starter.map((item) => <li>{item}</li>)}
+        <ul class="op-price-card__features">
+          {starter.map((item) => (
+            <li>
+              <span class="op-price-card__bullet" aria-hidden="true"></span>
+              <span class="op-price-card__label-text">{item}</span>
+            </li>
+          ))}
         </ul>
         <OnePageSocialLogos label="Réseaux disponibles" caption="3 réseaux maximum par publication" compact pricing />
         <p class="op-price-card__price">
@@ -59,8 +64,13 @@ const pro = [
           <h3>Pour automatiser sans limite</h3>
 
         </div>
-        <ul>
-          {pro.map((item) => <li>{item}</li>)}
+        <ul class="op-price-card__features">
+          {pro.map((item) => (
+            <li>
+              <span class="op-price-card__bullet" aria-hidden="true"></span>
+              <span class="op-price-card__label-text">{item}</span>
+            </li>
+          ))}
         </ul>
         <OnePageSocialLogos label="Réseaux disponibles" caption="Publication simultanée sur les 6 réseaux" compact pricing />
         <p class="op-price-card__price">

@@ -106,7 +106,7 @@
 
 .op-price-card__features li {
   display: grid;
-  grid-template-columns: 28px 1fr;
+  grid-template-columns: 16px 1fr;
   align-items: start;
   gap: 12px;
   font-size: 14px;
@@ -114,20 +114,14 @@
   line-height: 1.5;
 }
 
-.op-price-card__icon {
-  display: grid;
-  width: 28px;
-  height: 28px;
-  place-items: center;
-  border-radius: 8px;
-  background: rgba(244, 134, 45, 0.12);
-  color: var(--op-orange);
+.op-price-card__bullet {
+  display: block;
+  width: 12px;
+  height: 12px;
+  margin-top: 5px;
+  border-radius: 2px;
+  background: var(--op-orange);
   flex-shrink: 0;
-}
-
-.op-price-card__icon svg {
-  width: 16px;
-  height: 16px;
 }
 
 .op-price-card__label-text {
