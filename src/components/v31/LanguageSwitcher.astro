@@ -1,0 +1,57 @@
+---
+import { LOCALES, localeConfig, getAlternatePath, type Locale } from '../../i18n';
+import { getLocaleFromPath } from '../../i18n';
+
+interface Props {
+  locale: Locale;
+  pathname: string;
+}
+
+const { locale, pathname } = Astro.props;
+const other = locale === 'fr' ? 'en' : 'fr';
+const otherConfig = localeConfig[other];
+const currentConfig = localeConfig[locale];
+const targetPath = getAlternatePath(pathname, locale);
+---
+
+<a
+  class="v31-lang"
+  href={targetPath}
+  hreflang={other}
+  aria-label={currentConfig.language.label}
+  data-language={other}
+>
+  <span aria-hidden="true">{otherConfig.flag}</span>
+  <span class="v31-lang__label">{otherConfig.language.switchTo}</span>
+  <span class="sr-only">{currentConfig.language.current}</span>
+</a>
+
+<style>
+  .v31-lang {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    min-height: 44px;
+    padding: 0 14px;
+    border: 1px solid var(--v31-border);
+    border-radius: var(--v31-radius-sm);
+    background: #ffffff;
+    color: var(--v31-navy);
+    font-family: var(--v31-font-display);
+    font-size: 13px;
+    font-weight: 800;
+    line-height: 20px;
+    text-decoration: none;
+    transition: border-color 180ms ease, color 180ms ease, background 180ms ease, transform 180ms ease;
+  }
+
+  .v31-lang:hover {
+    border-color: rgba(11, 31, 58, 0.18);
+    color: var(--v31-orange);
+    transform: translateY(-1px);
+  }
+
+  .v31-lang__label {
+    color: inherit;
+  }
+</style>
