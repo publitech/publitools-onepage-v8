@@ -1,8 +1,8 @@
 ---
 import '../styles/global.css';
 import V31Footer from '../components/v31/V31Footer.astro';
-import { dict, localeConfig, type Locale, buildHreflang } from '../i18n';
-import { buildHreflang as buildHreflangImpl } from '../lib/seo';
+import { dict, localeConfig, type Locale } from '../i18n';
+import { buildHreflang } from '../lib/seo';
 
 interface Props {
   title: string;
@@ -29,7 +29,7 @@ const {
 } = Astro.props;
 
 const cfg = localeConfig[locale];
-const hreflangs = buildHreflangImpl(pathname, locale);
+const hreflangs = buildHreflang(pathname, locale);
 ---
 
 <!doctype html>

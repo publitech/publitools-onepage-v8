@@ -1,38 +1,45 @@
 ---
 import OnePageButton from './OnePageButton.astro';
+import { dict, type Locale } from '../../i18n';
 
-const signupUrl = 'https://app.publichantier.fr/?signup=yes';
-const loginUrl = 'https://app.publichantier.fr/';
+interface Props {
+  locale?: Locale;
+}
+
+const { locale = 'fr' } = Astro.props;
+const t = dict[locale];
+const signupUrl = t.common.nav.ctaHref;
+const loginUrl = t.common.nav.loginHref;
 ---
 
 <header class="op-header" data-onepage-header>
   <div class="op-header__inner op-container">
-    <a class="op-header__brand" href="#top" aria-label="Retour en haut de la page PubliTools">
-      <img src="/brand/publitools-logo-official.svg" alt="PubliTools" width="500" height="100" />
+    <a class="op-header__brand" href="#top" aria-label={t.common.siteName}>
+      <img src="/brand/publitools-logo-official.svg" alt={t.common.siteName} width="500" height="100" />
     </a>
 
-    <nav class="op-header__desktop-nav" aria-label="Navigation principale">
-      <a href="#tarifs">Tarifs</a>
-      <a href="#faq">FAQ</a>
-      <OnePageButton href={signupUrl} class="op-header__cta">Démarrer gratuitement</OnePageButton>
-      <a href={loginUrl}>Se connecter</a>
+    <nav class="op-header__desktop-nav" aria-label={t.common.footer.heading}>
+      <a href="#tarifs">{t.common.nav.pricing}</a>
+      <a href="#faq">{t.common.nav.faq}</a>
+      <OnePageButton href={signupUrl} class="op-header__cta">{t.common.nav.cta}</OnePageButton>
+      <a href={loginUrl}>{t.common.nav.login}</a>
     </nav>
 
     <details class="op-header__mobile" data-mobile-menu>
-      <summary aria-controls="onepage-mobile-menu" aria-label="Ouvrir le menu" data-menu-toggle>
+      <summary aria-controls="onepage-mobile-menu" aria-label="Menu" data-menu-toggle>
         <span aria-hidden="true"></span>
         <span aria-hidden="true"></span>
       </summary>
       <div class="op-mobile-menu" id="onepage-mobile-menu">
         <div class="op-mobile-menu__top">
           <span>Menu</span>
-          <button type="button" aria-label="Fermer le menu" data-menu-close>×</button>
+          <button type="button" aria-label="Close" data-menu-close>×</button>
         </div>
-        <nav aria-label="Navigation mobile">
-          <a href="#tarifs" data-menu-link>Tarifs</a>
-          <a href="#faq" data-menu-link>FAQ</a>
-          <OnePageButton href={signupUrl} class="op-mobile-menu__cta">Démarrer gratuitement</OnePageButton>
-          <a href={loginUrl} data-menu-link>Se connecter</a>
+        <nav aria-label="Mobile navigation">
+          <a href="#tarifs" data-menu-link>{t.common.nav.pricing}</a>
+          <a href="#faq" data-menu-link>{t.common.nav.faq}</a>
+          <OnePageButton href={signupUrl} class="op-mobile-menu__cta">{t.common.nav.cta}</OnePageButton>
+          <a href={loginUrl} data-menu-link>{t.common.nav.login}</a>
         </nav>
       </div>
     </details>
@@ -49,7 +56,6 @@ const loginUrl = 'https://app.publichantier.fr/';
     if (!menu || !toggle) return;
     menu.open = open;
     toggle.setAttribute('aria-expanded', String(open));
-    toggle.setAttribute('aria-label', open ? 'Fermer le menu' : 'Ouvrir le menu');
     if (open) closeButton?.focus();
     if (!open && restoreFocus) toggle.focus();
   };
@@ -57,7 +63,6 @@ const loginUrl = 'https://app.publichantier.fr/';
   menu?.addEventListener('toggle', () => {
     if (!toggle) return;
     toggle.setAttribute('aria-expanded', String(menu.open));
-    toggle.setAttribute('aria-label', menu.open ? 'Fermer le menu' : 'Ouvrir le menu');
   });
   closeButton?.addEventListener('click', () => setMenuOpen(false, true));
   links?.forEach((link) => link.addEventListener('click', () => setMenuOpen(false)));

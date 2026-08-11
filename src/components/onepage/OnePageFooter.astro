@@ -1,29 +1,37 @@
 ---
-const signupUrl = 'https://app.publichantier.fr/?signup=yes';
+import { dict, type Locale } from '../../i18n';
+
+interface Props {
+  locale?: Locale;
+}
+
+const { locale = 'fr' } = Astro.props;
+const t = dict[locale];
+const signupUrl = t.common.nav.ctaHref;
 ---
 
 <footer class="op-footer">
   <div class="op-container op-footer__inner">
     <div class="op-footer__brand">
-      <a href="#top" aria-label="Retour en haut de la page PubliTools">
-        <img src="/brand/publitools-logo-official.svg" alt="PubliTools" width="500" height="100" />
+      <a href="#top" aria-label={t.common.siteName}>
+        <img src="/brand/publitools-logo-official.svg" alt={t.common.siteName} width="500" height="100" />
       </a>
-      <p>L’outil marketing IA conçu pour les artisans et entreprises du bâtiment.</p>
+      <p>{t.common.footer.about}</p>
     </div>
-    <nav aria-label="Navigation du pied de page">
-      <a href="#tarifs">Tarifs</a>
-      <a href="#faq">FAQ</a>
-      <a href={signupUrl}>Démarrer gratuitement</a>
-      <a href="https://app.publichantier.fr/">Se connecter</a>
+    <nav aria-label={t.common.footer.heading}>
+      <a href="#tarifs">{t.common.nav.pricing}</a>
+      <a href="#faq">{t.common.nav.faq}</a>
+      <a href={signupUrl}>{t.common.footer.cta}</a>
+      <a href={t.common.nav.loginHref}>{t.common.nav.login}</a>
     </nav>
-    <nav aria-label="Liens légaux">
-      <a href="/fr/mentions-legales/">Mentions légales</a>
-      <a href="/fr/cgu/">CGU</a>
-      <a href="/fr/confidentialite/">Confidentialité</a>
+    <nav aria-label={t.common.footer.legal}>
+      <a href={t.common.footer.legalLinks.legal.href}>{t.common.footer.legalLinks.legal.label}</a>
+      <a href={t.common.footer.legalLinks.cgv.href}>{t.common.footer.legalLinks.cgv.label}</a>
+      <a href={t.common.footer.legalLinks.privacy.href}>{t.common.footer.legalLinks.privacy.label}</a>
     </nav>
   </div>
   <div class="op-container op-footer__bottom">
-    <span>© {new Date().getFullYear()} PubliTools</span>
+    <span>{t.common.footer.copyright}</span>
     <span>CUT. BUILD. POST.</span>
   </div>
 </footer>
