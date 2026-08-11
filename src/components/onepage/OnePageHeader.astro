@@ -1,7 +1,7 @@
 ---
 import OnePageButton from './OnePageButton.astro';
 import LanguageSwitcher from '../v31/LanguageSwitcher.astro';
-import { dict, getLocaleFromPath, type Locale } from '../../i18n';
+import { dict, type Locale } from '../../i18n';
 
 interface Props {
   locale?: Locale;
@@ -12,8 +12,6 @@ const t = dict[locale];
 const signupUrl = t.common.nav.ctaHref;
 const loginUrl = t.common.nav.loginHref;
 
-const activeLocales = ['fr', 'en', 'es', 'de'] as const;
-const other = activeLocales.find((code) => code !== locale) ?? 'en';
 const switchPath = `/${locale}/`;
 ---
 
