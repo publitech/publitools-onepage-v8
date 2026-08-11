@@ -1,0 +1,34 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import OnePageHeader from '../../components/onepage/OnePageHeader.astro';
+import OnePageHero from '../../components/onepage/OnePageHero.astro';
+import OnePagePersonalize from '../../components/onepage/OnePagePersonalize.astro';
+import OnePageHowItWorks from '../../components/onepage/OnePageHowItWorks.astro';
+import OnePageResults from '../../components/onepage/OnePageResults.astro';
+import OnePagePricing from '../../components/onepage/OnePagePricing.astro';
+import OnePageFaq from '../../components/onepage/OnePageFaq.astro';
+import OnePageFinalCta from '../../components/onepage/OnePageFinalCta.astro';
+import OnePageFooter from '../../components/onepage/OnePageFooter.astro';
+import '../../styles/onepage.css';
+---
+
+<Layout
+  title="The #1 AI tool for contractors to automate your social media | PubliTools"
+  description="Turn your jobsite photos, videos and voice notes into ready-to-publish posts for Facebook, Instagram, LinkedIn, Google Business, TikTok and YouTube."
+  canonical="https://publitools.ai/en/"
+  footer={false}
+  locale="en"
+  pathname="/en/"
+>
+  <OnePageHeader />
+  <main>
+    <OnePageHero />
+    <OnePagePersonalize />
+    <OnePageHowItWorks />
+    <OnePageResults />
+    <OnePagePricing />
+    <OnePageFaq />
+    <OnePageFinalCta />
+  </main>
+  <OnePageFooter />
+</Layout>
