@@ -126,16 +126,28 @@
   line-height: 1.5;
 }
 
+.op-social-wall__viewport {
+  margin-top: 32px;
+  margin-inline: -20px;
+  padding: 4px 20px 16px;
+  overflow: hidden;
+}
+
 .op-social-wall__rail {
   display: flex;
-  margin-top: 32px;
+  width: max-content;
   gap: 16px;
-  overflow-x: auto;
-  padding: 0 20px 16px;
-  margin-inline: -20px;
-  scroll-padding-inline: 20px;
-  scroll-snap-type: x mandatory;
-  scrollbar-width: thin;
+  animation: op-social-marquee 40s linear infinite;
+}
+
+.op-social-wall__viewport:hover .op-social-wall__rail,
+.op-social-wall__viewport:focus-within .op-social-wall__rail {
+  animation-play-state: paused;
+}
+
+@keyframes op-social-marquee {
+  from { transform: translate3d(0, 0, 0); }
+  to { transform: translate3d(-50%, 0, 0); }
 }
 
 .op-social-output {
@@ -147,7 +159,6 @@
   flex: 0 0 260px;
   grid-template-rows: auto minmax(0, 1fr);
   overflow: hidden;
-  scroll-snap-align: start;
   border: 1px solid rgba(38, 40, 50, 0.12);
   border-radius: 8px;
   background: var(--op-white);
@@ -184,38 +195,33 @@
   object-position: top center;
 }
 
-.op-social-output:nth-child(2) {
+.op-social-output:nth-child(2),
+.op-social-output:nth-of-type(3) {
   border-color: var(--op-blue);
 }
 
-.op-social-output:nth-child(5) {
+.op-social-output:nth-child(5),
+.op-social-output:nth-of-type(6) {
   border-color: var(--op-orange);
 }
 
-@media (min-width: 1024px) {
-  .op-social-wall__rail {
-    display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    grid-auto-rows: auto;
-    gap: 24px;
-    overflow: visible;
-    padding: 0;
-    margin-inline: 0;
-  }
-
-  .op-social-output,
-  .op-social-output:nth-child(n) {
-    width: auto;
-    min-width: 0;
-    max-width: none;
-    max-height: none;
-    grid-column: auto;
-    grid-row: auto;
+@media (min-width: 768px) {
+  .op-social-output {
+    width: 280px;
+    max-width: 280px;
+    flex-basis: 280px;
   }
 }
 
-@media (min-width: 1280px) {
+@media (min-width: 1024px) {
+  .op-social-wall__viewport {
+    margin-top: 40px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
   .op-social-wall__rail {
-    column-gap: 32px;
+    animation: none;
+    transform: translate3d(0, 0, 0);
   }
 }

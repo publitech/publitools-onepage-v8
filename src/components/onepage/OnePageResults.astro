@@ -25,16 +25,27 @@ const socialOutputs = [
         <h3 id="op-social-wall-title">1 photo, <span class="box-decoration-clone rounded-lg bg-[#fac43e] px-2 py-0 text-white">6 publications</span>...</h3>
         <p class="op-social-wall__support">... et un maximum de visibilité gratuitement sur tous ces réseaux !</p>
       </header>
-      <div class="op-social-wall__rail" data-social-output-wall>
-        {socialOutputs.map((output) => (
-          <figure class="op-social-output" data-network={output.key}>
-            <figcaption>
-              <img src={output.icon} alt="" width="24" height="24" loading="lazy" decoding="async" />
-              <span>{output.network}</span>
-            </figcaption>
-            <img class="op-social-output__asset" src={output.src} alt={`Exemple de publication ${output.network} créée à partir du chantier`} loading="lazy" decoding="async" />
-          </figure>
-        ))}
+      <div class="op-social-wall__viewport">
+        <div class="op-social-wall__rail" data-social-output-wall>
+          {socialOutputs.map((output) => (
+            <figure class="op-social-output" data-network={output.key}>
+              <figcaption>
+                <img src={output.icon} alt="" width="24" height="24" loading="lazy" decoding="async" />
+                <span>{output.network}</span>
+              </figcaption>
+              <img class="op-social-output__asset" src={output.src} alt={`Exemple de publication ${output.network} créée à partir du chantier`} loading="lazy" decoding="async" />
+            </figure>
+          ))}
+          {socialOutputs.map((output) => (
+            <figure class="op-social-output" data-network={output.key} aria-hidden="true">
+              <figcaption>
+                <img src={output.icon} alt="" width="24" height="24" loading="lazy" decoding="async" />
+                <span>{output.network}</span>
+              </figcaption>
+              <img class="op-social-output__asset" src={output.src} alt="" loading="lazy" decoding="async" />
+            </figure>
+          ))}
+        </div>
       </div>
     </div>
 
