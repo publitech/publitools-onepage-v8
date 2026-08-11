@@ -389,30 +389,31 @@
 
 @media (min-width: 1024px) {
   .op-smartai-v4__layout {
-    grid-template-columns: repeat(12, minmax(0, 1fr));
-    column-gap: 24px;
+    grid-template-columns: minmax(260px, 320px) minmax(0, 1fr);
+    column-gap: 40px;
     row-gap: 32px;
+    align-items: start;
   }
 
   .op-smartai-v4__side {
-    grid-column: 1 / -1;
+    grid-column: 1;
     align-content: start;
   }
 
   .op-smartai-v4__stage {
-    grid-column: 1 / -1;
+    grid-column: 2;
   }
 
   .op-smartai-v4 .op-smartai__tabs {
-    flex-direction: row;
-    flex-wrap: wrap;
-    align-items: center;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px;
     overflow: visible;
     padding-bottom: 0;
   }
 
   .op-smartai-v4 .op-smartai__tabs button {
-    width: auto;
+    width: 100%;
     text-align: center;
   }
 
