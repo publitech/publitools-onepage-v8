@@ -16,10 +16,6 @@ const loginUrl = 'https://app.publichantier.fr/';
       <a href="#faq">FAQ</a>
       <OnePageButton href={signupUrl} class="op-header__cta">Démarrer gratuitement</OnePageButton>
       <a href={loginUrl}>Se connecter</a>
-      <a class="op-lang-switch" href="/en/" hreflang="en" lang="en" aria-label="Switch to English">
-        <svg viewBox="0 0 60 40" aria-hidden="true" focusable="false"><rect width="60" height="40" fill="#012169"/><path d="M0 0l60 40M60 0L0 40" stroke="#fff" stroke-width="8"/><path d="M0 0l60 40M60 0L0 40" stroke="#C8102E" stroke-width="4"/><path d="M30 0v40M0 20h60" stroke="#fff" stroke-width="13"/><path d="M30 0v40M0 20h60" stroke="#C8102E" stroke-width="8"/></svg>
-        <span>EN</span>
-      </a>
     </nav>
 
     <details class="op-header__mobile" data-mobile-menu>
@@ -37,33 +33,11 @@ const loginUrl = 'https://app.publichantier.fr/';
           <a href="#faq" data-menu-link>FAQ</a>
           <OnePageButton href={signupUrl} class="op-mobile-menu__cta">Démarrer gratuitement</OnePageButton>
           <a href={loginUrl} data-menu-link>Se connecter</a>
-          <a class="op-lang-switch" href="/en/" hreflang="en" lang="en" data-menu-link aria-label="Switch to English">
-            <svg viewBox="0 0 60 40" aria-hidden="true" focusable="false"><rect width="60" height="40" fill="#012169"/><path d="M0 0l60 40M60 0L0 40" stroke="#fff" stroke-width="8"/><path d="M0 0l60 40M60 0L0 40" stroke="#C8102E" stroke-width="4"/><path d="M30 0v40M0 20h60" stroke="#fff" stroke-width="13"/><path d="M30 0v40M0 20h60" stroke="#C8102E" stroke-width="8"/></svg>
-            <span>EN — English version</span>
-          </a>
         </nav>
       </div>
     </details>
   </div>
 </header>
-
-<style>
-  .op-lang-switch {
-    gap: 8px;
-  }
-
-  .op-lang-switch svg {
-    width: 22px;
-    height: 15px;
-    flex: 0 0 auto;
-    border-radius: 3px;
-    box-shadow: 0 0 0 1px rgba(38, 40, 50, 0.14);
-  }
-
-  .op-mobile-menu .op-lang-switch {
-    gap: 10px;
-  }
-</style>
 
 <script>
   const menu = document.querySelector<HTMLDetailsElement>('[data-mobile-menu]');
