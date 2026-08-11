@@ -1,6 +1,5 @@
 ---
 import OnePageButton from './OnePageButton.astro';
-import LanguageSwitcher from '../v31/LanguageSwitcher.astro';
 import { dict, type Locale } from '../../i18n';
 
 interface Props {
@@ -11,8 +10,6 @@ const { locale = 'fr' } = Astro.props;
 const t = dict[locale];
 const signupUrl = t.common.nav.ctaHref;
 const loginUrl = t.common.nav.loginHref;
-
-const switchPath = `/${locale}/`;
 ---
 
 <header class="op-header" data-onepage-header>
@@ -28,71 +25,26 @@ const switchPath = `/${locale}/`;
       <a href={loginUrl}>{t.common.nav.login}</a>
     </nav>
 
-    <div class="op-header__utility">
-      <LanguageSwitcher locale={locale} pathname={switchPath} />
-      <details class="op-header__mobile" data-mobile-menu>
-        <summary aria-controls="onepage-mobile-menu" aria-label={t.common.nav.menu} data-menu-toggle>
-            <span aria-hidden="true"></span>
-            <span aria-hidden="true"></span>
-          </summary>
-          <div class="op-mobile-menu" id="onepage-mobile-menu">
-            <div class="op-mobile-menu__top">
-              <span>{t.common.nav.menu}</span>
-              <button type="button" aria-label={t.common.nav.close} data-menu-close>×</button>
-            </div>
-            <nav aria-label={t.common.nav.mobileNav}>
-              <a href="#tarifs" data-menu-link>{t.common.nav.pricing}</a>
-              <a href="#faq" data-menu-link>{t.common.nav.faq}</a>
-              <OnePageButton href={signupUrl} class="op-mobile-menu__cta">{t.common.nav.cta}</OnePageButton>
-              <a href={loginUrl} data-menu-link>{t.common.nav.login}</a>
-            </nav>
-          </div>
-        </details>
-    </div>
+    <details class="op-header__mobile" data-mobile-menu>
+      <summary aria-controls="onepage-mobile-menu" aria-label={t.common.nav.menu} data-menu-toggle>
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+      </summary>
+      <div class="op-mobile-menu" id="onepage-mobile-menu">
+        <div class="op-mobile-menu__top">
+          <span>{t.common.nav.menu}</span>
+          <button type="button" aria-label={t.common.nav.close} data-menu-close>×</button>
+        </div>
+        <nav aria-label={t.common.nav.mobileNav}>
+          <a href="#tarifs" data-menu-link>{t.common.nav.pricing}</a>
+          <a href="#faq" data-menu-link>{t.common.nav.faq}</a>
+          <OnePageButton href={signupUrl} class="op-mobile-menu__cta">{t.common.nav.cta}</OnePageButton>
+          <a href={loginUrl} data-menu-link>{t.common.nav.login}</a>
+        </nav>
+      </div>
+    </details>
   </div>
 </header>
-
-<style>
-  .op-header__utility {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    flex: 0 0 auto;
-  }
-
-  .op-header__mobile summary {
-    display: flex;
-    width: 48px;
-    height: 48px;
-    cursor: pointer;
-    list-style: none;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 8px;
-    border: 1px solid var(--op-line);
-    border-radius: 12px;
-    background: var(--op-white);
-  }
-
-  .op-header__mobile summary::-webkit-details-marker {
-    display: none;
-  }
-
-  .op-header__mobile summary span {
-    width: 20px;
-    height: 2px;
-    background: var(--op-ink);
-  }
-
-  @media (max-width: 1020px) {
-    .op-header__utility .v31-lang {
-      padding: 0 10px;
-      min-height: 40px;
-      font-size: 12px;
-    }
-  }
-</style>
 
 <script>
   const menu = document.querySelector<HTMLDetailsElement>('[data-mobile-menu]');
