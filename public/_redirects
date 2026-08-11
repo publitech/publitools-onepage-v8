@@ -1,0 +1,13 @@
+# Redirections pour Cloudflare Pages
+# La géolocalisation edge n'est pas supportée nativement par _redirects,
+# elle est donc gérée côté client dans src/pages/index.astro.
+
+# Redirects permanents pour les anciennes URLs
+/fr/tarif                /fr/     301
+/fr/tarif/               /fr/     301
+/fr/faq                  /fr/     301
+/fr/faq/                 /fr/     301
+/fr/contact              /fr/     301
+/fr/contact/             /fr/     301
+/fr/fonctionnalites       /fr/     301
+/fr/fonctionnalites/*    /fr/     301
