@@ -427,6 +427,22 @@
   }
 }
 
+/* Desktop — borner la largeur du comparateur Avant / Après pour voir l'image entière */
+@media (min-width: 1024px) {
+  .op-smartai-v4 .op-smartai__panel {
+    text-align: center;
+  }
+
+  .op-smartai-v4 .op-smartai__panel h3 {
+    text-align: left;
+  }
+
+  .op-smartai-v4 .op-smartai__compare {
+    max-width: 820px;
+    margin-inline: auto;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .op-smartai-v4.is-enhanced .op-smartai__figure {
     transition: none;
