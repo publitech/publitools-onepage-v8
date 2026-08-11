@@ -34,6 +34,32 @@ const enCases = [
   { id: 'chauffagiste', label: 'Heating installer', title: 'Heating system installation' },
 ];
 
+const esCases = [
+  { id: 'renovation', label: 'Renovación', title: 'Renovación de apartamento' },
+  { id: 'maconnerie', label: 'Albañilería', title: 'Construcción de muro de bloques' },
+  { id: 'plomberie', label: 'Fontanería', title: 'Instalación de fontanería en baño' },
+  { id: 'electricien', label: 'Electricista', title: 'Trabajos de instalación eléctrica' },
+  { id: 'couvreur', label: 'Techador', title: 'Renovación de tejado' },
+  { id: 'menuiserie', label: 'Carpintería', title: 'Instalación de carpintería' },
+  { id: 'peinture', label: 'Pintura', title: 'Pintura interior' },
+  { id: 'carrelage', label: 'Alicatado', title: 'Colocación de azulejos' },
+  { id: 'plaquiste', label: 'Pladurista', title: 'Montaje de tabiques de pladur' },
+  { id: 'chauffagiste', label: 'Calefacción', title: 'Instalación de calefacción' },
+];
+
+const deCases = [
+  { id: 'renovation', label: 'Renovierung', title: 'Wohnungsrenovierung' },
+  { id: 'maconnerie', label: 'Mauerwerk', title: 'Errichtung einer Blocksteinmauer' },
+  { id: 'plomberie', label: 'Sanitär', title: 'Sanitärinstallation im Bad' },
+  { id: 'electricien', label: 'Elektriker', title: 'Elektroinstallationsarbeiten' },
+  { id: 'couvreur', label: 'Dachdecker', title: 'Dachsanierung' },
+  { id: 'menuiserie', label: 'Schreinerei', title: 'Einbau von Fenstern und Türen' },
+  { id: 'peinture', label: 'Malerarbeiten', title: 'Innenanstrich' },
+  { id: 'carrelage', label: 'Fliesen', title: 'Fliesenverlegung' },
+  { id: 'plaquiste', label: 'Trockenbau', title: 'Montage von Gipskartonwänden' },
+  { id: 'chauffagiste', label: 'Heizungsbau', title: 'Heizungsinstallation' },
+];
+
 const copy = {
   fr: {
     kicker: '03 — Amélioration SmartAI',
@@ -76,6 +102,48 @@ const copy = {
     beforeLabel: 'Before',
     afterLabel: 'After',
     cases: enCases,
+  },
+  es: {
+    kicker: '03 — Mejora SmartAI',
+    titleParts: [
+      { text: 'Nuestra ' },
+      { text: 'IA', style: 'navy' },
+      { text: ' ' },
+      { text: 'retoca', style: 'underline' },
+      { text: ' y ' },
+      { text: 'redacta', style: 'underline' },
+      { text: ' tus publicaciones' },
+    ] as TitlePart[],
+    lead: 'Elige un oficio y pasa de la foto tomada en la obra a la versión mejorada.',
+    notice: 'Ejemplos ilustrativos: solo mejora fotográfica. No se añade, elimina ni sustituye ningún elemento de la obra.',
+    tablistLabel: 'Elegir un oficio',
+    toggleAriaPrefix: 'Mostrar la foto antes o después de',
+    altBeforeSuffix: 'antes de la mejora fotográfica',
+    altAfterSuffix: 'después de la mejora fotográfica',
+    beforeLabel: 'Antes',
+    afterLabel: 'Después',
+    cases: esCases,
+  },
+  de: {
+    kicker: '03 — SmartAI-Verbesserung',
+    titleParts: [
+      { text: 'Unsere ' },
+      { text: 'KI', style: 'navy' },
+      { text: ' ' },
+      { text: 'retuschiert', style: 'underline' },
+      { text: ' und ' },
+      { text: 'schreibt', style: 'underline' },
+      { text: ' Ihre Beiträge' },
+    ] as TitlePart[],
+    lead: 'Wählen Sie ein Gewerk und wechseln Sie vom rohen Baustellenfoto zur verbesserten Version.',
+    notice: 'Beispielhafte Darstellungen – ausschließlich fotografische Verbesserung. Es wird nichts auf der Baustelle hinzugefügt, entfernt oder ersetzt.',
+    tablistLabel: 'Gewerk auswählen',
+    toggleAriaPrefix: 'Vorher- oder Nachher-Foto anzeigen für',
+    altBeforeSuffix: 'vor der fotografischen Verbesserung',
+    altAfterSuffix: 'nach der fotografischen Verbesserung',
+    beforeLabel: 'Vorher',
+    afterLabel: 'Nachher',
+    cases: deCases,
   },
 }[locale];
 

@@ -1,0 +1,34 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import OnePageHeader from '../../components/onepage/OnePageHeader.astro';
+import OnePageHero from '../../components/onepage/OnePageHero.astro';
+import OnePagePersonalize from '../../components/onepage/OnePagePersonalize.astro';
+import OnePageHowItWorks from '../../components/onepage/OnePageHowItWorks.astro';
+import OnePageResults from '../../components/onepage/OnePageResults.astro';
+import OnePagePricing from '../../components/onepage/OnePagePricing.astro';
+import OnePageFaq from '../../components/onepage/OnePageFaq.astro';
+import OnePageFinalCta from '../../components/onepage/OnePageFinalCta.astro';
+import OnePageFooter from '../../components/onepage/OnePageFooter.astro';
+import '../../styles/onepage.css';
+---
+
+<Layout
+  title="La herramienta n.º 1 de la construcción para automatizar tus redes sociales | PubliTools"
+  description="1 foto de obra + 1 nota de voz de 20 segundos. PubliTools redacta, retoca y publica en 6 redes en menos de 2 minutos. Empieza tu prueba gratuita de 14 días."
+  canonical="https://publitools.ai/es/"
+  footer={false}
+  locale="es"
+  pathname="/es/"
+>
+  <OnePageHeader locale="es" />
+  <main>
+    <OnePageHero locale="es" />
+    <OnePagePersonalize locale="es" />
+    <OnePageHowItWorks locale="es" />
+    <OnePageResults locale="es" />
+    <OnePagePricing locale="es" />
+    <OnePageFaq locale="es" />
+    <OnePageFinalCta locale="es" />
+  </main>
+  <OnePageFooter locale="es" />
+</Layout>

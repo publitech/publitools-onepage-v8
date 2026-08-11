@@ -26,16 +26,16 @@ const loginUrl = t.common.nav.loginHref;
     </nav>
 
     <details class="op-header__mobile" data-mobile-menu>
-      <summary aria-controls="onepage-mobile-menu" aria-label="Menu" data-menu-toggle>
+      <summary aria-controls="onepage-mobile-menu" aria-label={t.common.nav.menu} data-menu-toggle>
         <span aria-hidden="true"></span>
         <span aria-hidden="true"></span>
       </summary>
       <div class="op-mobile-menu" id="onepage-mobile-menu">
         <div class="op-mobile-menu__top">
-          <span>Menu</span>
-          <button type="button" aria-label="Close" data-menu-close>×</button>
+          <span>{t.common.nav.menu}</span>
+          <button type="button" aria-label={t.common.nav.close} data-menu-close>×</button>
         </div>
-        <nav aria-label="Mobile navigation">
+        <nav aria-label={t.common.nav.mobileNav}>
           <a href="#tarifs" data-menu-link>{t.common.nav.pricing}</a>
           <a href="#faq" data-menu-link>{t.common.nav.faq}</a>
           <OnePageButton href={signupUrl} class="op-mobile-menu__cta">{t.common.nav.cta}</OnePageButton>

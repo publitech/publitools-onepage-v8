@@ -35,6 +35,11 @@ const copy = {
       { text: '...' },
     ] as TitlePart[],
     wallSupport: '... et un maximum de visibilité gratuitement sur tous ces réseaux !',
+    cardsHead: {
+      kicker: 'Résultat',
+      title: 'Des résultats qui payent les factures',
+      support: 'Avant / après utilisations (constaté sur 50+ artisans en 3 mois)',
+    },
     cards: [
       { image: '/assets/onepage/results/tableau-de-bord-instagram.jpg', alt: 'Tableau de bord professionnel Instagram avec statistiques de vues et portée', title: "Jusqu'à +600% de vues sur les RS", tone: 'orange' },
       { image: '/assets/onepage/results/google-positions-publitools.jpg', alt: 'Courbe de progression des positions Google Business sur 6 mois', title: '+12 positions sur Google', tone: 'navy' },
@@ -57,12 +62,71 @@ const copy = {
       { text: '...' },
     ] as TitlePart[],
     wallSupport: '...and maximum free visibility across all these networks!',
+    cardsHead: {
+      kicker: 'Result',
+      title: 'Results that pay the bills',
+      support: 'Before / after use (observed on 50+ contractors in 3 months)',
+    },
     cards: [
       { image: '/assets/onepage/results/tableau-de-bord-instagram.jpg', alt: 'Professional Instagram dashboard with views and reach statistics', title: 'Up to +600% views on social media', tone: 'orange' },
       { image: '/assets/onepage/results/google-positions-publitools.jpg', alt: 'Google Business positions progress curve over 6 months', title: '+12 positions on Google', tone: 'navy' },
       { image: '/assets/onepage/results/gmail-reception-devis.jpg', alt: 'Gmail inbox with new quote requests received', title: 'Up to +40% quote requests', tone: 'yellow' },
     ] as Array<{ image: string; alt: string; title: string; tone: ResultTone }>,
     note: 'Results vary depending on the business, the area, consistency and existing online presence.',
+  },
+  es: {
+    kicker: '05 — Resultados observados',
+    titleParts: [
+      { text: '¿El ' },
+      { text: 'resultado', style: 'navy' },
+      { text: '?' },
+    ] as TitlePart[],
+    lead: 'Resultados observados en más de 50 profesionales de la construcción después de 3 meses de uso.',
+    wallKicker: '1 foto, 6 publicaciones...',
+    wallTitleParts: [
+      { text: '1 foto, ' },
+      { text: '6 publicaciones', style: 'yellow' },
+      { text: '...' },
+    ] as TitlePart[],
+    wallSupport: '... ¡y la máxima visibilidad gratis en todas estas redes!',
+    cardsHead: {
+      kicker: 'Resultado',
+      title: 'Resultados que pagan las facturas',
+      support: 'Antes / después del uso (observado en más de 50 profesionales en 3 meses)',
+    },
+    cards: [
+      { image: '/assets/onepage/results/tableau-de-bord-instagram.jpg', alt: 'Panel profesional de Instagram con estadísticas de visualizaciones y alcance', title: 'Hasta un 600 % más de visualizaciones en redes', tone: 'orange' },
+      { image: '/assets/onepage/results/google-positions-publitools.jpg', alt: 'Curva de progresión de posiciones en Google Business en 6 meses', title: '+12 posiciones en Google', tone: 'navy' },
+      { image: '/assets/onepage/results/gmail-reception-devis.jpg', alt: 'Bandeja de entrada de Gmail con nuevas solicitudes de presupuesto recibidas', title: 'Hasta un 40 % más de presupuestos', tone: 'yellow' },
+    ] as Array<{ image: string; alt: string; title: string; tone: ResultTone }>,
+    note: 'Los resultados varían según la actividad, la zona, la constancia y la presencia existente.',
+  },
+  de: {
+    kicker: '05 — Beobachtete Ergebnisse',
+    titleParts: [
+      { text: 'Das ' },
+      { text: 'Ergebnis', style: 'navy' },
+      { text: '?' },
+    ] as TitlePart[],
+    lead: 'Beobachtete Ergebnisse bei mehr als 50 Handwerksbetrieben nach 3 Monaten Nutzung.',
+    wallKicker: '1 Foto, 6 Beiträge...',
+    wallTitleParts: [
+      { text: '1 Foto, ' },
+      { text: '6 Beiträge', style: 'yellow' },
+      { text: '...' },
+    ] as TitlePart[],
+    wallSupport: '... und maximale kostenlose Sichtbarkeit auf all diesen Netzwerken!',
+    cardsHead: {
+      kicker: 'Ergebnis',
+      title: 'Ergebnisse, die Rechnungen bezahlen',
+      support: 'Vorher / Nachher (beobachtet bei über 50 Betrieben in 3 Monaten)',
+    },
+    cards: [
+      { image: '/assets/onepage/results/tableau-de-bord-instagram.jpg', alt: 'Professionelles Instagram-Dashboard mit Aufrufen und Reichweiten-Statistiken', title: 'Bis zu 600 % mehr Aufrufe in sozialen Netzwerken', tone: 'orange' },
+      { image: '/assets/onepage/results/google-positions-publitools.jpg', alt: 'Fortschrittskurve der Google-Business-Positionen über 6 Monate', title: '+12 Positionen auf Google', tone: 'navy' },
+      { image: '/assets/onepage/results/gmail-reception-devis.jpg', alt: 'Gmail-Posteingang mit neu eingegangenen Angebotsanfragen', title: 'Bis zu 40 % mehr Angebotsanfragen', tone: 'yellow' },
+    ] as Array<{ image: string; alt: string; title: string; tone: ResultTone }>,
+    note: 'Die Ergebnisse variieren je nach Tätigkeit, Region, Regelmäßigkeit und bestehender Präsenz.',
   },
 }[locale];
 ---
@@ -106,9 +170,9 @@ const copy = {
 
     <div class="op-results__cards-wall">
       <header class="op-results__cards-head">
-        <p class="op-kicker">{locale === 'fr' ? 'Résultat' : 'Result'}</p>
-        <h3 class="op-results__cards-title">{locale === 'fr' ? 'Des résultats qui payent les factures' : 'Results that pay the bills'}</h3>
-        <p class="op-results__cards-support">{locale === 'fr' ? 'Avant / après utilisations (constaté sur 50+ artisans en 3 mois)' : 'Before / after use (observed on 50+ contractors in 3 months)'}</p>
+        <p class="op-kicker">{copy.cardsHead.kicker}</p>
+        <h3 class="op-results__cards-title">{copy.cardsHead.title}</h3>
+        <p class="op-results__cards-support">{copy.cardsHead.support}</p>
       </header>
       <div class="op-results__cards">
         {copy.cards.map((card) => (

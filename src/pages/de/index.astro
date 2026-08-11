@@ -1,0 +1,34 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import OnePageHeader from '../../components/onepage/OnePageHeader.astro';
+import OnePageHero from '../../components/onepage/OnePageHero.astro';
+import OnePagePersonalize from '../../components/onepage/OnePagePersonalize.astro';
+import OnePageHowItWorks from '../../components/onepage/OnePageHowItWorks.astro';
+import OnePageResults from '../../components/onepage/OnePageResults.astro';
+import OnePagePricing from '../../components/onepage/OnePagePricing.astro';
+import OnePageFaq from '../../components/onepage/OnePageFaq.astro';
+import OnePageFinalCta from '../../components/onepage/OnePageFinalCta.astro';
+import OnePageFooter from '../../components/onepage/OnePageFooter.astro';
+import '../../styles/onepage.css';
+---
+
+<Layout
+  title="Das KI-Tool Nr. 1 fürs Bauhandwerk zur Automatisierung Ihrer sozialen Netzwerke | PubliTools"
+  description="1 Baustellenfoto + eine 20-Sekunden-Sprachnachricht. PubliTools schreibt, bearbeitet und veröffentlicht auf 6 Netzwerken in unter 2 Minuten. Jetzt 14 Tage kostenlos testen."
+  canonical="https://publitools.ai/de/"
+  footer={false}
+  locale="de"
+  pathname="/de/"
+>
+  <OnePageHeader locale="de" />
+  <main>
+    <OnePageHero locale="de" />
+    <OnePagePersonalize locale="de" />
+    <OnePageHowItWorks locale="de" />
+    <OnePageResults locale="de" />
+    <OnePagePricing locale="de" />
+    <OnePageFaq locale="de" />
+    <OnePageFinalCta locale="de" />
+  </main>
+  <OnePageFooter locale="de" />
+</Layout>
