@@ -361,16 +361,24 @@
 
 .op-hero-v4__fragment--dashboard {
   top: 24px;
-  right: -6px;
+  left: -6px;
   width: min(46%, 216px);
   border-radius: 18px;
-  transform: rotate(2deg);
+  transform: rotate(-2deg);
 }
 
 .op-hero-v4__fragment--config {
-  bottom: -14px;
-  left: -10px;
+  top: 24px;
+  right: -6px;
   width: min(52%, 208px);
+  border-radius: 14px;
+  transform: rotate(2deg);
+}
+
+.op-hero-v4__fragment--banner {
+  bottom: -14px;
+  right: 24px;
+  width: min(60%, 260px);
   border-radius: 14px;
   transform: rotate(-2deg);
 }
@@ -386,14 +394,20 @@
 
   .op-hero-v4__fragment--dashboard {
     top: 36px;
-    right: 6px;
+    left: -16px;
     width: min(44%, 248px);
   }
 
   .op-hero-v4__fragment--config {
-    bottom: 28px;
-    left: -16px;
+    top: 36px;
+    right: 6px;
     width: min(48%, 236px);
+  }
+
+  .op-hero-v4__fragment--banner {
+    bottom: 28px;
+    right: -10px;
+    width: min(50%, 300px);
   }
 }
 
