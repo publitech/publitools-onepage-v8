@@ -102,6 +102,17 @@ body :where(a, button, summary) {
   color: var(--op-ink);
 }
 
+.op-button--ghost-light {
+  border-color: var(--op-white);
+  background: transparent;
+  color: var(--op-white);
+}
+
+.op-button--ghost-light:hover {
+  background: rgba(255, 255, 255, 0.12);
+  color: var(--op-white);
+}
+
 .op-button:active {
   transform: translateY(2px);
 }
