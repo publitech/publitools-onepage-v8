@@ -1,38 +1,46 @@
 ---
 import OnePageButton from './OnePageButton.astro';
+import LanguageSwitcher from '../v31/LanguageSwitcher.astro';
+import { dict, type Locale, getLocaleFromPath } from '../../i18n';
 
 const signupUrl = 'https://app.publichantier.fr/?signup=yes';
 const loginUrl = 'https://app.publichantier.fr/';
+const locale: Locale = getLocaleFromPath(Astro.url.pathname);
+const t = dict[locale];
+const featuresHref = locale === 'fr' ? '/fr/' : '/en/';
+const faqHref = locale === 'fr' ? '/fr/#faq' : '/en/#faq';
 ---
 
 <header class="op-header" data-onepage-header>
   <div class="op-header__inner op-container">
-    <a class="op-header__brand" href="#top" aria-label="Retour en haut de la page PubliTools">
-      <img src="/brand/publitools-logo-official.svg" alt="PubliTools" width="500" height="100" />
+    <a class="op-header__brand" href="#top" aria-label={t.common.siteName}>
+      <img src="/brand/publitools-logo-official.svg" alt={t.common.siteName} width="500" height="100" />
     </a>
 
-    <nav class="op-header__desktop-nav" aria-label="Navigation principale">
-      <a href="#tarifs">Tarifs</a>
-      <a href="#faq">FAQ</a>
-      <OnePageButton href={signupUrl} class="op-header__cta">Démarrer gratuitement</OnePageButton>
-      <a href={loginUrl}>Se connecter</a>
+    <nav class="op-header__desktop-nav" aria-label={t.common.footer.heading}>
+      <a href={`#${locale === 'fr' ? 'tarifs' : 'pricing'}`}>{t.common.nav.pricing}</a>
+      <a href={faqHref}>{t.common.nav.faq}</a>
+      <LanguageSwitcher locale={locale} pathname={Astro.url.pathname} />
+      <OnePageButton href={signupUrl} class="op-header__cta">{t.common.nav.cta}</OnePageButton>
+      <a href={loginUrl}>{t.common.nav.login}</a>
     </nav>
 
     <details class="op-header__mobile" data-mobile-menu>
-      <summary aria-controls="onepage-mobile-menu" aria-label="Ouvrir le menu" data-menu-toggle>
+      <summary aria-controls="onepage-mobile-menu" aria-label={t.common.language.label} data-menu-toggle>
         <span aria-hidden="true"></span>
         <span aria-hidden="true"></span>
       </summary>
       <div class="op-mobile-menu" id="onepage-mobile-menu">
         <div class="op-mobile-menu__top">
           <span>Menu</span>
-          <button type="button" aria-label="Fermer le menu" data-menu-close>×</button>
+          <button type="button" aria-label={t.common.language.label} data-menu-close>×</button>
         </div>
-        <nav aria-label="Navigation mobile">
-          <a href="#tarifs" data-menu-link>Tarifs</a>
-          <a href="#faq" data-menu-link>FAQ</a>
-          <OnePageButton href={signupUrl} class="op-mobile-menu__cta">Démarrer gratuitement</OnePageButton>
-          <a href={loginUrl} data-menu-link>Se connecter</a>
+        <nav aria-label={t.common.footer.heading}>
+          <a href={`#${locale === 'fr' ? 'tarifs' : 'pricing'}`} data-menu-link>{t.common.nav.pricing}</a>
+          <a href={faqHref} data-menu-link>{t.common.nav.faq}</a>
+          <LanguageSwitcher locale={locale} pathname={Astro.url.pathname} />
+          <OnePageButton href={signupUrl} class="op-mobile-menu__cta">{t.common.nav.cta}</OnePageButton>
+          <a href={loginUrl} data-menu-link>{t.common.nav.login}</a>
         </nav>
       </div>
     </details>
@@ -43,7 +51,7 @@ const loginUrl = 'https://app.publichantier.fr/';
   const menu = document.querySelector<HTMLDetailsElement>('[data-mobile-menu]');
   const toggle = menu?.querySelector<HTMLElement>('[data-menu-toggle]');
   const closeButton = menu?.querySelector<HTMLButtonElement>('[data-menu-close]');
-  const links = menu?.querySelectorAll<HTMLAnchorElement>('[data-menu-link], .op-mobile-menu__cta');
+  const links = menu?.querySelectorAll<HTMLAnchorElement>('[data-menu-link], .op-mobile-menu__cta, .v31-lang');
 
   const setMenuOpen = (open: boolean, restoreFocus = false) => {
     if (!menu || !toggle) return;

@@ -5,6 +5,8 @@ export interface HreflangEntry {
   href: string;
 }
 
+const LOCALES: Locale[] = ['fr', 'en'];
+
 /**
  * Build a `hreflang` entry for each locale, including the optional
  * `x-default` fallback. Used in the Layout head to declare alternate
@@ -25,11 +27,10 @@ export function buildHreflang(pathname: string, currentLocale: Locale): Hreflang
     };
   });
   // x-default falls back to the default locale (fr).
+  const defaultPath = pathname.startsWith('/en') ? pathname.replace(/^\/en/, '') || '/' : pathname;
   entries.push({
     hreflang: 'x-default',
-    href: `https://publitools.ai/fr${pathname.startsWith('/fr') || pathname === '/' ? '/' : pathname.replace(/^\/en/, '')}`,
+    href: `https://publitools.ai/fr${defaultPath === '/' ? '/' : defaultPath.startsWith('/') ? defaultPath : `/${defaultPath}`}`,
   });
   return entries;
 }
-
-const LOCALES: Locale[] = ['fr', 'en'];
