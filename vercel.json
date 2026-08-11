@@ -10,6 +10,36 @@
       "permanent": false
     },
     {
+      "source": "/fr/tarif",
+      "destination": "/fr/",
+      "permanent": true
+    },
+    {
+      "source": "/fr/tarif/",
+      "destination": "/fr/",
+      "permanent": true
+    },
+    {
+      "source": "/fr/faq",
+      "destination": "/fr/",
+      "permanent": true
+    },
+    {
+      "source": "/fr/faq/",
+      "destination": "/fr/",
+      "permanent": true
+    },
+    {
+      "source": "/fr/contact",
+      "destination": "/fr/",
+      "permanent": true
+    },
+    {
+      "source": "/fr/contact/",
+      "destination": "/fr/",
+      "permanent": true
+    },
+    {
       "source": "/fr/fonctionnalites/reseaux-sociaux",
       "destination": "/fr/fonctionnalites/automatisation-reseaux-sociaux/",
       "permanent": true

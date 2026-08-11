@@ -5,8 +5,6 @@ import logo from '../assets/publi/logo.jpg';
 
 const currentPath = Astro.url.pathname.endsWith('/') ? Astro.url.pathname : `${Astro.url.pathname}/`;
 const isFeaturesActive = currentPath.startsWith('/fr/fonctionnalites/');
-const isPricingActive = currentPath === '/fr/tarif/';
-const isFaqActive = currentPath === '/fr/faq/';
 const isBlogActive = currentPath.startsWith('/fr/blog/');
 ---
 <header class="site-header">
@@ -33,8 +31,6 @@ const isBlogActive = currentPath.startsWith('/fr/blog/');
           </div>
         </div>
       </div>
-      <a class:list={['site-nav__link', isPricingActive && 'is-active']} href="/fr/tarif/" aria-current={isPricingActive ? 'page' : undefined}>Tarif</a>
-      <a class:list={['site-nav__link', isFaqActive && 'is-active']} href="/fr/faq/" aria-current={isFaqActive ? 'page' : undefined}>FAQ</a>
       <a class:list={['site-nav__link', isBlogActive && 'is-active']} href="/fr/blog/" aria-current={isBlogActive ? 'page' : undefined}>Blog</a>
     </nav>
 

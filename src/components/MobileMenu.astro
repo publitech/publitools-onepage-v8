@@ -1,323 +1,45 @@
 ---
-interface Props {
-  currentPath?: string;
-}
+import { useState } from 'react';
 
-const { currentPath = '/fr/' } = Astro.props;
-const featureGroups = [
-  {
-    label: 'Automatisation des réseaux sociaux',
-    links: [
-      ['Voir la page', '/fr/fonctionnalites/automatisation-reseaux-sociaux/'],
-      ['Retouche photo IA', '/fr/fonctionnalites/automatisation-reseaux-sociaux/retouche-photo-ia/'],
-      ['Rédaction vocale assistée', '/fr/fonctionnalites/automatisation-reseaux-sociaux/redaction-vocale-assistee/'],
-      ['Publication multi-réseaux', '/fr/fonctionnalites/automatisation-reseaux-sociaux/publication-multi-reseaux/'],
-      ['Programmation des publications', '/fr/fonctionnalites/automatisation-reseaux-sociaux/programmation-publications/'],
-    ],
-  },
-  {
-    label: 'Obtenir plus d’avis',
-    links: [
-      ['Voir la page', '/fr/fonctionnalites/obtenir-plus-d-avis/'],
-      ['Demande d’avis par SMS', '/fr/fonctionnalites/obtenir-plus-d-avis/demande-avis-sms/'],
-      ['Publication des avis sur les réseaux sociaux', '/fr/fonctionnalites/obtenir-plus-d-avis/publication-avis-reseaux-sociaux/'],
-    ],
-  },
-  {
-    label: 'Booster votre compte Google Business',
-    links: [
-      ['Voir la page', '/fr/fonctionnalites/booster-google-business/'],
-      ['Publication photo automatique', '/fr/fonctionnalites/booster-google-business/publication-photo-automatique/'],
-      ['Création de posts Google', '/fr/fonctionnalites/booster-google-business/creation-posts-google/'],
-    ],
-  },
+const navItems = [
+  { label: 'Réseaux sociaux', href: '/fr/#reseaux-sociaux' },
+  { label: 'Avis clients', href: '/fr/#avis' },
+  { label: 'Google Business', href: '/fr/#google-business' },
+  { label: 'Comparatif', href: '/fr/#comparatif' },
+  { label: 'Résultats', href: '/fr/#resultats' },
+  { label: 'Blog', href: '/fr/blog/' },
 ] as const;
 
-const simpleLinks = [
-  ['Tarif', '/fr/tarif/'],
-  ['FAQ', '/fr/faq/'],
-  ['Blog', '/fr/blog/'],
-] as const;
+export default function MobileMenu() {
+  const [open, setOpen] = useState(false);
 
-const isFeaturesActive = currentPath.startsWith('/fr/fonctionnalites/');
----
-
-<div class="mobile-menu" data-mobile-menu-root>
-  <button
-    aria-expanded="false"
-    aria-label="Ouvrir le menu"
-    class="mobile-menu__toggle"
-    data-mobile-menu-toggle
-    type="button"
-  >
-    <span class="mobile-menu__lines" aria-hidden="true">
-      <span class="mobile-menu__line" data-mobile-line="1"></span>
-      <span class="mobile-menu__line" data-mobile-line="2"></span>
-      <span class="mobile-menu__line" data-mobile-line="3"></span>
-    </span>
-  </button>
-
-  <div class="mobile-menu__panel" data-mobile-menu-panel hidden>
-    <nav class="mobile-menu__nav" aria-label="Navigation mobile">
-      <a class:list={['mobile-menu__link', isFeaturesActive && 'is-active']} href="/fr/fonctionnalites/" aria-current={isFeaturesActive ? 'page' : undefined}>Fonctionnalités</a>
-
-      {featureGroups.map((group, groupIndex) => (
-        <div class="mobile-menu__accordion" data-mobile-accordion>
-          <button
-            aria-expanded={groupIndex === 0 ? 'true' : 'false'}
-            class="mobile-menu__accordion-toggle"
-            data-mobile-accordion-toggle
-            type="button"
-          >
-            <span>{group.label}</span>
-            <span aria-hidden="true" class:list={['mobile-menu__accordion-icon', groupIndex === 0 && 'rotate-180']} data-mobile-accordion-icon>⌄</span>
-          </button>
-          <div class="mobile-menu__accordion-panel" data-mobile-accordion-panel hidden={groupIndex !== 0}>
-            {group.links.map(([label, href]) => (
-              <a class="mobile-menu__sublink" href={href}>{label}</a>
-            ))}
-          </div>
+  return (
+    <div className="lg:hidden">
+      <button
+        aria-expanded={open}
+        aria-label="Ouvrir le menu"
+        className="flex min-h-11 min-w-11 items-center justify-center rounded-lg border border-[#E5E7EB] bg-white text-[#0B1F3A]"
+        onClick={() => setOpen((value) => !value)}
+      >
+        <div className="space-y-1.5">
+          <span className={`block h-0.5 w-5 bg-current transition ${open ? 'translate-y-2 rotate-45' : ''}`} />
+          <span className={`block h-0.5 w-5 bg-current transition ${open ? 'opacity-0' : ''}`} />
+          <span className={`block h-0.5 w-5 bg-current transition ${open ? '-translate-y-2 -rotate-45' : ''}`} />
         </div>
-      ))}
-
-      <div class="mobile-menu__simple-links">
-        {simpleLinks.map(([label, href]) => {
-          const active = currentPath === href || (href === '/fr/blog/' && currentPath.startsWith('/fr/blog/'));
-          return <a class:list={['mobile-menu__link', active && 'is-active']} href={href} aria-current={active ? 'page' : undefined}>{label}</a>;
-        })}
-      </div>
-
-      <div class="mobile-menu__actions">
-        <a class="mobile-menu__login" href="https://app.publichantier.fr/">Se connecter</a>
-        <a class="mobile-menu__cta" href="https://app.publichantier.fr/?signup=yes">Essayer PubliTools 14 jours</a>
-      </div>
-    </nav>
-  </div>
-</div>
-
-<script is:inline>
-  (() => {
-    const roots = document.querySelectorAll('[data-mobile-menu-root]');
-    roots.forEach((root) => {
-      const toggle = root.querySelector('[data-mobile-menu-toggle]');
-      const panel = root.querySelector('[data-mobile-menu-panel]');
-      const line1 = root.querySelector('[data-mobile-line="1"]');
-      const line2 = root.querySelector('[data-mobile-line="2"]');
-      const line3 = root.querySelector('[data-mobile-line="3"]');
-      if (!toggle || !panel) return;
-
-      const setOpen = (open) => {
-        toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
-        panel.hidden = !open;
-        line1?.classList.toggle('is-open-line-1', open);
-        line2?.classList.toggle('is-open-line-2', open);
-        line3?.classList.toggle('is-open-line-3', open);
-      };
-
-      toggle.addEventListener('click', () => setOpen(toggle.getAttribute('aria-expanded') !== 'true'));
-      panel.querySelectorAll('a').forEach((link) => link.addEventListener('click', () => setOpen(false)));
-
-      root.querySelectorAll('[data-mobile-accordion]').forEach((accordion) => {
-        const accordionToggle = accordion.querySelector('[data-mobile-accordion-toggle]');
-        const accordionPanel = accordion.querySelector('[data-mobile-accordion-panel]');
-        const accordionIcon = accordion.querySelector('[data-mobile-accordion-icon]');
-        if (!accordionToggle || !accordionPanel) return;
-        accordionToggle.addEventListener('click', () => {
-          const expanded = accordionToggle.getAttribute('aria-expanded') === 'true';
-          accordionToggle.setAttribute('aria-expanded', expanded ? 'false' : 'true');
-          accordionPanel.hidden = expanded;
-          accordionIcon?.classList.toggle('rotate-180', !expanded);
-        });
-      });
-    });
-  })();
-</script>
-
-<style>
-  .mobile-menu {
-    display: block;
-  }
-
-  .mobile-menu__toggle {
-    display: inline-flex;
-    min-width: 44px;
-    min-height: 44px;
-    align-items: center;
-    justify-content: center;
-    border: 1px solid #e3e8ef;
-    border-radius: 8px;
-    background: #ffffff;
-    color: #0b1f3a;
-    box-shadow: 0 8px 24px rgba(11, 31, 58, 0.06);
-  }
-
-  .mobile-menu__lines {
-    display: grid;
-    gap: 6px;
-  }
-
-  .mobile-menu__line {
-    display: block;
-    width: 20px;
-    height: 2px;
-    border-radius: 999px;
-    background: currentColor;
-    transition: transform 180ms ease, opacity 180ms ease;
-  }
-
-  .mobile-menu__line.is-open-line-1 {
-    transform: translateY(8px) rotate(45deg);
-  }
-
-  .mobile-menu__line.is-open-line-2 {
-    opacity: 0;
-  }
-
-  .mobile-menu__line.is-open-line-3 {
-    transform: translateY(-8px) rotate(-45deg);
-  }
-
-  .mobile-menu__panel {
-    position: absolute;
-    inset-inline: 24px;
-    top: calc(100% + 10px);
-    z-index: 50;
-    max-height: calc(100vh - 92px);
-    overflow-y: auto;
-    border: 1px solid #e3e8ef;
-    border-radius: 24px;
-    background: #ffffff;
-    padding: 12px;
-    box-shadow: 0 24px 60px rgba(11, 31, 58, 0.14);
-  }
-
-  .mobile-menu__nav {
-    display: flex;
-    flex-direction: column;
-  }
-
-  .mobile-menu__link,
-  .mobile-menu__accordion-toggle {
-    display: flex;
-    width: 100%;
-    min-height: 48px;
-    align-items: center;
-    justify-content: space-between;
-    gap: 12px;
-    border: 0;
-    border-radius: 14px;
-    background: transparent;
-    padding: 12px 14px;
-    color: #0b1f3a;
-    font-family: 'Montserrat', ui-sans-serif, system-ui, sans-serif;
-    font-size: 15px;
-    font-weight: 800;
-    line-height: 20px;
-    text-align: left;
-    text-decoration: none;
-  }
-
-  .mobile-menu__link:hover,
-  .mobile-menu__accordion-toggle:hover,
-  .mobile-menu__link.is-active {
-    background: #f4f6f8;
-  }
-
-  .mobile-menu__link.is-active {
-    color: #ff7a1a;
-  }
-
-  .mobile-menu__accordion {
-    border-bottom: 1px solid #e3e8ef;
-    padding-block: 4px;
-  }
-
-  .mobile-menu__accordion-icon {
-    color: #ff7a1a;
-    transition: transform 180ms ease;
-  }
-
-  .mobile-menu__accordion-icon.rotate-180 {
-    transform: rotate(180deg);
-  }
-
-  .mobile-menu__accordion-panel {
-    padding: 0 0 8px 10px;
-  }
-
-  .mobile-menu__sublink {
-    display: block;
-    border-radius: 12px;
-    padding: 10px 14px;
-    color: #536174;
-    font-family: 'Montserrat', ui-sans-serif, system-ui, sans-serif;
-    font-size: 14px;
-    font-weight: 650;
-    line-height: 20px;
-    text-decoration: none;
-  }
-
-  .mobile-menu__sublink:hover,
-  .mobile-menu__sublink:focus-visible {
-    background: #fff1e6;
-    color: #e86a0a;
-  }
-
-  .mobile-menu__simple-links {
-    display: grid;
-    gap: 2px;
-    margin-top: 8px;
-  }
-
-  .mobile-menu__actions {
-    display: grid;
-    gap: 8px;
-    margin-top: 12px;
-    border-top: 1px solid #e3e8ef;
-    padding-top: 12px;
-  }
-
-  .mobile-menu__login,
-  .mobile-menu__cta {
-    display: inline-flex;
-    min-height: 48px;
-    align-items: center;
-    justify-content: center;
-    border-radius: 8px;
-    padding: 0 16px;
-    font-family: 'Montserrat', ui-sans-serif, system-ui, sans-serif;
-    font-size: 15px;
-    font-weight: 800;
-    line-height: 20px;
-    text-align: center;
-    text-decoration: none;
-  }
-
-  .mobile-menu__login {
-    border: 1px solid #e3e8ef;
-    background: #ffffff;
-    color: #0b1f3a;
-  }
-
-  .mobile-menu__cta {
-    border: 1px solid #ff7a1a;
-    background: #ff7a1a;
-    color: #ffffff;
-    box-shadow: 0 16px 30px rgba(255, 122, 26, 0.22);
-  }
-
-  @media (min-width: 1024px) {
-    .mobile-menu {
-      display: none;
-    }
-  }
-
-  @media (max-width: 680px) {
-    .mobile-menu__panel {
-      inset-inline: 16px;
-      top: calc(100% + 8px);
-      max-height: calc(100vh - 84px);
-      border-radius: 20px;
-    }
-  }
-</style>
+      </button>
+      {open && (
+        <div className="absolute inset-x-4 top-20 z-50 rounded-2xl border border-[#E5E7EB] bg-white p-4 shadow-soft">
+          <nav className="flex flex-col gap-2" aria-label="Navigation mobile">
+            {navItems.map((item) => (
+              <a key={item.label} className="min-h-11 rounded-xl px-4 py-3 text-base font-semibold text-[#0B1F3A] no-underline hover:bg-[#F4F6F8]" href={item.href} onClick={() => setOpen(false)}>
+                {item.label}
+              </a>
+            ))}
+            <a className="mt-2 min-h-11 rounded-lg border border-[#0B1F3A] px-4 py-3 text-center font-semibold text-[#0B1F3A] no-underline" href="https://app.publichantier.fr/">Se connecter</a>
+            <a className="min-h-11 rounded-lg bg-[#FF7A1A] px-4 py-3 text-center font-semibold text-white no-underline" href="https://app.publichantier.fr/?signup=yes">Essayer 14 jours</a>
+          </nav>
+        </div>
+      )}
+    </div>
+  );
+}
