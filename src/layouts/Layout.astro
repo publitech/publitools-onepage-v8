@@ -46,10 +46,16 @@ const canonicalUrl =
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="generator" content={Astro.generator} />
+    <meta name="theme-color" content="#0B1F3A" />
+    <meta name="color-scheme" content="light" />
+
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <link rel="icon" sizes="any" href="/favicon.ico" />
-    <link rel="icon" type="image/png" sizes="512x512" href="/favicon-512.png" />
-    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-512.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-512.png" />
+    <link rel="shortcut icon" href="/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+
     <link rel="canonical" href={canonicalUrl} />
     {alternates.map((entry) => (
       <link rel="alternate" hreflang={entry.hreflang} href={entry.href} />

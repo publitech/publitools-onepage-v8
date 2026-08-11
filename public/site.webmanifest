@@ -1,0 +1,26 @@
+{
+  "name": "PubliTools",
+  "short_name": "PubliTools",
+  "description": "L'outil IA n°1 du BTP pour faire grossir votre entreprise sur internet.",
+  "start_url": "/fr/",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#FFFFFF",
+  "theme_color": "#0B1F3A",
+  "lang": "fr",
+  "icons": [
+    {
+      "src": "/favicon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/apple-touch-icon.png",
+      "sizes": "180x180",
+      "type": "image/png",
+      "purpose": "any"
+    }
+  ]
+}
