@@ -1,85 +1,175 @@
 ---
 import OnePageButton from './OnePageButton.astro';
 import OnePageSocialLogos from './OnePageSocialLogos.astro';
+import HighlightedTitle, { type TitlePart } from './HighlightedTitle.astro';
+import { type Locale } from '../../i18n';
 
+interface Props {
+  locale?: Locale;
+}
+
+const { locale = 'fr' } = Astro.props;
 const signupUrl = 'https://app.publichantier.fr/?signup=yes';
-const starter = [
-  "8 créations par mois",
-  "Textes générés depuis vos photos, vidéos, votre vocal ou un texte court",
-  "Amélioration classique des photos et vidéos",
-  "Jusqu’à 3 réseaux sélectionnés par publication",
-  "Demandes d’avis par SMS illimitées",
-  "Aperçu des améliorations SmartAI",
-  "Validation avant publication",
-  "Support WhatsApp",
-];
-const pro = [
-  "Créations illimitées",
-  "Publication simultanée sur les 6 réseaux",
-  "Textes générés depuis vos photos, vidéos, votre vocal ou un texte court",
-  "Amélioration classique des photos et vidéos",
-  "SmartAI illimitée",
-  "Designs IA illimités",
-  "Programmation des publications",
-  "Demandes d’avis par SMS illimitées",
-  "Avis reçu transformé en publication",
-  "Validation avant publication",
-  "Support WhatsApp",
-];
+
+const copy = {
+  fr: {
+    kicker: 'Tarifs',
+    titleParts: [
+      { text: "Testez l'application " },
+      { text: 'gratuitement', style: 'orange' },
+      { text: ' sur votre prochain chantier' },
+    ] as TitlePart[],
+    lead: "14 jours d'essai gratuit pour générer et publier en illimité sur tous vos réseaux.",
+    socialLabel: 'Réseaux disponibles',
+    onlyLabel: 'Seulement',
+    trialNote: "À la fin des 14 jours d'essai gratuit, votre abonnement bascule sur le plan choisi lors de l'inscription.",
+    starter: {
+      label: 'Starter',
+      subtitle: 'Pour publier régulièrement',
+      features: [
+        '8 créations par mois',
+        'Textes générés depuis vos photos, vidéos, votre vocal ou un texte court',
+        'Amélioration classique des photos et vidéos',
+        "Jusqu'à 3 réseaux sélectionnés par publication",
+        "Demandes d'avis par SMS illimitées",
+        'Aperçu des améliorations SmartAI',
+        'Validation avant publication',
+        'Support WhatsApp',
+      ],
+      price: '19,90 €',
+      unit: 'HT/mois',
+      cta: 'Tester pendant 14 jours',
+      socialCaption: '3 réseaux maximum par publication',
+    },
+    pro: {
+      label: 'Pro',
+      badge: 'Recommandé',
+      subtitle: 'Pour automatiser sans limite',
+      features: [
+        'Créations illimitées',
+        'Publication simultanée sur les 6 réseaux',
+        'Textes générés depuis vos photos, vidéos, votre vocal ou un texte court',
+        'Amélioration classique des photos et vidéos',
+        'SmartAI illimitée',
+        'Designs IA illimités',
+        'Programmation des publications',
+        "Demandes d'avis par SMS illimitées",
+        'Avis reçu transformé en publication',
+        'Validation avant publication',
+        'Support WhatsApp',
+      ],
+      price: '39,90 €',
+      unit: 'HT/mois',
+      cta: 'Tester pendant 14 jours',
+      socialCaption: 'Publication simultanée sur les 6 réseaux',
+    },
+  },
+  en: {
+    kicker: 'Pricing',
+    titleParts: [
+      { text: 'Try the app ' },
+      { text: 'free', style: 'orange' },
+      { text: ' on your next job' },
+    ] as TitlePart[],
+    lead: '14 free days to prepare your social media posts from the field.',
+    socialLabel: 'Available networks',
+    onlyLabel: 'Only',
+    trialNote: 'At the end of the 14-day free trial, your subscription switches to the plan you chose when you signed up.',
+    starter: {
+      label: 'Starter',
+      subtitle: 'To post consistently',
+      features: [
+        '8 posts per month',
+        'Text generated from your photos, videos, voice note or short text',
+        'Standard photo and video enhancement',
+        'Up to 3 networks selected per post',
+        'Unlimited SMS review requests',
+        'Preview of SmartAI enhancements',
+        'Validation before publishing',
+        'WhatsApp support',
+      ],
+      price: '$19.90',
+      unit: '/month excl. VAT',
+      cta: 'Start my free 14-day trial',
+      socialCaption: 'Up to 3 networks per post',
+    },
+    pro: {
+      label: 'Pro',
+      badge: 'Recommended',
+      subtitle: 'To automate without limits',
+      features: [
+        'Unlimited posts',
+        'Simultaneous publishing on all 6 networks',
+        'Text generated from your photos, videos, voice note or short text',
+        'Standard photo and video enhancement',
+        'Unlimited SmartAI',
+        'Unlimited AI designs',
+        'Post scheduling',
+        'Unlimited SMS review requests',
+        'Received reviews turned into posts',
+        'Validation before publishing',
+        'WhatsApp support',
+      ],
+      price: '$39.90',
+      unit: '/month excl. VAT',
+      cta: 'Start my free 14-day trial',
+      socialCaption: 'Simultaneous publishing across all 6 networks',
+    },
+  },
+}[locale];
 ---
 
 <section class="op-pricing" id="tarifs" aria-labelledby="op-pricing-title">
   <div class="op-container">
     <div class="op-section-head op-pricing__head">
-      <p class="op-kicker">Tarifs</p>
-      <h2 id="op-pricing-title">Testez l'application <span class="box-decoration-clone rounded-lg bg-[#f4862d] px-2 py-0 text-white">gratuitement</span> sur votre prochain chantier</h2>
-      <p>14 jours d'essai gratuit pour générer et publier en illimité sur tous vos réseaux.</p>
+      <p class="op-kicker">{copy.kicker}</p>
+      <h2 id="op-pricing-title"><HighlightedTitle parts={copy.titleParts} /></h2>
+      <p>{copy.lead}</p>
     </div>
     <div class="op-pricing__grid">
       <article class="op-price-card op-price-card--starter">
         <div class="op-price-card__head">
-          <p class="op-price-card__label">Starter</p>
-          <h3>Pour publier régulièrement</h3>
-
+          <p class="op-price-card__label">{copy.starter.label}</p>
+          <h3>{copy.starter.subtitle}</h3>
         </div>
         <ul class="op-price-card__features">
-          {starter.map((item) => (
+          {copy.starter.features.map((item) => (
             <li>
               <span class="op-price-card__bullet" aria-hidden="true"></span>
               <span class="op-price-card__label-text">{item}</span>
             </li>
           ))}
         </ul>
-        <OnePageSocialLogos label="Réseaux disponibles" caption="3 réseaux maximum par publication" compact pricing />
+        <OnePageSocialLogos label={copy.socialLabel} caption={copy.starter.socialCaption} compact pricing />
         <p class="op-price-card__price">
-          <span class="op-price-card__price-kicker">Seulement</span>
-          <strong>19,90&nbsp;€</strong>
-          <span class="op-price-card__price-unit">HT/mois</span>
+          <span class="op-price-card__price-kicker">{copy.onlyLabel}</span>
+          <strong>{copy.starter.price}</strong>
+          <span class="op-price-card__price-unit">{copy.starter.unit}</span>
         </p>
-        <OnePageButton href={signupUrl}>Tester pendant 14 jours</OnePageButton>
+        <OnePageButton href={signupUrl}>{copy.starter.cta}</OnePageButton>
       </article>
       <article class="op-price-card op-price-card--pro">
         <div class="op-price-card__head">
-          <p class="op-price-card__label">Pro <span>Recommandé</span></p>
-          <h3>Pour automatiser sans limite</h3>
-
+          <p class="op-price-card__label">{copy.pro.label} <span>{copy.pro.badge}</span></p>
+          <h3>{copy.pro.subtitle}</h3>
         </div>
         <ul class="op-price-card__features">
-          {pro.map((item) => (
+          {copy.pro.features.map((item) => (
             <li>
               <span class="op-price-card__bullet" aria-hidden="true"></span>
               <span class="op-price-card__label-text">{item}</span>
             </li>
           ))}
         </ul>
-        <OnePageSocialLogos label="Réseaux disponibles" caption="Publication simultanée sur les 6 réseaux" compact pricing />
+        <OnePageSocialLogos label={copy.socialLabel} caption={copy.pro.socialCaption} compact pricing />
         <p class="op-price-card__price">
-          <span class="op-price-card__price-kicker">Seulement</span>
-          <strong>39,90&nbsp;€</strong>
-          <span class="op-price-card__price-unit">HT/mois</span>
+          <span class="op-price-card__price-kicker">{copy.onlyLabel}</span>
+          <strong>{copy.pro.price}</strong>
+          <span class="op-price-card__price-unit">{copy.pro.unit}</span>
         </p>
-        <OnePageButton href={signupUrl}>Tester pendant 14 jours</OnePageButton>
+        <OnePageButton href={signupUrl}>{copy.pro.cta}</OnePageButton>
       </article>
     </div>
+    <p class="op-pricing__microcopy">{copy.trialNote}</p>
   </div>
 </section>

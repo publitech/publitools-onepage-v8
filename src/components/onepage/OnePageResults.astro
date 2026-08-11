@@ -1,4 +1,13 @@
 ---
+import HighlightedTitle, { type TitlePart } from './HighlightedTitle.astro';
+import { type Locale } from '../../i18n';
+
+interface Props {
+  locale?: Locale;
+}
+
+const { locale = 'fr' } = Astro.props;
+
 const socialOutputs = [
   { network: 'Instagram', key: 'instagram', icon: '/social/instagram-official.svg', src: '/assets/onepage/mockups-v8/mockup-instagram.jpg' },
   { network: 'Facebook', key: 'facebook', icon: '/social/facebook-official.svg', src: '/assets/onepage/mockups-v8/mockup-facebook.jpg' },
@@ -10,45 +19,66 @@ const socialOutputs = [
 
 type ResultTone = 'orange' | 'navy' | 'yellow';
 
-const resultCards: Array<{
-  image: string;
-  alt: string;
-  title: string;
-  tone: ResultTone;
-}> = [
-  {
-    image: '/assets/onepage/results/tableau-de-bord-instagram.jpg',
-    alt: "Tableau de bord professionnel Instagram avec statistiques de vues et portée",
-    title: "Jusqu'à +600% de vues sur les RS",
-    tone: 'orange',
+const copy = {
+  fr: {
+    kicker: '05 — Résultats observés',
+    titleParts: [
+      { text: 'Le ' },
+      { text: 'résultat', style: 'navy' },
+      { text: ' ?' },
+    ] as TitlePart[],
+    lead: "Résultats observés sur plus de 50 artisans après 3 mois d'utilisation.",
+    wallKicker: '1 photo, 6 publications...',
+    wallTitleParts: [
+      { text: '1 photo, ' },
+      { text: '6 publications', style: 'yellow' },
+      { text: '...' },
+    ] as TitlePart[],
+    wallSupport: '... et un maximum de visibilité gratuitement sur tous ces réseaux !',
+    cards: [
+      { image: '/assets/onepage/results/tableau-de-bord-instagram.jpg', alt: 'Tableau de bord professionnel Instagram avec statistiques de vues et portée', title: "Jusqu'à +600% de vues sur les RS", tone: 'orange' },
+      { image: '/assets/onepage/results/google-positions-publitools.jpg', alt: 'Courbe de progression des positions Google Business sur 6 mois', title: '+12 positions sur Google', tone: 'navy' },
+      { image: '/assets/onepage/results/gmail-reception-devis.jpg', alt: 'Boîte de réception Gmail avec nouvelles demandes de devis reçues', title: "Jusqu'à +40% de demandes de devis", tone: 'yellow' },
+    ] as Array<{ image: string; alt: string; title: string; tone: ResultTone }>,
+    note: "Les résultats varient selon l'activité, la zone, la régularité et la présence existante.",
   },
-  {
-    image: '/assets/onepage/results/google-positions-publitools.jpg',
-    alt: "Courbe de progression des positions Google Business sur 6 mois",
-    title: '+12 positions sur Google',
-    tone: 'navy',
+  en: {
+    kicker: '05 — Observed results',
+    titleParts: [
+      { text: 'The ' },
+      { text: 'results', style: 'navy' },
+      { text: '?' },
+    ] as TitlePart[],
+    lead: 'Results observed on more than 50 construction professionals after 3 months of use. Results vary.',
+    wallKicker: '1 photo, 6 posts...',
+    wallTitleParts: [
+      { text: '1 photo, ' },
+      { text: '6 posts', style: 'yellow' },
+      { text: '...' },
+    ] as TitlePart[],
+    wallSupport: '...and maximum free visibility across all these networks!',
+    cards: [
+      { image: '/assets/onepage/results/tableau-de-bord-instagram.jpg', alt: 'Professional Instagram dashboard with views and reach statistics', title: 'Up to +600% views on social media', tone: 'orange' },
+      { image: '/assets/onepage/results/google-positions-publitools.jpg', alt: 'Google Business positions progress curve over 6 months', title: '+12 positions on Google', tone: 'navy' },
+      { image: '/assets/onepage/results/gmail-reception-devis.jpg', alt: 'Gmail inbox with new quote requests received', title: 'Up to +40% quote requests', tone: 'yellow' },
+    ] as Array<{ image: string; alt: string; title: string; tone: ResultTone }>,
+    note: 'Results vary depending on the business, the area, consistency and existing online presence.',
   },
-  {
-    image: '/assets/onepage/results/gmail-reception-devis.jpg',
-    alt: "Boîte de réception Gmail avec nouvelles demandes de devis reçues",
-    title: "Jusqu'à +40% de demandes de devis",
-    tone: 'yellow',
-  },
-];
+}[locale];
 ---
 
 <section class="op-results" aria-labelledby="op-results-title">
   <div class="op-container">
     <div class="op-results__head">
-      <p class="op-kicker">05 — Résultats observés</p>
-      <h2 id="op-results-title">Le <span class="box-decoration-clone rounded-lg bg-[#262832] px-2 py-0 text-white">résultat</span> ?</h2>
-      <p>Résultats observés sur plus de 50 artisans après 3 mois d'utilisation.</p>
+      <p class="op-kicker">{copy.kicker}</p>
+      <h2 id="op-results-title"><HighlightedTitle parts={copy.titleParts} /></h2>
+      <p>{copy.lead}</p>
     </div>
     <div class="op-social-wall" aria-labelledby="op-social-wall-title">
       <header class="op-social-wall__head">
-        <p class="op-kicker">1 photo, 6 publications...</p>
-        <h3 id="op-social-wall-title">1 photo, <span class="box-decoration-clone rounded-lg bg-[#fac43e] px-2 py-0 text-white">6 publications</span>...</h3>
-        <p class="op-social-wall__support">... et un maximum de visibilité gratuitement sur tous ces réseaux !</p>
+        <p class="op-kicker">{copy.wallKicker}</p>
+        <h3 id="op-social-wall-title"><HighlightedTitle parts={copy.wallTitleParts} /></h3>
+        <p class="op-social-wall__support">{copy.wallSupport}</p>
       </header>
       <div class="op-social-wall__viewport">
         <div class="op-social-wall__rail" data-social-output-wall>
@@ -76,12 +106,12 @@ const resultCards: Array<{
 
     <div class="op-results__cards-wall">
       <header class="op-results__cards-head">
-        <p class="op-kicker">Résultat</p>
-        <h3 class="op-results__cards-title">Des résultats <span class="box-decoration-clone rounded-lg bg-[#f4862d] px-2 py-0 text-white">qui payent les factures</span></h3>
-        <p class="op-results__cards-support">Avant / après utilisations (constaté sur 50+ artisans en 3 mois)</p>
+        <p class="op-kicker">{locale === 'fr' ? 'Résultat' : 'Result'}</p>
+        <h3 class="op-results__cards-title">{locale === 'fr' ? 'Des résultats qui payent les factures' : 'Results that pay the bills'}</h3>
+        <p class="op-results__cards-support">{locale === 'fr' ? 'Avant / après utilisations (constaté sur 50+ artisans en 3 mois)' : 'Before / after use (observed on 50+ contractors in 3 months)'}</p>
       </header>
       <div class="op-results__cards">
-        {resultCards.map((card) => (
+        {copy.cards.map((card) => (
           <article class={`op-result-card op-result-card--${card.tone}`}>
             <figure class="op-result-card__media">
               <img src={card.image} alt={card.alt} loading="lazy" decoding="async" />
@@ -91,6 +121,6 @@ const resultCards: Array<{
         ))}
       </div>
     </div>
-    <p class="op-results__note">Les résultats varient selon l'activité, la zone, la régularité et la présence existante.</p>
+    <p class="op-results__note">{copy.note}</p>
   </div>
 </section>

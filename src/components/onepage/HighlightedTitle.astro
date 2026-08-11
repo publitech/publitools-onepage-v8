@@ -1,0 +1,28 @@
+---
+export interface TitlePart {
+  text: string;
+  style?: 'orange' | 'navy' | 'blue' | 'yellow' | 'underline';
+}
+
+interface Props {
+  parts: TitlePart[];
+}
+
+const { parts } = Astro.props;
+
+const styleClass: Record<string, string> = {
+  orange: 'box-decoration-clone rounded-lg bg-[#f4862d] px-2 py-0 text-white',
+  navy: 'box-decoration-clone rounded-lg bg-[#262832] px-2 py-0 text-white',
+  blue: 'box-decoration-clone rounded-lg bg-[#00518f] px-2 py-0 text-white',
+  yellow: 'box-decoration-clone rounded-lg bg-[#fac43e] px-2 py-0 text-white',
+  underline: 'underline',
+};
+---
+
+{parts.map((part) =>
+  part.style ? (
+    <span class={styleClass[part.style]}>{part.text}</span>
+  ) : (
+    <Fragment>{part.text}</Fragment>
+  )
+)}

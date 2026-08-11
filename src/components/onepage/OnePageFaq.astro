@@ -1,16 +1,24 @@
 ---
-const questions = [
+import { type Locale } from '../../i18n';
+
+interface Props {
+  locale?: Locale;
+}
+
+const { locale = 'fr' } = Astro.props;
+
+const frQuestions = [
   [
     "L'essai est-il vraiment gratuit ?",
     "Oui. Vous bénéficiez de 14 jours d'essai gratuit avec un accès complet au plan Pro. Aucun frais de mise en place ne vous est facturé.",
   ],
   [
-    'Et si je ne suis pas doué en informatique ?',
+    "Et si je ne suis pas doué en informatique ?",
     "Pas besoin d'être un pro du numérique. Vous transmettez vos photos / vidéos de chantier et expliquez vos travaux par vocal ou par texte : l'IA rédige la publication, retouche vos photos, applique votre logo et vos couleurs.",
   ],
   [
     'Combien de temps faut-il pour préparer une publication ?',
-    'Comptez moins de 2 minutes pour préparer une publication simple, prête à être validée. Vous faites tout depuis le chantier, directement avec votre téléphone.',
+    "Comptez moins de 2 minutes pour préparer une publication simple, prête à être validée. Vous faites tout depuis le chantier, directement avec votre téléphone.",
   ],
   [
     "Est-ce que les publications respecteront l'image de mon entreprise ?",
@@ -22,7 +30,7 @@ const questions = [
   ],
   [
     "Est-ce vraiment utile pour mon entreprise du bâtiment ?",
-    'Vos futurs clients cherchent des preuves de votre travail avant de signer un devis. PubliTools alimente régulièrement vos comptes et votre fiche Google Business pour valoriser vos chantiers et rassurer vos prospects.',
+    "Vos futurs clients cherchent des preuves de votre travail avant de signer un devis. PubliTools alimente régulièrement vos comptes et votre fiche Google Business pour valoriser vos chantiers et rassurer vos prospects.",
   ],
   [
     'Quels sont les résultats observés chez les artisans ?',
@@ -34,7 +42,7 @@ const questions = [
   ],
   [
     'Est-ce difficile de relier mes réseaux sociaux ?',
-    'La connexion s\'effectue simplement lors de l\'installation de votre compte, une fois pour toutes. PubliTools gère 6 réseaux dont Google : Facebook, Instagram, LinkedIn, Google Business, TikTok et YouTube.',
+    "La connexion s'effectue simplement lors de l'installation de votre compte, une fois pour toutes. PubliTools gère 6 réseaux dont Google : Facebook, Instagram, LinkedIn, Google Business, TikTok et YouTube.",
   ],
   [
     "Comment fonctionne la demande d'avis clients ?",
@@ -45,17 +53,79 @@ const questions = [
     "À la fin des 14 jours d'essai gratuit, vous continuez avec le plan choisi.",
   ],
 ];
+
+const enQuestions = [
+  [
+    'Is the trial really free?',
+    'Yes. You get 14 days of free trial with full access to the Pro plan. No setup fee is charged.',
+  ],
+  [
+    "What if I'm not tech-savvy?",
+    'No need to be a digital pro. You upload your jobsite photos / videos and describe your work by voice or text: the AI writes the post, edits your photos, applies your logo and colors.',
+  ],
+  [
+    'How long does it take to prepare a post?',
+    'Count less than 2 minutes to prepare a simple post, ready to be validated. You do everything from the jobsite, directly with your phone.',
+  ],
+  [
+    "Will the posts respect my company's image?",
+    "Yes. The AI edits your photos, applies your logo and colors, all while respecting your company's tone configured when opening the account. For videos, a light processing is applied.",
+  ],
+  [
+    "Do I keep control over what's published?",
+    'You see everything before it goes out. The app shows you a complete preview that you can review and modify if necessary before validating the send.',
+  ],
+  [
+    'Is it really useful for my construction business?',
+    'Your future customers look for proof of your work before signing a quote. PubliTools regularly feeds your accounts and your Google Business profile to showcase your jobs and reassure your prospects.',
+  ],
+  [
+    'What results have been observed among contractors?',
+    'Results observed on more than 50 contractors after 3 months show up to +40% quote requests and up to +600% views on jobsite posts. Results vary depending on the business, its activity and its area.',
+  ],
+  [
+    'How is the confidentiality of my jobs preserved?',
+    'You select yourself the photos / videos you add in the app. Nothing is published without your prior verification.',
+  ],
+  [
+    'Is it hard to connect my social networks?',
+    'Connection is done simply when installing your account, once and for all. PubliTools manages 6 networks including Google: Facebook, Instagram, LinkedIn, Google Business, TikTok and YouTube.',
+  ],
+  [
+    'How does the customer review request work?',
+    "PubliTools generates a pre-written SMS with the link to your Google Business profile. Your phone's app opens automatically and you send the message to your customer yourself.",
+  ],
+  [
+    'What happens after the 14-day free trial?',
+    'At the end of the 14-day free trial, your subscription switches to the plan you chose when you signed up.',
+  ],
+];
+
+const copy = {
+  fr: {
+    kicker: 'FAQ',
+    title: 'Les réponses avant de commencer.',
+    lead: "Des explications simples sur l'essai, les photos, les vidéos et les deux formules.",
+    questions: frQuestions,
+  },
+  en: {
+    kicker: 'FAQ',
+    title: 'The answers before you start.',
+    lead: 'Simple explanations about the trial, photos, videos and the two plans.',
+    questions: enQuestions,
+  },
+}[locale];
 ---
 
 <section class="op-faq" id="faq" aria-labelledby="op-faq-title">
   <div class="op-container op-faq__grid">
     <div class="op-section-head op-faq__head">
-      <p class="op-kicker">FAQ</p>
-      <h2 id="op-faq-title">Les réponses avant de commencer.</h2>
-      <p>Des explications simples sur l'essai, les photos, les vidéos et les deux formules.</p>
+      <p class="op-kicker">{copy.kicker}</p>
+      <h2 id="op-faq-title">{copy.title}</h2>
+      <p>{copy.lead}</p>
     </div>
     <div class="op-faq__list">
-      {questions.map(([question, answer], index) => (
+      {copy.questions.map(([question, answer], index) => (
         <details open={index === 0}>
           <summary>{question}<span aria-hidden="true">+</span></summary>
           <p>{answer}</p>

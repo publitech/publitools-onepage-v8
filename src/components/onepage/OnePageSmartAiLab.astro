@@ -1,16 +1,85 @@
 ---
-const cases = [
+import HighlightedTitle, { type TitlePart } from './HighlightedTitle.astro';
+import { type Locale } from '../../i18n';
+
+interface Props {
+  locale?: Locale;
+}
+
+const { locale = 'fr' } = Astro.props;
+
+const frCases = [
   { id: 'renovation', label: 'Rénovation', title: "Rénovation d'appartement" },
   { id: 'maconnerie', label: 'Maçonnerie', title: "Construction d'un mur en parpaings" },
-  { id: 'plomberie', label: 'Plomberie', title: "Installation de plomberie en salle de bain" },
+  { id: 'plomberie', label: 'Plomberie', title: 'Installation de plomberie en salle de bain' },
   { id: 'electricien', label: 'Électricien', title: "Travaux d'installation électrique" },
-  { id: 'couvreur', label: 'Couvreur', title: "Rénovation de toiture" },
-  { id: 'menuiserie', label: 'Menuiserie', title: "Pose de menuiserie" },
-  { id: 'peinture', label: 'Peinture', title: "Peinture intérieure" },
-  { id: 'carrelage', label: 'Carrelage', title: "Pose de carrelage" },
-  { id: 'plaquiste', label: 'Plaquiste', title: "Pose de cloisons en plaques de plâtre" },
-  { id: 'chauffagiste', label: 'Chauffagiste', title: "Installation de chauffage" },
-].map((item) => ({
+  { id: 'couvreur', label: 'Couvreur', title: 'Rénovation de toiture' },
+  { id: 'menuiserie', label: 'Menuiserie', title: 'Pose de menuiserie' },
+  { id: 'peinture', label: 'Peinture', title: 'Peinture intérieure' },
+  { id: 'carrelage', label: 'Carrelage', title: 'Pose de carrelage' },
+  { id: 'plaquiste', label: 'Plaquiste', title: 'Pose de cloisons en plaques de plâtre' },
+  { id: 'chauffagiste', label: 'Chauffagiste', title: 'Installation de chauffage' },
+];
+
+const enCases = [
+  { id: 'renovation', label: 'Renovation', title: 'Apartment renovation' },
+  { id: 'maconnerie', label: 'Masonry', title: 'Cinder block wall construction' },
+  { id: 'plomberie', label: 'Plumbing', title: 'Bathroom plumbing installation' },
+  { id: 'electricien', label: 'Electrician', title: 'Electrical installation work' },
+  { id: 'couvreur', label: 'Roofer', title: 'Roof renovation' },
+  { id: 'menuiserie', label: 'Carpentry', title: 'Carpentry installation' },
+  { id: 'peinture', label: 'Painting', title: 'Interior painting' },
+  { id: 'carrelage', label: 'Tiling', title: 'Tile laying' },
+  { id: 'plaquiste', label: 'Drywaller', title: 'Plasterboard partition installation' },
+  { id: 'chauffagiste', label: 'Heating installer', title: 'Heating system installation' },
+];
+
+const copy = {
+  fr: {
+    kicker: '03 — Amélioration SmartAI',
+    titleParts: [
+      { text: 'Notre ' },
+      { text: 'IA', style: 'navy' },
+      { text: ' ' },
+      { text: 'retouche', style: 'underline' },
+      { text: ' et ' },
+      { text: 'rédige', style: 'underline' },
+      { text: ' vos publications' },
+    ] as TitlePart[],
+    lead: 'Choisissez un métier, puis passez de la photo prise sur le chantier à la version améliorée.',
+    notice: "Exemples illustratifs — amélioration photographique uniquement. Aucun élément du chantier n'est ajouté, retiré ou remplacé.",
+    tablistLabel: 'Choisir un métier',
+    toggleAriaPrefix: 'Afficher la photo avant ou après pour',
+    altBeforeSuffix: 'avant amélioration photographique',
+    altAfterSuffix: 'après amélioration photographique',
+    beforeLabel: 'Avant',
+    afterLabel: 'Après',
+    cases: frCases,
+  },
+  en: {
+    kicker: '03 — SmartAI enhancement',
+    titleParts: [
+      { text: 'Our ' },
+      { text: 'AI', style: 'navy' },
+      { text: ' ' },
+      { text: 'retouches', style: 'underline' },
+      { text: ' and ' },
+      { text: 'writes', style: 'underline' },
+      { text: ' your posts' },
+    ] as TitlePart[],
+    lead: 'Pick a trade, then flip from the raw jobsite photo to the enhanced version.',
+    notice: 'Illustrative examples — photographic enhancement only. No element of the jobsite is added, removed, or replaced.',
+    tablistLabel: 'Pick a trade',
+    toggleAriaPrefix: 'Show before or after photo for',
+    altBeforeSuffix: 'before photographic enhancement',
+    altAfterSuffix: 'after photographic enhancement',
+    beforeLabel: 'Before',
+    afterLabel: 'After',
+    cases: enCases,
+  },
+}[locale];
+
+const cases = copy.cases.map((item) => ({
   ...item,
   before: `/assets/onepage/smartai-v6/${item.id}-before.jpg`,
   after: `/assets/onepage/smartai-v6/${item.id}-after.jpg`,
@@ -21,12 +90,12 @@ const cases = [
   <div class="op-container op-smartai-v4__layout">
     <div class="op-smartai-v4__side">
       <header class="op-smartai__head">
-        <p class="op-kicker">03 — Amélioration SmartAI</p>
-        <h2 id="op-smartai-title">Notre <span class="box-decoration-clone rounded-lg bg-[#262832] px-2 py-0 text-white">IA</span> <span class="underline">retouche</span> et <span class="underline">rédige</span> vos publications</h2>
-        <p>Choisissez un métier, puis passez de la photo prise sur le chantier à la version améliorée.</p>
+        <p class="op-kicker">{copy.kicker}</p>
+        <h2 id="op-smartai-title"><HighlightedTitle parts={copy.titleParts} /></h2>
+        <p>{copy.lead}</p>
       </header>
 
-      <div class="op-smartai__tabs" role="tablist" aria-label="Choisir un métier">
+      <div class="op-smartai__tabs" role="tablist" aria-label={copy.tablistLabel}>
         {cases.map((item, index) => (
           <button
             type="button"
@@ -54,25 +123,25 @@ const cases = [
           data-view="before"
         >
           <h3>{item.title}</h3>
-          <div class="op-smartai-v4__toggle" role="group" aria-label={`Afficher la photo avant ou après pour ${item.label}`}>
-            <button type="button" aria-pressed="true" data-view-button="before">Avant</button>
-            <button type="button" aria-pressed="false" data-view-button="after">Après</button>
+          <div class="op-smartai-v4__toggle" role="group" aria-label={`${copy.toggleAriaPrefix} ${item.label}`}>
+            <button type="button" aria-pressed="true" data-view-button="before">{copy.beforeLabel}</button>
+            <button type="button" aria-pressed="false" data-view-button="after">{copy.afterLabel}</button>
           </div>
           <div class="op-smartai__compare">
             <figure class="op-smartai__figure op-smartai__figure--before">
-              <img src={item.before} alt={`${item.title} avant amélioration photographique`} width="1200" height="900" loading={index === 0 ? 'eager' : 'lazy'} decoding="async" />
-              <figcaption>Avant</figcaption>
+              <img src={item.before} alt={`${item.title} ${copy.altBeforeSuffix}`} width="1200" height="900" loading={index === 0 ? 'eager' : 'lazy'} decoding="async" />
+              <figcaption>{copy.beforeLabel}</figcaption>
             </figure>
             <figure class="op-smartai__figure op-smartai__figure--after">
-              <img src={item.after} alt={`${item.title} après amélioration photographique`} width="1200" height="900" loading={index === 0 ? 'eager' : 'lazy'} decoding="async" />
-              <figcaption>Après</figcaption>
+              <img src={item.after} alt={`${item.title} ${copy.altAfterSuffix}`} width="1200" height="900" loading={index === 0 ? 'eager' : 'lazy'} decoding="async" />
+              <figcaption>{copy.afterLabel}</figcaption>
             </figure>
           </div>
         </article>
       ))}
     </div>
 
-    <p class="op-smartai__notice">Exemples illustratifs — amélioration photographique uniquement. Aucun élément du chantier n'est ajouté, retiré ou remplacé.</p>
+    <p class="op-smartai__notice">{copy.notice}</p>
   </div>
 </section>
 

@@ -8,40 +8,104 @@ import electricienVocal from '../../assets/onepage/backgrounds/electricien-vocal
 import OnePageSocialLogos from './OnePageSocialLogos.astro';
 import OnePageSmartAiLab from './OnePageSmartAiLab.astro';
 import OnePageButton from './OnePageButton.astro';
+import HighlightedTitle, { type TitlePart } from './HighlightedTitle.astro';
+import { type Locale } from '../../i18n';
 
+interface Props {
+  locale?: Locale;
+}
+
+const { locale = 'fr' } = Astro.props;
 const signupUrl = 'https://app.publichantier.fr/?signup=yes';
+
+const copy = {
+  fr: {
+    inputs: {
+      kicker: '02 — Vos chantiers',
+      titleParts: [
+        { text: 'Ajoutez vos ' },
+        { text: 'photos / vidéos', style: 'blue' },
+        { text: ' + ' },
+        { text: '1 vocal', style: 'underline' },
+        { text: ' (30sec)' },
+      ] as TitlePart[],
+      lead: 'Depuis votre chantier ou chez vous, importez vos réalisations puis décrivez rapidement à voix haute ce que vous avez fait .',
+      photoCaption: 'Photo',
+      vocalCaption: 'Vocal · 10 secondes',
+      ctaMobile: 'Voir les tarifs',
+    },
+    publish: {
+      kicker: '04 — Validation & publication',
+      titleParts: [
+        { text: 'Publiez en ' },
+        { text: '1 clic', style: 'orange' },
+        { text: ' sur tous vos réseaux.' },
+      ] as TitlePart[],
+      lead: 'Choisissez vos comptes connectés, vérifiez la publication puis publiez tout depuis le même endroit.',
+      socialLabel: '6 plateformes disponibles',
+      cta: 'Lancer mes 14 jours gratuits',
+    },
+  },
+  en: {
+    inputs: {
+      kicker: '02 — Your jobs',
+      titleParts: [
+        { text: 'Add your ' },
+        { text: 'photos / videos', style: 'blue' },
+        { text: ' + ' },
+        { text: '1 voice note', style: 'underline' },
+        { text: ' (30sec)' },
+      ] as TitlePart[],
+      lead: 'From the job, import your recent work, then describe what you did, out loud.',
+      photoCaption: 'Photo',
+      vocalCaption: 'Voice note · 10 seconds',
+      ctaMobile: 'See pricing',
+    },
+    publish: {
+      kicker: '04 — Validation & publishing',
+      titleParts: [
+        { text: 'Publish in ' },
+        { text: '1 click', style: 'orange' },
+        { text: ' to your 6 networks, including Google Business.' },
+      ] as TitlePart[],
+      lead: 'Your social media post is sent at once to Facebook, Instagram, LinkedIn, Google Business, TikTok and YouTube.',
+      socialLabel: '6 platforms available',
+      cta: 'Start my free 14-day trial',
+    },
+  },
+}[locale];
 ---
 
 <section class="op-step op-step--inputs" aria-labelledby="op-inputs-title">
   <div class="op-container op-inputs-v3">
     <div class="op-step__copy">
-      <p class="op-kicker">02 — Vos chantiers</p>
-      <h2 id="op-inputs-title">Ajoutez vos <span class="box-decoration-clone rounded-lg bg-[#00518f] px-2 py-0 text-white">photos / vidéos</span> + <span class="underline">1 vocal</span> (30sec)</h2>
-      <p>Depuis votre chantier ou chez vous, importez vos réalisations puis décrivez rapidement à voix haute ce que vous avez fait .</p>
-      <a class="op-button op-button--ghost-light op-inputs-v3__cta-mobile" href="#tarifs">Voir les tarifs</a>
+      <p class="op-kicker">{copy.inputs.kicker}</p>
+      <h2 id="op-inputs-title"><HighlightedTitle parts={copy.inputs.titleParts} /></h2>
+      <p>{copy.inputs.lead}</p>
+      <a class="op-button op-button--ghost-light op-inputs-v3__cta-mobile" href="#tarifs">{copy.inputs.ctaMobile}</a>
     </div>
     <div class="op-inputs-v3__proof" style={`--op-proof-background: url("${electricienVocal.src}")`}>
       <figure class="op-inputs-v3__shot op-inputs-v3__shot--upload">
         <Image src={uploadMedia} alt="Zone réelle pour ajouter des photos et vidéos" loading="lazy" decoding="async" />
-        <figcaption>Photo</figcaption>
+        <figcaption>{copy.inputs.photoCaption}</figcaption>
       </figure>
       <figure class="op-inputs-v3__shot op-inputs-v3__shot--vocal">
         <Image src={recordVocal} alt="Bouton réel pour enregistrer un vocal" loading="lazy" decoding="async" />
-        <figcaption>Vocal · 10 secondes</figcaption>
+        <figcaption>{copy.inputs.vocalCaption}</figcaption>
       </figure>
     </div>
   </div>
 </section>
 
-<OnePageSmartAiLab />
+<OnePageSmartAiLab locale={locale} />
 
 <section class="op-step op-step--publish" aria-labelledby="op-publish-title">
   <div class="op-grid op-container op-step__grid">
     <div class="op-step__copy op-step__copy--left">
-      <p class="op-kicker op-kicker--light">04 — Validation & publication</p>
-      <h2 id="op-publish-title">Publiez en <span class="box-decoration-clone rounded-lg bg-[#f4862d] px-2 py-0 text-white">1 clic</span> sur tous vos réseaux.</h2>
-      <p>Choisissez vos comptes connectés, vérifiez la publication puis publiez tout depuis le même endroit.</p>
-      <OnePageSocialLogos label="6 plateformes disponibles" onDark={true} compact={true} />
+      <p class="op-kicker op-kicker--light">{copy.publish.kicker}</p>
+      <h2 id="op-publish-title"><HighlightedTitle parts={copy.publish.titleParts} /></h2>
+      <p>{copy.publish.lead}</p>
+      <OnePageSocialLogos label={copy.publish.socialLabel} onDark={true} compact={true} />
     </div>
     <div class="op-publish-composition">
       <div class="op-publish-composition__networks">
@@ -53,6 +117,6 @@ const signupUrl = 'https://app.publichantier.fr/?signup=yes';
     </div>
   </div>
   <div class="op-publish__cta">
-    <OnePageButton href={signupUrl}>Lancer mes 14 jours gratuits</OnePageButton>
+    <OnePageButton href={signupUrl}>{copy.publish.cta}</OnePageButton>
   </div>
 </section>

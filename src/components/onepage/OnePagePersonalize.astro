@@ -3,14 +3,51 @@ import { Image } from 'astro:assets';
 import chantierFini from '../../assets/onepage/backgrounds/personalize-chantier-v1.png';
 import identityVisuelle from '../../assets/onepage/personalize/identity-visuelle.png';
 import styleTexte from '../../assets/onepage/personalize/style-texte.png';
+import HighlightedTitle, { type TitlePart } from './HighlightedTitle.astro';
+import { type Locale } from '../../i18n';
+
+interface Props {
+  locale?: Locale;
+}
+
+const { locale = 'fr' } = Astro.props;
+
+const copy = {
+  fr: {
+    kicker: '01 — Personnaliser',
+    titleParts: [
+      { text: 'Personnalisez', style: 'orange' },
+      { text: ' votre ' },
+      { text: 'IA', style: 'underline' },
+      { text: ' aux couleurs de votre ' },
+      { text: 'entreprise', style: 'underline' },
+    ] as TitlePart[],
+    lead: "Ajoutez votre logo, vos couleurs, le ton que vous souhaitez utiliser et plein d'autres personnalisations, simple à mettre en place.",
+    configuredName: 'Structor',
+    configuredStatus: 'Entreprise configurée',
+  },
+  en: {
+    kicker: '01 — Personalize',
+    titleParts: [
+      { text: 'Customize', style: 'orange' },
+      { text: ' your ' },
+      { text: 'AI', style: 'underline' },
+      { text: ' with your ' },
+      { text: "company's colors", style: 'underline' },
+    ] as TitlePart[],
+    lead: 'Add your logo, your colors, the tone you want to use, and plenty of other customizations — simple to set up.',
+    configuredName: 'Structor',
+    configuredStatus: 'Company configured',
+  },
+}[locale];
 ---
 
 <section class="op-personalize" aria-labelledby="op-personalize-title">
   <div class="op-grid op-container op-personalize__grid">
     <div class="op-personalize__copy">
-      <p class="op-kicker">01 — Personnaliser</p>
-      <h2 id="op-personalize-title"><span class="box-decoration-clone rounded-lg bg-[#f4862d] px-2 py-0 text-white">Personnalisez</span> votre <span class="underline">IA</span> aux couleurs de votre <span class="underline">entreprise</span></h2>
-      <p>Ajoutez votre logo, vos couleurs, le ton que vous souhaitez utiliser et plein d'autres personnalisations, simple à mettre en place.</p>
+      <p class="op-kicker">{copy.kicker}</p>
+      <h2 id="op-personalize-title"><HighlightedTitle parts={copy.titleParts} /></h2>
+      <p>{copy.lead}</p>
     </div>
 
     <div class="op-personalize__visual">
@@ -28,10 +65,10 @@ import styleTexte from '../../assets/onepage/personalize/style-texte.png';
           decoding="async"
         />
         <span class="op-personalize__configured-text">
-          <span class="op-personalize__configured-name">Structor</span>
+          <span class="op-personalize__configured-name">{copy.configuredName}</span>
           <span class="op-personalize__configured-status">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5" /></svg>
-            Entreprise configurée
+            {copy.configuredStatus}
           </span>
         </span>
       </p>
