@@ -47,29 +47,34 @@ const faqHref = locale === 'fr' ? '/fr/#faq' : '/en/#faq';
   </div>
 </header>
 
-<script>
-  const menu = document.querySelector<HTMLDetailsElement>('[data-mobile-menu]');
-  const toggle = menu?.querySelector<HTMLElement>('[data-menu-toggle]');
-  const closeButton = menu?.querySelector<HTMLButtonElement>('[data-menu-close]');
-  const links = menu?.querySelectorAll<HTMLAnchorElement>('[data-menu-link], .op-mobile-menu__cta, .v31-lang');
+<script is:inline>
+  (function () {
+    if (typeof window === 'undefined') return;
+    var menu = document.querySelector('[data-mobile-menu]');
+    if (!menu) return;
+    var toggle = menu.querySelector('[data-menu-toggle]');
+    var closeButton = menu.querySelector('[data-menu-close]');
+    var links = menu.querySelectorAll('[data-menu-link], .op-mobile-menu__cta, .v31-lang');
 
-  const setMenuOpen = (open: boolean, restoreFocus = false) => {
-    if (!menu || !toggle) return;
-    menu.open = open;
-    toggle.setAttribute('aria-expanded', String(open));
-    toggle.setAttribute('aria-label', open ? 'Fermer le menu' : 'Ouvrir le menu');
-    if (open) closeButton?.focus();
-    if (!open && restoreFocus) toggle.focus();
-  };
+    function setMenuOpen(open, restoreFocus) {
+      menu.open = open;
+      if (toggle) {
+        toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+        toggle.setAttribute('aria-label', open ? 'Fermer le menu' : 'Ouvrir le menu');
+      }
+      if (open && closeButton) closeButton.focus();
+      if (!open && restoreFocus && toggle) toggle.focus();
+    }
 
-  menu?.addEventListener('toggle', () => {
-    if (!toggle) return;
-    toggle.setAttribute('aria-expanded', String(menu.open));
-    toggle.setAttribute('aria-label', menu.open ? 'Fermer le menu' : 'Ouvrir le menu');
-  });
-  closeButton?.addEventListener('click', () => setMenuOpen(false, true));
-  links?.forEach((link) => link.addEventListener('click', () => setMenuOpen(false)));
-  window.addEventListener('keydown', (event) => {
-    if (event.key === 'Escape' && menu?.open) setMenuOpen(false, true);
-  });
+    menu.addEventListener('toggle', function () {
+      if (!toggle) return;
+      toggle.setAttribute('aria-expanded', menu.open ? 'true' : 'false');
+      toggle.setAttribute('aria-label', menu.open ? 'Fermer le menu' : 'Ouvrir le menu');
+    });
+    if (closeButton) closeButton.addEventListener('click', function () { setMenuOpen(false, true); });
+    links.forEach(function (link) { link.addEventListener('click', function () { setMenuOpen(false); }); });
+    window.addEventListener('keydown', function (event) {
+      if (event.key === 'Escape' && menu.open) setMenuOpen(false, true);
+    });
+  })();
 </script>
