@@ -7,7 +7,7 @@ const signupUrl = 'https://app.publichantier.fr/?signup=yes';
 const loginUrl = 'https://app.publichantier.fr/';
 const locale: Locale = getLocaleFromPath(Astro.url.pathname);
 const t = dict[locale];
-const featuresHref = locale === 'fr' ? '/fr/' : '/en/';
+const pricingHref = locale === 'fr' ? '#tarifs' : '#pricing';
 const faqHref = locale === 'fr' ? '/fr/#faq' : '/en/#faq';
 ---
 
@@ -18,7 +18,7 @@ const faqHref = locale === 'fr' ? '/fr/#faq' : '/en/#faq';
     </a>
 
     <nav class="op-header__desktop-nav" aria-label={t.common.footer.heading}>
-      <a href={`#${locale === 'fr' ? 'tarifs' : 'pricing'}`}>{t.common.nav.pricing}</a>
+      <a href={pricingHref}>{t.common.nav.pricing}</a>
       <a href={faqHref}>{t.common.nav.faq}</a>
       <LanguageSwitcher locale={locale} pathname={Astro.url.pathname} />
       <OnePageButton href={signupUrl} class="op-header__cta">{t.common.nav.cta}</OnePageButton>
@@ -36,7 +36,7 @@ const faqHref = locale === 'fr' ? '/fr/#faq' : '/en/#faq';
           <button type="button" aria-label={t.common.language.label} data-menu-close>×</button>
         </div>
         <nav aria-label={t.common.footer.heading}>
-          <a href={`#${locale === 'fr' ? 'tarifs' : 'pricing'}`} data-menu-link>{t.common.nav.pricing}</a>
+          <a href={pricingHref} data-menu-link>{t.common.nav.pricing}</a>
           <a href={faqHref} data-menu-link>{t.common.nav.faq}</a>
           <LanguageSwitcher locale={locale} pathname={Astro.url.pathname} />
           <OnePageButton href={signupUrl} class="op-mobile-menu__cta">{t.common.nav.cta}</OnePageButton>
@@ -49,27 +49,30 @@ const faqHref = locale === 'fr' ? '/fr/#faq' : '/en/#faq';
 
 <script>
   const menu = document.querySelector<HTMLDetailsElement>('[data-mobile-menu]');
-  const toggle = menu?.querySelector<HTMLElement>('[data-menu-toggle]');
-  const closeButton = menu?.querySelector<HTMLButtonElement>('[data-menu-close]');
-  const links = menu?.querySelectorAll<HTMLAnchorElement>('[data-menu-link], .op-mobile-menu__cta, .v31-lang');
+  if (menu) {
+    const toggle = menu.querySelector<HTMLElement>('[data-menu-toggle]');
+    const closeButton = menu.querySelector<HTMLButtonElement>('[data-menu-close]');
+    const links = menu.querySelectorAll<HTMLAnchorElement>('[data-menu-link], .op-mobile-menu__cta, .v31-lang');
 
-  const setMenuOpen = (open: boolean, restoreFocus = false) => {
-    if (!menu || !toggle) return;
-    menu.open = open;
-    toggle.setAttribute('aria-expanded', String(open));
-    toggle.setAttribute('aria-label', open ? 'Fermer le menu' : 'Ouvrir le menu');
-    if (open) closeButton?.focus();
-    if (!open && restoreFocus) toggle.focus();
-  };
+    const setMenuOpen = (open: boolean, restoreFocus = false) => {
+      menu.open = open;
+      if (toggle) {
+        toggle.setAttribute('aria-expanded', String(open));
+        toggle.setAttribute('aria-label', open ? 'Fermer le menu' : 'Ouvrir le menu');
+      }
+      if (open) closeButton?.focus();
+      if (!open && restoreFocus && toggle) toggle.focus();
+    };
 
-  menu?.addEventListener('toggle', () => {
-    if (!toggle) return;
-    toggle.setAttribute('aria-expanded', String(menu.open));
-    toggle.setAttribute('aria-label', menu.open ? 'Fermer le menu' : 'Ouvrir le menu');
-  });
-  closeButton?.addEventListener('click', () => setMenuOpen(false, true));
-  links?.forEach((link) => link.addEventListener('click', () => setMenuOpen(false)));
-  window.addEventListener('keydown', (event) => {
-    if (event.key === 'Escape' && menu?.open) setMenuOpen(false, true);
-  });
+    menu.addEventListener('toggle', () => {
+      if (!toggle) return;
+      toggle.setAttribute('aria-expanded', String(menu.open));
+      toggle.setAttribute('aria-label', menu.open ? 'Fermer le menu' : 'Ouvrir le menu');
+    });
+    closeButton?.addEventListener('click', () => setMenuOpen(false, true));
+    links.forEach((link) => link.addEventListener('click', () => setMenuOpen(false)));
+    window.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape' && menu.open) setMenuOpen(false, true);
+    });
+  }
 </script>
