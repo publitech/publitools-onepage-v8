@@ -74,15 +74,22 @@ const resultCards: Array<{
       </div>
     </div>
 
-    <div class="op-results__cards">
-      {resultCards.map((card) => (
-        <article class={`op-result-card op-result-card--${card.tone}`}>
-          <figure class="op-result-card__media">
-            <img src={card.image} alt={card.alt} loading="lazy" decoding="async" />
-          </figure>
-          <h3 class="op-result-card__title">{card.title}</h3>
-        </article>
-      ))}
+    <div class="op-results__cards-wall">
+      <header class="op-results__cards-head">
+        <p class="op-kicker">Résultat</p>
+        <h3 class="op-results__cards-title">Des résultats <span class="box-decoration-clone rounded-lg bg-[#f4862d] px-2 py-0 text-white">qui payent les factures</span></h3>
+        <p class="op-results__cards-support">Avant / après utilisations (constaté sur 50+ artisans en 3 mois)</p>
+      </header>
+      <div class="op-results__cards">
+        {resultCards.map((card) => (
+          <article class={`op-result-card op-result-card--${card.tone}`}>
+            <figure class="op-result-card__media">
+              <img src={card.image} alt={card.alt} loading="lazy" decoding="async" />
+            </figure>
+            <h3 class="op-result-card__title">{card.title}</h3>
+          </article>
+        ))}
+      </div>
     </div>
     <p class="op-results__note">Les résultats varient selon l'activité, la zone, la régularité et la présence existante.</p>
   </div>
