@@ -57,6 +57,11 @@
   line-height: 1.32;
   letter-spacing: -0.015em;
   text-wrap: balance;
+  min-height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
 }
 
 .op-result-card--orange {
@@ -103,6 +108,7 @@
   .op-result-card__title {
     font-size: 20px;
     padding: 24px 24px 28px;
+    min-height: 88px;
   }
 }
 
@@ -119,6 +125,7 @@
   .op-result-card__title {
     font-size: 22px;
     padding: 28px 28px 32px;
+    min-height: 96px;
   }
 }
 
