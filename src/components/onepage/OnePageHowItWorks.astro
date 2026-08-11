@@ -7,6 +7,9 @@ import publishTiming from '../../assets/onepage/ui/publish-timing-v7.jpeg';
 import electricienVocal from '../../assets/onepage/backgrounds/electricien-vocal.png';
 import OnePageSocialLogos from './OnePageSocialLogos.astro';
 import OnePageSmartAiLab from './OnePageSmartAiLab.astro';
+import OnePageButton from './OnePageButton.astro';
+
+const signupUrl = 'https://app.publichantier.fr/?signup=yes';
 ---
 
 <section class="op-step op-step--inputs" aria-labelledby="op-inputs-title">
@@ -47,5 +50,8 @@ import OnePageSmartAiLab from './OnePageSmartAiLab.astro';
         <Image src={publishTiming} alt="Écran réel de publication immédiate ou planifiée" loading="lazy" decoding="async" />
       </div>
     </div>
+  </div>
+  <div class="op-publish__cta">
+    <OnePageButton href={signupUrl}>Lancer mes 14 jours gratuits</OnePageButton>
   </div>
 </section>
