@@ -1,6 +1,8 @@
 ---
 import '../styles/global.css';
 import V31Footer from '../components/v31/V31Footer.astro';
+import { dict, localeConfig, type Locale, buildHreflang } from '../i18n';
+import { buildHreflang as buildHreflangImpl } from '../lib/seo';
 
 interface Props {
   title: string;
@@ -10,6 +12,8 @@ interface Props {
   schema?: Record<string, unknown>[];
   footerNetworkText?: string;
   footer?: boolean;
+  locale?: Locale;
+  pathname?: string;
 }
 
 const {
@@ -20,26 +24,38 @@ const {
   schema = [],
   footerNetworkText,
   footer = true,
+  locale = 'fr',
+  pathname = '/fr/',
 } = Astro.props;
+
+const cfg = localeConfig[locale];
+const hreflangs = buildHreflangImpl(pathname, locale);
 ---
 
 <!doctype html>
-<html lang="fr">
+<html lang={cfg.htmlLang}>
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="generator" content={Astro.generator} />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-        <link rel="icon" sizes="any" href="/favicon.ico" />
-        <link rel="icon" type="image/png" sizes="512x512" href="/favicon-512.png" />
-        <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
-        <link rel="canonical" href={canonical} />
+    <link rel="icon" sizes="any" href="/favicon.ico" />
+    <link rel="icon" type="image/png" sizes="512x512" href="/favicon-512.png" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="canonical" href={canonical} />
+    {hreflangs.map((entry) => (
+      <link
+        rel="alternate"
+        hreflang={entry.hreflang}
+        href={entry.href}
+      />
+    ))}
     <title>{title}</title>
     <meta name="description" content={description} />
     <meta name="robots" content="noindex,nofollow" />
     <meta property="og:type" content="website" />
-    <meta property="og:locale" content="fr_FR" />
-    <meta property="og:site_name" content="PubliTools" />
+    <meta property="og:locale" content={cfg.ogLocale} />
+    <meta property="og:site_name" content={cfg.siteName} />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:url" content={canonical} />
@@ -54,11 +70,11 @@ const {
   </head>
   <body>
     <a href="#page-content" class="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-50 focus:rounded-full focus:bg-white focus:px-4 focus:py-3 focus:text-sm focus:font-semibold focus:text-slate-900">
-      Aller au contenu principal
+      {dict[locale].common.skip}
     </a>
     <div id="page-content">
       <slot />
     </div>
-    {footer && <V31Footer networkText={footerNetworkText} />}
+    {footer && <V31Footer networkText={footerNetworkText} locale={locale} />}
   </body>
 </html>
