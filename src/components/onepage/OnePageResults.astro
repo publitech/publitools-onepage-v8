@@ -1,7 +1,4 @@
 ---
-import renovationInputs from '../../assets/onepage/backgrounds/renovation-inputs-v7.png';
-import renovationResults from '../../assets/onepage/backgrounds/renovation-results-v7.png';
-
 const socialOutputs = [
   { network: 'Instagram', key: 'instagram', icon: '/social/instagram-official.svg', src: '/assets/onepage/mockups-v8/mockup-instagram.jpg' },
   { network: 'Facebook', key: 'facebook', icon: '/social/facebook-official.svg', src: '/assets/onepage/mockups-v8/mockup-facebook.jpg' },
@@ -9,6 +6,24 @@ const socialOutputs = [
   { network: 'LinkedIn', key: 'linkedin', icon: '/social/linkedin-official.svg', src: '/assets/onepage/mockups-v8/mockup-linkedin.jpg' },
   { network: 'Google Business', key: 'google', icon: '/social/google-official.svg', src: '/assets/onepage/mockups-v8/mockup-google.jpg' },
   { network: 'YouTube', key: 'youtube', icon: '/social/youtube-official.svg', src: '/assets/onepage/mockups-v8/mockup-youtube.jpg' },
+];
+
+const resultCards = [
+  {
+    image: '/assets/onepage/results/tableau-de-bord-instagram.jpg',
+    alt: "Tableau de bord professionnel Instagram avec statistiques de vues et portée",
+    title: "Jusqu'à +600% de vues sur les réseaux sociaux",
+  },
+  {
+    image: '/assets/onepage/results/google-positions-publitools.jpg',
+    alt: "Courbe de progression des positions Google Business sur 6 mois",
+    title: "+12 positions sur Google observées",
+  },
+  {
+    image: '/assets/onepage/results/gmail-reception-devis.jpg',
+    alt: "Boîte de réception Gmail avec nouvelles demandes de devis reçues",
+    title: "Jusqu'à +40% de demandes de devis",
+  },
 ];
 ---
 
@@ -49,15 +64,15 @@ const socialOutputs = [
       </div>
     </div>
 
-    <div class="op-results__strip">
-      <article style={`--op-stat-background: url("${renovationInputs.src}")`}>
-        <strong>Jusqu'à <span>+600&nbsp;%</span></strong>
-        <p>de vues sur les posts chantier</p>
-      </article>
-      <article style={`--op-stat-background: url("${renovationResults.src}")`}>
-        <strong>Jusqu'à <span>+40&nbsp;%</span></strong>
-        <p>de demandes de devis</p>
-      </article>
+    <div class="op-results__cards">
+      {resultCards.map((card) => (
+        <article class="op-result-card">
+          <figure class="op-result-card__media">
+            <img src={card.image} alt={card.alt} loading="lazy" decoding="async" />
+          </figure>
+          <h3 class="op-result-card__title">{card.title}</h3>
+        </article>
+      ))}
     </div>
     <p class="op-results__note">Les résultats varient selon l'activité, la zone, la régularité et la présence existante.</p>
   </div>
