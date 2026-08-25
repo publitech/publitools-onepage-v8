@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Télécharger toutes les images de la page d'accueil - PubliTools</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background: #f5f5f5;
+        }
+        .container {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #333;
+            margin-bottom: 20px;
+        }
+        .image-list {
+            margin: 20px 0;
+            max-height: 400px;
+            overflow-y: auto;
+            border: 1px solid #ddd;
+            padding: 10px;
+            border-radius: 5px;
+            background: #fafafa;
+        }
+        .image-list h3 {
+            margin-top: 0;
+            color: #555;
+        }
+        .image-count {
+            background: #007bff;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            display: inline-block;
+            margin: 10px 0;
+            font-weight: bold;
+        }
+        .download-btn {
+            background: #28a745;
+            color: white;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            margin: 10px 0;
+            display: block;
+            width: 100%;
+            max-width: 300px;
+            margin-left: auto;
+            margin-right: auto;
+            transition: background 0.3s;
+        }
+        .download-btn:hover {
+            background: #218838;
+        }
+        .download-btn:disabled {
+            background: #6c757d;
+            cursor: not-allowed;
+        }
+        .status {
+            margin: 10px 0;
+            padding: 10px;
+            border-radius: 5px;
+            display: none;
+        }
+        .status.success {
+            background: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+        .status.error {
+            background: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+        .image-url {
+            font-family: monospace;
+            font-size: 12px;
+            margin: 5px 0;
+            padding: 5px;
+            background: white;
+            border-left: 3px solid #007bff;
+            padding-left: 10px;
+        }
+        .loading {
+            text-align: center;
+            padding: 20px;
+        }
+        .progress {
+            width: 100%;
+            height: 20px;
+            background-color: #f3f3f3;
+            border-radius: 10px;
+            margin: 10px 0;
+            display: none;
+        }
+        .progress-bar {
+            height: 100%;
+            background-color: #007bff;
+            border-radius: 10px;
+            width: 0%;
+            transition: width 0.3s;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>📸 Télécharger toutes les images de la page d'accueil</h1>
+        <p>Téléchargez toutes les images visibles sur la page d'accueil de PubliTools en un seul fichier ZIP.</p>
+        
+        <div class="image-count">Nombre d'images à télécharger : <span id="count">0</span></div>
+        
+        <button class="download-btn" id="downloadBtn" onclick="downloadAllImages()">
+            📥 Télécharger toutes les images
+        </button>
+        
+        <div class="progress" id="progress">
+            <div class="progress-bar" id="progressBar"></div>
+        </div>
+        
+        <div class="status" id="status"></div>
+        
+        <div class="image-list">
+            <h3>Liste des images à télécharger :</h3>
+            <div id="imageList"></div>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+    <script>
+        // Toutes les URLs d'images de la page d'accueil
+        const imageUrls = [
+            // Preuves de chantiers (21 images)
+            'https://publitools.ai/assets/site-v31/chantier-source/btp-renov-chantier-01-facade.webp',
+            'https://publitools.ai/assets/site-v31/chantier-source/btp-renov-chantier-02-bathroom.webp',
+            'https://publitools.ai/assets/site-v31/chantier-source/btp-renov-chantier-03-kitchen.webp',
+            'https://publitools.ai/assets/site-v31/chantier-source/btp-renov-chantier-04-exterior.webp',
+            'https://publitools.ai/assets/site-v31/chantier-source/btp-renov-chantier-05-detail.webp',
+            'https://publitools.ai/assets/site-v31/chantier-source/btp-renov-chantier-06-stairs.webp',
+            'https://publitools.ai/assets/site-v31/chantier-source/btp-renov-chantier-07-tiling.webp',
+            'https://publitools.ai/assets/site-v31/chantier-source/btp-renov-chantier-08-painting.webp',
+            'https://publitools.ai/assets/site-v31/chantier-source/btp-renov-chantier-09-flooring.webp',
+            'https://publitools.ai/assets/site-v31/chantier-source/btp-renov-chantier-10-plumbing.webp',
+            'https://publitools.ai/assets/site-v31/chantier-source/btp-renov-chantier-11-roofing.webp',
+            'https://publitools.ai/assets/site-v31/chantier-source/btp-renov-chantier-12-windows.webp',
+            'https://publitools.ai/assets/site-v31/chantier-source/btp-renov-chantier-13-insulation.webp',
+            'https://publitools.ai/assets/site-v31/chantier-source/btp-renov-chantier-14-electricity.webp',
+            'https://publitools.ai/assets/site-v31/chantier-source/btp-renov-chantier-15-carpentry.webp',
+            'https://publitools.ai/assets/site-v31/chantier-source/btp-renov-chantier-16-masonry.webp',
+            'https://publitools.ai/assets/site-v31/chantier-source/btp-renov-chantier-17-demolition.webp',
+            'https://publitools.ai/assets/site-v31/chantier-source/btp-renov-chantier-18-finishing.webp',
+            'https://publitools.ai/assets/site-v31/chantier-source/btp-renov-chantier-19-site.webp',
+            'https://publitools.ai/assets/site-v31/chantier-source/btp-renov-chantier-20-delivery.webp',
+            'https://publitools.ai/assets/site-v31/chantier-source/btp-renov-chantier-21-team.webp',
+            // Logo et icônes
+            'https://publitools.ai/logo-icon.svg',
+            'https://publitools.ai/favicon-512.png',
+        ];
+        
+        // Afficher la liste des images
+        function displayImageList() {
+            const imageList = document.getElementById('imageList');
+            imageList.innerHTML = '';
+            
+            imageUrls.forEach((url, index) => {
+                const div = document.createElement('div');
+                div.className = 'image-url';
+                div.textContent = `${(index + 1).toString().padStart(2, '0')}. ${url}`;
+                imageList.appendChild(div);
+            });
+            
+            document.getElementById('count').textContent = imageUrls.length;
+        }
+        
+        // Télécharger une image individuelle
+        async function downloadImage(url, index) {
+            return new Promise((resolve, reject) => {
+                const xhr = new XMLHttpRequest();
+                xhr.responseType = 'blob';
+                xhr.onload = function() {
+                    if (xhr.status === 200) {
+                        const blob = xhr.response;
+                        const filename = url.split('/').pop() || `image-${index}.webp`;
+                        
+                        // Ajouter au ZIP
+                        zip.file(filename, blob);
+                        resolve(filename);
+                    } else {
+                        reject(new Error(`HTTP ${xhr.status}`));
+                    }
+                };
+                xhr.onerror = function() {
+                    reject(new Error('Erreur réseau'));
+                };
+                xhr.onprogress = function(e) {
+                    if (e.lengthComputable) {
+                        const progress = ((index + 1) / imageUrls.length) * 100;
+                        document.getElementById('progressBar').style.width = progress + '%';
+                    }
+                };
+                xhr.open('GET', url);
+                xhr.send();
+            });
+        }
+        
+        let zip;
+        
+        // Télécharger toutes les images
+        async function downloadAllImages() {
+            const downloadBtn = document.getElementById('downloadBtn');
+            const status = document.getElementById('status');
+            const progress = document.getElementById('progress');
+            
+            // Désactiver le bouton
+            downloadBtn.disabled = true;
+            downloadBtn.textContent = '📥 Téléchargement en cours...';
+            progress.style.display = 'block';
+            status.style.display = 'none';
+            
+            try {
+                // Initialiser JSZip
+                zip = new JSZip();
+                
+                // Télécharger toutes les images
+                for (let i = 0; i < imageUrls.length; i++) {
+                    try {
+                        await downloadImage(imageUrls[i], i);
+                        console.log(`✓ Téléchargée: ${imageUrls[i].split('/').pop()}`);
+                    } catch (err) {
+                        console.error(`✗ Erreur: ${imageUrls[i]} - ${err.message}`);
+                    }
+                }
+                
+                // Générer le ZIP
+                status.style.display = 'block';
+                status.className = 'status success';
+                status.innerHTML = '✅ Toutes les images téléchargées avec succès!';
+                
+                // Générer le fichier ZIP et le télécharger
+                const zipBlob = await zip.generateAsync({ type: 'blob' });
+                const url = URL.createObjectURL(zipBlob);
+                const a = document.createElement('a');
+                a.href = url;
+                a.download = 'publitools-homepage-images.zip';
+                document.body.appendChild(a);
+                a.click();
+                document.body.removeChild(a);
+                URL.revokeObjectURL(url);
+                
+                downloadBtn.disabled = false;
+                downloadBtn.textContent = '📥 Télécharger toutes les images';
+                progress.style.display = 'none';
+                
+            } catch (error) {
+                status.style.display = 'block';
+                status.className = 'status error';
+                status.innerHTML = '❌ Erreur lors du téléchargement: ' + error.message;
+                
+                downloadBtn.disabled = false;
+                downloadBtn.textContent = '📥 Télécharger toutes les images';
+                progress.style.display = 'none';
+            }
+        }
+        
+        // Initialiser
+        displayImageList();
+    </script>
+</body>
+</html>
