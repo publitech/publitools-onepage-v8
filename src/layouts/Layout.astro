@@ -14,6 +14,7 @@ interface Props {
   locale?: Locale;
   pathname?: string;
   alternates?: Array<{ hreflang: string; href: string }>;
+  ogType?: 'website' | 'article';
 }
 
 const SITE_URL = 'https://publitools.ai';
@@ -103,7 +104,7 @@ const fav = (path: string) => `${path}?v=${FAVICON_VERSION}`;
     <title>{title}</title>
     <meta name="description" content={description} />
     <meta name="robots" content="index, follow" />
-    <meta property="og:type" content="website" />
+    <meta property="og:type" content={Astro.props.ogType ?? 'website'} />
     <meta property="og:locale" content={cfg.ogLocale} />
     <meta property="og:site_name" content={cfg.siteName} />
     <meta property="og:title" content={title} />
@@ -115,7 +116,7 @@ const fav = (path: string) => `${path}?v=${FAVICON_VERSION}`;
     <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content={image} />
     {schema.length > 0 && (
-      <script type="application/ld+json" set:html={JSON.stringify(schema)} />
+      <script type="application/ld+json" set:html={JSON.stringify(schema).replace(/</g, '\\u003c')} />
     )}
   </head>
   <body>

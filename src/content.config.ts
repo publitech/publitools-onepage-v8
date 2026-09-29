@@ -55,4 +55,23 @@ const homepage = defineCollection({
   }).passthrough(),
 });
 
-export const collections = { homepage };
+const blog = defineCollection({
+  loader: glob({ pattern: '**/*.mdx', base: './src/content/blog' }),
+  schema: ({ image }) => z.object({
+    title: z.string().min(1),
+    locale: z.enum(['fr', 'en', 'es', 'de']),
+    draft: z.boolean().default(true),
+    description: z.string().min(1).max(180),
+    seoTitle: z.string().optional(),
+    category: z.enum(['social', 'local', 'photos', 'ai']),
+    author: z.string().min(1),
+    publishedAt: z.coerce.date(),
+    updatedAt: z.preprocess(value => value || undefined, z.coerce.date().optional()),
+    translationKey: z.string().optional(),
+    cover: image(),
+    coverAlt: z.string().min(1),
+    takeaways: z.array(z.string()).default([]),
+  }),
+});
+
+export const collections = { homepage, blog };

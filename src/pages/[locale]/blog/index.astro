@@ -1,0 +1,8 @@
+---
+import BlogIndex from '../../../components/blog/BlogIndex.astro';
+export function getStaticPaths() {
+  return ['en', 'es', 'de'].map(locale => ({ params: { locale } }));
+}
+const locale = Astro.params.locale as 'en' | 'es' | 'de';
+---
+<BlogIndex locale={locale} />

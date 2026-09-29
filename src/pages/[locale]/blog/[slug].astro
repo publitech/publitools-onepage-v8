@@ -1,0 +1,56 @@
+---
+import { render, type CollectionEntry } from 'astro:content';
+import { Image } from 'astro:assets';
+import BlogShell from '../../../components/blog/BlogShell.astro';
+import ArticleCard from '../../../components/blog/ArticleCard.astro';
+import Callout from '../../../components/blog/Callout.astro';
+import { blogCopy, publishedPosts, postUrl } from '../../../lib/blog';
+
+export async function getStaticPaths() {
+  const posts = await publishedPosts();
+  return posts.map(post => ({ params: { locale: post.data.locale, slug: post.id }, props: { post, posts } }));
+}
+interface Props { post: CollectionEntry<'blog'>; posts: CollectionEntry<'blog'>[] }
+const { post, posts } = Astro.props;
+const { data } = post;
+const t = blogCopy[data.locale];
+const { Content, headings } = await render(post);
+const toc = headings.filter(heading => heading.depth === 2 || heading.depth === 3);
+const minutes = Math.max(1, Math.ceil((post.body ?? '').split(/\s+/u).filter(Boolean).length / 220));
+const related = posts.filter(entry => entry.id !== post.id && entry.data.locale === data.locale).sort((a, b) => Number(b.data.category === data.category) - Number(a.data.category === data.category)).slice(0, 2);
+const translations = data.translationKey ? posts.filter(entry => entry.data.translationKey === data.translationKey) : [post];
+const alternates = translations.map(entry => ({ hreflang: entry.data.locale, href: `https://publitools.ai${postUrl(entry)}` }));
+const url = `https://publitools.ai${postUrl(post)}`;
+const image = new URL(data.cover.src, Astro.site).href;
+const date = (value: Date) => value.toLocaleDateString(data.locale, { dateStyle: 'long', timeZone: 'UTC' });
+const schema = [
+  { '@context': 'https://schema.org', '@type': 'BlogPosting', headline: data.title, description: data.description, image, datePublished: data.publishedAt.toISOString(), dateModified: (data.updatedAt ?? data.publishedAt).toISOString(), author: { '@type': data.author === 'Équipe PubliTools' ? 'Organization' : 'Person', name: data.author }, publisher: { '@type': 'Organization', name: 'PubliTools', url: 'https://publitools.ai' }, mainEntityOfPage: url, url, inLanguage: data.locale, articleSection: t.subjects[data.category] },
+  { '@context': 'https://schema.org', '@type': 'BreadcrumbList', itemListElement: [{ '@type': 'ListItem', position: 1, name: t.home, item: `https://publitools.ai/${data.locale}/` }, { '@type': 'ListItem', position: 2, name: 'Blog', item: `https://publitools.ai/${data.locale}/blog/` }, { '@type': 'ListItem', position: 3, name: data.title, item: url }] },
+];
+---
+<BlogShell locale={data.locale} title={`${data.seoTitle || data.title} | PubliTools`} description={data.description} image={image} schema={schema} alternates={alternates} article>
+  <article>
+    <header class="bg-[#f6f2ea] px-5 pb-12 pt-8 md:pb-16">
+      <div class="mx-auto max-w-4xl">
+        <nav class="mb-10 flex flex-wrap gap-2 text-xs text-slate-600" aria-label="Fil d’Ariane"><a href={`/${data.locale}/`}>{t.home}</a><span aria-hidden="true">/</span><a href={`/${data.locale}/blog/`}>Blog</a><span aria-hidden="true">/</span><span aria-current="page">{data.title}</span></nav>
+        <a href={`/${data.locale}/blog/#${data.category}`} class="text-xs font-extrabold uppercase tracking-widest text-[#00518f]">{t.subjects[data.category]}</a>
+        <h1 class="mt-5 text-3xl font-extrabold leading-tight tracking-tight md:text-5xl">{data.title}</h1>
+        <p class="mt-6 text-lg leading-8 text-slate-600">{data.description}</p>
+        <div class="mt-7 flex flex-wrap gap-x-5 gap-y-2 text-xs leading-6 text-slate-600"><span class="font-bold text-[#262832]">{data.author}</span><span>{t.published} <time datetime={data.publishedAt.toISOString()}>{date(data.publishedAt)}</time></span><span>{minutes} {t.minutes}</span>{data.updatedAt && <span>{t.updated} <time datetime={data.updatedAt.toISOString()}>{date(data.updatedAt)}</time></span>}</div>
+      </div>
+    </header>
+    <div class="mx-auto max-w-6xl px-5 py-10">
+      <Image src={data.cover} alt={data.coverAlt} widths={[640, 960, 1280]} sizes="(max-width: 1152px) 100vw, 1152px" width={1280} format="webp" loading="eager" fetchpriority="high" class="max-h-[560px] w-full rounded-2xl object-cover" />
+      <div class="mt-12 grid items-start gap-12 lg:grid-cols-[240px_minmax(0,1fr)]">
+        {toc.length > 0 ? <nav class="rounded-xl border border-slate-200 p-6 lg:sticky lg:top-8" aria-label={t.toc}><h2 class="mb-5 text-sm font-extrabold">{t.toc}</h2><ol class="space-y-3">{toc.map(heading => <li class:list={['text-sm leading-6', heading.depth === 3 && 'pl-4']}><a class="text-slate-600 hover:text-[#00518f]" href={`#${heading.slug}`}>{heading.text}</a></li>)}</ol></nav> : <div />}
+        <div class="min-w-0 max-w-3xl">
+          {data.takeaways.length > 0 && <aside class="mb-10 rounded-xl bg-[#fff8df] p-7"><h2 class="mb-4 text-lg font-extrabold">{t.takeaways}</h2><ul class="list-disc space-y-3 pl-5 leading-7">{data.takeaways.map(point => <li>{point}</li>)}</ul></aside>}
+          <div class="text-base leading-8 text-slate-700 [overflow-wrap:anywhere] [&_h2]:mb-5 [&_h2]:mt-12 [&_h2]:scroll-mt-8 [&_h2]:text-2xl [&_h2]:font-extrabold [&_h2]:text-[#262832] [&_h3]:mb-4 [&_h3]:mt-8 [&_h3]:scroll-mt-8 [&_h3]:text-xl [&_h3]:font-bold [&_p]:my-5 [&_a]:text-[#00518f] [&_a]:underline [&_a]:underline-offset-4 [&_ul]:my-5 [&_ul]:list-disc [&_ul]:pl-6 [&_ol]:my-5 [&_ol]:list-decimal [&_ol]:pl-6 [&_li]:my-2 [&_blockquote]:my-8 [&_blockquote]:border-l-4 [&_blockquote]:border-[#fac43e] [&_blockquote]:pl-6 [&_blockquote]:italic [&_img]:my-8 [&_img]:h-auto [&_img]:max-w-full [&_img]:rounded-xl [&_table]:my-8 [&_table]:block [&_table]:overflow-x-auto [&_table]:border-collapse [&_td]:border [&_td]:border-slate-200 [&_td]:p-3 [&_th]:border [&_th]:border-slate-200 [&_th]:bg-[#f6f2ea] [&_th]:p-3 [&_pre]:overflow-x-auto [&_pre]:rounded-xl [&_pre]:p-5 [&_hr]:my-10">
+            <Content components={{ Callout }} />
+          </div>
+        </div>
+      </div>
+    </div>
+  </article>
+  {related.length > 0 && <section class="mx-auto max-w-6xl px-5 py-16"><h2 class="mb-8 text-2xl font-extrabold">{t.related}</h2><div class="grid gap-6 md:grid-cols-2">{related.map(entry => <ArticleCard post={entry} />)}</div></section>}
+</BlogShell>

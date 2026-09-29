@@ -1,0 +1,38 @@
+---
+import BlogShell from './BlogShell.astro';
+import ArticleCard from './ArticleCard.astro';
+import { blogCopy, blogLocales, publishedPosts, postUrl } from '../../lib/blog';
+import type { Locale } from '../../i18n';
+interface Props { locale: Locale }
+const { locale } = Astro.props;
+const t = blogCopy[locale];
+const posts = (await publishedPosts()).filter(post => post.data.locale === locale);
+const url = `https://publitools.ai/${locale}/blog/`;
+const alternates = blogLocales.map(code => ({ hreflang: code, href: `https://publitools.ai/${code}/blog/` }));
+const schema = [{ '@context': 'https://schema.org', '@type': 'CollectionPage', name: t.label, description: t.lead, url, inLanguage: locale, mainEntity: { '@type': 'ItemList', itemListElement: posts.map((post, index) => ({ '@type': 'ListItem', position: index + 1, name: post.data.title, url: `https://publitools.ai${postUrl(post)}` })) } }];
+---
+<BlogShell locale={locale} title={`${t.label} — ${t.subjects.social} & BTP`} description={t.lead} alternates={alternates} schema={schema}>
+  <section class="relative overflow-hidden bg-[#f6f2ea] px-5 pb-16 pt-10 md:pb-24">
+    <div class="pointer-events-none absolute -right-20 top-16 h-64 w-64 rotate-12 rounded-[3rem] border-[35px] border-[#fac43e]/30 md:h-96 md:w-96" aria-hidden="true"></div>
+    <div class="relative mx-auto max-w-6xl">
+      <nav class="mb-14 flex gap-2 text-xs text-slate-600" aria-label={t.home}><a href={`/${locale}/`}>{t.home}</a><span aria-hidden="true">/</span><span>Blog</span></nav>
+      <p class="mb-6 flex items-center gap-3 text-xs font-extrabold uppercase tracking-[0.2em]"><span class="h-2 w-2 rounded-full bg-[#f4862d]"></span>{t.label}</p>
+      <h1 class="max-w-4xl text-4xl font-extrabold leading-[1.12] tracking-tight md:text-6xl lg:text-7xl">{t.title}<br /><span class="text-[#00518f]">{t.accent}</span></h1>
+      <p class="mt-7 max-w-2xl text-lg leading-8 text-slate-600">{t.lead}</p>
+      <div class="mt-10 flex flex-wrap gap-3">{Object.entries(t.subjects).map(([key, label]) => posts.some(p => p.data.category === key) ? <a class="rounded-full border border-[#262832]/15 bg-white/80 px-4 py-2 text-xs font-semibold hover:border-[#00518f]" href={`#${key}`}>{label} ↘</a> : <span class="rounded-full border border-[#262832]/15 bg-white/80 px-4 py-2 text-xs font-semibold">{label}</span>)}</div>
+    </div>
+  </section>
+  <section class="mx-auto max-w-6xl px-5 py-16 md:py-20">
+    <div class="mb-8 flex items-center gap-6"><h2 class="shrink-0 text-xl font-extrabold md:text-2xl">{t.latest}</h2><span class="h-px w-full bg-slate-200"></span></div>
+    {posts.length ? <>
+      <div class="grid gap-6 md:grid-cols-2"><ArticleCard post={posts[0]} featured /></div>
+      {Object.entries(t.subjects).map(([key, label]) => {
+        const entries = posts.filter(post => post.data.category === key);
+        return entries.length > 0 && <section id={key} class="mt-14 scroll-mt-10"><h2 class="mb-6 text-2xl font-extrabold">{label}</h2><div class="grid gap-6 md:grid-cols-2">{entries.map(post => <ArticleCard post={post} />)}</div></section>;
+      })}
+    </> : <div class="grid overflow-hidden rounded-2xl border border-slate-200 md:grid-cols-[0.8fr_1.2fr]">
+      <div class="flex min-h-52 items-center justify-center bg-[#00518f] p-10" aria-hidden="true"><div class="-rotate-6 rounded-lg bg-[#f6f2ea] p-8 shadow-xl"><div class="mb-5 h-3 w-10 bg-[#f4862d]"></div><div class="mb-3 h-2 w-36 rounded bg-[#00518f]"></div><div class="mb-3 h-2 w-28 rounded bg-[#00518f]/40"></div><div class="h-2 w-32 rounded bg-[#00518f]/20"></div><div class="mt-7 text-2xl font-black tracking-tight">CUT.<br />BUILD.<br /><span class="text-[#00518f]">POST.</span></div></div></div>
+      <div class="bg-white p-8 md:p-12"><h3 class="max-w-lg text-2xl font-extrabold leading-snug">{t.empty}</h3><p class="mt-5 max-w-lg leading-8 text-slate-600">{t.emptyText}</p><a href={`/${locale}/`} class="mt-7 inline-block border-b-2 border-[#f4862d] pb-1 text-sm font-bold">{t.back} ↗</a></div>
+    </div>}
+  </section>
+</BlogShell>

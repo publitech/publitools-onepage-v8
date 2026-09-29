@@ -22,6 +22,7 @@ const loginUrl = t.common.nav.loginHref;
     <nav class="op-header__desktop-nav" aria-label={t.common.footer.heading}>
       <a href="#tarifs">{t.common.nav.pricing}</a>
       <a href="#faq">{t.common.nav.faq}</a>
+      <a href={`/${locale}/blog/`}>Blog</a>
       <OnePageButton href={signupUrl} class="op-header__cta">{t.common.nav.cta}</OnePageButton>
       <a href={loginUrl}>{t.common.nav.login}</a>
       <OnePageLanguageSwitcher locale={locale} variant="desktop" />
@@ -41,6 +42,7 @@ const loginUrl = t.common.nav.loginHref;
           <OnePageLanguageSwitcher locale={locale} variant="mobile" />
           <a href="#tarifs" data-menu-link>{t.common.nav.pricing}</a>
           <a href="#faq" data-menu-link>{t.common.nav.faq}</a>
+          <a href={`/${locale}/blog/`} data-menu-link>Blog</a>
           <OnePageButton href={signupUrl} class="op-mobile-menu__cta">{t.common.nav.cta}</OnePageButton>
           <a href={loginUrl} data-menu-link>{t.common.nav.login}</a>
         </nav>
