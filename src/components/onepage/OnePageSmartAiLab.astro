@@ -1,5 +1,6 @@
 ---
 import HighlightedTitle, { type TitlePart } from './HighlightedTitle.astro';
+import OptimizedImage from '../OptimizedImage.astro';
 import { type Locale } from '../../i18n';
 
 interface Props {
@@ -197,11 +198,11 @@ const cases = copy.cases.map((item) => ({
           </div>
           <div class="op-smartai__compare">
             <figure class="op-smartai__figure op-smartai__figure--before">
-              <img src={item.before} alt={`${item.title} ${copy.altBeforeSuffix}`} width="1200" height="900" loading={index === 0 ? 'eager' : 'lazy'} decoding="async" />
+              <OptimizedImage src={item.before} alt={`${item.title} ${copy.altBeforeSuffix}`} widths={[480, 768, 1200]} sizes="(max-width: 768px) 100vw, 760px" quality={76} loading={index === 0 ? 'eager' : 'lazy'} />
               <figcaption>{copy.beforeLabel}</figcaption>
             </figure>
             <figure class="op-smartai__figure op-smartai__figure--after">
-              <img src={item.after} alt={`${item.title} ${copy.altAfterSuffix}`} width="1200" height="900" loading={index === 0 ? 'eager' : 'lazy'} decoding="async" />
+              <OptimizedImage src={item.after} alt={`${item.title} ${copy.altAfterSuffix}`} widths={[480, 768, 1200]} sizes="(max-width: 768px) 100vw, 760px" quality={76} loading={index === 0 ? 'eager' : 'lazy'} />
               <figcaption>{copy.afterLabel}</figcaption>
             </figure>
           </div>

@@ -8,7 +8,7 @@ const t = blogCopy[post.data.locale];
 ---
 <article class:list={['group overflow-hidden rounded-2xl border border-slate-200 bg-white transition-shadow hover:shadow-lg', featured && 'md:col-span-2']}>
   <a href={postUrl(post)} class:list={['block h-full', featured && 'md:grid md:grid-cols-2']}>
-    <Image src={post.data.cover} alt={post.data.coverAlt} widths={[400, 700, 1000]} sizes="(max-width: 768px) 100vw, 50vw" width={800} format="webp" class="aspect-[16/10] h-full max-h-96 w-full object-cover" loading="lazy" />
+    <Image src={post.data.cover} alt={post.data.coverAlt} widths={[400, 700, 1000]} sizes="(max-width: 768px) 100vw, 50vw" width={800} format="webp" quality={78} class="aspect-[16/10] h-full max-h-96 w-full object-cover" loading="lazy" />
     <div class="flex flex-col items-start p-7">
       <span class="rounded-full bg-[#f6f2ea] px-3 py-1 text-xs font-bold text-[#00518f]">{t.subjects[post.data.category]}</span>
       <h3 class="mt-5 text-2xl font-extrabold leading-snug group-hover:text-[#00518f]">{post.data.title}</h3>

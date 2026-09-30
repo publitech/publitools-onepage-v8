@@ -21,3 +21,8 @@
 
 ## Règle visuelle permanente
 - Sur tout le site, les boutons avec un fond orange doivent toujours avoir un texte blanc, jamais noir ou sombre, y compris au survol et au focus.
+
+## Images
+- Toute nouvelle image matricielle du site ou du blog doit être enregistrée dans `src/assets/` et rendue avec `astro:assets` ou `src/components/OptimizedImage.astro` afin de générer automatiquement des variantes WebP responsives.
+- Ne placer dans `public/` que les SVG, favicons et fichiers qui doivent impérativement conserver une URL publique inchangée.
+- Utiliser le chargement différé par défaut ; réserver `loading="eager"` et `fetchpriority="high"` à l’image principale visible au chargement.

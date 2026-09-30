@@ -7,7 +7,7 @@ const ctaFields = () => ({ label: text('Texte du bouton'), sublabel: text('Texte
 
 export const blogContentComponents = {
   ReasonHeader: block({ label: 'Titre de raison', schema: { number: fields.integer({ label: 'Numéro', defaultValue: 1, validation: { min: 1 } }), title: text('Titre') } }),
-  Steps: block({ label: 'Étapes illustrées', schema: { items: fields.array(fields.object({ icon: text('Icône'), title: text('Titre'), text: text('Description'), image: fields.image({ label: 'Image sous cette étape (facultative)', directory: 'public/assets/blog', publicPath: '/assets/blog/' }) }), { label: 'Étapes', itemLabel: props => props.fields.title.value }) } }),
+  Steps: block({ label: 'Étapes illustrées', schema: { items: fields.array(fields.object({ icon: text('Icône'), title: text('Titre'), text: text('Description'), image: fields.image({ label: 'Image sous cette étape (facultative)', directory: 'src/assets/blog', publicPath: '../../assets/blog/' }), imageAlt: text('Description de l’image') }), { label: 'Étapes', itemLabel: props => props.fields.title.value }) } }),
   CheckList: block({ label: 'Liste ✅ / ❌', schema: { variant: fields.select({ label: 'Style', options: [{ label: '✅', value: 'check' }, { label: '❌', value: 'cross' }], defaultValue: 'check' }), items: strings('Lignes') } }),
   NetworkChips: block({ label: 'Réseaux sociaux', schema: { items: strings('Réseaux') } }),
   ChronoDuel: block({ label: 'Duel chronométré', schema: { slowLabel: text('Libellé à gauche'), slowValue: text('Valeur à gauche'), fastLabel: text('Libellé à droite'), fastValue: text('Valeur à droite') } }),
@@ -27,5 +27,5 @@ export const blogContentComponents = {
     terms: fields.array(text('Condition'), { label: 'Conditions de l’essai', itemLabel: props => props.value }),
     closing: text('Invitation à essayer'), ...ctaFields(),
   } }),
-  ImageSlot: block({ label: 'Image / emplacement', schema: { src: fields.image({ label: 'Image (facultative)', directory: 'public/assets/blog', publicPath: '/assets/blog/' }), alt: text('Description de l’image'), caption: text('Légende') } }),
+  ImageSlot: block({ label: 'Image / emplacement', schema: { src: fields.image({ label: 'Image (facultative)', directory: 'src/assets/blog', publicPath: '../../assets/blog/' }), alt: text('Description de l’image'), caption: text('Légende') } }),
 };

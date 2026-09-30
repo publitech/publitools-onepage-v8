@@ -1,5 +1,6 @@
 ---
 import HighlightedTitle, { type TitlePart } from './HighlightedTitle.astro';
+import OptimizedImage from '../OptimizedImage.astro';
 import { type Locale } from '../../i18n';
 
 interface Props {
@@ -152,7 +153,7 @@ const copy = {
                 <img src={output.icon} alt="" width="24" height="24" loading="lazy" decoding="async" />
                 <span>{output.network}</span>
               </figcaption>
-              <img class="op-social-output__asset" src={output.src} alt={`Exemple de publication ${output.network} créée à partir du chantier`} loading="lazy" decoding="async" />
+              <OptimizedImage class="op-social-output__asset" src={output.src} alt={`Exemple de publication ${output.network} créée à partir du chantier`} widths={[320, 480, 640]} sizes="(max-width: 768px) 78vw, 360px" quality={76} />
             </figure>
           ))}
           {socialOutputs.map((output) => (
@@ -161,7 +162,7 @@ const copy = {
                 <img src={output.icon} alt="" width="24" height="24" loading="lazy" decoding="async" />
                 <span>{output.network}</span>
               </figcaption>
-              <img class="op-social-output__asset" src={output.src} alt="" loading="lazy" decoding="async" />
+              <OptimizedImage class="op-social-output__asset" src={output.src} alt="" widths={[320, 480, 640]} sizes="(max-width: 768px) 78vw, 360px" quality={76} />
             </figure>
           ))}
         </div>
@@ -178,7 +179,7 @@ const copy = {
         {copy.cards.map((card) => (
           <article class={`op-result-card op-result-card--${card.tone}`}>
             <figure class="op-result-card__media">
-              <img src={card.image} alt={card.alt} loading="lazy" decoding="async" />
+              <OptimizedImage src={card.image} alt={card.alt} widths={[480, 720, 960]} sizes="(max-width: 768px) 100vw, 33vw" quality={78} />
             </figure>
             <h3 class="op-result-card__title">{card.title}</h3>
           </article>

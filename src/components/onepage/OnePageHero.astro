@@ -1,6 +1,7 @@
 ---
 import OnePageButton from './OnePageButton.astro';
 import OnePageSocialLogos from './OnePageSocialLogos.astro';
+import OptimizedImage from '../OptimizedImage.astro';
 import { type Locale } from '../../i18n';
 
 interface Props {
@@ -71,33 +72,31 @@ const copy = {
         />
       </figure>
       <figure class="op-hero-v4__fragment op-hero-v4__fragment--dashboard">
-        <img
+        <OptimizedImage
           src="/assets/onepage/hero-app-dashboard.png"
           alt="Tableau de bord de l'application Structor"
-          width="390"
-          height="844"
+          widths={[260, 390, 585]}
+          sizes="(max-width: 768px) 42vw, 390px"
+          quality={78}
           loading="eager"
-          decoding="async"
         />
       </figure>
       <figure class="op-hero-v4__fragment op-hero-v4__fragment--config">
-        <img
+        <OptimizedImage
           src="/assets/onepage/hero-app-config-ia.png"
           alt="Configuration de l'IA en cours dans l'application Structor"
-          width="339"
-          height="325"
-          loading="lazy"
-          decoding="async"
+          widths={[240, 339, 480]}
+          sizes="(max-width: 768px) 42vw, 339px"
+          quality={78}
         />
       </figure>
       <figure class="op-hero-v4__fragment op-hero-v4__fragment--banner">
-        <img
+        <OptimizedImage
           src="/assets/onepage/hero-app-banner.jpeg"
           alt="Capture d'écran complémentaire de l'application PubliTools"
-          width="640"
-          height="233"
-          loading="lazy"
-          decoding="async"
+          widths={[320, 480, 640]}
+          sizes="(max-width: 768px) 70vw, 640px"
+          quality={78}
         />
       </figure>
     </div>
