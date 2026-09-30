@@ -128,7 +128,7 @@ const fav = (path: string) => `${path}?v=${FAVICON_VERSION}`;
     <a href="#page-content" class="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-50 focus:rounded-full focus:bg-white focus:px-4 focus:py-3 focus:text-sm focus:font-semibold focus:text-slate-900">
       {dict[locale].common.skip}
     </a>
-    <div id="page-content">
+    <div id="page-content" class="[&_main_ul+p]:mt-8 [&_main_ol+p]:mt-8 [&_main_p+ul]:mt-6 [&_main_p+ol]:mt-6 md:[&_main_ul+p]:mt-10 md:[&_main_ol+p]:mt-10">
       <slot />
     </div>
     {footer && <V31Footer networkText={footerNetworkText} locale={locale} />}

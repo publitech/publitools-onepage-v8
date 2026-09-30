@@ -3,6 +3,6 @@ import EditorialIcon from './EditorialIcon.astro';
 interface Props { items: { icon: string; title: string; text: string; image?: string }[] }
 const { items } = Astro.props;
 ---
-<ol class="my-7 list-none divide-y divide-slate-200 p-0">
+<ol class="mb-10 mt-8 list-none divide-y divide-slate-200 p-0 leading-[1.75]">
   {items.map(item => <li class="flex min-w-0 gap-4 py-5"><span class="mt-1 shrink-0 text-slate-500"><EditorialIcon kind={item.icon} /></span><div class="min-w-0"><strong class="block text-[var(--op-ink)]">{item.title}</strong><span class="text-[var(--op-muted)]">{item.text}</span>{item.image && <img src={item.image} alt="Artisan prenant une photo de son chantier avec son téléphone" loading="lazy" decoding="async" class="mt-5 h-auto w-full rounded-xl" />}</div></li>)}
 </ol>
