@@ -41,11 +41,16 @@ const schema = [
         <div class="mt-7 flex flex-wrap gap-x-5 gap-y-2 text-xs leading-6 text-slate-600"><span class="font-bold text-[#262832]">{data.author}</span><span>{t.published} <time datetime={data.publishedAt.toISOString()}>{date(data.publishedAt)}</time></span><span>{minutes} {t.minutes}</span>{data.updatedAt && <span>{t.updated} <time datetime={data.updatedAt.toISOString()}>{date(data.updatedAt)}</time></span>}</div>
       </div>
     </header>
-    {data.articleLayout === 'listicle' ? <div class="px-5 py-10">
+    {data.articleLayout === 'listicle' ? <>
+      <div class="mx-auto w-full max-w-[680px] px-5 pt-8">
+        <Image src={data.cover} alt={data.coverAlt} widths={[640, 960, 1280]} sizes="(max-width: 720px) 100vw, 680px" width={1280} format="webp" loading="eager" fetchpriority="high" class="max-h-[520px] w-full rounded-2xl object-cover" />
+      </div>
+      <div class="px-5 py-10">
       <div class="mx-auto w-full min-w-0 max-w-[680px] text-[19px] leading-[1.65] text-[var(--op-ink)] [overflow-wrap:anywhere] [&_p]:my-6 [&_strong]:font-extrabold [&_aside]:border-[var(--op-orange)] [&_aside]:bg-[var(--op-yellow-wash)] [&_aside]:font-bold">
         <Content components={contentComponents} />
       </div>
-    </div> : <div class="mx-auto max-w-6xl px-5 py-10">
+      </div>
+    </> : <div class="mx-auto max-w-6xl px-5 py-10">
       <Image src={data.cover} alt={data.coverAlt} widths={[640, 960, 1280]} sizes="(max-width: 1152px) 100vw, 1152px" width={1280} format="webp" loading="eager" fetchpriority="high" class="max-h-[560px] w-full rounded-2xl object-cover" />
       <div class="mt-12 grid items-start gap-12 lg:grid-cols-[240px_minmax(0,1fr)]">
         {toc.length > 0 ? <nav class="rounded-xl border border-slate-200 p-6 lg:sticky lg:top-8" aria-label={t.toc}><h2 class="mb-5 text-sm font-extrabold">{t.toc}</h2><ol class="space-y-3">{toc.map(heading => <li class:list={['text-sm leading-6', heading.depth === 3 && 'pl-4']}><a class="text-slate-600 hover:text-[#00518f]" href={`#${heading.slug}`}>{heading.text}</a></li>)}</ol></nav> : <div />}
