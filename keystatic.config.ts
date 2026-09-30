@@ -24,7 +24,7 @@ export default config({
         cover: fields.image({ label: 'Couverture', directory: 'src/assets/blog', publicPath: '../../assets/blog/', validation: { isRequired: true } }),
         coverAlt: fields.text({ label: 'Description de l’image', validation: { isRequired: true } }),
         takeaways: fields.array(fields.text({ label: 'Point essentiel', validation: { isRequired: true } }), { label: 'À retenir', itemLabel: props => props.value }),
-        layout: fields.select({ label: 'Mise en page', options: [{ label: 'Article classique', value: 'standard' }, { label: 'Listicle · colonne 680 px', value: 'listicle' }], defaultValue: 'standard' }),
+        articleLayout: fields.select({ label: 'Mise en page', options: [{ label: 'Article classique', value: 'standard' }, { label: 'Listicle · colonne 680 px', value: 'listicle' }], defaultValue: 'standard' }),
         readingTime: fields.integer({ label: 'Temps de lecture en minutes (facultatif)', validation: { min: 1 } }),
         content: fields.mdx({
           label: 'Article',
