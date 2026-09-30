@@ -36,7 +36,7 @@ export default function MobileMenu() {
               </a>
             ))}
             <a className="mt-2 min-h-11 rounded-lg border border-[#0B1F3A] px-4 py-3 text-center font-semibold text-[#0B1F3A] no-underline" href="https://app.publichantier.fr/">Se connecter</a>
-            <a className="min-h-11 rounded-lg bg-[#FF7A1A] px-4 py-3 text-center font-semibold text-white no-underline" href="https://app.publichantier.fr/?signup=yes">Essayer 14 jours</a>
+            <a className="min-h-11 rounded-lg bg-[#FF7A1A] px-4 py-3 text-center font-semibold text-white no-underline" href="https://app.publitools.ai/fr/signup">Essayer 14 jours</a>
           </nav>
         </div>
       )}

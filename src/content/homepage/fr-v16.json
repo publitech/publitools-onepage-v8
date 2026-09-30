@@ -29,7 +29,7 @@
     ],
     "cta_primary": {
       "label": "Essai gratuit 14 jours",
-      "href": "https://app.publichantier.fr/?signup=yes"
+      "href": "https://app.publitools.ai/fr/signup"
     },
     "cta_secondary": {
       "label": "Connexion",
@@ -43,7 +43,7 @@
     "social_proof": "Déjà adopté par 50+ artisans en 3 mois",
     "cta_primary": {
       "label": "Commencer l'essai gratuit",
-      "href": "https://app.publichantier.fr/?signup=yes"
+      "href": "https://app.publitools.ai/fr/signup"
     },
     "cta_subtext": "14 jours d'essai — accès complet Pro",
     "mockup_annotation": "Visuel produit : photo chantier → vocal → caption IA → retouche avant/après → écran de validation → 6 icônes destinations (FB, IG, LinkedIn, Google Business, TikTok, YouTube)",
@@ -57,7 +57,7 @@
     ],
     "primaryCta": {
       "label": "Commencer l'essai gratuit",
-      "href": "https://app.publichantier.fr/?signup=yes"
+      "href": "https://app.publitools.ai/fr/signup"
     },
     "secondaryCta": {
       "label": "Voir comment ça marche",
@@ -222,7 +222,7 @@
         ],
         "cta": {
           "label": "Commencer l'essai gratuit",
-          "href": "https://app.publichantier.fr/?signup=yes&plan=starter"
+          "href": "https://app.publitools.ai/fr/signup"
         }
       },
       {
@@ -243,7 +243,7 @@
         ],
         "cta": {
           "label": "Commencer l'essai gratuit",
-          "href": "https://app.publichantier.fr/?signup=yes&plan=pro"
+          "href": "https://app.publitools.ai/fr/signup"
         }
       }
     ]
@@ -279,7 +279,7 @@
     "sub": "Essayez PubliTools gratuitement pendant 14 jours.",
     "cta_primary": {
       "label": "Commencer l'essai gratuit",
-      "href": "https://app.publichantier.fr/?signup=yes"
+      "href": "https://app.publitools.ai/fr/signup"
     }
   },
   "footer": {
@@ -303,7 +303,7 @@
     ],
     "copyright": "© 2026 PubliTools. Tous droits réservés."
   },
-  "signupUrl": "https://app.publichantier.fr/?signup=yes",
+  "signupUrl": "https://app.publitools.ai/fr/signup",
   "seo": {
     "title": "PubliTools — L’outil IA n°1 du BTP pour faire grossir votre entreprise sur internet",
     "description": "Photo de chantier + vocal : PubliTools prépare captions, retouches, designs et publications pour les entreprises du bâtiment.",
@@ -319,7 +319,7 @@
         "name": "Starter",
         "subtitle": "Pour publier régulièrement",
         "price": "19,90 € HT/mois",
-        "href": "https://app.publichantier.fr/?signup=yes&plan=starter",
+        "href": "https://app.publitools.ai/fr/signup",
         "icon": "tool-artisan",
         "featured": false,
         "features": [
@@ -336,7 +336,7 @@
         "name": "Pro",
         "subtitle": "Pour publier sans limite",
         "price": "39,90 € HT/mois",
-        "href": "https://app.publichantier.fr/?signup=yes&plan=pro",
+        "href": "https://app.publitools.ai/fr/signup",
         "icon": "growth",
         "featured": true,
         "features": [
@@ -381,7 +381,7 @@
     ],
     "cta": {
       "label": "Commencer l'essai gratuit",
-      "href": "https://app.publichantier.fr/?signup=yes"
+      "href": "https://app.publitools.ai/fr/signup"
     },
     "reassurance": "Chaque contenu passe par votre validation."
   }

@@ -4,13 +4,13 @@
     "description": "PubliTools transforme vos chantiers en présence digitale complète : contenus, visuels, Google Business, avis clients et publications.",
     "canonical": "https://publitools.ai/fr/"
   },
-  "signupUrl": "https://app.publichantier.fr/?signup=yes",
+  "signupUrl": "https://app.publitools.ai/fr/signup",
   "hero": {
     "eyebrow": "L’IA au service des artisans du bâtiment",
     "h1": "L’outil IA n°1 du BTP pour faire grossir votre entreprise sur internet",
     "subheadline": "PubliTools transforme vos chantiers en présence digitale complète : contenus, visuels, posts Google Business, avis et publications. Vous validez. Vos prospects vous trouvent, vous font confiance et vous appellent.",
     "bullets": ["1 photo + 1 vocal", "Google Business + 5 réseaux", "Avis clients activés", "Validation humaine"],
-    "primaryCta": { "label": "Essayer gratuitement 14 jours", "href": "https://app.publichantier.fr/?signup=yes" },
+    "primaryCta": { "label": "Essayer gratuitement 14 jours", "href": "https://app.publitools.ai/fr/signup" },
     "secondaryCta": { "label": "Voir le workflow", "href": "/fr/#workflow" },
     "placeholder": "Démo app : chantier → contenu → publication",
     "socialProof": "Résultats observés sur 50+ artisans après 3 mois d’usage actif"
@@ -93,7 +93,7 @@
         "name": "Starter",
         "subtitle": "Pour publier régulièrement",
         "price": "19,90 € HT/mois",
-        "href": "https://app.publichantier.fr/?signup=yes&plan=starter",
+        "href": "https://app.publitools.ai/fr/signup",
         "icon": "tool-artisan",
         "features": ["8 publications/mois", "3 réseaux max par publication", "Captions, hashtags, visuels IA", "Retouches photos", "Demandes d’avis SMS illimitées"],
         "ctaLabel": "Choisir Starter"
@@ -102,7 +102,7 @@
         "name": "Pro",
         "subtitle": "Pour publier sans limite",
         "price": "39,90 € HT/mois",
-        "href": "https://app.publichantier.fr/?signup=yes&plan=pro",
+        "href": "https://app.publitools.ai/fr/signup",
         "icon": "growth",
         "featured": true,
         "featuredLabel": "Le plus choisi",
@@ -123,14 +123,14 @@
       { "question": "Sur combien de réseaux puis-je publier ?", "answer": "6 destinations : Facebook, Instagram, LinkedIn, Google Business, TikTok et YouTube." },
       { "question": "Puis-je arrêter quand je veux ?", "answer": "Oui. Les formules sont sans engagement." }
     ],
-    "cta": { "label": "Démarrer mon essai gratuit de 14 jours", "href": "https://app.publichantier.fr/?signup=yes" },
+    "cta": { "label": "Démarrer mon essai gratuit de 14 jours", "href": "https://app.publitools.ai/fr/signup" },
     "reassurance": "Chaque contenu passe par votre validation."
   },
   "finalCta": {
     "id": "demarrer",
     "title": "Vos chantiers méritent d’être vus.",
     "subtitle": "Ajoutez une photo. PubliTools prépare le contenu. Vous validez, puis vous publiez sur Google Business et vos réseaux.",
-    "primaryCta": { "label": "Démarrer mon essai gratuit de 14 jours", "href": "https://app.publichantier.fr/?signup=yes" },
+    "primaryCta": { "label": "Démarrer mon essai gratuit de 14 jours", "href": "https://app.publitools.ai/fr/signup" },
     "secondaryCta": { "label": "Poser une question", "href": "mailto:contact@publitools.ai" },
     "proof": "6 destinations · validation humaine · essai gratuit 14 jours · prix HT"
   }

@@ -1,6 +1,6 @@
 import type { HomepageVariant, VariantSlug } from './types';
 
-export const HOMEPAGE_VARIANT_CTA = 'https://app.publichantier.fr/?signup=yes';
+export const HOMEPAGE_VARIANT_CTA = 'https://app.publitools.ai/fr/signup';
 
 const asset = (path: string) => `/homepage-variants/${path}`;
 

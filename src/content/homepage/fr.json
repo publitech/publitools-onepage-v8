@@ -4,7 +4,7 @@
     "description": "PubliTools transforme vos chantiers en présence digitale complète : contenus, visuels, Google Business, avis clients et publications.",
     "canonical": "https://publitools.ai/fr/"
   },
-  "signupUrl": "https://app.publichantier.fr/?signup=yes",
+  "signupUrl": "https://app.publitools.ai/fr/signup",
   "hero": {
     "eyebrow": "L'IA au service des artisans du bâtiment",
     "h1": "L'outil IA n°1 du BTP pour faire grossir votre entreprise sur internet",
@@ -15,7 +15,7 @@
       "Votre réputation se renforce grâce aux avis clients demandés au bon moment",
       "Publication en moins de 2 minutes, après validation, sur 6 destinations"
     ],
-    "primaryCta": { "label": "Essayer gratuitement pendant 14 jours", "href": "https://app.publichantier.fr/?signup=yes" },
+    "primaryCta": { "label": "Essayer gratuitement pendant 14 jours", "href": "https://app.publitools.ai/fr/signup" },
     "secondaryCta": { "label": "Voir la démonstration en 90 secondes", "href": "/fr/#demo" },
     "socialProof": "+127 artisans du bâtiment utilisent PubliTools pour développer leur visibilité en ligne."
   },
@@ -40,7 +40,7 @@
       { "title": "Réputation", "body": "Avis clients, avant/après et contenus réguliers prouvent votre sérieux avant le premier échange. Un prospect face à 40 avis et 15 chantiers documentés n'hésite plus.", "icon": "reputation" },
       { "title": "Contact", "body": "Avec visibilité et crédibilité en place, vos prospects ont plus de raisons de vous appeler ou de demander un devis.", "icon": "contact" }
     ],
-    "cta": { "label": "Commencer à faire grandir ma présence en ligne", "href": "https://app.publichantier.fr/?signup=yes" }
+    "cta": { "label": "Commencer à faire grandir ma présence en ligne", "href": "https://app.publitools.ai/fr/signup" }
   },
   "transformations": {
     "id": "transformations",
@@ -54,7 +54,7 @@
       { "key": "avis", "title": "Avis clients", "body": "Visuels d'avis publiables + demandes d'avis par SMS préparées pour vos clients." },
       { "key": "logo", "title": "Logo et couleurs", "body": "intégrés aux visuels quand disponibles. Votre marque reste cohérente." }
     ],
-    "cta": { "label": "Voir ce que PubliTools peut tirer de mes chantiers", "href": "https://app.publichantier.fr/?signup=yes" }
+    "cta": { "label": "Voir ce que PubliTools peut tirer de mes chantiers", "href": "https://app.publitools.ai/fr/signup" }
   },
   "howItWorks": {
     "id": "fonctionnement",
@@ -65,7 +65,7 @@
       { "label": "Étape 2", "title": "L'IA prépare tout.", "body": "Caption, hashtags, retouche, visuel, carrousel, format par réseau, post Google Business. Modifiez la caption ou enregistrez un vocal transmis et réécrit.", "icon": "caption" },
       { "label": "Étape 3", "title": "Vous validez, on publie.", "body": "Chaque contenu passe par votre validation. Programmez ou publiez instantanément sur vos destinations en 1 clic.", "icon": "validation" }
     ],
-    "cta": { "label": "Tester le workflow sur mon prochain chantier", "href": "https://app.publichantier.fr/?signup=yes" }
+    "cta": { "label": "Tester le workflow sur mon prochain chantier", "href": "https://app.publitools.ai/fr/signup" }
   },
   "googleReviews": {
     "id": "google-avis",
@@ -83,13 +83,13 @@
       "Générateur de visuels d'avis : vos meilleurs commentaires en posts publiables.",
       "Collecte continue pour construire un profil Google solide."
     ],
-    "cta": { "label": "Améliorer ma visibilité Google dès maintenant", "href": "https://app.publichantier.fr/?signup=yes" }
+    "cta": { "label": "Améliorer ma visibilité Google dès maintenant", "href": "https://app.publitools.ai/fr/signup" }
   },
   "networkDistribution": {
     "id": "reseaux",
     "title": "Facebook, Instagram, LinkedIn, Google Business, TikTok, YouTube — tout depuis un seul endroit",
     "subheadline": "PubliTools prépare vos contenus pour chaque destination compatible. Formats, textes et visuels cadrés ; vous validez avant publication.",
-    "cta": { "label": "Publier sur mes 6 réseaux en un seul geste", "href": "https://app.publichantier.fr/?signup=yes" }
+    "cta": { "label": "Publier sur mes 6 réseaux en un seul geste", "href": "https://app.publitools.ai/fr/signup" }
   },
   "trialStart": {
     "id": "essai",
@@ -101,7 +101,7 @@
       "Première publication générée en quelques minutes",
       "Tutoriels vidéo intégrés et support réactif"
     ],
-    "cta": { "label": "Démarrer mon essai gratuit de 14 jours", "href": "https://app.publichantier.fr/?signup=yes" }
+    "cta": { "label": "Démarrer mon essai gratuit de 14 jours", "href": "https://app.publitools.ai/fr/signup" }
   },
   "comparison": {
     "id": "comparatif",
@@ -115,7 +115,7 @@
       { "task": "Collecte d'avis", "manual": "demander de vive voix, oublier", "publitools": "SMS préparés à envoyer après chantier", "icon": "avis" },
       { "task": "Multi-réseaux", "manual": "adapter manuellement chaque contenu", "publitools": "versions prêtes pour 6 destinations", "icon": "publication" }
     ],
-    "cta": { "label": "Passer de « j'y pense » à « c'est fait »", "href": "https://app.publichantier.fr/?signup=yes" }
+    "cta": { "label": "Passer de « j'y pense » à « c'est fait »", "href": "https://app.publitools.ai/fr/signup" }
   },
   "pricing": {
     "id": "tarif",
@@ -127,7 +127,7 @@
         "name": "Starter",
         "subtitle": "Pour les artisans qui publient 2 fois par semaine",
         "price": "19,90 € HT/mois",
-        "href": "https://app.publichantier.fr/?signup=yes&plan=starter",
+        "href": "https://app.publitools.ai/fr/signup",
         "icon": "tool-artisan",
         "features": [
           "8 publications par mois",
@@ -145,7 +145,7 @@
         "name": "Pro",
         "subtitle": "Pour les artisans qui publient chaque jour ou gèrent plusieurs chantiers",
         "price": "39,90 € HT/mois",
-        "href": "https://app.publichantier.fr/?signup=yes&plan=pro",
+        "href": "https://app.publitools.ai/fr/signup",
         "icon": "growth",
         "featured": true,
         "featuredLabel": "Le plus choisi",
@@ -174,7 +174,7 @@
       { "question": "Sur combien de réseaux puis-je publier ?", "answer": "6 destinations : Facebook, Instagram, LinkedIn, Google Business, TikTok et YouTube." },
       { "question": "Combien de temps pour voir des résultats ?", "answer": "Résultats observés sur 50+ artisans après 3 mois : +40 % devis, +12 places en visibilité locale, +600 % de vues sur les posts. Chaque entreprise est différente." }
     ],
-    "cta": { "label": "Démarrer mon essai gratuit de 14 jours", "href": "https://app.publichantier.fr/?signup=yes" },
+    "cta": { "label": "Démarrer mon essai gratuit de 14 jours", "href": "https://app.publitools.ai/fr/signup" },
     "reassurance": "Chaque contenu passe par votre validation."
   },
   "finalCta": {
@@ -182,7 +182,7 @@
     "title": "Vos chantiers méritent d'être vus. Votre entreprise mérite de grandir.",
     "subheadline": "+127 artisans ont déjà transformé leur présence en ligne avec PubliTools. Chaque chantier non publié est une opportunité perdue.",
     "text": "Inscrivez-vous, importez une photo de votre dernier chantier, et découvrez en quelques minutes ce que PubliTools génère. 14 jours pour tester l'outil complet : workflow, Google Business et avis clients.",
-    "primaryCta": { "label": "Démarrer mon essai gratuit de 14 jours", "href": "https://app.publichantier.fr/?signup=yes" },
+    "primaryCta": { "label": "Démarrer mon essai gratuit de 14 jours", "href": "https://app.publitools.ai/fr/signup" },
     "secondaryCta": { "label": "Poser une question à l'équipe PubliTools", "href": "/fr/contact/" },
     "proof": "+127 artisans du bâtiment · résultats observés sur 50+ artisans après 3 mois · 6 destinations disponibles"
   }

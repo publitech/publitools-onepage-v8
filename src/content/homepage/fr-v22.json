@@ -6,7 +6,7 @@
     "generated": "2026-06-08",
     "source": "Brief consolidé V22 + handoffs Léa/Pedro/Nina/Berta"
   },
-  "signupUrl": "https://app.publichantier.fr/?signup=yes",
+  "signupUrl": "https://app.publitools.ai/fr/signup",
   "seo": {
     "title": "PubliTools — L’outil IA n°1 du BTP pour faire grossir votre entreprise sur internet",
     "description": "PubliTools prépare vos publications à partir de photos, vidéos, vocaux et avis : vous validez, puis vous publiez sur Google Business et vos réseaux connectés.",
@@ -23,7 +23,7 @@
     ],
     "primaryCta": {
       "label": "Commencer l’essai gratuit",
-      "href": "https://app.publichantier.fr/?signup=yes"
+      "href": "https://app.publitools.ai/fr/signup"
     },
     "secondaryCta": {
       "label": "Voir comment ça marche",
@@ -68,7 +68,7 @@
     "sub": "La logique reste simple : matière chantier, préparation PubliTools, validation humaine.",
     "cta": {
       "label": "Créer ma première publication",
-      "href": "https://app.publichantier.fr/?signup=yes"
+      "href": "https://app.publitools.ai/fr/signup"
     },
     "steps": [
       {
@@ -95,7 +95,7 @@
     "description": "La page reste courte : 3 usages concrets, chacun avec son vrai périmètre.",
     "cta": {
       "label": "Essayer avec mes chantiers",
-      "href": "https://app.publichantier.fr/?signup=yes"
+      "href": "https://app.publitools.ai/fr/signup"
     },
     "cards": [
       {
@@ -146,7 +146,7 @@
         "name": "Starter",
         "subtitle": "Pour publier régulièrement sans complexité",
         "price": "19,90 € HT/mois",
-        "href": "https://app.publichantier.fr/?signup=yes&plan=starter",
+        "href": "https://app.publitools.ai/fr/signup",
         "icon": "starter",
         "featured": false,
         "features": [
@@ -163,7 +163,7 @@
         "name": "Pro",
         "subtitle": "Pour faire tourner toute la machine PubliTools",
         "price": "39,90 € HT/mois",
-        "href": "https://app.publichantier.fr/?signup=yes&plan=pro",
+        "href": "https://app.publitools.ai/fr/signup",
         "icon": "pro",
         "featured": true,
         "featuredLabel": "Plan cœur",
@@ -219,7 +219,7 @@
     ],
     "cta": {
       "label": "Commencer l’essai gratuit",
-      "href": "https://app.publichantier.fr/?signup=yes"
+      "href": "https://app.publitools.ai/fr/signup"
     },
     "reassurance": "Rien ne part sans votre validation."
   },
@@ -229,7 +229,7 @@
     "image": "/homepage/fr/v22/optimized/final.jpg",
     "cta_primary": {
       "label": "Créer ma première publication",
-      "href": "https://app.publichantier.fr/?signup=yes"
+      "href": "https://app.publitools.ai/fr/signup"
     }
   }
 }

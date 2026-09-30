@@ -92,7 +92,7 @@ export default function PricingCalculator() {
             </ul>
             <a
               className="mt-8 inline-flex min-h-11 w-full items-center justify-center rounded-lg bg-[#f4862d] px-5 py-3 text-center text-sm font-bold text-white no-underline transition hover:bg-[#e27924]"
-              href="https://app.publichantier.fr/?signup=yes"
+              href="https://app.publitools.ai/fr/signup"
             >
               COMMENCER L'ESSAI
             </a>

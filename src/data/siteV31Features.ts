@@ -96,7 +96,7 @@ export const socialLogos = [
 ];
 
 export const commonCtas: Cta[] = [
-  { label: 'Essayer PubliTools 14 jours', href: 'https://app.publichantier.fr/?signup=yes', variant: 'primary' },
+  { label: 'Essayer PubliTools 14 jours', href: 'https://app.publitools.ai/fr/signup', variant: 'primary' },
   { label: 'Voir les tarifs', href: '/fr/tarif/', variant: 'secondary' },
 ];
 

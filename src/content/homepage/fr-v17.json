@@ -7,7 +7,7 @@
     "source": "Le Sage + Patrick + profils PubliTools + Léa GPT Image 2 direct",
     "designReference": "V16 typography and rhythm validated"
   },
-  "signupUrl": "https://app.publichantier.fr/?signup=yes",
+  "signupUrl": "https://app.publitools.ai/fr/signup",
   "seo": {
     "title": "PubliTools — L’outil IA n°1 du BTP pour faire grossir votre entreprise sur internet",
     "description": "PubliTools transforme vos chantiers en présence digitale complète : contenus, visuels, Google Business, avis clients et publications.",
@@ -25,7 +25,7 @@
     ],
     "primaryCta": {
       "label": "Commencer l'essai gratuit",
-      "href": "https://app.publichantier.fr/?signup=yes"
+      "href": "https://app.publitools.ai/fr/signup"
     },
     "secondaryCta": {
       "label": "Voir la machine PubliTools",
@@ -65,7 +65,7 @@
     "sub": "",
     "cta": {
       "label": "Voir ce que PubliTools peut tirer de mes chantiers",
-      "href": "https://app.publichantier.fr/?signup=yes"
+      "href": "https://app.publitools.ai/fr/signup"
     },
     "cards": [
       {
@@ -115,7 +115,7 @@
     "sub": "",
     "cta": {
       "label": "Activer Google Business + avis",
-      "href": "https://app.publichantier.fr/?signup=yes"
+      "href": "https://app.publitools.ai/fr/signup"
     },
     "cards": [
       {
@@ -152,7 +152,7 @@
     "sub": "Un même chantier peut devenir plusieurs rendus adaptés aux canaux compatibles. Vous vérifiez le texte, le visuel et les destinations avant diffusion.",
     "cta": {
       "label": "Créer une publication multi-canaux",
-      "href": "https://app.publichantier.fr/?signup=yes"
+      "href": "https://app.publitools.ai/fr/signup"
     },
     "items": [
       {
@@ -215,7 +215,7 @@
         "name": "Starter",
         "subtitle": "Déjà de quoi publier sérieusement",
         "price": "19,90 € HT/mois",
-        "href": "https://app.publichantier.fr/?signup=yes&plan=starter",
+        "href": "https://app.publitools.ai/fr/signup",
         "icon": "starter",
         "featured": false,
         "features": [
@@ -232,7 +232,7 @@
         "name": "Pro",
         "subtitle": "Toute la puissance PubliTools",
         "price": "39,90 € HT/mois",
-        "href": "https://app.publichantier.fr/?signup=yes&plan=pro",
+        "href": "https://app.publitools.ai/fr/signup",
         "icon": "pro",
         "featured": true,
         "featuredLabel": "Recommandé",
@@ -277,7 +277,7 @@
     ],
     "cta": {
       "label": "Commencer l'essai gratuit",
-      "href": "https://app.publichantier.fr/?signup=yes"
+      "href": "https://app.publitools.ai/fr/signup"
     },
     "reassurance": "Rien ne part sans votre validation."
   },
@@ -286,7 +286,7 @@
     "sub": "Pas besoin de préparer une stratégie complète : PubliTools transforme une matière réelle en publication professionnelle à valider.",
     "cta_primary": {
       "label": "Créer ma première publication",
-      "href": "https://app.publichantier.fr/?signup=yes"
+      "href": "https://app.publitools.ai/fr/signup"
     },
     "backgroundImage": "/homepage/fr/v18/gpt-image-2/cta-final-premium-btp.png"
   }

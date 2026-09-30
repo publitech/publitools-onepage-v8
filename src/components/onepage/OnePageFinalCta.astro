@@ -7,7 +7,7 @@ interface Props {
 }
 
 const { locale = 'fr' } = Astro.props;
-const signupUrl = 'https://app.publichantier.fr/?signup=yes';
+const signupUrl = `https://app.publitools.ai/${locale}/signup`;
 
 const copy = {
   fr: {
