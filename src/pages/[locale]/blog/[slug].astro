@@ -37,14 +37,12 @@ const schema = [
         <nav class="mb-10 flex flex-wrap gap-2 text-xs text-slate-600" aria-label="Fil d’Ariane"><a href={`/${data.locale}/`}>{t.home}</a><span aria-hidden="true">/</span><a href={`/${data.locale}/blog/`}>Blog</a><span aria-hidden="true">/</span><span aria-current="page">{data.title}</span></nav>
         <a href={`/${data.locale}/blog/#${data.category}`} class="text-xs font-extrabold uppercase tracking-widest text-[#00518f]">{t.subjects[data.category]}</a>
         <h1 class="mt-5 text-3xl font-extrabold leading-tight tracking-tight md:text-5xl">{data.title}</h1>
+        {data.articleLayout === 'listicle' && <Image src={data.cover} alt={data.coverAlt} widths={[640, 960, 1280]} sizes="(max-width: 720px) 100vw, 680px" width={1280} format="webp" loading="eager" fetchpriority="high" class="mt-8 max-h-[520px] w-full rounded-2xl object-cover" />}
         {data.articleLayout !== 'listicle' && <p class="mt-6 text-lg leading-8 text-slate-600">{data.description}</p>}
         <div class="mt-7 flex flex-wrap gap-x-5 gap-y-2 text-xs leading-6 text-slate-600"><span class="font-bold text-[#262832]">{data.author}</span><span>{t.published} <time datetime={data.publishedAt.toISOString()}>{date(data.publishedAt)}</time></span><span>{minutes} {t.minutes}</span>{data.updatedAt && <span>{t.updated} <time datetime={data.updatedAt.toISOString()}>{date(data.updatedAt)}</time></span>}</div>
       </div>
     </header>
     {data.articleLayout === 'listicle' ? <>
-      <div class="mx-auto w-full max-w-[680px] px-5 pt-8">
-        <Image src={data.cover} alt={data.coverAlt} widths={[640, 960, 1280]} sizes="(max-width: 720px) 100vw, 680px" width={1280} format="webp" loading="eager" fetchpriority="high" class="max-h-[520px] w-full rounded-2xl object-cover" />
-      </div>
       <div class="px-5 py-10">
       <div class="mx-auto w-full min-w-0 max-w-[680px] text-[19px] leading-[1.65] text-[var(--op-ink)] [overflow-wrap:anywhere] [&_p]:my-6 [&_strong]:font-extrabold [&_aside]:border-[var(--op-orange)] [&_aside]:bg-[var(--op-yellow-wash)] [&_aside]:font-bold">
         <Content components={contentComponents} />
