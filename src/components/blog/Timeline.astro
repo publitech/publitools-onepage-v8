@@ -1,0 +1,5 @@
+---
+interface Props { items: { day: string; text: string }[] }
+const { items } = Astro.props;
+---
+<ol class="my-9 ml-2 list-none border-l-2 border-[var(--op-orange)] p-0">{items.map((item, index) => <li class="relative pb-8 pl-7 last:pb-0"><span class:list={['absolute -left-[9px] top-1 h-4 w-4 rounded-full border-2', index === items.length - 1 ? 'border-emerald-600 bg-emerald-600' : 'border-[var(--op-orange)] bg-white']} aria-hidden="true"></span><div class="mb-2 text-xs font-extrabold uppercase tracking-wider text-[var(--op-muted)]">{item.day}</div><div>{item.text}</div></li>)}</ol>

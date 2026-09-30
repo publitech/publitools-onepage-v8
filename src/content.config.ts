@@ -71,6 +71,8 @@ const blog = defineCollection({
     cover: image(),
     coverAlt: z.string().min(1),
     takeaways: z.array(z.string()).default([]),
+    layout: z.enum(['standard', 'listicle']).default('standard'),
+    readingTime: z.number().int().positive().nullish(),
   }),
 });
 

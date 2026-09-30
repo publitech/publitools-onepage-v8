@@ -11,8 +11,9 @@ interface Props {
   schema?: Record<string, unknown>[];
   alternates?: { hreflang: string; href: string }[];
   article?: boolean;
+  showPromotion?: boolean;
 }
-const { locale, title, description, image, schema = [], alternates = [], article = false } = Astro.props;
+const { locale, title, description, image, schema = [], alternates = [], article = false, showPromotion = true } = Astro.props;
 const t = blogCopy[locale];
 ---
 <Layout title={title} description={description} locale={locale} image={image} schema={schema} alternates={alternates} footer={false} ogType={article ? 'article' : 'website'}>
@@ -26,12 +27,12 @@ const t = blogCopy[locale];
     </div>
   </header>
   <main><slot /></main>
-  <section class="bg-[#00518f] px-5 py-16 text-white">
+  {showPromotion && <section class="bg-[#00518f] px-5 py-16 text-white">
     <div class="mx-auto max-w-6xl items-center justify-between gap-8 md:flex">
       <div class="max-w-2xl"><h2 class="text-2xl font-extrabold md:text-3xl">{t.cta}</h2><p class="mt-4 text-white/85">{t.ctaText}</p></div>
       <a href={`/${locale}/`} class="mt-6 inline-flex shrink-0 rounded-lg bg-[#fac43e] px-6 py-4 font-bold text-[#262832] md:mt-0">{t.button} ↗</a>
     </div>
-  </section>
+  </section>}
   <footer class="bg-[#f6f2ea] px-5 py-9">
     <div class="mx-auto flex max-w-6xl flex-wrap items-center justify-between gap-6">
       <p class="text-sm font-bold">© {new Date().getFullYear()} PubliTools · CUT. BUILD. POST.</p>

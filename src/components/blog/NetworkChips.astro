@@ -1,0 +1,7 @@
+---
+interface Props { items: string[] }
+const { items } = Astro.props;
+---
+<ul class="my-7 grid list-none grid-cols-2 gap-3 p-0 min-[420px]:grid-cols-3">
+  {items.map(item => <li class="min-w-0 rounded-xl border border-[var(--op-line)] bg-white px-2 py-4 text-center text-base font-extrabold">{item}</li>)}
+</ul>

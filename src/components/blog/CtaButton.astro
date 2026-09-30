@@ -1,0 +1,9 @@
+---
+interface Props { label: string; sublabel: string; href: string; dark?: boolean }
+const { label, sublabel, href, dark = false } = Astro.props;
+const safeHref = /^https?:\/\//i.test(href) || /^\/(?!\/)/.test(href) ? href : '#';
+---
+<div class="my-8 w-full min-w-0">
+  <a href={safeHref} class="flex w-full items-center justify-center rounded-xl bg-[var(--op-orange)] px-5 py-5 text-center text-lg font-extrabold leading-snug text-[var(--op-ink)] no-underline shadow-md transition-colors hover:bg-[var(--op-yellow)] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--op-blue)]">{label}</a>
+  <div class:list={['mt-3 text-center text-sm leading-relaxed', dark ? 'text-slate-300' : 'text-[var(--op-muted)]']}>{sublabel}</div>
+</div>

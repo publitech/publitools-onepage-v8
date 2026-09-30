@@ -1,0 +1,9 @@
+---
+interface Props { src?: string; alt: string; caption: string }
+const { src, alt, caption } = Astro.props;
+const safeSrc = src && (/^https?:\/\//i.test(src) || /^\/(?!\/)/.test(src)) ? src : undefined;
+---
+<figure class="my-8">
+  {safeSrc ? <img src={safeSrc} alt={alt} loading="lazy" decoding="async" width="1200" height="800" class="h-auto w-full rounded-xl" /> : <div class="flex min-h-56 flex-col items-center justify-center gap-3 rounded-xl border-2 border-dashed border-[var(--op-line)] bg-[repeating-linear-gradient(135deg,#f0f1f3_0px,#f0f1f3_12px,#ffffff_12px,#ffffff_24px)] p-6 text-center"><span class="rounded bg-white px-3 py-1 font-bold">Image à insérer</span><span class="rounded bg-white px-3 py-1 text-sm text-[var(--op-muted)]">{alt}</span></div>}
+  <figcaption class="mt-3 text-center text-sm leading-relaxed text-[var(--op-muted)]">{caption}</figcaption>
+</figure>
