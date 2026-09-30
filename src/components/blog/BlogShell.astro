@@ -26,7 +26,13 @@ const t = blogCopy[locale];
       </nav>
     </div>
   </header>
-  <main><slot /></main>
+  <main class:list={[article && 'pb-12']}><slot /></main>
+  {article && <div class="fixed inset-x-0 bottom-0 z-40 border-t border-slate-200 bg-white/95 px-4 py-2 shadow-[0_-4px_18px_rgba(38,40,50,0.08)] backdrop-blur" aria-label="Progression de lecture">
+    <div class="mx-auto flex max-w-6xl items-center gap-3">
+      <div class="h-1.5 min-w-0 flex-1 overflow-hidden rounded-full bg-slate-200" role="progressbar" aria-label="Progression de lecture" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" data-reading-progress-track><div class="h-full w-0 rounded-full bg-[#00518f] transition-[width] duration-150" data-reading-progress></div></div>
+      <span class="shrink-0 text-[11px] font-bold text-slate-600"><span data-reading-progress-label>0</span>% lu</span>
+    </div>
+  </div>}
   {showPromotion && <section class="bg-[#00518f] px-5 py-16 text-white">
     <div class="mx-auto max-w-6xl items-center justify-between gap-8 md:flex">
       <div class="max-w-2xl"><h2 class="text-2xl font-extrabold md:text-3xl">{t.cta}</h2><p class="mt-4 text-white/85">{t.ctaText}</p></div>
@@ -45,3 +51,26 @@ const t = blogCopy[locale];
     </div>
   </footer>
 </Layout>
+
+<script>
+  const progressBar = document.querySelector<HTMLElement>('[data-reading-progress]');
+  const progressLabel = document.querySelector<HTMLElement>('[data-reading-progress-label]');
+  const progressTrack = document.querySelector<HTMLElement>('[data-reading-progress-track]');
+  const articleContent = document.querySelector('main');
+
+  if (progressBar && progressLabel && progressTrack && articleContent) {
+    const updateReadingProgress = () => {
+      const articleStart = articleContent.offsetTop;
+      const scrollableHeight = articleContent.offsetHeight - window.innerHeight;
+      const progress = scrollableHeight > 0 ? Math.min(100, Math.max(0, ((window.scrollY - articleStart) / scrollableHeight) * 100)) : 100;
+      const roundedProgress = Math.round(progress);
+      progressBar.style.width = `${progress}%`;
+      progressLabel.textContent = String(roundedProgress);
+      progressTrack.setAttribute('aria-valuenow', String(roundedProgress));
+    };
+
+    window.addEventListener('scroll', updateReadingProgress, { passive: true });
+    window.addEventListener('resize', updateReadingProgress);
+    updateReadingProgress();
+  }
+</script>
