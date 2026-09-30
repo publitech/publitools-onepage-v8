@@ -1,8 +1,9 @@
 ---
 import BoldText from './BoldText.astro';
+import EditorialIcon from './EditorialIcon.astro';
 interface Props { variant: 'check' | 'cross'; items: string[] }
 const { variant, items } = Astro.props;
 ---
 <ul class="my-7 list-none space-y-4 p-0">
-  {items.map(item => <li class="flex items-start gap-3"><span class="shrink-0" aria-hidden="true">{variant === 'check' ? '✅' : '❌'}</span><span class="min-w-0"><BoldText text={item} /></span></li>)}
+  {items.map(item => <li class="flex items-start gap-3"><span class="mt-1.5 shrink-0 text-slate-500"><EditorialIcon kind={variant} /></span><span class="min-w-0"><BoldText text={item} /></span></li>)}
 </ul>

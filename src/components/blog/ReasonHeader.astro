@@ -3,8 +3,8 @@ interface Props { number: number; title: string }
 const { number, title } = Astro.props;
 ---
 <header class="mb-7 mt-16 border-t border-[var(--op-line)] pt-10">
-  <h2 id={`raison-${number}`} class="flex scroll-mt-8 items-start gap-4 text-[26px] font-extrabold leading-tight text-[var(--op-ink)] sm:gap-5 sm:text-3xl">
-    <span class="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-[var(--op-blue)] text-2xl font-black text-white sm:h-12 sm:w-12 sm:text-3xl">{number}</span>
-    <span class="min-w-0 pt-1">{title}</span>
+  <h2 id={`raison-${number}`} class="flex scroll-mt-8 items-start gap-3 text-2xl font-bold leading-tight text-[var(--op-ink)] sm:gap-4 sm:text-[26px]">
+    <span class="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg border border-slate-200 bg-slate-50 text-xl font-bold text-slate-600">{number}</span>
+    <span class="min-w-0 pt-0.5">{title}</span>
   </h2>
 </header>
