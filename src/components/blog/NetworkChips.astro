@@ -1,7 +1,18 @@
 ---
 interface Props { items: string[] }
 const { items } = Astro.props;
+const logos: Record<string, string> = {
+  Instagram: '/social/instagram-official.svg',
+  Facebook: '/social/facebook-official.svg',
+  Google: '/social/google-official.svg',
+  LinkedIn: '/social/linkedin-official.svg',
+  TikTok: '/social/tiktok-official.svg',
+  YouTube: '/social/youtube-official.svg',
+};
 ---
 <ul class="my-7 grid list-none grid-cols-2 gap-3 p-0 min-[420px]:grid-cols-3">
-  {items.map(item => <li class="min-w-0 rounded-xl border border-[var(--op-line)] bg-white px-2 py-4 text-center text-base font-extrabold">{item}</li>)}
+  {items.map(item => <li class="flex min-w-0 flex-col items-center justify-center gap-3 rounded-xl border border-[var(--op-line)] bg-white px-2 py-4 text-center text-base font-extrabold">
+    {logos[item] && <img src={logos[item]} alt="" width="28" height="28" loading="lazy" decoding="async" class="h-7 w-7 object-contain" />}
+    <span>{item}</span>
+  </li>)}
 </ul>
