@@ -8,9 +8,8 @@ import { blogCopy, publishedPosts, postUrl } from '../../../lib/blog';
 
 export async function getStaticPaths() {
   const posts = await publishedPosts();
-  return posts
-    .filter(post => post.data.locale !== 'fr')
-    .map(post => ({ params: { locale: post.data.locale, slug: post.id }, props: { post, posts } }));
+  const frenchPosts = posts.filter(post => post.data.locale === 'fr');
+  return frenchPosts.map(post => ({ params: { slug: post.id }, props: { post, posts: frenchPosts } }));
 }
 interface Props { post: CollectionEntry<'blog'>; posts: CollectionEntry<'blog'>[] }
 const { post, posts } = Astro.props;
