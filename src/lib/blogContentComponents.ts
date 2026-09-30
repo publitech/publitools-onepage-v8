@@ -19,5 +19,13 @@ export const blogContentComponents = {
   Transition: wrapper({ label: 'Transition', schema: {} }),
   CtaButton: block({ label: 'Bouton d’essai', schema: ctaFields() }),
   FinalCta: block({ label: 'Bloc final', schema: { title: text('Titre'), text: text('Description'), ...ctaFields() } }),
+  TrialOffer: block({ label: 'Offre d’essai · prix et avantages', schema: {
+    brand: text('Marque'), title: text('Titre'), text: text('Description'),
+    trial: text('Offre d’essai'), price: text('Prix après l’essai'), priceNote: text('Transition vers le prix'),
+    benefitsTitle: text('Titre des avantages'),
+    benefits: fields.array(text('Avantage'), { label: 'Avantages', itemLabel: props => props.value }),
+    terms: fields.array(text('Condition'), { label: 'Conditions de l’essai', itemLabel: props => props.value }),
+    closing: text('Invitation à essayer'), ...ctaFields(),
+  } }),
   ImageSlot: block({ label: 'Image / emplacement', schema: { src: fields.image({ label: 'Image (facultative)', directory: 'public/assets/blog', publicPath: '/assets/blog/' }), alt: text('Description de l’image'), caption: text('Légende') } }),
 };

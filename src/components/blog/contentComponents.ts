@@ -12,5 +12,6 @@ import Transition from './Transition.astro';
 import CtaButton from './CtaButton.astro';
 import FinalCta from './FinalCta.astro';
 import ImageSlot from './ImageSlot.astro';
+import TrialOffer from './TrialOffer.astro';
 
-export const contentComponents = { ReasonHeader, Steps, CheckList, NetworkChips, ChronoDuel, ComparisonTable, StatCards, NumberedSteps, Timeline, Callout, Transition, CtaButton, FinalCta, ImageSlot };
+export const contentComponents = { ReasonHeader, Steps, CheckList, NetworkChips, ChronoDuel, ComparisonTable, StatCards, NumberedSteps, Timeline, Callout, Transition, CtaButton, FinalCta, ImageSlot, TrialOffer };
