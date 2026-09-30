@@ -4,7 +4,7 @@ import type { Locale } from '../i18n';
 export const blogLocales: Locale[] = ['fr', 'en', 'es', 'de'];
 export const postUrl = (post: CollectionEntry<'blog'>) => `/${post.data.locale}/blog/${post.id}/`;
 export async function publishedPosts() {
-  const posts = (await getCollection('blog')).filter(post => !post.data.draft && post.data.publishedAt <= new Date());
+  const posts = (await getCollection('blog')).filter(post => !post.data.draft);
   const translations = new Set<string>();
   for (const post of posts) {
     if (!post.data.translationKey) continue;

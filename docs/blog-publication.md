@@ -19,7 +19,7 @@ L’intégration Keystatic est activée uniquement avec le démarrage `astro dev
 3. Rédiger le corps avec les titres H2/H3, listes, tableaux, citations, liens et images. Le bloc « Encadré conseil » accepte un titre et du contenu riche. Les points « À retenir » sont saisis séparément.
 4. Le sommaire et le temps de lecture sont calculés automatiquement.
 5. Utiliser un slug stable et distinct pour chaque traduction. Donner aux traductions le même identifiant commun, avec une seule version par langue. Les liens hreflang ne ciblent que les versions effectivement publiées.
-6. Désactiver « Brouillon » lorsque l’article est prêt. Les articles datés dans le futur sont exclus jusqu’à une reconstruction à cette date ou après. Ce n’est pas un planificateur automatique.
+6. Désactiver « Brouillon » lorsque l’article est prêt. La date sert de date éditoriale et de tri ; ce n’est pas un planificateur automatique.
 7. Enregistrer. Les fichiers sont modifiés localement ; leur mise en ligne nécessite leur enregistrement dans le dépôt et un nouveau déploiement du site.
 
 Les brouillons ne disposent pas de route publique. L’éditeur permet de relire le contenu ; il ne fournit pas une prévisualisation privée du modèle d’article final.
