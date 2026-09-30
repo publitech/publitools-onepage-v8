@@ -3,7 +3,13 @@ interface Props { label: string; sublabel: string; href: string; dark?: boolean 
 const { label, sublabel, href, dark = false } = Astro.props;
 const safeHref = /^https?:\/\//i.test(href) || /^\/(?!\/)/.test(href) ? href : '#';
 ---
-<div class="my-8 w-full min-w-0">
-  <a href={safeHref} class="flex w-full items-center justify-center rounded-xl bg-[var(--op-orange)] px-5 py-5 text-center text-lg font-extrabold leading-snug text-white no-underline shadow-md transition-colors hover:bg-[var(--op-orange-hover)] hover:text-white focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--op-blue)]">{label}</a>
-  <div class:list={['mt-3 text-center text-sm leading-relaxed', dark ? 'text-slate-300' : 'text-[var(--op-muted)]']}>{sublabel}</div>
+<div class:list={[
+  'w-full min-w-0',
+  dark ? 'mb-0 mt-8' : 'my-12 rounded-2xl bg-[var(--op-ink)] p-5 shadow-lg sm:p-8',
+]}>
+  <a href={safeHref} class="group flex min-h-16 w-full items-center justify-center gap-3 rounded-xl border border-white/20 bg-[var(--op-orange)] px-5 py-5 text-center text-lg font-extrabold leading-snug text-white! no-underline shadow-[0_6px_0_#a74708,0_12px_24px_rgba(244,134,45,0.2)] transition-colors hover:bg-[var(--op-orange-hover)] hover:text-white! focus-visible:text-white! focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white sm:px-6">
+    <span class="min-w-0">{label}</span>
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="hidden shrink-0 sm:block" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7" /></svg>
+  </a>
+  <div class="mt-6 text-center text-sm font-medium leading-relaxed text-slate-300">{sublabel}</div>
 </div>
