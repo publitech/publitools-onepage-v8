@@ -1,9 +1,10 @@
 ---
 import Layout from '../../../layouts/Layout.astro';
+import { buildBilingualAlternates } from '../../../lib/seo';
 const title = 'Cookies — Publitools';
 const description = 'Politique de cookies du site Publitools.';
 ---
-<Layout title={title} description={description} canonical="https://publitools.ai/fr/cookies">
+<Layout title={title} description={description} canonical="https://publitools.ai/fr/cookies" alternates={buildBilingualAlternates('/fr/cookies/', '/en/cookies/')}>
   <main class="container section-pad">
     <p class="text-sm font-semibold uppercase tracking-[0.18em] text-[#f4862d]">Cookies</p>
     <h1 class="mt-4 max-w-4xl text-5xl font-semibold tracking-[-0.03em] text-[#262832]">Politique de cookies</h1>

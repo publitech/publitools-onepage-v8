@@ -1,9 +1,10 @@
 ---
 import Layout from '../../../layouts/Layout.astro';
+import { buildBilingualAlternates } from '../../../lib/seo';
 const title = 'Terms of service — Publitools';
 const description = 'Terms of service for Publitools.';
 ---
-<Layout title={title} description={description} canonical="https://publitools.ai/en/terms-of-service" locale="en" pathname="/en/terms-of-service/">
+<Layout title={title} description={description} canonical="https://publitools.ai/en/terms-of-service" locale="en" pathname="/en/terms-of-service/" alternates={buildBilingualAlternates('/fr/cgu/', '/en/terms-of-service/')}>
   <main class="container section-pad">
     <p class="text-sm font-semibold uppercase tracking-[0.18em] text-[#f4862d]">Contractual documents</p>
     <h1 class="mt-4 max-w-4xl text-5xl font-semibold tracking-[-0.03em] text-[#262832]">Terms of service</h1>

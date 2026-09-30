@@ -1,9 +1,10 @@
 ---
 import Layout from '../../../layouts/Layout.astro';
+import { buildBilingualAlternates } from '../../../lib/seo';
 const title = 'Privacy — Publitools';
 const description = 'Privacy policy for Publitools and PubliTech OÜ.';
 ---
-<Layout title={title} description={description} canonical="https://publitools.ai/en/privacy" locale="en" pathname="/en/privacy/">
+<Layout title={title} description={description} canonical="https://publitools.ai/en/privacy" locale="en" pathname="/en/privacy/" alternates={buildBilingualAlternates('/fr/confidentialite/', '/en/privacy/')}>
   <main class="container section-pad">
     <p class="text-sm font-semibold uppercase tracking-[0.18em] text-[#f4862d]">Data protection</p>
     <h1 class="mt-4 max-w-4xl text-5xl font-semibold tracking-[-0.03em] text-[#262832]">Privacy policy</h1>

@@ -22,13 +22,17 @@ const signupUrl = t.common.nav.ctaHref;
       <a href="#tarifs">{t.common.nav.pricing}</a>
       <a href="#faq">{t.common.nav.faq}</a>
       <a href={`/${locale}/blog/`}>Blog</a>
+      {(locale === 'fr' || locale === 'en') && <a href={locale === 'fr' ? '/fr/a-propos/' : '/en/about/'}>{locale === 'fr' ? 'À propos' : 'About'}</a>}
+      {locale === 'en' && <a href="/en/contact/">Contact</a>}
       <a href={signupUrl}>{t.common.footer.cta}</a>
       <a href={t.common.nav.loginHref}>{t.common.nav.login}</a>
     </nav>
     <nav aria-label={t.common.footer.legal}>
       <a href={t.common.footer.legalLinks.legal.href}>{t.common.footer.legalLinks.legal.label}</a>
       <a href={t.common.footer.legalLinks.cgv.href}>{t.common.footer.legalLinks.cgv.label}</a>
+      <a href={t.common.footer.legalLinks.cgu.href}>{t.common.footer.legalLinks.cgu.label}</a>
       <a href={t.common.footer.legalLinks.privacy.href}>{t.common.footer.legalLinks.privacy.label}</a>
+      <a href={t.common.footer.legalLinks.cookies.href}>{t.common.footer.legalLinks.cookies.label}</a>
     </nav>
   </div>
   <div class="op-container op-footer__bottom">

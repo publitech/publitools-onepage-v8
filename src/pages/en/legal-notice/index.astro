@@ -1,9 +1,10 @@
 ---
 import Layout from '../../../layouts/Layout.astro';
+import { buildBilingualAlternates } from '../../../lib/seo';
 const title = 'Legal notice — Publitools';
 const description = 'Full legal notice for the Publitools website published by PubliTech OÜ.';
 ---
-<Layout title={title} description={description} canonical="https://publitools.ai/en/legal-notice" locale="en" pathname="/en/legal-notice/">
+<Layout title={title} description={description} canonical="https://publitools.ai/en/legal-notice" locale="en" pathname="/en/legal-notice/" alternates={buildBilingualAlternates('/fr/mentions-legales/', '/en/legal-notice/')}>
   <main class="container section-pad">
     <p class="text-sm font-semibold uppercase tracking-[0.18em] text-[#f4862d]">Legal information</p>
     <h1 class="mt-4 max-w-4xl text-5xl font-semibold tracking-[-0.03em] text-[#262832]">Legal notice</h1>

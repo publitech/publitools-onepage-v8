@@ -11,7 +11,16 @@ const localEditor = process.argv.includes('dev');
 
 export default defineConfig({
   site: 'https://publitools.ai',
-  integrations: [react(), mdx(), sitemap(), ...(localEditor ? [keystatic()] : [])],
+  integrations: [
+    react(),
+    mdx(),
+    sitemap({
+      // La racine est une redirection de langue en noindex. Seules les vraies pages
+      // canoniques localisées doivent apparaître dans le sitemap.
+      filter: (page) => new URL(page).pathname !== '/',
+    }),
+    ...(localEditor ? [keystatic()] : []),
+  ],
   vite: {
     plugins: [tailwindcss()],
   },

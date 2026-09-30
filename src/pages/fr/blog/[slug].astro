@@ -9,7 +9,7 @@ import { blogCopy, publishedPosts, postUrl } from '../../../lib/blog';
 export async function getStaticPaths() {
   const posts = await publishedPosts();
   const frenchPosts = posts.filter(post => post.data.locale === 'fr');
-  return frenchPosts.map(post => ({ params: { slug: post.id }, props: { post, posts: frenchPosts } }));
+  return frenchPosts.map(post => ({ params: { slug: post.id }, props: { post, posts } }));
 }
 interface Props { post: CollectionEntry<'blog'>; posts: CollectionEntry<'blog'>[] }
 const { post, posts } = Astro.props;
@@ -17,19 +17,22 @@ const { data } = post;
 const t = blogCopy[data.locale];
 const { Content, headings } = await render(post);
 const toc = headings.filter(heading => heading.depth === 2 || heading.depth === 3);
-const minutes = data.readingTime ?? Math.max(1, Math.ceil((post.body ?? '').split(/\s+/u).filter(Boolean).length / 220));
+const wordCount = (post.body ?? '').split(/\s+/u).filter(Boolean).length;
+const minutes = data.readingTime ?? Math.max(1, Math.ceil(wordCount / 220));
 const related = posts.filter(entry => entry.id !== post.id && entry.data.locale === data.locale).sort((a, b) => Number(b.data.category === data.category) - Number(a.data.category === data.category)).slice(0, 2);
 const translations = data.translationKey ? posts.filter(entry => entry.data.translationKey === data.translationKey) : [post];
-const alternates = translations.map(entry => ({ hreflang: entry.data.locale, href: `https://publitools.ai${postUrl(entry)}` }));
+const translatedAlternates = translations.map(entry => ({ hreflang: entry.data.locale, href: `https://publitools.ai${postUrl(entry)}` }));
+const defaultTranslation = translations.find(entry => entry.data.locale === 'en') ?? translations[0];
+const alternates = translations.length > 1 ? [...translatedAlternates, { hreflang: 'x-default', href: `https://publitools.ai${postUrl(defaultTranslation)}` }] : [];
 const url = `https://publitools.ai${postUrl(post)}`;
 const image = new URL(data.cover.src, Astro.site).href;
 const date = (value: Date) => value.toLocaleDateString(data.locale, { dateStyle: 'long', timeZone: 'UTC' });
 const schema = [
-  { '@context': 'https://schema.org', '@type': 'BlogPosting', headline: data.title, description: data.description, image, datePublished: data.publishedAt.toISOString(), dateModified: (data.updatedAt ?? data.publishedAt).toISOString(), author: { '@type': ['PubliTools', 'Équipe PubliTools'].includes(data.author) ? 'Organization' : 'Person', name: data.author }, publisher: { '@type': 'Organization', name: 'PubliTools', url: 'https://publitools.ai' }, mainEntityOfPage: url, url, inLanguage: data.locale, articleSection: t.subjects[data.category] },
+  { '@context': 'https://schema.org', '@type': 'BlogPosting', headline: data.title, description: data.description, image, datePublished: data.publishedAt.toISOString(), dateModified: (data.updatedAt ?? data.publishedAt).toISOString(), author: { '@type': ['PubliTools', 'Équipe PubliTools'].includes(data.author) ? 'Organization' : 'Person', name: data.author, url: 'https://publitools.ai/fr/a-propos/' }, publisher: { '@type': 'Organization', '@id': 'https://publitools.ai/#organization', name: 'PubliTools', url: 'https://publitools.ai/', logo: { '@type': 'ImageObject', url: 'https://publitools.ai/favicon-512.png', width: 512, height: 512 } }, mainEntityOfPage: { '@type': 'WebPage', '@id': url }, url, inLanguage: data.locale, articleSection: t.subjects[data.category], wordCount, isAccessibleForFree: true },
   { '@context': 'https://schema.org', '@type': 'BreadcrumbList', itemListElement: [{ '@type': 'ListItem', position: 1, name: t.home, item: `https://publitools.ai/${data.locale}/` }, { '@type': 'ListItem', position: 2, name: 'Blog', item: `https://publitools.ai/${data.locale}/blog/` }, { '@type': 'ListItem', position: 3, name: data.title, item: url }] },
 ];
 ---
-<BlogShell locale={data.locale} title={`${data.seoTitle || data.title} | PubliTools`} description={data.description} image={image} schema={schema} alternates={alternates} article showPromotion={data.articleLayout !== 'listicle'}>
+<BlogShell locale={data.locale} title={`${data.seoTitle || data.title} | PubliTools`} description={data.description} image={image} imageAlt={data.coverAlt} schema={schema} alternates={alternates} article articlePublishedTime={data.publishedAt.toISOString()} articleModifiedTime={(data.updatedAt ?? data.publishedAt).toISOString()} showPromotion={data.articleLayout !== 'listicle'}>
   <article>
     <header class="bg-[#f6f2ea] px-5 pb-12 pt-8 md:pb-16">
       <div class:list={['mx-auto', data.articleLayout === 'listicle' ? 'max-w-[680px]' : 'max-w-4xl']}>

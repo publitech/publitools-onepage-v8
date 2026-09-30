@@ -1,9 +1,10 @@
 ---
 import Layout from '../../../layouts/Layout.astro';
+import { buildBilingualAlternates } from '../../../lib/seo';
 const title = 'À propos — PubliTools';
 const description = 'Découvrez la mission de PubliTools: aider les entreprises du BTP à mieux gérer leur marketing terrain avec l’IA.';
 ---
-<Layout title={title} description={description} canonical="https://publitools.ai/fr/a-propos">
+<Layout title={title} description={description} canonical="https://publitools.ai/fr/a-propos" alternates={buildBilingualAlternates('/fr/a-propos/', '/en/about/')}>
   <main class="container section-pad">
     <p class="text-sm font-semibold uppercase tracking-[0.18em] text-[#f4862d]">Entreprise</p>
     <h1 class="mt-4 max-w-4xl text-5xl font-semibold tracking-[-0.03em] text-[#262832]">À propos de PubliTools</h1>

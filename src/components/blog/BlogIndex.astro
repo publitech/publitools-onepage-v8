@@ -8,10 +8,19 @@ const { locale } = Astro.props;
 const t = blogCopy[locale];
 const posts = (await publishedPosts()).filter(post => post.data.locale === locale);
 const url = `https://publitools.ai/${locale}/blog/`;
-const alternates = blogLocales.map(code => ({ hreflang: code, href: `https://publitools.ai/${code}/blog/` }));
-const schema = [{ '@context': 'https://schema.org', '@type': 'CollectionPage', name: t.label, description: t.lead, url, inLanguage: locale, mainEntity: { '@type': 'ItemList', itemListElement: posts.map((post, index) => ({ '@type': 'ListItem', position: index + 1, name: post.data.title, url: `https://publitools.ai${postUrl(post)}` })) } }];
+const seoTitles: Record<Locale, string> = {
+  fr: 'Conseils réseaux sociaux pour artisans | Blog PubliTools',
+  en: 'Social media tips for contractors | PubliTools Blog',
+  es: 'Consejos de redes sociales para construcción | PubliTools',
+  de: 'Social-Media-Tipps für Handwerksbetriebe | PubliTools',
+};
+const alternates = [
+  ...blogLocales.map(code => ({ hreflang: code, href: `https://publitools.ai/${code}/blog/` })),
+  { hreflang: 'x-default', href: 'https://publitools.ai/en/blog/' },
+];
+const schema = [{ '@context': 'https://schema.org', '@type': 'CollectionPage', name: t.label, description: t.lead, url, inLanguage: locale, isPartOf: { '@id': 'https://publitools.ai/#website' }, mainEntity: { '@type': 'ItemList', numberOfItems: posts.length, itemListElement: posts.map((post, index) => ({ '@type': 'ListItem', position: index + 1, name: post.data.title, url: `https://publitools.ai${postUrl(post)}` })) } }];
 ---
-<BlogShell locale={locale} title={`${t.label} — ${t.subjects.social} & BTP`} description={t.lead} alternates={alternates} schema={schema}>
+<BlogShell locale={locale} title={seoTitles[locale]} description={t.lead} alternates={alternates} schema={schema}>
   <section class="relative overflow-hidden bg-[#f6f2ea] px-5 pb-16 pt-10 md:pb-24">
     <div class="pointer-events-none absolute -right-20 top-16 h-64 w-64 rotate-12 rounded-[3rem] border-[35px] border-[#fac43e]/30 md:h-96 md:w-96" aria-hidden="true"></div>
     <div class="relative mx-auto max-w-6xl">

@@ -19,7 +19,7 @@ export function t(locale: Locale) {
  * when needed, and a '/<locale>' segment otherwise.
  */
 export function localePath(locale: Locale): string {
-  return locale === 'fr' ? '/fr' : '/en';
+  return `/${locale}`;
 }
 
 /**
@@ -27,7 +27,8 @@ export function localePath(locale: Locale): string {
  */
 export function canonicalUrl(locale: Locale, path: string): string {
   const base = 'https://publitools.ai';
-  const prefix = locale === 'fr' ? '/fr' : '/en';
+  const prefix = `/${locale}`;
   const normalized = path.startsWith('/') ? path : `/${path}`;
-  return `${base}${prefix}${normalized === '/' ? '/' : normalized}`;
+  const suffix = normalized === '/' ? '/' : `${normalized.replace(/\/+$/, '')}/`;
+  return `${base}${prefix}${suffix}`;
 }

@@ -1,9 +1,10 @@
 ---
 import Layout from '../../../layouts/Layout.astro';
+import { buildBilingualAlternates } from '../../../lib/seo';
 const title = 'CGU — Publitools';
 const description = 'Conditions générales d’utilisation de Publitools.';
 ---
-<Layout title={title} description={description} canonical="https://publitools.ai/fr/cgu">
+<Layout title={title} description={description} canonical="https://publitools.ai/fr/cgu" alternates={buildBilingualAlternates('/fr/cgu/', '/en/terms-of-service/')}>
   <main class="container section-pad">
     <p class="text-sm font-semibold uppercase tracking-[0.18em] text-[#f4862d]">Documents contractuels</p>
     <h1 class="mt-4 max-w-4xl text-5xl font-semibold tracking-[-0.03em] text-[#262832]">Conditions générales d’utilisation</h1>
