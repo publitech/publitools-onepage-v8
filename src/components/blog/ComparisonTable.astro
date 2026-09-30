@@ -1,12 +1,70 @@
 ---
-import EditorialIcon from './EditorialIcon.astro';
+import ComparisonValue from './ComparisonValue.astro';
 interface Props { headers: string[]; rows: string[][]; footer?: string[]; highlightColumn: number }
 const { headers, rows, footer = [], highlightColumn } = Astro.props;
+const mobileRows = [
+  ...rows.map(cells => ({ cells, total: false })),
+  ...(footer.length > 0 ? [{ cells: footer, total: true }] : []),
+];
 ---
-<div class="my-8 w-full min-w-0 max-w-full overflow-x-auto rounded-xl border border-[var(--op-line)] focus-visible:outline-2 focus-visible:outline-[var(--op-blue)]" role="region" aria-label="Tableau comparatif" tabindex="0">
-  <table class="w-full min-w-[520px] border-collapse text-left text-base leading-relaxed">
-    <thead class="border-b border-slate-200 bg-slate-100 text-slate-700"><tr>{headers.map(header => <th scope="col" class="px-4 py-4 font-bold">{header}</th>)}</tr></thead>
-    <tbody>{rows.map(row => <tr class="border-b border-[var(--op-line)]">{row.map((cell, index) => index === 0 ? <th scope="row" class="px-4 py-4 font-medium">{cell}</th> : <td class:list={['px-4 py-4', index === highlightColumn && 'bg-slate-50 font-semibold']}><span class="flex items-start gap-2">{ /^[✅❌]/u.test(cell) && <span class="mt-0.5 text-slate-500"><EditorialIcon kind={cell.startsWith('✅') ? 'check' : 'cross'} /></span>}<span>{cell.replace(/^[✅❌]\s*/u, '')}</span></span></td>)}</tr>)}</tbody>
-    {footer.length > 0 && <tfoot><tr class="font-bold">{footer.map((cell, index) => index === 0 ? <th scope="row" class="px-4 py-5">{cell}</th> : <td class:list={['px-4 py-5 text-slate-700', index === highlightColumn && 'bg-slate-50']}>{cell}</td>)}</tr></tfoot>}
-  </table>
+<div class="my-10 w-full min-w-0 max-w-full">
+  <div class="space-y-4 sm:hidden">
+    {mobileRows.map(({ cells, total }) => <section class:list={[
+      'overflow-hidden rounded-xl border bg-white shadow-sm',
+      total ? 'border-[#00518f]' : 'border-slate-300',
+    ]}>
+      <h3 class:list={[
+        'm-0! px-4 py-4 text-base! font-bold! leading-snug!',
+        total ? 'bg-[#0b1f3a] text-white!' : 'bg-slate-100 text-slate-800!',
+      ]}>{cells[0]}</h3>
+      <dl class="m-0 grid auto-cols-fr grid-flow-col">
+        {cells.slice(1).map((cell, offset) => {
+          const highlighted = offset + 1 === highlightColumn;
+          return <div class:list={[
+            'min-w-0 px-3 py-4',
+            highlighted ? 'border-l-2 border-[#00518f]/30 bg-[#eef5fb]' : 'bg-white',
+          ]}>
+            <dt class:list={[
+              'mb-3 text-xs font-bold leading-snug',
+              highlighted ? 'text-[#00518f]' : 'text-slate-600',
+            ]}>{headers[offset + 1]}</dt>
+            <dd class:list={[
+              'm-0 text-base leading-relaxed',
+              highlighted ? 'font-extrabold text-[#0b1f3a]' : 'font-medium text-slate-600',
+              total && highlighted && 'text-lg',
+            ]}><ComparisonValue value={cell} /></dd>
+          </div>;
+        })}
+      </dl>
+    </section>)}
+  </div>
+
+  <div class="hidden overflow-hidden rounded-2xl border border-slate-300 bg-white shadow-sm sm:block">
+    <table aria-label="Tableau comparatif" class="w-full table-fixed border-collapse text-left text-base leading-relaxed">
+      <thead>
+        <tr>{headers.map((header, index) => <th scope="col" class:list={[
+          'px-4 py-5 font-bold [overflow-wrap:anywhere]',
+          index === 0 && 'w-[38%]',
+          index === highlightColumn ? 'bg-[#0b1f3a] text-white' : 'bg-slate-100 text-slate-700',
+        ]}>{header}</th>)}</tr>
+      </thead>
+      <tbody>{rows.map(row => <tr class="border-t border-slate-200">
+        {row.map((cell, index) => index === 0
+          ? <th scope="row" class="px-4 py-5 font-medium text-slate-700 [overflow-wrap:anywhere]">{cell}</th>
+          : <td class:list={[
+            'px-4 py-5 align-top',
+            index === highlightColumn ? 'border-x border-[#00518f]/15 bg-[#eef5fb] font-extrabold text-[#0b1f3a]' : 'text-slate-600',
+          ]}><ComparisonValue value={cell} /></td>)}
+      </tr>)}</tbody>
+      {footer.length > 0 && <tfoot class="border-t-2 border-[#00518f]/30">
+        <tr>{footer.map((cell, index) => index === 0
+          ? <th scope="row" class="bg-slate-100 px-4 py-5 font-bold text-slate-800">{cell}</th>
+          : <td class:list={[
+            'px-4 py-5 font-bold',
+            index === highlightColumn ? 'bg-[#0b1f3a] text-lg text-white' : 'bg-slate-100 text-slate-600',
+          ]}><ComparisonValue value={cell} /></td>)}
+        </tr>
+      </tfoot>}
+    </table>
+  </div>
 </div>

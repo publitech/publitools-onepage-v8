@@ -1,0 +1,10 @@
+---
+import EditorialIcon from './EditorialIcon.astro';
+interface Props { value: string }
+const { value } = Astro.props;
+const status = value.startsWith('✅') ? 'check' : value.startsWith('❌') ? 'cross' : undefined;
+---
+<span class="flex min-w-0 items-start gap-2">
+  {status && <span class="mt-0.5 shrink-0"><EditorialIcon kind={status} /></span>}
+  <span class="min-w-0 [overflow-wrap:anywhere]">{value.replace(/^[✅❌]\s*/u, '')}</span>
+</span>
