@@ -18,3 +18,6 @@
 - State management: Use React's built-in hooks (`useState`, `useEffect`, `useContext`) for local state; introduce a state library (e.g., Zustand, Jotai) only when global state becomes complex
 - Data fetching: Use React Query or SWR for server state; avoid manual `fetch` in components unless it's a one‑off call
 - Code quality: Enable ESLint and Prettier; keep TypeScript strict; aim for zero lint and type‑check errors
+
+## Règle visuelle permanente
+- Sur tout le site, les boutons avec un fond orange doivent toujours avoir un texte blanc, jamais noir ou sombre, y compris au survol et au focus.
